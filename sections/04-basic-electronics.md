@@ -508,17 +508,130 @@ While multimeters provide excellent static measurements, understanding hardware 
 
 ### PCB Analysis
 
-- Layer identification (top, bottom, internal)
-- Component identification
-- Tracing connections between components
-- Identifying test points and interfaces
+Printed Circuit Board (PCB) analysis forms the cornerstone of hardware hacking, allowing you to understand how electronic systems are physically implemented. Mastering this skill requires both analytical thinking and methodical examination techniques.
+
+```
+   ┌─────────────────────────────────────────────┐
+   │                  PCB LAYERS                  │
+   │                                             │
+   │  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   │
+   │  █                TOP LAYER               █   │
+   │  █   Components, Silkscreen, Soldermask   █   │
+   │  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   │
+   │                                             │
+   │  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   │
+   │  █             INTERNAL LAYERS           █   │
+   │  █    Signal, Power, Ground Planes       █   │
+   │  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   │
+   │                                             │
+   │  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   │
+   │  █              BOTTOM LAYER            █   │
+   │  █   Solder Points, Some Components      █   │
+   │  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   │
+   │                                             │
+   └─────────────────────────────────────────────┘
+```
+
+**Layer identification** is the first step in PCB analysis. Modern electronic devices often employ multi-layer PCBs, with components and traces distributed across different planes. The top layer typically hosts most components and is covered with a soldermask (usually green, blue, or black) that protects copper traces while leaving soldering points exposed. The bottom layer may contain additional components or serve primarily for connections. Internal layers, invisible without specialized equipment, often carry power planes, ground planes, and additional signal routing. For hardware hackers, understanding layer organization provides critical insights into how signals propagate through the device.
+
+**Component identification** requires familiarity with various electronic parts and their physical appearances. While some components include helpful markings (like part numbers on ICs), many smaller components like resistors and capacitors are identified by size, shape, and markings that require decoding. For example, a small black rectangular component with white markings might be a surface-mount resistor, with the markings indicating its resistance value in ohms. Developing a mental library of component appearances accelerates the analysis process significantly.
+
+<table>
+  <tr>
+    <th>Component Type</th>
+    <th>Visual Characteristics</th>
+    <th>Typical Markings</th>
+    <th>Security Relevance</th>
+  </tr>
+  <tr>
+    <td>Microcontrollers</td>
+    <td>Square/rectangular ICs with multiple pins</td>
+    <td>Manufacturer logo, part number</td>
+    <td>Core processing units, often contain firmware</td>
+  </tr>
+  <tr>
+    <td>Memory Chips</td>
+    <td>Rectangular ICs</td>
+    <td>Capacity information, serial numbers</td>
+    <td>Store firmware, configuration, sensitive data</td>
+  </tr>
+  <tr>
+    <td>Voltage Regulators</td>
+    <td>3-pin components, sometimes with heatsinks</td>
+    <td>Voltage ratings</td>
+    <td>Power manipulation points for glitching attacks</td>
+  </tr>
+  <tr>
+    <td>Debug Headers</td>
+    <td>Pin arrays, often unpopulated</td>
+    <td>Sometimes labeled (UART, JTAG, SWD)</td>
+    <td>Direct access points to system internals</td>
+  </tr>
+</table>
+
+**Tracing connections** between components reveals the device's functional topology. This process involves following copper traces visually or using a multimeter in continuity mode to verify electrical connections. Successful connection tracing helps identify communication buses, power distribution networks, and potential security boundaries between system components. For complex boards, creating a hand-drawn schematic of key components and their interconnections provides a valuable reference throughout your hacking process.
+
+**Identifying test points and interfaces** unveils potential access points for connecting test equipment or injecting signals. Manufacturers often include test points for production testing or debugging – these small metal pads or vias scattered across the board can provide direct access to important signals like serial communication lines, reset circuitry, or clock signals. Many of these test points are left unprotected in production devices, creating opportunities for hardware hackers to establish connections. Look for groups of pins with standardized spacing, unpopulated header footprints, or clusters of test pads that might indicate debugging interfaces like UART, JTAG, or SPI.
 
 ### Soldering Techniques for Hardware Hackers
 
-- Adding test points to existing boards
-- Removing and replacing components
-- Wiring in bypass circuits
-- Creating hardware implants
+Soldering skills separate casual hardware enthusiasts from effective hardware hackers. Beyond basic circuit assembly, hardware security work requires specialized techniques that enable non-destructive modifications and subtle interventions.
+
+**Adding test points** to existing boards allows you to monitor signals without permanently altering circuit behavior. This technique involves identifying bare copper on traces of interest and carefully soldering fine magnet wire or test hooks to these points. For crowded boards with fine traces, use thin (30-34 AWG) wire and a fine-tipped soldering iron with temperature control. Apply a small amount of flux to the target area, tin both the wire and the trace with minimal solder, then join them with a quick, precise touch. Secure the wire with a small dot of hot glue or epoxy to prevent mechanical stress from breaking the connection. These minimally invasive taps can capture data from communication buses or monitor control signals without alerting the system to your presence.
+
+```
+   ┌──────────────────────────────────────────────────┐
+   │          SOLDERING TEST POINT TECHNIQUE          │
+   │                                                  │
+   │   1. Identify signal trace     ════════════════  │
+   │                                                  │
+   │   2. Add micro wire           ════╦═════════    │
+   │                                    ║             │
+   │   3. Secure with adhesive     ════╬═════════    │
+   │                                   ╔╝             │
+   │   4. Route to test equipment  ═══╝              │
+   │                                                  │
+   └──────────────────────────────────────────────────┘
+```
+
+**Removing and replacing components** is an essential skill for bypassing security measures or recovering from damaged boards. Surface Mount Technology (SMT) components require different techniques than through-hole parts. For small SMT components, use hot air rework stations that apply controlled heat to melt all solder joints simultaneously. Chip quik, a special low-temperature solder alloy, can be applied to existing solder joints to keep them molten longer, facilitating clean removal. When replacing components, use flux liberally, ensure proper alignment (sometimes requiring a microscope or magnifying glass), and avoid overheating sensitive parts. Particularly for security research, replacing memory chips or swapping firmware storage devices may require precise control of heating profiles and specialized tools like hot plates or infrared reflow stations.
+
+**Wiring in bypass circuits** enables the hardware hacker to alter device behavior without fully replacing components. For example, adding a resistor in parallel with an existing one changes the effective resistance, potentially modifying signal thresholds or timing characteristics. Similarly, adding capacitors can filter noise or alter timing circuits, while diodes can redirect signal flows. These bypass techniques are particularly useful for security testing, as they can disable protection mechanisms or create conditions favorable for exploitation. Always document your modifications thoroughly, as the subtle effects of bypass circuits can be difficult to diagnose later.
+
+<table>
+  <tr>
+    <th>Bypass Technique</th>
+    <th>Application</th>
+    <th>Implementation Difficulty</th>
+    <th>Security Implications</th>
+  </tr>
+  <tr>
+    <td>Signal rerouting</td>
+    <td>Redirecting data flows</td>
+    <td>Moderate</td>
+    <td>Can bypass authentication checks</td>
+  </tr>
+  <tr>
+    <td>Voltage manipulation</td>
+    <td>Altering supply levels</td>
+    <td>High</td>
+    <td>Enables glitching attacks</td>
+  </tr>
+  <tr>
+    <td>Pull-up/down resistors</td>
+    <td>Changing logic states</td>
+    <td>Low</td>
+    <td>Can force debug modes or bypass security flags</td>
+  </tr>
+  <tr>
+    <td>Clock modification</td>
+    <td>Altering timing</td>
+    <td>High</td>
+    <td>May bypass timing-dependent security measures</td>
+  </tr>
+</table>
+
+**Creating hardware implants** represents the pinnacle of hardware hacking skills, combining electronics design with stealth implementation. Hardware implants are small circuits designed to monitor, intercept, or modify a device's operation while remaining undetected. They range from simple passive taps that monitor data lines to sophisticated active circuits with microcontrollers that can inject malicious commands or exfiltrate data wirelessly. Effective implants integrate both electrically and physically with the target device – they must function reliably without disrupting normal operation and remain visually inconspicuous. Miniaturization techniques like using 0201 or 01005 components, flexible PCBs, or bare dies help conceal implants within existing devices. For the aspiring hardware security researcher, creating implants exercises nearly every hardware skill while providing practical insight into physical security vulnerabilities.
 
 ### Board Modification Techniques
 
@@ -577,24 +690,189 @@ Practice finding and connecting to serial interfaces.
 
 ## Safety Considerations
 
+Hardware hacking involves working with electricity and potentially hazardous components. Understanding and practicing proper safety protocols is not just about protecting your equipment—it's about protecting yourself from serious injury. As you develop your hardware hacking skills, integrating these safety practices should become second nature.
+
 ### Electrical Safety
 
-- Never work on mains-powered devices without proper isolation
-- Use isolation transformers when working with AC-powered devices
-- Be aware of capacitors that may hold charge even when unpowered
-- Use appropriate fuses and current limiting when experimenting
+Electrical hazards represent the most immediate danger in hardware hacking. Even relatively low voltages can pose significant risks in certain circumstances, while higher voltages present serious or fatal dangers.
+
+```
+   ┌─────────────────────────────────────────────┐
+   │          ELECTRICAL SAFETY HIERARCHY         │
+   │                                             │
+   │   MOST EFFECTIVE                            │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
+   │   █  ELIMINATION - Power off, discharge  █   │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
+   │                                             │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
+   │   █  ISOLATION - Transformers, gloves   █   │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
+   │                                             │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
+   │   █  ENGINEERING - GFCI, fused tools   █   │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
+   │                                             │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
+   │   █  ADMIN - Procedures, knowledge     █   │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
+   │                                             │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
+   │   █  PPE - Last line of defense        █   │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
+   │   LEAST EFFECTIVE                          │
+   │                                             │
+   └─────────────────────────────────────────────┘
+```
+
+**Never work on mains-powered devices without proper isolation.** Household power (110-240V AC) can deliver lethal shocks. When reverse engineering or modifying any device that connects to wall power, always use an isolation transformer to separate your workbench from the electrical grid. This single piece of safety equipment prevents ground loops and ensures that accidental contacts between you and the circuit won't complete a path to earth ground, significantly reducing shock hazards. Even isolated circuits can pose dangers, so maintain a "one-hand rule" when possible—keeping one hand behind your back or in your pocket when touching live circuits reduces the risk of current passing across your chest and through your heart.
+
+**Use isolation transformers when working with AC-powered devices.** Beyond the basic safety they provide, isolation transformers offer additional benefits for hardware hacking. They help eliminate ground loops that can introduce noise into sensitive measurements, improving the accuracy of your signal analysis. Some isolation transformers include built-in current limiting or fault detection that provides an additional layer of protection. For hardware security work involving power analysis or glitching attacks, a quality isolation transformer with minimal capacitive coupling between primary and secondary windings ensures your measurements aren't contaminated by noise from the power grid.
+
+<table>
+  <tr>
+    <th>Safety Equipment</th>
+    <th>Purpose</th>
+    <th>When to Use</th>
+    <th>Important Features</th>
+  </tr>
+  <tr>
+    <td>Isolation Transformer</td>
+    <td>Eliminates direct electrical connection to mains ground</td>
+    <td>Any work on mains-powered devices</td>
+    <td>Adequate power rating, low capacitive coupling</td>
+  </tr>
+  <tr>
+    <td>ESD-Safe Workstation</td>
+    <td>Prevents static discharge damage to sensitive components</td>
+    <td>Working with ICs, microcontrollers, memory</td>
+    <td>Wrist strap, conductive mat, proper grounding</td>
+  </tr>
+  <tr>
+    <td>Fused Power Supply</td>
+    <td>Limits current in case of short circuit</td>
+    <td>Powering prototype or modified circuits</td>
+    <td>Current limiting, adjustable voltage</td>
+  </tr>
+  <tr>
+    <td>Safety Glasses</td>
+    <td>Protects eyes from debris or component failures</td>
+    <td>Soldering, desoldering, physical disassembly</td>
+    <td>Side shields, impact resistance</td>
+  </tr>
+</table>
+
+**Be aware of capacitors that may hold charge even when unpowered.** Large electrolytic capacitors in power supplies, motor controllers, and high-voltage circuits can store lethal charges for minutes or even hours after power is removed. Before working on such circuits, always discharge capacitors using an insulated resistor of appropriate power rating (typically 1-10 kΩ, 2W or higher). Never short capacitors directly with a screwdriver or wire—this creates a dangerous arc flash and can damage components. In devices like CRT monitors, camera flashes, or amplifiers, capacitors may be charged to hundreds or thousands of volts. Specialized equipment like a capacitor discharge tool may be necessary for safely handling these components. Always treat a circuit as live until you've verified with a multimeter that all capacitors are discharged.
+**Use appropriate fuses and current limiting when experimenting.** When working with unfamiliar circuits or prototype designs, always incorporate fuses, current-limiting resistors, or adjustable power supplies with current limiting. These protective measures prevent unexpected high current flows that could damage components or create fire hazards. For hardware hackers, this is particularly important when attaching external devices to existing circuits—the extra power draw might exceed design specifications. Breadboard power supplies with adjustable current limits are invaluable tools, allowing you to set safe operating parameters before gradually increasing power availability as your confidence in the circuit grows.
 
 ### Component Protection
 
-- Observe proper ESD (Electrostatic Discharge) precautions
-- Use current-limiting resistors when probing unknown connections
-- Start with higher resistance values and decrease as confidence increases
-- Use protection circuits when connecting to unknown systems
+While ensuring your personal safety is paramount, protecting the electronic components you're investigating is also critical. Damaged components can exhibit unpredictable behavior that complicates your analysis or permanently destroys valuable evidence during security research.
+
+```
+   ┌─────────────────────────────────────────────┐
+   │             ESD PROTECTION ZONES             │
+   │                                             │
+   │       ╔═════════════╗                     │
+   │       ║  ESD SAFE AREA  ║      ▔▔▔▔▔▔▔▔▔▔▔     │
+   │       ║  ═════════════  ║      ┃  STATIC ┃     │
+   │       ║ │ Wrist Strap │ ║      ┃  DANGER ┃     │
+   │       ║ │ Mat/Bench   │ ║      ┃  ZONE   ┃     │
+   │       ║ │ Packaging   │ ║─────┃         ┃     │
+   │       ║ │ Ion Fan     │ ║    ┗▔▔▔▔▔▔▔▔▔▔┓     │
+   │       ║  ═════════════  ║                     │
+   │       ║     ════════     ║                     │
+   │       ║  Grounded Tools  ║                     │
+   │       ║  & Equipment     ║                     │
+   │       ╠═════════════╣                     │
+   │       ║   SENSITIVE     ║                     │
+   │       ║   COMPONENTS    ║                     │
+   │       ╰═════════════╯                     │
+   └─────────────────────────────────────────────┘
+```
+
+**Observe proper ESD (Electrostatic Discharge) precautions.** Static electricity can silently destroy sensitive electronic components, particularly CMOS ICs, microcontrollers, and memory chips—the very components most likely to contain security-relevant firmware or configurations. A static charge of just a few thousand volts (easily generated by walking across a carpet) can create microscopic damage in semiconductor junctions that might not cause immediate failure but could lead to erratic behavior or premature component breakdown. Establish an ESD-protected workspace using antistatic mats, wrist straps connected to a proper ground, and ionizers in particularly dry environments. Store sensitive components in antistatic bags or conductive foam when not in use. For hardware security research, ESD damage can create particularly frustrating false leads, where anomalous behavior might be mistaken for security features or vulnerabilities.
+
+**Use current-limiting resistors when probing unknown connections.** When investigating unfamiliar hardware, adding temporary series resistors (typically 1kΩ to 10kΩ) to any connection points protects both your test equipment and the target device from unexpected current flows. This simple precaution can prevent damage from accidental shorts, incorrect voltage levels, or connecting to output pins configured differently than expected. For UART, I2C, or SPI connections, resistors also help mitigate potential bus contention issues where both devices might try to drive the same line simultaneously. In hardware security work, preserving the functionality of the device under test is crucial—damaging the target early in your investigation can render further analysis impossible.
+
+<table>
+  <tr>
+    <th>Protection Technique</th>
+    <th>Application</th>
+    <th>Implementation</th>
+    <th>Benefits</th>
+  </tr>
+  <tr>
+    <td>Series Resistors</td>
+    <td>Signal line protection</td>
+    <td>1kΩ-10kΩ in line with signal</td>
+    <td>Limits current flow, prevents damage from shorts</td>
+  </tr>
+  <tr>
+    <td>Buffer ICs</td>
+    <td>Interface isolation</td>
+    <td>Logic buffer or level shifter between systems</td>
+    <td>Electrical isolation, voltage level translation</td>
+  </tr>
+  <tr>
+    <td>Diode Clamping</td>
+    <td>Overvoltage protection</td>
+    <td>Diodes to Vcc and Ground</td>
+    <td>Clamps voltage excursions to safe levels</td>
+  </tr>
+  <tr>
+    <td>Opto-isolation</td>
+    <td>Complete electrical isolation</td>
+    <td>Optocouplers between circuits</td>
+    <td>Full galvanic isolation, protects against ground loops</td>
+  </tr>
+</table>
+
+**Start with higher resistance values and decrease as confidence increases.** When probing unknown signals or interfaces, begin with higher-value protective resistors (10kΩ or more) and gradually reduce resistance as you confirm safe operating parameters. This incremental approach ensures you'll detect potential issues at current levels too low to cause damage. For example, when trying to determine if a pin is an input, output, or bidirectional, start with a high-value resistor and monitor voltage levels before committing to direct connections. This methodical technique is particularly important when working with expensive or rare hardware targets that would be difficult to replace if damaged during investigation.
+
+**Use protection circuits when connecting to unknown systems.** Beyond simple resistors, more sophisticated protection circuits can safeguard both your equipment and target devices during hardware security research. Buffer ICs with built-in protection features can shield sensitive equipment from unexpected voltage levels. Bidirectional level shifters not only protect against voltage mismatches but also facilitate communication between systems operating at different voltage standards (like interfacing a 5V Arduino with a 3.3V embedded device). For high-risk connections, consider opto-isolators that provide complete electrical isolation between circuits, eliminating the risk of ground loops or damaging current flows. Many commercial logic analyzers and bus analyzers incorporate these protection features, but when using DIY equipment or direct connections, implementing appropriate protection circuits is your responsibility.
 
 ## Conclusion
 
-A solid foundation in electronics is essential for effective hardware hacking. The concepts covered in this section will serve as building blocks for more advanced techniques discussed later. Remember that electronics knowledge is best reinforced through hands-on practice—build simple circuits, analyze existing hardware, and gradually increase complexity as your skills develop.
+```
+   ┌─────────────────────────────────────────────┐
+   │      ELECTRONICS KNOWLEDGE PROGRESSION       │
+   │                                             │
+   │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   │
+   │                                ↑          │
+   │                             ADVANCED       │
+   │   • Hardware Implants                     │
+   │   • Side-Channel Analysis                  │
+   │   • Fault Injection                        │
+   │   • Custom Circuit Design                   │
+   │                                             │
+   │                          INTERMEDIATE       │
+   │   • Protocol Analysis                       │
+   │   • Signal Manipulation                     │
+   │   • Firmware Extraction                     │
+   │   • Board Modification                      │
+   │                                             │
+   │                       FUNDAMENTAL           │
+   │   • Voltage, Current, Resistance            │
+   │   • Component Identification                │
+   │   • Measurement Techniques                  │
+   │   • Circuit Analysis                        │
+   │                                             │
+   └─────────────────────────────────────────────┘
+```
+
+A solid foundation in electronics is essential for effective hardware hacking. The concepts covered in this section will serve as building blocks for more advanced techniques discussed later in this guide. Electronics isn't just theoretical knowledge—it's a practical discipline that becomes intuitive through consistent application and experimentation.
+
+The journey from basic principles to advanced hardware security techniques follows a natural progression. Understanding voltage, current, and resistance provides the vocabulary for discussing electronic behavior. Component identification skills allow you to recognize what you're looking at when examining circuit boards. Measurement techniques with tools like multimeters and oscilloscopes give you the ability to observe otherwise invisible electrical phenomena. Circuit analysis ties these fundamentals together, enabling you to understand how components interact to create functional systems.
+
+As you develop your hardware hacking skills, you'll find these electronic foundations appearing repeatedly in different contexts. The voltage divider principle you learned becomes the basis for understanding sensor circuits. Your knowledge of bypass capacitors helps explain why certain glitching attacks succeed or fail. The digital logic concepts translate directly to understanding communication protocols and processor operations.
+
+Remember that electronics knowledge is best reinforced through hands-on practice. Start with simple circuits on breadboards to visualize concepts like Ohm's Law in action. Disassemble old or broken electronics to identify components and trace connections. Use measurement tools frequently to develop an intuitive feel for typical voltage and current values in different contexts. Document your findings in a lab notebook to reinforce learning and create a personal reference.
+
+The hardware security field rewards those who understand both the theoretical and practical aspects of electronics. As your expertise grows, you'll develop an intuition that helps you quickly identify promising attack vectors, recognize security weaknesses, and implement effective hardware modifications. This foundation in electronics will continue to serve you throughout your hardware hacking journey.
 
 ---
 
-Next, let's explore the communication protocols commonly found in hardware devices. Continue to [Hardware Communication Protocols](./05-communication-protocols.md).
+Next, let's explore the communication protocols commonly found in hardware devices, building upon the electronic foundations established in this section. Understanding how devices talk to each other opens new avenues for security analysis and potential vulnerability discovery.
+
+Continue to [Hardware Communication Protocols](./05-communication-protocols.md).
