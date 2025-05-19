@@ -436,21 +436,113 @@ Some debug interfaces implement authentication systems requiring passwords or ke
 
 Knowing these common weaknesses helps both hardware developers improve their security posture and hardware hackers identify the most promising avenues for investigation when examining a new target device.
 
-## Advanced JTAG/SWD Attacks
+## Advanced JTAG/SWD Attacks: Beyond the Basics
 
-### Debug Security Bypass
+```
+        ┌─────────────────────────────┐
+        │   HARDWARE SECURITY ATTACK LEVELS   │
+        ├──────────────┬───────────────┤
+───────┉ │  Basic      │  Standard Debug  │
+│      │ ├──────────────┼───────────────┤
+│  A   │ │  Advanced   │  Fault Injection │
+│  t   │ ├──────────────┼───────────────┤
+│  t   │ │  Expert     │  Semi-invasive   │
+│  a   │ ├──────────────┼───────────────┤
+│  c   │ │  Lab-grade  │  Full Silicon    │
+│  k   │ │            │  Modification     │
+│      │ └──────────────┴───────────────┘
+│  C   │
+│  o   │     ┌─────────────────┐
+│  s   │     │   EQUIPMENT     │
+│  t   │     │   COST         │
+───────┊     └─────────────────┘
+       $100s  ↑   $1,000s  ↑   $100,000s+
+```
 
-1. **Voltage glitching**: Manipulating power during security checks
-2. **Clock manipulation**: Disrupting timing to bypass protections
-3. **Fault injection**: Causing computational errors to skip validation
-4. **Cold boot attacks**: Preserving memory contents for analysis
+When standard JTAG/SWD attack approaches encounter resistance from security mechanisms, hardware hackers turn to more sophisticated techniques. These advanced approaches represent the cutting edge of hardware security research, often requiring specialized equipment and expertise.
 
-### Hardware-Based Attacks
+### Fault Injection: Breaking Security Through Disruption
 
-1. **Silicon modification**: Physical attacks on the die
-2. **Microprobing**: Direct connection to silicon traces
-3. **Focused Ion Beam (FIB)**: Modifying chip interconnects
-4. **Side-channel analysis**: Timing, power, or EM emissions analysis
+Fault injection attacks aim to disrupt normal operation just enough to bypass security checks without crashing the system. These sophisticated techniques exploit the physical implementation of digital circuits:
+
+#### Voltage Glitching: Power as a Weapon
+
+By precisely manipulating the power supply voltage during critical security operations, an attacker can cause computational errors that may bypass security checks:
+
+* **Technique**: Brief voltage drops (typically 10-500ns) are injected during critical operations
+* **Target timing**: Security checks, cryptographic operations, or boot validation
+* **Equipment**: Custom glitching circuits or specialized tools like ChipWhisperer
+* **Result**: Potential bypass of security checks, corrupted cryptographic operations, or skipped instructions
+
+Sophisticated voltage glitching can selectively affect specific operations, allowing an attacker to bypass debug lockout mechanisms by causing the processor to skip security validation steps.
+
+#### Clock Manipulation: Timing Attacks
+
+Similar to voltage glitching, clock manipulation introduces timing anomalies that can corrupt computation:
+
+* **Technique**: Injecting clock glitches (extra pulses or shortened cycles) during security validation
+* **Target**: Synchronous systems where timing is critical to proper operation
+* **Equipment**: FPGA-based clock generators or specialized fault injection tools
+* **Result**: Instruction skips, corrupted data reads, or bypassed security checks
+
+#### Electromagnetic Fault Injection (EMFI)
+
+More targeted than voltage glitching, EMFI uses localized electromagnetic pulses to affect specific areas of a chip:
+
+* **Technique**: Generated electromagnetic pulses using a small, precisely positioned probe
+* **Target**: Specific areas of the processor (memory, security module, etc.)
+* **Equipment**: EM pulse generators with micro-positioning systems
+* **Result**: Highly localized faults that can bypass specific security features
+
+This approach can be especially effective against debug protection circuits, potentially enabling JTAG/SWD access even when manufacturers have attempted to disable it.
+
+#### Cold Boot Attacks
+
+Despite the name, these are less about temperature and more about preserving memory contents:
+
+* **Technique**: Maintain RAM contents by keeping memory cells powered during system reset
+* **Target**: Memory containing encryption keys, debug credentials, or security configuration
+* **Result**: Access to sensitive data that might enable debug interface access
+
+### Silicon-Level Attacks: The Final Frontier
+
+When all else fails, the most determined attackers turn to invasive approaches that directly interact with the silicon die itself. These techniques represent the highest level of hardware hacking sophistication:
+
+#### Microprobing: Direct Silicon Access
+
+* **Technique**: Establishing electrical contact with internal chip traces
+* **Process**: Decapsulation of the chip package, then connecting probes to exposed metal layers
+* **Equipment**: Chemical decapsulation tools, microprobing stations with precision manipulators
+* **Target**: Debug buses, security fuse outputs, or test points not accessible from outside
+* **Result**: Direct electrical access to signals that bypass external security measures
+
+Through microprobing, a skilled attacker might be able to directly tap into the internal JTAG or SWD traces, effectively bypassing any external protection mechanisms.
+
+#### Focused Ion Beam (FIB) Modification
+
+The most advanced hardware attack technique involves actually modifying a chip's internal structure:
+
+* **Technique**: Using a focused beam of ions to cut and create new connections in the chip
+* **Process**: Precision milling to expose buried layers, then depositing conductive material to create new connections
+* **Equipment**: FIB workstations (costing $500,000+)
+* **Target**: Security fuses, debug disable circuitry, or memory protection systems
+* **Result**: Permanently modified hardware that bypasses security features
+
+With FIB equipment, an attacker might modify security fuses to re-enable JTAG/SWD interfaces, essentially reversing the manufacturer's attempt to disable debug access.
+
+#### Side-Channel Analysis
+
+Less invasive but still advanced, side-channel attacks extract information by measuring physical emissions during operation:
+
+* **Power analysis**: Measuring power consumption during security operations to extract keys
+* **Electromagnetic analysis**: Detecting EM emissions that correlate with internal operations
+* **Timing analysis**: Precisely measuring execution times to infer internal processes
+
+These techniques may help extract debug authentication credentials or encryption keys that protect debug interfaces.
+
+### The Arms Race Continues
+
+These advanced attacks represent a continuous escalation between security researchers and device manufacturers. As protection measures become more sophisticated, so too do the techniques to bypass them. For the serious hardware hacker, understanding this escalation path provides insight into which approach might be most effective against a particular target's security measures.
 
 ## Practical JTAG/SWD Hacking Exercise
 
