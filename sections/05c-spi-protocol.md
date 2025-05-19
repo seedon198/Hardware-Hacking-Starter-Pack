@@ -1052,25 +1052,6 @@ For particularly sensitive applications, extracted firmware should be handled se
 
 ## Securing SPI Communications
 
-```
-   ┌─────────────────────────────────────────────┐
-   │       SPI SECURITY DEFENSE LAYERS             │
-   │                                             │
-   │    ┌─────────────────────────────────┐    │
-   │    │       PHYSICAL PROTECTION        │    │
-   │    └─────────────────────────────────┘    │
-   │                   ↓                      │
-   │    ┌─────────────────────────────────┐    │
-   │    │     CRYPTOGRAPHIC CONTROLS      │    │
-   │    └─────────────────────────────────┘    │
-   │                   ↓                      │
-   │    ┌─────────────────────────────────┐    │
-   │    │    APPLICATION AUTHENTICATION    │    │
-   │    └─────────────────────────────────┘    │
-   │                                             │
-   └─────────────────────────────────────────────┘
-```
-
 While the SPI protocol itself lacks built-in security features, hardware engineers and system architects can implement various defensive measures to mitigate its inherent vulnerabilities. A comprehensive security approach for SPI interfaces requires multiple layers of protection, combining physical security, cryptographic controls, and application-level authentication. Understanding these security measures is essential not only for protecting devices but also for assessing their effectiveness during hardware security testing.
 
 ### Physical Protection Measures
