@@ -354,13 +354,87 @@ Beyond these basic commands lies the art of interpretive debugging - understandi
 
 Skilled hardware hackers combine these technical tools with deep knowledge of system architecture to identify where critical security assets (keys, credentials, security configuration) are stored, how security checks are implemented, and where vulnerabilities might exist.
 
-## Common Security Issues with Debug Interfaces
+## Security Pitfalls: Common Vulnerabilities in Debug Implementations
 
-1. **Enabled debug access**: Production devices with active JTAG/SWD
-2. **Insufficient protection**: Weak or disabled debug security features
-3. **Exposed test points**: Easily accessible debug interfaces
-4. **Bypassed fuses**: Security fuses that can be circumvented
-5. **Debug password extraction**: Recovering passwords from previous sessions
+```
+┌────────────────────────────────────────────────────┐
+│        COMMON DEBUG SECURITY VULNERABILITIES        │
+├───────────────┬────────────────────────────────────┤
+│ Risk Level    │ Vulnerability                       │
+├───────────────┼────────────────────────────────────┤
+│ CRITICAL      │ Enabled debug interfaces in         │
+│               │ production devices                  │
+├───────────────┼────────────────────────────────────┤
+│ HIGH          │ Weak protection mechanisms          │
+│               │ (simple passwords, basic locks)     │
+├───────────────┼────────────────────────────────────┤
+│ MEDIUM        │ Exposed and labeled test points     │
+│               │ for debug connections               │
+├───────────────┼────────────────────────────────────┤
+│ HIGH          │ Bypassed fuses through glitching    │
+│               │ or other side-channel attacks       │
+├───────────────┼────────────────────────────────────┤
+│ MEDIUM        │ Reused or extractable debug         │
+│               │ authentication credentials          │
+└───────────────┴────────────────────────────────────┘
+```
+
+Despite the significant security risks they pose, debug interfaces remain some of the most commonly overlooked vulnerabilities in hardware security. As a hardware hacker, understanding these weaknesses helps you identify the most promising attack vectors.
+
+### The "Left Enabled" Problem
+
+Perhaps the most pervasive security issue is simply leaving debug interfaces enabled in production devices. This happens with alarming frequency for several reasons:
+
+* **Development Convenience**: Engineers leave debug access enabled to simplify firmware updates or troubleshooting
+* **Manufacturing Requirements**: Production testing may require debug access, and disabling it adds an extra manufacturing step
+* **Oversight**: In complex products, security reviews may miss the need to disable debug interfaces
+* **Lack of Awareness**: Some developers don't fully understand the security implications of active debug ports
+
+For the hardware hacker, this represents the ideal scenario - a powerful debugging interface left fully operational, often providing complete system access with no barriers.
+
+### Insufficient Protection Measures
+
+Even when manufacturers recognize the need to secure debug interfaces, they often implement protection measures that are inadequate:
+
+* **Simple Passwords**: Basic password protection that can be brute-forced or extracted
+* **Read Protection Only**: Blocking read operations but leaving write operations accessible
+* **Partial Lockdown**: Securing some areas while leaving others vulnerable
+* **Weak Implementation**: Security features correctly designed but improperly implemented
+
+These half-measures create a false sense of security while leaving critical vulnerabilities that can be exploited with the right tools and techniques.
+
+### Physical Access Problems
+
+Even with debug interfaces disabled through software, many devices still have easily accessible test points that make physical attacks straightforward:
+
+* **Clearly Labeled Interfaces**: Silkscreen text identifying debug connections
+* **Standard Header Footprints**: Easily recognizable unpopulated header locations
+* **Accessible Test Points**: Conveniently placed and sized for easy probing
+* **Internal Debug Headers**: Protected from casual observation but accessible by opening the device
+
+For security-critical applications, physical access to these points should be difficult, requiring specialist equipment or techniques that raise the bar for potential attackers.
+
+### Bypassing Security Fuses
+
+Many devices implement security fuses - one-time programmable elements designed to permanently disable debug access. However, these can often be circumvented:
+
+* **Voltage Glitching**: Manipulating power during security checks to cause computational errors
+* **Clock Manipulation**: Disrupting timing to bypass security validation
+* **Microprobing**: Directly accessing internal signals, bypassing the fuse entirely
+* **Implementation Flaws**: Security fuses that don't properly disable all aspects of debug functionality
+
+The security of these mechanisms often relies on assumptions about attacker capabilities that may not hold true for determined adversaries with appropriate equipment.
+
+### Credential Extraction
+
+Some debug interfaces implement authentication systems requiring passwords or keys. These systems can be vulnerable to:
+
+* **Side-Channel Analysis**: Extracting keys through power analysis, electromagnetic emanations, or timing attacks
+* **Memory Extraction**: Retrieving credentials from non-volatile memory
+* **Replay Attacks**: Capturing and replaying previous authentication sequences
+* **Default Credentials**: Factory defaults that were never changed
+
+Knowing these common weaknesses helps both hardware developers improve their security posture and hardware hackers identify the most promising avenues for investigation when examining a new target device.
 
 ## Advanced JTAG/SWD Attacks
 
