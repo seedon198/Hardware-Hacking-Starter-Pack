@@ -1,6 +1,34 @@
-# Ethernet and Network Protocols
+# Ethernet and Network Protocols: The Physical Gateway to Data
 
-Network interfaces present a rich attack surface for hardware hackers. Understanding how Ethernet and other network protocols are implemented at the hardware level can reveal vulnerabilities that aren't apparent from software-only analysis.
+```
+                     THE NETWORK STACK
+┌─────────────────┬──────────────────────────────┐
+│ APPLICATION LAYER   │ HTTP, FTP, SSH, DNS           │
+│ (USER DATA)        │                              │
+├─────────────────┼──────────────────────────────┤
+│ TRANSPORT LAYER     │ TCP, UDP                     │
+│ (END-TO-END)       │                              │
+├─────────────────┼──────────────────────────────┤
+│ NETWORK LAYER       │ IP, ICMP, ARP                │
+│ (ADDRESSING/ROUTING)│                              │
+├─────────────────┼──────────────────────────────┤
+│ DATA LINK LAYER     │ Ethernet, Frame Format       │
+│ (MAC ADDRESSING)    │ 48-bit MAC, Error checking   │
+├─────────────────┼──────────────────────────────┤
+│ PHYSICAL LAYER      │ Cables, Signals, Voltages    │
+│ (OUR FOCUS)         │ PHY, Magnetics, Hardware     │
+└─────────────────┴──────────────────────────────┘
+
+        HARDWARE HACKER'S AREA OF INTEREST
+```
+
+When most security professionals think about network attacks, they focus on software vulnerabilities, protocol exploits, and application-level weaknesses. But beneath these familiar layers lies a physical realm where bits become electrical signals, where protocols are implemented in silicon, and where hardware design decisions can introduce vulnerabilities invisible to software-based analysis.
+
+For the hardware hacker, network interfaces represent one of the most valuable and accessible attack surfaces on modern devices. Every Ethernet port, WiFi module, or network adapter contains sophisticated circuitry that translates between the abstract world of data packets and the physical reality of electrical signals. This translation layer - where software meets hardware - is rich with potential security gaps waiting to be discovered and exploited.
+
+Understanding how Ethernet and other network protocols are implemented at the hardware level is not merely an academic exercise. It can reveal fundamental vulnerabilities that might persist even after software patches, firmware updates, and security hardening. From extracting unencrypted data directly from circuit traces to manipulating the physical signals that carry network traffic, hardware-level network attacks can bypass many traditional security controls.
+
+In this section, we'll dive beneath the software abstraction to explore the physical foundations of network communication and the unique security implications they present. We'll examine the actual components that make Ethernet work, the signals that traverse the wires, and the hardware attack vectors that might go unnoticed in conventional security assessments.
 
 ## Ethernet Hardware Fundamentals
 
