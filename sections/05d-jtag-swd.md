@@ -544,54 +544,284 @@ These techniques may help extract debug authentication credentials or encryption
 
 These advanced attacks represent a continuous escalation between security researchers and device manufacturers. As protection measures become more sophisticated, so too do the techniques to bypass them. For the serious hardware hacker, understanding this escalation path provides insight into which approach might be most effective against a particular target's security measures.
 
-## Practical JTAG/SWD Hacking Exercise
+## Hands-On: A Practical JTAG/SWD Hacking Exercise
 
-### Extracting Firmware via SWD
-
-**Equipment needed:**
-- Target device with ARM processor
-- ST-Link v2 or similar SWD adapter
-- Jumper wires
-- Computer with OpenOCD and GDB
-
-**Procedure:**
-1. Identify SWD pins on the target (SWDIO, SWCLK, GND, optional VCC)
-2. Connect ST-Link to the target device
-3. Create an OpenOCD configuration file for your target
-4. Start OpenOCD with appropriate interface and target files
-5. Connect GDB to OpenOCD and halt the processor
-6. Dump the flash memory contents
-7. Analyze the extracted firmware
-
-**Example OpenOCD and GDB commands:**
-```bash
-# Start OpenOCD
-openocd -f interface/stlink.cfg -f target/stm32f1x.cfg
-
-# In another terminal, start GDB
-arm-none-eabi-gdb
-
-# In GDB
-(gdb) target remote localhost:3333
-(gdb) monitor reset halt
-(gdb) dump memory firmware.bin 0x08000000 0x08020000
-(gdb) quit
+```
+        TARGET DEVICE          YOUR WORKSTATION
+      ┌────────────┐      ┌────────────────┐
+      │ ┌────────┐ │      │                │
+      │ │ STM32F1 │ │      │                │
+      │ │ MCU     │ │      │  Linux/Windows   │
+      │ └────────┘ │      │  OpenOCD + GDB   │
+      │     SWDIO    │      │                │
+      │     SWCLK    │      │                │
+      └─────|─|────┘      └───────|─|──────┘
+             | |                 | |
+             | |                 | |
+             | |    ST-LINK V2   | |
+             | |   ┌────────┐  | |
+             └───────────|│ DEBUG  │|──┘
+                        │ ADAPTER │
+                        └────────┘
 ```
 
-## Securing Debug Interfaces
+Theory is valuable, but practical experience is invaluable. Let's walk through a real-world exercise that ties together everything we've covered about JTAG/SWD hacking: extracting firmware from an ARM-based device using SWD. This is often one of the first goals in a hardware security assessment, as it provides the firmware for further analysis and potential vulnerabilities.
 
-As a hardware hacker, understanding protective measures helps identify weaknesses:
+### Mission: Extract Firmware from an ARM Microcontroller
 
-1. **Debug disable fuses**: Permanently disable debug access
-2. **Debug authentication**: Require password/key to access debug features
-3. **Physical protection**: Bury or remove debug traces in production
-4. **Limited debug functionality**: Restrict what can be accessed via debug
-5. **Secure boot**: Ensure debug cannot bypass secure boot process
+In this exercise, we'll assume you have access to a target device with an exposed or suspected SWD interface. Our objective is to connect to it, establish debug access, and extract the complete firmware for offline analysis.
 
-## Conclusion
+#### Equipment Required
 
-JTAG and SWD interfaces represent some of the most powerful entry points for hardware hackers. These debug protocols often provide unrestricted access to memory, registers, and execution control, making them primary targets for security assessment.
+For this exercise, you'll need:
 
-Understanding how to locate, connect to, and leverage these interfaces is a critical skill for hardware hackers. The deep system access they provide can reveal security vulnerabilities or bypass protections that would be inaccessible through other means.
+* **Target device**: Any board with an ARM Cortex-M processor (like STM32F1/F4, nRF52, etc.)
+* **Debug adapter**: ST-Link V2 (affordable option) or J-Link (professional option)
+* **Connection hardware**: Jumper wires, pin headers, or test clips
+* **Computer setup**: Linux/Windows/macOS with OpenOCD and ARM GDB installed
 
-In the next section, we'll explore [USB Protocol](./05e-usb-protocol.md), which presents different security challenges as an external interface.
+#### Step 1: Reconnaissance - Identifying the Debug Interface
+
+Before connecting anything, you'll need to locate the SWD pins on your target device:
+
+1. **Visual inspection**: Look for labeled pins (SWDIO, SWCLK, GND, VCC)
+2. **Consult documentation**: Find datasheets for the main processor
+3. **Follow traces**: Trace from the processor to test points or headers
+4. **Use multimeter**: Verify continuity between processor pins and test points
+
+#### Step 2: Establishing the Physical Connection
+
+Once you've identified the SWD pins, it's time to connect your debug adapter:
+
+1. **Wire connections**:
+   * Connect SWDIO on the target to SWDIO on your debug adapter
+   * Connect SWCLK on the target to SWCLK on your debug adapter
+   * Connect GND on the target to GND on your debug adapter
+   * Optionally connect VCC if your target device is unpowered
+
+2. **Power considerations**:
+   * If the target has its own power supply, ensure the debug adapter is set to match that voltage
+   * Typical voltage levels are 3.3V or 1.8V - connecting a 5V adapter to a 3.3V device can damage it
+
+#### Step 3: Software Configuration
+
+With the hardware connected, we need to configure the software tools:
+
+1. **Create an OpenOCD configuration file** for your specific setup, or use an existing one. For an STM32F1 device with ST-Link V2, you might use:
+
+   ```bash
+   # Custom OpenOCD config (save as my_target.cfg)
+   source [find interface/stlink.cfg]
+   transport select hla_swd  # Use SWD protocol
+   source [find target/stm32f1x.cfg]
+   # Optional: Adjust adapter speed for reliability
+   adapter speed 1000
+   ```
+
+2. **Start OpenOCD** with your configuration:
+
+   ```bash
+   # Launch OpenOCD with our config
+   openocd -f my_target.cfg
+   ```
+
+   If successful, you'll see output showing OpenOCD connecting to the target device. If it fails, double-check your connections and try a slower adapter speed.
+
+#### Step 4: Interacting with the Target
+
+With OpenOCD running, you can now connect to the target with GDB:
+
+1. **Open a new terminal window** and launch GDB:
+
+   ```bash
+   # For ARM Cortex-M targets
+   arm-none-eabi-gdb
+   ```
+
+2. **Connect to OpenOCD's GDB server**:
+
+   ```
+   (gdb) target remote localhost:3333
+   ```
+
+3. **Halt the processor** to freeze execution:
+
+   ```
+   (gdb) monitor reset halt
+   ```
+
+4. **Gather information** about the target:
+
+   ```
+   (gdb) monitor flash info 0
+   ```
+
+   This will show you details about the flash memory layout, which you'll need for extraction.
+
+#### Step 5: Extracting the Firmware
+
+Now for the main event - extracting the firmware:
+
+1. **Identify the memory ranges** to extract. For an STM32F1, the flash typically starts at address 0x08000000:
+
+   ```
+   (gdb) dump memory firmware.bin 0x08000000 0x08020000
+   ```
+
+   This command extracts 128KB (0x20000 bytes) of flash memory starting from the base address.
+
+2. **Verify the extraction** was successful by checking the file size:
+
+   ```bash
+   # In your terminal (outside GDB)
+   ls -la firmware.bin
+   ```
+
+   The file size should match the amount of memory you tried to extract.
+
+#### Step 6: Analysis and Next Steps
+
+With the firmware extracted, you now have multiple options:
+
+1. **Basic analysis**:
+
+   ```bash
+   # Check for readable strings
+   strings firmware.bin | less
+   
+   # Look at the binary content
+   hexdump -C firmware.bin | less
+   ```
+
+2. **Disassembly and deeper analysis**:
+   * Load the firmware into Ghidra, IDA Pro, or Binary Ninja
+   * Use ARM disassemblers to convert the binary back to assembly
+   * Look for security-critical functions, credentials, or cryptographic material
+
+3. **Modification**:
+   * Create a modified version that bypasses security checks
+   * Re-flash the modified firmware back to the device using OpenOCD
+
+### Troubleshooting Tips
+
+If you encounter issues:
+
+* **Connection problems**: Try slower adapter speeds (adapter speed 100)
+* **Memory access fails**: The device might have read protection enabled
+* **Can't halt processor**: Look for secure debug features that need to be bypassed
+* **Strange behavior**: Ensure proper grounding between the adapter and target
+
+This practical exercise demonstrates the power of debug interfaces for security research. Once you've established access via SWD, you gain deep visibility into the device's operation and can extract its secrets for further analysis.
+
+## Defense in Depth: Securing Debug Interfaces
+
+```
+┌────────────────────────────────────────────────────┐
+│        LAYERED DEBUG SECURITY DEFENSES         │
+│                                                │
+│  ┌───────────────────────────────────────────┐  │
+│  │ SILICON LEVEL                              │  │
+│  │ ┌─────────────────────────────────────┐    │  │
+│  │ │ FIRMWARE LEVEL                      │    │  │
+│  │ │ ┌───────────────────────────────┐      │    │  │
+│  │ │ │ PHYSICAL LEVEL               │      │    │  │
+│  │ │ │                              │      │    │  │
+│  │ │ └───────────────────────────────┘      │    │  │
+│  │ └─────────────────────────────────────┘    │  │
+│  └───────────────────────────────────────────┘  │
+│                                                │
+└────────────────────────────────────────────────────┘
+```
+
+As a hardware hacker, understanding how debug interfaces can be secured is just as important as knowing how to exploit them. This knowledge helps identify weaknesses in protection schemes and develop more effective attack strategies. For device manufacturers, properly securing debug interfaces requires a multi-layered approach that addresses vulnerabilities at multiple levels.
+
+### Permanent Disabling: One-Way Streets
+
+The most straightforward approach to debug security is permanently disabling access through one-time programmable (OTP) fuses:
+
+* **Security Fuses**: Dedicated silicon fuses that, when blown, permanently disable JTAG/SWD access
+* **Implementation**: Usually involves setting specific bits in a protected configuration register
+* **Advantage**: Provides strong protection that can't be reversed through software
+* **Limitation**: Prevents legitimate debugging and field updates, potentially increasing support costs
+
+From a hacking perspective, security fuses present a significant challenge, often requiring advanced techniques like voltage glitching or microprobing to bypass. However, poorly implemented fuse protection may leave partial debug functionality accessible.
+
+### Authentication Mechanisms: The Gatekeepers
+
+More flexible than permanent disabling, authentication schemes allow debug access only to authorized users:
+
+* **Password Protection**: Requiring a device-specific password before enabling debug features
+* **Challenge-Response**: More sophisticated schemes where the device issues a challenge that must be correctly answered
+* **Cryptographic Authentication**: Using public-key cryptography to authenticate debug sessions
+* **Debug Authorization Certificates**: Signed certificates that enable specific debug capabilities
+
+These approaches maintain debug functionality for legitimate uses while blocking unauthorized access. However, they're only as strong as their implementation - weak key storage, side-channel leakage, or implementation flaws can undermine their security.
+
+### Physical Protection: Out of Sight, Out of Mind
+
+Physical security measures focus on making the debug interface difficult to access in the first place:
+
+* **Buried Traces**: Routing debug signals through inner PCB layers
+* **No Exposed Test Points**: Eliminating exposed pads or vias connected to debug lines
+* **Removal of Debug Headers**: Omitting headers in production units
+* **Conformal Coating**: Applying protective coatings that make probing difficult
+* **Package-in-Package**: Embedding critical components within other packages
+
+These measures raise the bar for attackers by requiring more sophisticated equipment and techniques to establish a connection. While not insurmountable, they significantly increase the time, cost, and expertise needed for a successful attack.
+
+### Limited Functionality: Need-to-Know Basis
+
+Rather than an all-or-nothing approach, some systems implement granular debug permissions:
+
+* **Read-Only Access**: Allowing memory inspection but preventing modification
+* **Limited Memory Regions**: Restricting debug access to non-sensitive areas
+* **Production Lock Levels**: Different debug capabilities based on the device's lifecycle stage
+* **Debug Monitors**: Custom debug implementations that filter commands
+
+This approach acknowledges that debug capabilities may be needed but limits their scope to reduce security risk. For hackers, these partial restrictions create interesting challenges where certain operations are allowed while others are blocked.
+
+### Secure Boot Integration: No Backdoor Entry
+
+Advanced security architectures integrate debug protection with the secure boot process:
+
+* **Debug as Secure Function**: Debug access managed by the secure boot system
+* **Authenticated Debug Commands**: Each debug action requires specific authorization
+* **Post-Boot Restrictions**: Changing allowed debug operations after security verification
+* **Security Monitoring**: Detecting and responding to potential debug-based attacks
+
+These sophisticated approaches ensure that debug interfaces can't be used to bypass the secure boot process or access sensitive assets protected by it. They represent the state of the art in debug security but are also the most complex to implement correctly.
+
+### The Security Researcher's Perspective
+
+As a hardware hacker exploring these protections, remember that each security measure has potential weaknesses. Often, it's not a single vulnerability but the combination of minor flaws across different layers that creates an exploitable path. The most successful approaches to bypassing debug protection look for these subtle interaction points between otherwise robust security mechanisms.
+
+## Gateway to Silicon: The Power and Promise of Debug Interfaces
+
+```
+┌────────────────────────────────────────────────────┐
+│                                                │
+│   "Debug interfaces are the ultimate backdoor    │
+│    to the soul of a digital system."             │
+│                                                │
+└────────────────────────────────────────────────────┘
+```
+
+JTAG and SWD interfaces represent perhaps the most powerful entry points for hardware security researchers. Unlike other attack vectors that may provide limited or indirect access, debug interfaces offer a direct pathway to the heart of a system - bypassing layers of software security and interacting directly with the hardware.
+
+Through the journey we've taken in this chapter, we've explored how these interfaces work, how to discover them, and how to leverage them to gain unprecedented access to embedded systems. We've seen how manufacturers attempt to secure these interfaces and how determined researchers can sometimes bypass those protections.
+
+The power of debug interfaces comes from their fundamental design purpose: to provide chip designers and firmware developers with complete visibility and control over a system during development. This same power makes them invaluable tools for security research, enabling:
+
+* **Complete memory access**: Reading sensitive data from any address space
+* **Control over execution**: Stopping, starting, and manipulating program flow
+* **Register manipulation**: Directly changing processor state
+* **Flash operations**: Extracting or modifying firmware
+* **Boundary scanning**: Testing and manipulating individual pins
+
+For hardware hackers, this level of access opens up possibilities that would be impractical or impossible through other means. The ability to extract firmware, analyze execution, and modify operation provides insights that can reveal vulnerabilities, bypass protections, or demonstrate security weaknesses in a way that's irrefutable.
+
+As security researchers, understanding JTAG and SWD is essential because these interfaces remain prevalent across virtually all categories of embedded systems - from consumer IoT devices to critical infrastructure, from medical equipment to automotive systems. While protection measures continue to evolve, the fundamental tension remains: debug interfaces are essential for development but dangerous when left accessible in production.
+
+In many ways, the battle over debug interface security exemplifies the broader hardware security landscape - a continuous arms race between protection measures and circumvention techniques, with each advance on one side prompting innovation on the other.
+
+In the next section, we'll shift our focus to the [USB Protocol](./05e-usb-protocol.md), exploring how this ubiquitous external interface presents a different set of security challenges and opportunities for hardware hackers. While USB doesn't typically offer the same depth of system access as JTAG/SWD, its universal presence and complex implementation create a rich attack surface worthy of thorough examination.
