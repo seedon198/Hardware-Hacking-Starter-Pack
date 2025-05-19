@@ -540,12 +540,119 @@ The extraction process varies significantly based on the specific target device 
 
 ## Common I²C Security Issues
 
-1. **No authentication**: Any device can communicate on the bus
-2. **Lack of encryption**: All data transmitted in cleartext
-3. **Accessible EEPROMs**: Unprotected storage of sensitive data
-4. **Weak access controls**: Limited or no read/write protection
-5. **Bus exposure**: Test points or headers providing physical access
-6. **Side-channel attacks**: Information leakage through timing or power analysis
+```
+   ┌─────────────────────────────────────────────┐
+   │        I²C SECURITY VULNERABILITIES          │
+   │                                             │
+   │     !─────────────!     !─────────────!     │
+   │     ! NO AUTHEN- !     ! CLEARTEXT   !     │
+   │     ! TICATION   !     ! DATA        !     │
+   │     !─────────────!     !─────────────!     │
+   │                                             │
+   │     !─────────────!     !─────────────!     │
+   │     ! EXPOSED    !     ! WEAK ACCESS !     │
+   │     ! STORAGE    !     ! CONTROLS    !     │
+   │     !─────────────!     !─────────────!     │
+   │                                             │
+   │     !─────────────!     !─────────────!     │
+   │     ! PHYSICAL   !     ! SIDE-CHANNEL!     │
+   │     ! ACCESS     !     ! LEAKAGE     !     │
+   │     !─────────────!     !─────────────!     │
+   │                                             │
+   └─────────────────────────────────────────────┘
+```
+
+While I²C's architectural simplicity offers many advantages for device communications, this same simplicity introduces significant security vulnerabilities. The protocol was designed for internal communication between integrated circuits on a single circuit board, with physical security implicitly assumed. As systems have grown more complex and security-critical data moved across these buses, the inherent security weaknesses of I²C have become increasingly problematic.
+
+**The absence of authentication** represents perhaps the most fundamental security flaw in the I²C protocol. With no built-in mechanism to verify the identity of devices communicating on the bus, any connected device can initiate or respond to transactions without proving its legitimacy. This architectural weakness means that:
+- Any physical access to the bus enables complete logical access
+- Rogue devices can masquerade as legitimate components
+- No cryptographic identity verification occurs between components
+- Masters cannot verify they're communicating with authentic slaves
+- Slaves cannot verify they're receiving commands from authorized masters
+
+This lack of authentication enables numerous attack vectors, from simple device spoofing to more sophisticated man-in-the-middle attacks that intercept and modify legitimate communications.
+
+**Cleartext data transmission** compounds the authentication problem by making all communications readable by any device connected to the bus. I²C provides no native encryption capabilities, meaning that sensitive information—including encryption keys, passwords, and proprietary data—travels as plaintext that can be captured through passive monitoring. The protocol's design makes retrofit encryption challenging because:
+- Additional overhead would impact performance
+- Encryption would need implementation at the application layer
+- Key distribution would require additional secure channels
+- Legacy devices would remain incompatible
+
+For security-sensitive applications, this transparency means that the entire I²C bus must be treated as a potential attack surface requiring comprehensive physical protection.
+
+**Unprotected storage in EEPROMs** connected to I²C buses creates particularly attractive targets for attackers. These non-volatile memory devices frequently store critical information including:
+- Encryption keys and security credentials
+- Device configuration parameters
+- Calibration data and device identifiers
+- Network settings and access credentials
+- User data and preferences
+
+Once an attacker gains physical access to the I²C bus, standard read commands can typically extract this information without triggering any security alerts. While some EEPROM devices include basic write protection, few implement meaningful read protection, leaving sensitive stored data vulnerable to extraction.
+
+**Weak or nonexistent access controls** at the device level further exacerbate I²C security issues. Even when devices implement some protection mechanisms, these are often inadequate:
+- Write protection often lacks read protection
+- Protection mechanisms may be easily bypassed
+- Implementation errors can undermine intended protections
+- Secret unlock sequences may be captured through bus monitoring
+- One-time programmable bits might be circumvented through glitching
+
+Many I²C peripherals that handle sensitive functions offer minimal resistance against unauthorized access to their internal registers and memory, relying primarily on the obscurity of their command structures rather than robust security controls.
+
+**Physical exposure of I²C buses** creates the entry point for most hardware-based attacks. Design practices that facilitate development and manufacturing often leave security vulnerabilities in production devices:
+- Labeled debug headers providing direct bus access
+- Test points designed for manufacturing validation
+- Unpopulated footprints for optional components
+- Exposed vias connected to bus signals
+- Accessible component pins on populated circuit boards
+
+These physical access points dramatically lower the barrier to entry for hardware attacks, allowing connection of monitoring or injection equipment with minimal technical difficulty.
+
+**Side-channel vulnerability** introduces additional attack vectors beyond direct protocol exploitation. The physical characteristics of I²C communications can leak information through:
+- Power consumption variations during different operations
+- Electromagnetic emissions corresponding to data patterns
+- Timing variations in responses that may reveal internal processing
+- Fault responses to deliberately induced errors
+
+Advanced attackers can leverage these side-channels to extract information even from devices that implement some protection mechanisms, potentially inferring secrets without directly reading them from the bus.
+
+<table>
+  <tr>
+    <th>Vulnerability</th>
+    <th>Attack Method</th>
+    <th>Potential Mitigation</th>
+  </tr>
+  <tr>
+    <td>No Authentication</td>
+    <td>Device spoofing, unauthorized commands</td>
+    <td>Application-layer authentication, challenge-response</td>
+  </tr>
+  <tr>
+    <td>Cleartext Data</td>
+    <td>Passive monitoring, data interception</td>
+    <td>Application-layer encryption, sensitive data isolation</td>
+  </tr>
+  <tr>
+    <td>EEPROM Access</td>
+    <td>Memory dumping, configuration extraction</td>
+    <td>Security EEPROMs, encrypted storage</td>
+  </tr>
+  <tr>
+    <td>Weak Controls</td>
+    <td>Register manipulation, protection bypass</td>
+    <td>Robust device-level access controls, secure boot</td>
+  </tr>
+  <tr>
+    <td>Physical Access</td>
+    <td>Probe attachment, bus monitoring</td>
+    <td>Physical protection, conformal coating, removal of headers</td>
+  </tr>
+  <tr>
+    <td>Side-Channels</td>
+    <td>Power analysis, timing analysis</td>
+    <td>Constant-time operations, power filtering</td>
+  </tr>
+</table>
 
 ## Practical I²C Hacking Exercise: EEPROM Extraction
 
