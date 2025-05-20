@@ -215,13 +215,7 @@ Please also feel free to open issues for discussion or to report errors.
 
 ## Notice to Readers
 ```
-I will have to admit that using AI to generate the images using ACII art was not the wisest of the choices. 
-
-I will be working on a better version of this guide in the future, especialy the images.
-
-If you are good at creating images, illustrations or any other form of media, I can sure use your help.
-
-Please consider contributing to this project.
+I will have to admit that using AI to generate the images using ACII art was not the wisest of the choices. I will be working on a better version of this guide in the future, especialy the images. If you are good at creating images, illustrations or any other form of media, I can sure use your help. Please consider contributing to this project.
 ```
 
 ## License
