@@ -3543,3 +3543,13 @@ The relative maturity of LPWAN security practices varies significantly across de
 5. "Low-Power Wide-Area Networks at Scale" - Cenk Gündoğan et al.
 6. "LoRa Low-Energy Attack and Intrusion Detection" - Emekcan Aras et al.
 7. "The Hardware Hacker" - Andrew "bunnie" Huang
+
+---
+
+## Navigation
+
+**Section: Wireless Protocols**
+
+* Previous: [Zigbee](04-zigbee.md)
+* Next: [Rfid Nfc](06-rfid-nfc.md)
+* [Back to Main Index](../../../README.md)

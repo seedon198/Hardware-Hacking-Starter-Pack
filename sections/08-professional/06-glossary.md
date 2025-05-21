@@ -545,3 +545,12 @@ A computer or device connected to the Internet that has been compromised by a ha
 
 **Z-Wave**  
 A wireless communications protocol used primarily for home automation, a target for IoT security research.
+
+---
+
+## Navigation
+
+**Section: Professional Development**
+
+* Previous: [Project Ideas](05-project-ideas.md)
+* [Back to Main Index](../../README.md)

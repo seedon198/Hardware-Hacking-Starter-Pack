@@ -79,4 +79,13 @@ Researchers have successfully used EMFI to extract encryption keys from secure e
 
 The spatial precision of EMFI creates both challenges and opportunities. Finding the exact location to target requires patience and experimentation, but once found, exploits can be remarkably reliable and difficult to mitigate without comprehensive redesign.
 
-Next, we'll continue exploring laser fault injection and other advanced techniques in the [second part of this section](./03-fault-injection-2.md).
+
+---
+
+## Navigation
+
+**Section: Attack Vectors**
+
+* Previous: [Side Channel](02-side-channel.md)
+* Next: [Fault Injection Part 2](03-fault-injection-2.md)
+* [Back to Main Index](../../README.md)

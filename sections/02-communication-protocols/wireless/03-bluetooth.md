@@ -881,3 +881,13 @@ The hardware aspects of Bluetooth security represent a critical but often overlo
 4. "Practical Bluetooth Low Energy Exploits" - Mike Ryan
 5. "Ubertooth One: A platform for Bluetooth experimentation" - Michael Ossmann
 6. "The Hardware Hacker" - Andrew "bunnie" Huang
+
+---
+
+## Navigation
+
+**Section: Wireless Protocols**
+
+* Previous: [Wifi](02-wifi.md)
+* Next: [Zigbee](04-zigbee.md)
+* [Back to Main Index](../../../README.md)

@@ -179,3 +179,13 @@ Online forums serve as essential knowledge repositories for hardware hackers at 
 The distributed nature of hardware hacking knowledge makes forum participation particularly valuable—insights that might appear in just one specialized community could provide the key breakthrough for your project. By maintaining connections across multiple forums, you develop a more comprehensive understanding of hardware security while contributing to the field's continued growth.
 
 The next section examines [Chat Platforms and Events](./14b-chat-events.md), exploring real-time communication channels and in-person gatherings that complement forum-based knowledge sharing.
+
+---
+
+## Navigation
+
+**Section: Professional Development**
+
+* Previous: [Certifications](02-certifications.md)
+* Next: [Chat Events](03b-chat-events.md)
+* [Back to Main Index](../../README.md)

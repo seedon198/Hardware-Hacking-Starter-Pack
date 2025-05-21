@@ -60,3 +60,13 @@ See the following sub-sections for detailed information:
 - [Chat Platforms and Events](./03b-chat-events.md) 
 - [Content Platforms and Publications](./03c-content-publications.md)
 - [Open Source Projects and Tools](./03d-opensource-tools.md)
+
+---
+
+## Navigation
+
+**Section: Professional Development**
+
+* Previous: [Content Publications](03c-content-publications.md)
+* Next: [Opensource Tools](03d-opensource-tools.md)
+* [Back to Main Index](../../README.md)

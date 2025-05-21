@@ -1261,3 +1261,13 @@ SPI interfaces are critical targets for hardware hackers due to their connection
 By understanding SPI communications, hardware hackers can extract firmware, modify device behavior, and potentially uncover security vulnerabilities that would be inaccessible through software alone.
 
 In the next section, we'll explore [JTAG and SWD Protocols](./04-jtag-swd.md), which provide even deeper access into embedded systems.
+
+---
+
+## Navigation
+
+**Section: Wired Protocols**
+
+* Previous: [I2c Protocol](02-i2c-protocol.md)
+* Next: [Jtag Swd](04-jtag-swd.md)
+* [Back to Main Index](../../../README.md)

@@ -350,4 +350,13 @@ Memory protection forms a critical layer in embedded security, preventing attack
 
 When designing embedded systems, consider memory protection from the earliest architectural decisions through implementation and testing. A comprehensive approach integrates hardware protection features, software mitigation strategies, and secure coding practices to create systems that remain secure throughout their operational lifetime.
 
-Next, we'll explore how to protect data in motion through [Secure Communications for Embedded Devices](./09c-secure-communications.md), completing our examination of the core technical elements of embedded security.
+
+---
+
+## Navigation
+
+**Section: Embedded Security**
+
+* Previous: [Secure Boot](01-secure-boot.md)
+* Next: [Secure Communications](03-secure-communications.md)
+* [Back to Main Index](../../README.md)

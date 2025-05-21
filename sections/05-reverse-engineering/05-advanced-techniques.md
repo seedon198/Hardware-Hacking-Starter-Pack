@@ -294,3 +294,13 @@ For hardware security professionals, understanding these capabilities informs be
 As manufacturing technologies advance toward smaller process nodes, these techniques grow more challenging—yet the fundamental approaches remain valid even as specific implementations evolve. The cat-and-mouse game between security designers and hardware hackers continues to drive innovation on both sides.
 
 This concludes our exploration of reverse engineering techniques. In our next section, we'll examine [Embedded Device Security](./09-embedded-security.md), building on these fundamentals to understand how modern devices protect (or fail to protect) their critical functionality.
+
+---
+
+## Navigation
+
+**Section: Reverse Engineering**
+
+* Previous: [Circuit Extraction](04-circuit-extraction.md)
+* Next: [Index](index.md)
+* [Back to Main Index](../../README.md)

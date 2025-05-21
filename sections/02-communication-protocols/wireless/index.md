@@ -78,3 +78,12 @@ Understanding defensive measures helps identify security weaknesses:
 ---
 
 In the next section, we'll explore techniques for [Firmware Extraction & Analysis](./06-firmware-analysis.md) that complement the wireless hardware hacking skills presented here.
+
+---
+
+## Navigation
+
+**Section: Wireless Protocols**
+
+* Previous: [Rfid Nfc](06-rfid-nfc.md)
+* [Back to Main Index](../../../README.md)

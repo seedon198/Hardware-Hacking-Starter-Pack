@@ -266,4 +266,10 @@ Your hardware hacking lab is a personal space that will evolve with your skills 
 
 ---
 
-Now that you've set up your lab, let's explore the essential tools and equipment in more detail. Continue to [Essential Tools & Equipment](./03-tools-equipment.md).
+## Navigation
+
+**Section: Foundations**
+
+* Previous: [Introduction](01-introduction.md)
+* Next: [Tools Equipment](03-tools-equipment.md)
+* [Back to Main Index](../../README.md)

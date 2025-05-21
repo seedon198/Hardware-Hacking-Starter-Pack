@@ -684,3 +684,13 @@ Understanding RF fundamentals is essential for any hardware hacker working with 
 2. "Software-Defined Radio for Engineers" - Travis F. Collins et al.
 3. "RF Circuit Design" - Chris Bowick
 4. "Practical RF Circuit Design for Modern Wireless Systems" - Les Besser & Rowan Gilmore
+
+---
+
+## Navigation
+
+**Section: Wireless Protocols**
+
+* Previous: [README](../../../README.md)
+* Next: [Wifi](02-wifi.md)
+* [Back to Main Index](../../../README.md)

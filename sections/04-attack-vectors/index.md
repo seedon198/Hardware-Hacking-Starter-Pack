@@ -27,3 +27,12 @@ This section is divided into multiple parts:
 - [Part 3: Fault Injection Techniques](./03-fault-injection.md)
 - [Part 4: Hardware Implants](./04-hardware-implants.md)
 - [Part 5: Supply Chain Attacks](./07e-supply-chain.md)
+
+---
+
+## Navigation
+
+**Section: Attack Vectors**
+
+* Previous: [Supply Chain 3](05-supply-chain-3.md)
+* [Back to Main Index](../../README.md)

@@ -49,7 +49,6 @@ This methodical approach ensures testing addresses realistic threats aligned wit
 
 ## Hardware-Focused Testing Techniques
 
-Let's explore key techniques for hardware security assessment, starting with non-destructive approaches and progressing toward more invasive methods.
 
 ### Visual Inspection and Analysis
 
@@ -471,3 +470,13 @@ Effective testing combines understanding of the system under test, knowledge of 
 As embedded systems continue to proliferate in critical applications—from medical devices to automotive systems to infrastructure—security testing becomes increasingly essential. The hardware hacker's skillset is particularly valuable in this context, bringing together digital and physical security considerations in ways that purely software-focused approaches cannot match.
 
 The ultimate goal of security testing is not finding vulnerabilities for their own sake, but improving security in ways that matter. By identifying and addressing issues before attackers exploit them, security testing helps create a more trustworthy ecosystem of embedded devices that users can rely on for years to come.
+
+---
+
+## Navigation
+
+**Section: Embedded Security**
+
+* Previous: [Physical Security](04-physical-security.md)
+* Next: [Index](index.md)
+* [Back to Main Index](../../README.md)

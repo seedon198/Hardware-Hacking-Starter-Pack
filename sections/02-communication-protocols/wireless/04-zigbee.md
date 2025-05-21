@@ -478,3 +478,13 @@ Zigbee and IEEE 802.15.4 hardware security represents a critical aspect of IoT a
 5. IEEE 802.15.4 Standard Documentation
 6. Zigbee Alliance Specifications
 7. "The Hardware Hacker" - Andrew "bunnie" Huang
+
+---
+
+## Navigation
+
+**Section: Wireless Protocols**
+
+* Previous: [Bluetooth](03-bluetooth.md)
+* Next: [Lora Lpwan](05-lora-lpwan.md)
+* [Back to Main Index](../../../README.md)

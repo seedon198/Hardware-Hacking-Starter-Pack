@@ -340,3 +340,13 @@ Component identification forms a crucial skill in hardware reverse engineering. 
 Remember that component identification often involves some uncertainty, especially with unmarked or generic parts. When exact identification isn't possible, narrowing down to a family of components with similar characteristics is often sufficient for practical reverse engineering.
 
 In the next section, [Circuit Extraction and Schematic Capture](./08d-circuit-extraction.md), we'll explore how to translate your component identification work into functional circuit documentation.
+
+---
+
+## Navigation
+
+**Section: Reverse Engineering**
+
+* Previous: [Pcb Analysis](02-pcb-analysis.md)
+* Next: [Circuit Extraction](04-circuit-extraction.md)
+* [Back to Main Index](../../README.md)

@@ -369,7 +369,6 @@ A skilled hardware hacker typically combines these tools based on the specific t
 └────────────────────┴─────────────────────────┘
 ```
 
-USB attacks have evolved into a sophisticated arsenal of techniques that exploit different aspects of the USB ecosystem. The versatility of USB makes it an ideal attack vector - it's externally accessible, widely trusted, and incorporates complex software stacks that may contain vulnerabilities. Let's explore the major categories of USB-based attacks and understand how they work.
 
 ### USB Device Masquerading: The Wolf in Sheep's Clothing
 
@@ -921,3 +920,13 @@ The most valuable takeaway is the structured approach to hardware analysis: begi
 
 
 
+
+---
+
+## Navigation
+
+**Section: Wired Protocols**
+
+* Previous: [Jtag Swd](04-jtag-swd.md)
+* Next: [Ethernet Protocols](06-ethernet-protocols.md)
+* [Back to Main Index](../../../README.md)

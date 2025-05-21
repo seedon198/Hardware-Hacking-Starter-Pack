@@ -198,4 +198,13 @@ As you progress through the following sections, you'll develop both technical sk
 
 ---
 
-Ready to create your hardware hacking workspace? Continue to [Setting Up Your Lab](./02-lab-setup.md) to build the foundation for your hardware security journey.
+
+---
+
+## Navigation
+
+**Section: Foundations**
+
+* Previous: [README](../../README.md)
+* Next: [Lab Setup](02-lab-setup.md)
+* [Back to Main Index](../../README.md)
