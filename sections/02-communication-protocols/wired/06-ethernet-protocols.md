@@ -1272,5 +1272,6 @@ In the next section, we'll explore [Wireless Communication Protocols](../wireles
 
 **Section: Wired Protocols**
 
-* Previous: [Usb Protocol](05-usb-protocol.md)
+* Previous: [USB Protocol](05-usb-protocol.md)
+* Next: [Wireless Communication Protocols](../wireless/index.md)
 * [Back to Main Index](../../../README.md)

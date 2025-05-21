@@ -85,5 +85,6 @@ In the next section, we'll explore techniques for [Firmware Extraction & Analysi
 
 **Section: Wireless Protocols**
 
-* Previous: [Rfid Nfc](06-rfid-nfc.md)
+* Previous: [Ethernet Protocols](../wired/06-ethernet-protocols.md)
+* Next: [RF Fundamentals](01-rf-fundamentals.md)
 * [Back to Main Index](../../../README.md)

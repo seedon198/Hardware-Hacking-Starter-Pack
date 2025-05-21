@@ -198,9 +198,6 @@ As you progress through the following sections, you'll develop both technical sk
 
 ---
 
-
----
-
 ## Navigation
 
 **Section: Foundations**

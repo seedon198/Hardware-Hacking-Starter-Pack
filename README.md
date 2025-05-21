@@ -3,10 +3,19 @@
 </div>
 
 <div align="center">
-<img src="https://img.shields.io/badge/Hardware-Security-red" alt="Hardware Security"/>
-<img src="https://img.shields.io/badge/Skill_Level-Beginner_to_Advanced-blue" alt="Skill Level: Beginner to Advanced"/>
-<img src="https://img.shields.io/badge/License-MIT-green" alt="License: MIT"/>
+
+<!-- Skill Level -->
+<img src="https://img.shields.io/badge/Skill-Beginner_to_Advanced-black?style=for-the-badge" alt="Skill Level"/>
+
+<!-- License -->
+<img src="https://img.shields.io/github/license/seedon198/hardware-hacking-starter-pack?style=for-the-badge&color=black" alt="License: MIT"/>
+
+<!-- Development Status -->
+<img src="https://img.shields.io/badge/Status-Active_Development-black?style=for-the-badge&logo=github" alt="Development Status"/>
+
 </div>
+
+
 
 ## Overview
 
