@@ -263,3 +263,13 @@ PCB analysis forms the backbone of hardware reverse engineering. By methodically
 Remember that successful PCB analysis requires patience and careful documentation. Take your time, record your findings systematically, and recognize that complex boards might require multiple sessions to fully understand.
 
 In the next section, [Component Identification](./08c-component-id.md), we'll explore techniques for identifying and understanding the various electronic components found on PCBs.
+
+---
+
+## Navigation
+
+**Section: Reverse Engineering**
+
+* Previous: [Re Fundamentals](01-re-fundamentals.md)
+* Next: [Component Id](03-component-id.md)
+* [Back to Main Index](../../README.md)

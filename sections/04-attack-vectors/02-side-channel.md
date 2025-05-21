@@ -385,3 +385,13 @@ Side-channel attacks represent a powerful class of hardware security threats tha
 Understanding these attacks requires knowledge across disciplines including electronics, signal processing, statistics, and cryptography. For hardware hackers, side-channel analysis provides a valuable toolset for evaluating security beyond what is visible in code or specifications.
 
 In the next section, we'll explore [Fault Injection Techniques](./07c-fault-injection.md), which actively manipulate hardware to induce errors that can be exploited for security breaches.
+
+---
+
+## Navigation
+
+**Section: Attack Vectors**
+
+* Previous: [Physical Access](01-physical-access.md)
+* Next: [Fault Injection 2](03-fault-injection-2.md)
+* [Back to Main Index](../../README.md)

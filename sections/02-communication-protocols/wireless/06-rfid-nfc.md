@@ -1051,3 +1051,13 @@ As these technologies continue to evolve and expand into new applications, the l
 6. "Security Analysis of Contactless Payment Systems" - Emms et al.
 7. "The Hardware Hacker" - Andrew "bunnie" Huang
 8. "Hacking Exposed: RFID Security Secrets & Solutions" - Neha Thakur and Andrew Muller
+
+---
+
+## Navigation
+
+**Section: Wireless Protocols**
+
+* Previous: [Lora Lpwan](05-lora-lpwan.md)
+* Next: [Index](index.md)
+* [Back to Main Index](../../../README.md)

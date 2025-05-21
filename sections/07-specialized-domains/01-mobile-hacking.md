@@ -313,3 +313,13 @@ The rapid evolution of mobile hardware ensures this field remains dynamic and ch
 Documentation plays a crucial role in this community, preserving discoveries that might otherwise be lost as devices become obsolete. When you uncover a new test point location, identify an undocumented debug command, or develop a novel bypass for a security feature, consider sharing that knowledge. Many hardware hacking breakthroughs remain unpublished or poorly documented, limiting their value to others who might build upon them. Well-documented discoveries, even seemingly minor ones, contribute to a collective understanding that advances the entire field.
 
 The skills developed through mobile hardware hacking transfer surprisingly well to other domains. The techniques you master for accessing smartphone internals apply equally to automotive systems, medical devices, smart home products, and industrial controls—often with fewer obstacles, as these systems frequently implement less sophisticated protections than flagship mobile devices. The next section explores [IoT Device Security](../sectio./02-iot-security.md), where many of these mobile hardware hacking techniques apply to an even more diverse ecosystem of connected devices, sometimes with much higher stakes when security failures occur.
+
+---
+
+## Navigation
+
+**Section: Specialized Domains**
+
+* Previous: [README](../../README.md)
+* Next: [Iot Security](02-iot-security.md)
+* [Back to Main Index](../../README.md)

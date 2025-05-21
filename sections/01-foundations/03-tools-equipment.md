@@ -614,4 +614,13 @@ As your toolkit and skills continue to evolve together, each new project will su
 
 ---
 
-With a solid understanding of the tools and equipment that enable hardware hacking, we now turn our attention to the fundamental concepts that govern electronic systems. Continue to [Basic Electronics for Hackers](./04-basic-electronics.md) to build the theoretical foundation that will maximize the effectiveness of your toolkit.
+
+---
+
+## Navigation
+
+**Section: Foundations**
+
+* Previous: [Lab Setup](02-lab-setup.md)
+* Next: [Basic Electronics](04-basic-electronics.md)
+* [Back to Main Index](../../README.md)

@@ -419,3 +419,13 @@ When designing embedded communications, remember that security must be:
 4. **Comprehensive** across all communication channels
 
 The next section explores [Physical Security Mechanisms](./09d-physical-security.md), which complement communication security by protecting against threats requiring physical access to the device.
+
+---
+
+## Navigation
+
+**Section: Embedded Security**
+
+* Previous: [Memory Protection](02-memory-protection.md)
+* Next: [Physical Security](04-physical-security.md)
+* [Back to Main Index](../../README.md)

@@ -1120,3 +1120,13 @@ The techniques covered in this section—from bus scanning and passive analysis 
 As embedded systems continue to proliferate in increasingly security-sensitive applications, from IoT devices to industrial controls and automotive systems, understanding both the attack vectors and defensive measures associated with I²C becomes ever more important. For security researchers, this knowledge enables more comprehensive security assessments and contributes to the development of more resilient systems. For developers, it highlights the importance of not relying solely on the protocol itself for security, but rather implementing appropriate protective measures at multiple levels.
 
 In the next section, we'll explore [SPI Protocol](./03-spi-protocol.md), another fundamental communication standard with different characteristics and security implications. While I²C's shared bus topology creates one set of security considerations, SPI's dedicated signal lines present an entirely different profile of strengths and vulnerabilities that complement our understanding of hardware communication security.
+
+---
+
+## Navigation
+
+**Section: Wired Protocols**
+
+* Previous: [Uart Protocol](01-uart-protocol.md)
+* Next: [Spi Protocol](03-spi-protocol.md)
+* [Back to Main Index](../../../README.md)

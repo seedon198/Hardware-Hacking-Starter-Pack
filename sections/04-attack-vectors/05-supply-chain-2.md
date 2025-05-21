@@ -185,4 +185,13 @@ In the next section, we'll explore supply chain security best practices, mitigat
 
 ---
 
-Continue to [Supply Chain Attacks - Part 3](./05-supply-chain-3.md) to learn about best practices for building resilience against supply chain attacks.
+
+---
+
+## Navigation
+
+**Section: Attack Vectors**
+
+* Previous: [Supply Chain 1](05-supply-chain-1.md)
+* Next: [Supply Chain 3](05-supply-chain-3.md)
+* [Back to Main Index](../../README.md)

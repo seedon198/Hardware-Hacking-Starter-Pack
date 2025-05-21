@@ -285,3 +285,13 @@ The most effective hardware hackers develop personalized information ecosystems 
 As your hardware hacking journey progresses, consider how your experiences might contribute to this knowledge ecosystem. Even modest documentation efforts help bridge gaps between specialized subcommunities and preserve techniques that might otherwise be lost to time.
 
 The next section explores [Open Source Projects and Tools](./14d-opensource-tools.md), examining how collaborative development efforts create the software and hardware tools that enable hardware hacking work.
+
+---
+
+## Navigation
+
+**Section: Professional Development**
+
+* Previous: [Chat Events](03b-chat-events.md)
+* Next: [Community Resources](03-community-resources.md)
+* [Back to Main Index](../../README.md)

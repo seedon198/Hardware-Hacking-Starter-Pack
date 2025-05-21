@@ -640,3 +640,12 @@ The methods and tools covered in this section provide a foundation for exploring
 ---
 
 In the next section, we'll explore [Hardware Attack Vectors]../../sections/04-attack-vectors/index.md), covering the various approaches to exploiting hardware vulnerabilities.
+
+---
+
+## Navigation
+
+**Section: Firmware Analysis**
+
+* Previous: [README](../../README.md)
+* [Back to Main Index](../../README.md)

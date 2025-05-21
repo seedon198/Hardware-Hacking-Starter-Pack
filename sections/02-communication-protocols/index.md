@@ -329,3 +329,12 @@ Use JTAG to explore the debug capabilities of a microcontroller.
 5. Document the security implications of the accessible debug features
 
 Each of these exercises should be performed on hardware you legally own or have explicit permission to test. Document your findings thoroughly, as the insights gained will be valuable reference material for future hardware hacking projects.
+
+---
+
+## Navigation
+
+**Section: Communication Protocols**
+
+* Previous: [README](../../README.md)
+* [Back to Main Index](../../README.md)

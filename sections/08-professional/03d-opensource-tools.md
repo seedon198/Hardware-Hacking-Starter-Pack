@@ -341,3 +341,13 @@ Contributing to open source hardware security projects provides multiple benefit
 Whether using existing tools, contributing improvements, or starting new projects, engagement with the open source hardware security ecosystem connects individual efforts to a broader community advancing the state of hardware security for everyone.
 
 This concludes our exploration of community resources for hardware hackers. The next section discusses [Legal & Ethical Considerations](../sectio./04-legal-ethical.md) in more detail, providing guidance for navigating the complex landscape surrounding hardware security research.
+
+---
+
+## Navigation
+
+**Section: Professional Development**
+
+* Previous: [Community Resources](03-community-resources.md)
+* Next: [Legal Ethical](04-legal-ethical.md)
+* [Back to Main Index](../../README.md)

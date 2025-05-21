@@ -259,3 +259,13 @@ Physical security represents an essential layer in the defense-in-depth approach
 When designing embedded systems, consider the physical attack vectors relevant to your threat model, implement appropriate protections, and test their effectiveness against realistic attack scenarios. Remember that physical security exists in balance with other factors—usability, manufacturability, and cost—requiring thoughtful trade-offs based on the specific application.
 
 In the next section, [Security Testing and Vulnerability Assessment](./09e-security-testing.md), we'll explore comprehensive approaches to evaluating embedded security, including both physical and logical attack vectors.
+
+---
+
+## Navigation
+
+**Section: Embedded Security**
+
+* Previous: [Secure Communications](03-secure-communications.md)
+* Next: [Security Testing](05-security-testing.md)
+* [Back to Main Index](../../README.md)

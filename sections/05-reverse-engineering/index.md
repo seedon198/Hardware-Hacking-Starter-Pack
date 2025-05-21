@@ -62,4 +62,12 @@ The journey of hardware reverse engineering begins with curiosity and careful ob
 
 Start with simpler devices as you build your skills, and don't hesitate to document your findings and share them with the community. Hardware hacking thrives on collaborative knowledge-sharing and the excitement of discovery.
 
-Ready to begin? Let's explore the [Reverse Engineering Fundamentals](./01-re-fundamentals.md).
+
+---
+
+## Navigation
+
+**Section: Reverse Engineering**
+
+* Previous: [Advanced Techniques](05-advanced-techniques.md)
+* [Back to Main Index](../../README.md)

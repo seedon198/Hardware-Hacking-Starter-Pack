@@ -131,4 +131,13 @@ In the next section, we'll explore more attack vectors, detection methods, and m
 
 ---
 
-Continue to [Supply Chain Attacks - Part 2](./05-supply-chain-2.md) to learn about additional attack vectors in the hardware supply chain.
+
+---
+
+## Navigation
+
+**Section: Attack Vectors**
+
+* Previous: [Hardware Implants](04-hardware-implants.md)
+* Next: [Supply Chain 2](05-supply-chain-2.md)
+* [Back to Main Index](../../README.md)

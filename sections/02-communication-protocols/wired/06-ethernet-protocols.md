@@ -370,7 +370,6 @@ By combining the right hardware tapping methods with appropriate analysis tools,
 └─────────────────────────────────────────────────┘
 ```
 
-While software security researchers focus on protocol exploits and application vulnerabilities, hardware hackers target the physical foundation of networked systems. These hardware-level attacks are particularly potent because they often bypass traditional security controls entirely, operating beneath the visibility of most monitoring systems. Let's explore the two main categories of network hardware attack vectors: physical layer attacks and controller exploitation.
 
 ### Physical Layer Attacks: Manipulating the Foundation
 
@@ -1266,3 +1265,12 @@ Perhaps most importantly, the hardware perspective on network security isn't jus
 As we move forward to explore other protocols and interfaces in this guide, remember that the principles established here - methodical analysis, understanding of both digital and physical aspects, and creative problem-solving - apply broadly across all hardware security domains. The hardware hacker's journey is one of continuous learning, as each device disassembled and each signal analyzed reveals new insights into the complex interplay between hardware and software.
 
 In the next section, we'll explore [Wireless Communication Protocols](../wireless/index.md), examining how the principles we've applied to wired networking extend to the invisible electromagnetic connections that increasingly dominate our connected world.
+
+---
+
+## Navigation
+
+**Section: Wired Protocols**
+
+* Previous: [Usb Protocol](05-usb-protocol.md)
+* [Back to Main Index](../../../README.md)

@@ -378,3 +378,13 @@ Secure boot provides the foundation for trusted computing in embedded systems. B
 Remember that secure boot represents just one element of a comprehensive security strategy. While essential, it must work alongside memory protection, secure communication, and physical security measures to create truly secure embedded systems.
 
 In the next section, [Memory Protection and Execution Security](./09b-memory-protection.md), we'll explore how to protect code and data once a system has securely booted.
+
+---
+
+## Navigation
+
+**Section: Embedded Security**
+
+* Previous: [README](../../README.md)
+* Next: [Memory Protection](02-memory-protection.md)
+* [Back to Main Index](../../README.md)

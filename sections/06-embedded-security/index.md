@@ -231,3 +231,12 @@ Embedded system security requires balancing strong protection with the practical
 The following sections delve deeper into specific embedded security domains, from secure boot processes to physical protection mechanisms. Each section provides both theoretical understanding and practical implementation guidance for hardware hackers working with embedded systems.
 
 Let's begin by exploring [Secure Boot and Trust Anchors](./01-secure-boot.md), the foundation upon which embedded device security is built.
+
+---
+
+## Navigation
+
+**Section: Embedded Security**
+
+* Previous: [Security Testing](05-security-testing.md)
+* [Back to Main Index](../../README.md)

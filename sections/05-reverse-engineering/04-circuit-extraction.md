@@ -229,7 +229,6 @@ This iterative process results in increasingly accurate documentation as your un
 
 ## Example Workflow: From PCB to Schematic
 
-Let's explore a practical workflow for schematic extraction using a simple example—a USB-to-serial converter board:
 
 1. **Initial survey**: Identify major components (USB connector, main IC, voltage regulator, crystal, LEDs) and document their markings and locations.
 
@@ -252,3 +251,13 @@ Circuit extraction and schematic capture transform physical observations into us
 Remember that schematics from reverse engineering always represent your current understanding, which continues to evolve with further investigation. The best documentation acknowledges uncertainty where it exists while clearly communicating confirmed observations.
 
 In the next section, [Advanced Techniques: Decapsulation and Microprobing](./08e-advanced-techniques.md), we'll explore more specialized techniques for accessing and analyzing the internal structures of electronic components themselves.
+
+---
+
+## Navigation
+
+**Section: Reverse Engineering**
+
+* Previous: [Component Id](03-component-id.md)
+* Next: [Advanced Techniques](05-advanced-techniques.md)
+* [Back to Main Index](../../README.md)

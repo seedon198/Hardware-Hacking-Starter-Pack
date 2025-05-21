@@ -328,3 +328,12 @@ Hardware hackers bring valuable perspectives to this domain by understanding the
 As IoT continues expanding into increasingly sensitive applications, security takes on greater importance. Devices that control physical systems, access personal information, or connect to critical infrastructure require security commensurate with these responsibilities. Hardware hackers play essential roles in both identifying vulnerabilities in existing systems and developing more secure approaches for future devices.
 
 The next section explores [Learning Path & Progression](../sectio../../sections/08-professional/01-learning-path.md), providing guidance for developing your hardware hacking skills from beginner to advanced levels.
+
+---
+
+## Navigation
+
+**Section: Specialized Domains**
+
+* Previous: [Mobile Hacking](01-mobile-hacking.md)
+* [Back to Main Index](../../README.md)
