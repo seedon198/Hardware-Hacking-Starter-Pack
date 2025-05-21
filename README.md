@@ -137,7 +137,7 @@ sections/
   
   <!-- Communication Protocols - Wireless -->
   <tr>
-    <td rowspan="6"><strong>📡<br>Wireless<br>Protocols</strong></td>
+    <td rowspan="7"><strong>📡<br>Wireless<br>Protocols</strong></td>
     <td><a href="./sections/02-communication-protocols/wireless/index.md"><strong>Wireless Overview</strong></a></td>
     <td>RF communication basics</td>
     <td>Spectrum analysis, wireless security principles</td>
