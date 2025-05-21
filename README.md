@@ -78,15 +78,18 @@ sections/
     <td>Beginner</td>
   </tr>
   
-  <!-- Communication Protocols - Wired -->
+  <!-- Communication Protocols -->
   <tr>
-    <td rowspan="8"><strong>🔌<br>Wired<br>Protocols</strong></td>
+    <td rowspan="1"><strong>📡<br>Communication<br>Protocols</strong></td>
     <td><a href="./sections/02-communication-protocols/index.md"><strong>Protocol Overview</strong></a></td>
     <td>Communication basics</td>
     <td>Protocol selection, analysis methodology, common tools</td>
     <td>Beginner</td>
   </tr>
+  
+  <!-- Communication Protocols - Wired -->
   <tr>
+    <td rowspan="6"><strong>🔌<br>Wired<br>Protocols</strong></td>
     <td><a href="./sections/02-communication-protocols/wired/01-uart-protocol.md"><strong>UART</strong></a></td>
     <td>Serial communication</td>
     <td>Baud rates, signal levels, debugging interfaces, console access</td>
@@ -125,7 +128,7 @@ sections/
   
   <!-- Communication Protocols - Wireless -->
   <tr>
-    <td rowspan="7"><strong>📡<br>Wireless<br>Protocols</strong></td>
+    <td rowspan="6"><strong>📡<br>Wireless<br>Protocols</strong></td>
     <td><a href="./sections/02-communication-protocols/wireless/index.md"><strong>Wireless Overview</strong></a></td>
     <td>RF communication basics</td>
     <td>Spectrum analysis, wireless security principles</td>
@@ -210,7 +213,7 @@ sections/
     <td>Advanced</td>
   </tr>
   <tr>
-    <td><a href="./sections/04-attack-vectors/05-supply-chain.md"><strong>Supply Chain</strong></a> (<a href="./sections/04-attack-vectors/05-supply-chain-2.md">Part 2</a>, <a href="./sections/04-attack-vectors/05-supply-chain-3.md">Part 3</a>)</td>
+    <td><a href="./sections/04-attack-vectors/05-supply-chain-1.md"><strong>Supply Chain</strong></a> (<a href="./sections/04-attack-vectors/05-supply-chain-2.md">Part 2</a>, <a href="./sections/04-attack-vectors/05-supply-chain-3.md">Part 3</a>)</td>
     <td>Manufacturing threats</td>
     <td>Component substitution, trojan circuits, counterfeit detection</td>
     <td>Advanced</td>
@@ -380,20 +383,20 @@ This resource is designed to be flexible for different learning styles and exper
 ### Recommended Learning Paths
 
 #### For Complete Beginners
-1. Start with sections 1-4 to build a solid foundation
-2. Practice basic skills with the starter projects in section 16
-3. Explore communication protocols (section 5) with your new knowledge
-4. Progress to firmware analysis (section 6) when comfortable
+1. Start with the **Foundations** section to build a solid foundation
+2. Practice basic skills with the starter projects in the **Professional Development** section
+3. Explore the **Communication Protocols** section with your new knowledge
+4. Progress to **Firmware Analysis** when comfortable
 
 #### For Electronics Engineers
-1. Review sections 1-3 to align your knowledge with security perspectives
-2. Focus on sections 7, 9, and 15 to understand attack vectors and protections
-3. Explore the reverse engineering techniques in section 8
+1. Review the **Foundations** section to align your knowledge with security perspectives
+2. Focus on **Attack Vectors**, **Embedded Security**, and **Legal & Ethics** to understand attack vectors and protections
+3. Explore the **Reverse Engineering** techniques
 
 #### For Software Security Professionals
-1. Focus on sections 1-4 to build electronics fundamentals
-2. Pay special attention to section 5 (communication protocols)
-3. Connect your software knowledge with sections 6, 7, and 9
+1. Focus on the **Foundations** section to build electronics fundamentals
+2. Pay special attention to the **Communication Protocols** section
+3. Connect your software knowledge with **Firmware Analysis**, **Attack Vectors**, and **Embedded Security**
 
 ## Contributing
 
