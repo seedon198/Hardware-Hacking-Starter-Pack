@@ -824,4 +824,4 @@ As security researchers, understanding JTAG and SWD is essential because these i
 
 In many ways, the battle over debug interface security exemplifies the broader hardware security landscape - a continuous arms race between protection measures and circumvention techniques, with each advance on one side prompting innovation on the other.
 
-In the next section, we'll shift our focus to the [USB Protocol](./05e-usb-protocol.md), exploring how this ubiquitous external interface presents a different set of security challenges and opportunities for hardware hackers. While USB doesn't typically offer the same depth of system access as JTAG/SWD, its universal presence and complex implementation create a rich attack surface worthy of thorough examination.
+In the next section, we'll shift our focus to the [USB Protocol](./05-usb-protocol.md), exploring how this ubiquitous external interface presents a different set of security challenges and opportunities for hardware hackers. While USB doesn't typically offer the same depth of system access as JTAG/SWD, its universal presence and complex implementation create a rich attack surface worthy of thorough examination.

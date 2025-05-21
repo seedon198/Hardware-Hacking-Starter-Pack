@@ -354,4 +354,4 @@ As you continue your journey, remember that persistence matters more than innate
 
 Most importantly, maintain the curiosity and excitement that likely drew you to hardware hacking initially. As skills increase and projects become more sophisticated, preserve time for playful exploration and projects driven purely by interest rather than practical application. This balance between serious study and joyful discovery creates sustainable growth that can continue throughout your hardware hacking career.
 
-The next section explores [Certifications & Training](../sections/13-certifications.md), providing information about formal educational opportunities that can accelerate your progress along this learning path.
+The next section explores [Certifications & Training](./02-certifications.md), providing information about formal educational opportunities that can accelerate your progress along this learning path.

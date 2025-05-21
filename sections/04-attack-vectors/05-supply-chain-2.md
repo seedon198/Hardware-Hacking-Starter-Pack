@@ -182,3 +182,7 @@ Functional and electrical tests can identify behavioral abnormalities:
 For critical systems, some organizations employ advanced testing protocols involving multiple verification steps at different supply chain stages.
 
 In the next section, we'll explore supply chain security best practices, mitigation strategies, and future trends in securing the hardware supply chain.
+
+---
+
+Continue to [Supply Chain Attacks - Part 3](./05-supply-chain-3.md) to learn about best practices for building resilience against supply chain attacks.

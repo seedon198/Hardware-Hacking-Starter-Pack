@@ -10,7 +10,7 @@ The security of wireless systems exists across multiple dimensions: the RF physi
 
 Before diving into specific protocols, it's essential to understand the physical principles that govern all wireless communications:
 
-- [RF Physics for Hardware Hackers](./05g-01-rf-fundamentals.md): Frequency bands, modulation techniques, signal characteristics, antennas, and RF circuit fundamentals
+- [RF Physics for Hardware Hackers](./01-rf-fundamentals.md): Frequency bands, modulation techniques, signal characteristics, antennas, and RF circuit fundamentals
 
 ## Wireless Protocol Categories
 
@@ -18,11 +18,11 @@ Each wireless protocol represents its own attack surface with unique hardware im
 
 ### Core Wireless Protocols
 
-- [WiFi (IEEE 802.11)](./05g-02-wifi.md): High-speed wireless networking for computers, phones, and IoT devices
-- [Bluetooth and BLE](./05g-03-bluetooth.md): Short-range communication for personal devices
-- [Zigbee (IEEE 802.15.4)](./05g-04-zigbee.md): Low-power mesh networking for home automation and IoT
-- [LoRa and LPWAN](./05g-05-lora-lpwan.md): Long-range, low-power wireless technologies for IoT networks
-- [RFID and NFC](./05g-06-rfid-nfc.md): Contactless identification and data exchange
+- [WiFi (IEEE 802.11)](./02-wifi.md): High-speed wireless networking for computers, phones, and IoT devices
+- [Bluetooth and BLE](./03-bluetooth.md): Short-range communication for personal devices
+- [Zigbee (IEEE 802.15.4)](./04-zigbee.md): Low-power mesh networking for home automation and IoT
+- [LoRa and LPWAN](./05-lora-lpwan.md): Long-range, low-power wireless technologies for IoT networks
+- [RFID and NFC](./06-rfid-nfc.md): Contactless identification and data exchange
 
 ### Additional Protocols (Coming Soon)
 

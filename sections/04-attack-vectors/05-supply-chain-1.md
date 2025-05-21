@@ -128,3 +128,7 @@ Hardware trojans at the chip level can be incredibly difficult to detect. They m
 The global nature of semiconductor manufacturing further complicates security, as chips may cross multiple international boundaries during production.
 
 In the next section, we'll explore more attack vectors, detection methods, and mitigation strategies for supply chain attacks.
+
+---
+
+Continue to [Supply Chain Attacks - Part 2](./05-supply-chain-2.md) to learn about additional attack vectors in the hardware supply chain.

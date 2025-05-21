@@ -103,4 +103,4 @@ As we've explored, these methods range from relatively simple voltage glitching 
 
 For those beginning their hardware security journey, fault injection offers an exciting area of exploration that combines electronics, timing analysis, and security research. Even simple experiments can yield fascinating insights into how hardware systems fail and how those failures can affect security.
 
-In our next section, we'll explore [Hardware Implants](./07d-hardware-implants.md), devices designed to compromise security by being physically added to existing systems.
+In our next section, we'll explore [Hardware Implants](./04-hardware-implants.md), devices designed to compromise security by being physically added to existing systems.

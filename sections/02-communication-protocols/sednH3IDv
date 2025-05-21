@@ -57,10 +57,10 @@ This section provides a comprehensive overview of the protocols you'll most freq
 - [Practical Exercises](#practical-exercises)
 
 For detailed information on each protocol, see the following sub-sections:
-- [UART Protocol](./05a-uart-protocol.md)
+- [UART Protocol](./wired/01-uart-protocol.md)
 - [I2C Protocol](./05b-i2c-protocol.md)
-- [SPI Protocol](./05c-spi-protocol.md)
-- [JTAG and SWD Protocols](./05d-jtag-swd.md)
+- [SPI Protocol](./wired/03-spi-protocol.md)
+- [JTAG and SWD Protocols](./wired/04-jtag-swd.md)
 - [USB Protocol](./05e-usb-protocol.md)
 - [Ethernet and Network Protocols](./05f-ethernet-protocols.md)
 - [Wireless Protocols](./05g-wireless-protocols.md)

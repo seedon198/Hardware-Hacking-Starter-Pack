@@ -639,4 +639,4 @@ The methods and tools covered in this section provide a foundation for exploring
 
 ---
 
-In the next section, we'll explore [Hardware Attack Vectors](./07-attack-vectors.md), covering the various approaches to exploiting hardware vulnerabilities.
+In the next section, we'll explore [Hardware Attack Vectors]../../sections/04-attack-vectors/index.md), covering the various approaches to exploiting hardware vulnerabilities.

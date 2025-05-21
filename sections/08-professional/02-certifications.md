@@ -310,4 +310,4 @@ The hardware security field continues to evolve, with education adapting to addr
 
 Whether pursuing formal qualifications, specialized training, or self-directed learning, the investment in hardware security education opens doors to a field at the fascinating intersection of physical and digital security—where understanding how things work becomes the foundation for ensuring they work securely.
 
-The next section explores [Community Resources](../sections/14-community-resources.md), highlighting the organizations, forums, events, and publications that support hardware hackers throughout their journey.
+The next section explores [Community Resources](./03-community-resources.md), highlighting the organizations, forums, events, and publications that support hardware hackers throughout their journey.

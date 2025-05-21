@@ -1265,4 +1265,4 @@ Perhaps most importantly, the hardware perspective on network security isn't jus
 
 As we move forward to explore other protocols and interfaces in this guide, remember that the principles established here - methodical analysis, understanding of both digital and physical aspects, and creative problem-solving - apply broadly across all hardware security domains. The hardware hacker's journey is one of continuous learning, as each device disassembled and each signal analyzed reveals new insights into the complex interplay between hardware and software.
 
-In the next section, we'll explore [Wireless Communication Protocols](./05g-wireless-protocols.md), examining how the principles we've applied to wired networking extend to the invisible electromagnetic connections that increasingly dominate our connected world.
+In the next section, we'll explore [Wireless Communication Protocols](../wireless/index.md), examining how the principles we've applied to wired networking extend to the invisible electromagnetic connections that increasingly dominate our connected world.
