@@ -832,6 +832,6 @@ In the next section, we'll shift our focus to the [USB Protocol](./05-usb-protoc
 
 **Section: Wired Protocols**
 
-* Previous: [Spi Protocol](03-spi-protocol.md)
-* Next: [Usb Protocol](05-usb-protocol.md)
+* Previous: [SPI Protocol](03-spi-protocol.md)
+* Next: [USB Protocol](05-usb-protocol.md)
 * [Back to Main Index](../../../README.md)

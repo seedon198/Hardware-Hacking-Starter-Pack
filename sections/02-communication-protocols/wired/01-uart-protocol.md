@@ -499,6 +499,6 @@ In the next section, we'll explore [I²C Protocol](./02-i2c-protocol.md), anothe
 
 **Section: Wired Protocols**
 
-* Previous: [README](../../../README.md)
-* Next: [I2c Protocol](02-i2c-protocol.md)
+* Previous: [Protocol Overview](../index.md)
+* Next: [I²C Protocol](02-i2c-protocol.md)
 * [Back to Main Index](../../../README.md)

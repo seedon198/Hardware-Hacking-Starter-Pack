@@ -927,6 +927,6 @@ The most valuable takeaway is the structured approach to hardware analysis: begi
 
 **Section: Wired Protocols**
 
-* Previous: [Jtag Swd](04-jtag-swd.md)
+* Previous: [JTAG/SWD](04-jtag-swd.md)
 * Next: [Ethernet Protocols](06-ethernet-protocols.md)
 * [Back to Main Index](../../../README.md)

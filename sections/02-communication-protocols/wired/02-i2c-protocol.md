@@ -1127,6 +1127,6 @@ In the next section, we'll explore [SPI Protocol](./03-spi-protocol.md), another
 
 **Section: Wired Protocols**
 
-* Previous: [Uart Protocol](01-uart-protocol.md)
-* Next: [Spi Protocol](03-spi-protocol.md)
+* Previous: [UART Protocol](01-uart-protocol.md)
+* Next: [SPI Protocol](03-spi-protocol.md)
 * [Back to Main Index](../../../README.md)

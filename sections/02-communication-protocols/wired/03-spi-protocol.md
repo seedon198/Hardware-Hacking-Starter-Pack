@@ -1268,6 +1268,6 @@ In the next section, we'll explore [JTAG and SWD Protocols](./04-jtag-swd.md), w
 
 **Section: Wired Protocols**
 
-* Previous: [I2c Protocol](02-i2c-protocol.md)
-* Next: [Jtag Swd](04-jtag-swd.md)
+* Previous: [I²C Protocol](02-i2c-protocol.md)
+* Next: [JTAG/SWD](04-jtag-swd.md)
 * [Back to Main Index](../../../README.md)

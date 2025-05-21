@@ -691,6 +691,6 @@ Understanding RF fundamentals is essential for any hardware hacker working with 
 
 **Section: Wireless Protocols**
 
-* Previous: [README](../../../README.md)
-* Next: [Wifi](02-wifi.md)
+* Previous: [Wireless Protocols](index.md)
+* Next: [WiFi (IEEE 802.11)](02-wifi.md)
 * [Back to Main Index](../../../README.md)
