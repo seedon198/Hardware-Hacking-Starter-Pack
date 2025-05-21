@@ -22,137 +22,330 @@ In today's interconnected world, hardware security has become increasingly criti
 - **Personal Growth**: Develop a deeper understanding of the technology we use daily
 - **Career Advancement**: Specialized hardware security skills are in high demand
 
-## Table of Contents
+## Directory Organization
+
+This Hardware Hacker Starter Pack is organized into a logical folder structure to help you find content more easily:
+
+```
+sections/
+├── 01-foundations/           # Core knowledge for hardware security
+├── 02-communication-protocols/# Hardware interfaces and protocols
+│   ├── wired/                # Physical connection protocols
+│   └── wireless/             # RF and wireless communication
+├── 03-firmware/             # Firmware analysis techniques
+├── 04-attack-vectors/       # Hardware attack methodologies
+├── 05-reverse-engineering/  # Understanding unknown hardware
+├── 06-embedded-security/    # Securing embedded systems
+├── 07-specialized-domains/  # Mobile and IoT security
+└── 08-professional/         # Career development resources
+```
+
+## Content Overview
 
 <table>
   <tr>
-    <th colspan="2"><h3>📚 Foundations</h3></th>
-  </tr>
-  <tr>
-    <td><strong>01</strong></td>
-    <td><a href="./sections/01-introduction.md"><strong>Introduction to Hardware Hacking</strong></a><br>Core concepts, motivations, and the hardware hacking mindset</td>
-  </tr>
-  <tr>
-    <td><strong>02</strong></td>
-    <td><a href="./sections/02-lab-setup.md"><strong>Setting Up Your Hardware Hacking Lab</strong></a><br>Workspace organization, safety considerations, and essential equipment</td>
-  </tr>
-  <tr>
-    <td><strong>03</strong></td>
-    <td><a href="./sections/03-tools-equipment.md"><strong>Essential Tools & Equipment</strong></a><br>Detailed guide to measurement tools, soldering equipment, and specialized hardware</td>
-  </tr>
-  <tr>
-    <td><strong>04</strong></td>
-    <td><a href="./sections/04-basic-electronics.md"><strong>Basic Electronics for Hackers</strong></a><br>Electrical principles, component identification, and circuit analysis fundamentals</td>
+    <th>Category</th>
+    <th>Topics</th>
+    <th>Description</th>
+    <th>Key Contents</th>
+    <th>Difficulty</th>
   </tr>
   
+  <!-- Foundations -->
   <tr>
-    <th colspan="2"><h3>🔌 Core Techniques</h3></th>
+    <td rowspan="4"><strong>📚<br>Foundations</strong></td>
+    <td><a href="./sections/01-foundations/01-introduction.md"><strong>Introduction</strong></a></td>
+    <td>Core concepts and mindset</td>
+    <td>Hardware security fundamentals, threat models, approaches</td>
+    <td>Beginner</td>
   </tr>
   <tr>
-    <td><strong>05</strong></td>
-    <td>
-      <a href="./sections/05-communication-protocols.md"><strong>Hardware Communication Protocols</strong></a><br>Understanding how devices talk to each other
-      <ul>
-        <li><a href="./sections/05a-uart-protocol.md">UART Protocol</a> - Serial communication basics</li>
-        <li><a href="./sections/05b-i2c-protocol.md">I²C Protocol</a> - Two-wire interface exploration</li>
-        <li><a href="./sections/05c-spi-protocol.md">SPI Protocol</a> - High-speed synchronous communication</li>
-        <li><a href="./sections/05d-jtag-swd.md">JTAG and SWD</a> - Debugging interfaces and boundary scan</li>
-        <li><a href="./sections/05e-usb-protocol.md">USB Protocol</a> - Universal Serial Bus analysis</li>
-        <li><a href="./sections/05f-ethernet-protocols.md">Ethernet Protocols</a> - Network communication fundamentals</li>
-        <li><a href="./sections/05g-wireless-protocols.md">Wireless Protocols</a> - RF, Bluetooth, WiFi, and more</li>
-      </ul>
-    </td>
+    <td><a href="./sections/01-foundations/02-lab-setup.md"><strong>Lab Setup</strong></a></td>
+    <td>Creating your workspace</td>
+    <td>Safety, organization, equipment selection, budget considerations</td>
+    <td>Beginner</td>
   </tr>
   <tr>
-    <td><strong>06</strong></td>
-    <td><a href="./sections/06-firmware-analysis.md"><strong>Firmware Extraction & Analysis</strong></a><br>Methods to access and understand device code</td>
+    <td><a href="./sections/01-foundations/03-tools-equipment.md"><strong>Tools & Equipment</strong></a></td>
+    <td>Essential hardware</td>
+    <td>Multimeters, oscilloscopes, logic analyzers, soldering tools</td>
+    <td>Beginner</td>
   </tr>
   <tr>
-    <td><strong>07</strong></td>
-    <td>
-      <a href="./sections/07-attack-vectors.md"><strong>Hardware Attack Vectors</strong></a><br>Exploration of common hardware vulnerabilities
-      <ul>
-        <li><a href="./sections/07a-physical-access.md">Physical Access Attacks</a> - Direct hardware manipulation</li>
-        <li><a href="./sections/07b-side-channel.md">Side-Channel Attacks</a> - Exploiting information leakage</li>
-        <li><a href="./sections/07c-fault-injection.md">Fault Injection Techniques</a> - Deliberately causing errors</li>
-        <li><a href="./sections/07d-hardware-implants.md">Hardware Implants</a> - Physical modifications for persistent access</li>
-        <li><a href="./sections/07e-supply-chain-1.md">Supply Chain Security</a> - Vulnerabilities in hardware sourcing and distribution</li>
-      </ul>
-    </td>
+    <td><a href="./sections/01-foundations/04-basic-electronics.md"><strong>Basic Electronics</strong></a></td>
+    <td>Electrical fundamentals</td>
+    <td>Components, circuits, schematics, power considerations</td>
+    <td>Beginner</td>
   </tr>
   
+  <!-- Communication Protocols - Wired -->
   <tr>
-    <th colspan="2"><h3>🔬 Advanced Topics</h3></th>
+    <td rowspan="8"><strong>🔌<br>Wired<br>Protocols</strong></td>
+    <td><a href="./sections/02-communication-protocols/index.md"><strong>Protocol Overview</strong></a></td>
+    <td>Communication basics</td>
+    <td>Protocol selection, analysis methodology, common tools</td>
+    <td>Beginner</td>
   </tr>
   <tr>
-    <td><strong>08</strong></td>
-    <td>
-      <a href="./sections/08-reverse-engineering.md"><strong>Reverse Engineering Hardware</strong></a><br>Methodologies to understand unknown devices
-      <ul>
-        <li><a href="./sections/08a-re-fundamentals.md">Reverse Engineering Fundamentals</a> - Basic principles and approaches</li>
-        <li><a href="./sections/08b-pcb-analysis.md">PCB Analysis Techniques</a> - Analyzing printed circuit boards</li>
-        <li><a href="./sections/08c-component-id.md">Component Identification</a> - Recognizing and understanding parts</li>
-        <li><a href="./sections/08d-circuit-extraction.md">Circuit Extraction</a> - Recreating schematics from physical boards</li>
-        <li><a href="./sections/08e-advanced-techniques.md">Advanced RE Techniques</a> - Specialized methods and tools</li>
-      </ul>
-    </td>
+    <td><a href="./sections/02-communication-protocols/wired/01-uart-protocol.md"><strong>UART</strong></a></td>
+    <td>Serial communication</td>
+    <td>Baud rates, signal levels, debugging interfaces, console access</td>
+    <td>Beginner</td>
   </tr>
   <tr>
-    <td><strong>09</strong></td>
-    <td>
-      <a href="./sections/09-embedded-security.md"><strong>Embedded Device Security</strong></a><br>Securing hardware systems
-      <ul>
-        <li><a href="./sections/09a-secure-boot.md">Secure Boot and Trust Anchors</a> - Root of trust implementation</li>
-        <li><a href="./sections/09b-memory-protection.md">Memory Protection and Execution Security</a> - Safeguarding critical data</li>
-        <li><a href="./sections/09c-secure-communications.md">Secure Communications for Embedded Devices</a> - Protecting data in transit</li>
-        <li><a href="./sections/09d-physical-security.md">Physical Security Mechanisms</a> - Tamper resistance and detection</li>
-        <li><a href="./sections/09e-security-testing.md">Security Testing and Vulnerability Assessment</a> - Evaluation methodologies</li>
-      </ul>
-    </td>
+    <td><a href="./sections/02-communication-protocols/wired/02-i2c-protocol.md"><strong>I²C</strong></a></td>
+    <td>Two-wire interface</td>
+    <td>Address space, bus arbitration, sensor interfaces, sniffing</td>
+    <td>Beginner</td>
   </tr>
   <tr>
-    <td><strong>10</strong></td>
-    <td><a href="./sections/10-mobile-hacking.md"><strong>Mobile Device Hardware Hacking</strong></a><br>Smartphones and tablets security</td>
+    <td><a href="./sections/02-communication-protocols/wired/03-spi-protocol.md"><strong>SPI</strong></a></td>
+    <td>Synchronous serial</td>
+    <td>Clock synchronization, chip select, flash memory interfaces</td>
+    <td>Beginner</td>
   </tr>
   <tr>
-    <td><strong>11</strong></td>
-    <td><a href="./sections/11-iot-security.md"><strong>IoT Device Security</strong></a><br>Internet of Things vulnerabilities and protections</td>
+    <td><a href="./sections/02-communication-protocols/wired/04-jtag-swd.md"><strong>JTAG/SWD</strong></a></td>
+    <td>Debug interfaces</td>
+    <td>Boundary scan, debugging protocols, memory access, code extraction</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/02-communication-protocols/wired/05-usb-protocol.md"><strong>USB</strong></a></td>
+    <td>Universal Serial Bus</td>
+    <td>USB versions, device classes, packet analysis, USB attacks</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/02-communication-protocols/wired/06-ethernet-protocols.md"><strong>Ethernet</strong></a></td>
+    <td>Network communication</td>
+    <td>Physical layer, packet structure, analysis techniques</td>
+    <td>Intermediate</td>
   </tr>
   
+  <!-- Communication Protocols - Wireless -->
   <tr>
-    <th colspan="2"><h3>🚀 Professional Development</h3></th>
+    <td rowspan="7"><strong>📡<br>Wireless<br>Protocols</strong></td>
+    <td><a href="./sections/02-communication-protocols/wireless/index.md"><strong>Wireless Overview</strong></a></td>
+    <td>RF communication basics</td>
+    <td>Spectrum analysis, wireless security principles</td>
+    <td>Intermediate</td>
   </tr>
   <tr>
-    <td><strong>12</strong></td>
-    <td><a href="./sections/12-learning-path.md"><strong>Learning Path & Progression</strong></a><br>Structured approach to skill building</td>
+    <td><a href="./sections/02-communication-protocols/wireless/01-rf-fundamentals.md"><strong>RF Fundamentals</strong></a></td>
+    <td>Radio basics</td>
+    <td>Frequencies, modulation, antennas, signal analysis</td>
+    <td>Intermediate</td>
   </tr>
   <tr>
-    <td><strong>13</strong></td>
-    <td><a href="./sections/13-certifications.md"><strong>Certifications & Training</strong></a><br>Formal education options</td>
+    <td><a href="./sections/02-communication-protocols/wireless/02-wifi.md"><strong>WiFi</strong></a></td>
+    <td>Wireless networking</td>
+    <td>802.11 standards, authentication, encryption, attacks</td>
+    <td>Intermediate</td>
   </tr>
   <tr>
-    <td><strong>14</strong></td>
-    <td>
-      <a href="./sections/14-community-resources.md"><strong>Community Resources</strong></a><br>Connecting with other hardware hackers
-      <ul>
-        <li><a href="./sections/14a-forums-discussions.md">Forums and Discussion Platforms</a> - Where to ask questions</li>
-        <li><a href="./sections/14b-chat-events.md">Chat Platforms and Events</a> - Real-time interaction</li>
-        <li><a href="./sections/14c-content-publications.md">Content Platforms and Publications</a> - Books, blogs, and videos</li>
-        <li><a href="./sections/14d-opensource-tools.md">Open Source Projects and Tools</a> - Community-developed resources</li>
-      </ul>
-    </td>
+    <td><a href="./sections/02-communication-protocols/wireless/03-bluetooth.md"><strong>Bluetooth</strong></a></td>
+    <td>Short-range wireless</td>
+    <td>Pairing, BLE, sniffing, security vulnerabilities</td>
+    <td>Intermediate</td>
   </tr>
   <tr>
-    <td><strong>15</strong></td>
-    <td><a href="./sections/15-legal-ethical.md"><strong>Legal & Ethical Considerations</strong></a><br>Responsible disclosure and legal boundaries</td>
+    <td><a href="./sections/02-communication-protocols/wireless/04-zigbee.md"><strong>Zigbee</strong></a></td>
+    <td>Mesh networking</td>
+    <td>Network structure, smart home applications, security analysis</td>
+    <td>Intermediate</td>
   </tr>
   <tr>
-    <td><strong>16</strong></td>
-    <td><a href="./sections/16-project-ideas.md"><strong>Project Ideas</strong></a><br>Hands-on exercises to build skills</td>
+    <td><a href="./sections/02-communication-protocols/wireless/05-lora-lpwan.md"><strong>LoRa/LPWAN</strong></a></td>
+    <td>Long-range protocols</td>
+    <td>Low-power design, IoT applications, security considerations</td>
+    <td>Advanced</td>
   </tr>
   <tr>
-    <td><strong>17</strong></td>
-    <td><a href="./sections/17-glossary.md"><strong>Glossary</strong></a><br>Key terms and concepts defined</td>
+    <td><a href="./sections/02-communication-protocols/wireless/06-rfid-nfc.md"><strong>RFID/NFC</strong></a></td>
+    <td>Contactless systems</td>
+    <td>Reader/tag interaction, card cloning, access control systems</td>
+    <td>Intermediate</td>
+  </tr>
+  
+  <!-- Firmware -->
+  <tr>
+    <td rowspan="1"><strong>💾<br>Firmware</strong></td>
+    <td><a href="./sections/03-firmware/01-firmware-analysis.md"><strong>Firmware Analysis</strong></a></td>
+    <td>Code extraction & review</td>
+    <td>Extraction methods, binary analysis, vulnerability research</td>
+    <td>Intermediate</td>
+  </tr>
+  
+  <!-- Attack Vectors -->
+  <tr>
+    <td rowspan="6"><strong>🛠️<br>Attack<br>Vectors</strong></td>
+    <td><a href="./sections/04-attack-vectors/index.md"><strong>Attack Overview</strong></a></td>
+    <td>Vulnerability types</td>
+    <td>Attack methodologies, risk assessment, hardware threats</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/04-attack-vectors/01-physical-access.md"><strong>Physical Access</strong></a></td>
+    <td>Direct hardware attacks</td>
+    <td>Tamper techniques, bus snooping, memory extraction</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/04-attack-vectors/02-side-channel.md"><strong>Side-Channel</strong></a></td>
+    <td>Passive analysis</td>
+    <td>Power analysis, EM emissions, timing attacks, acoustic analysis</td>
+    <td>Advanced</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/04-attack-vectors/03-fault-injection.md"><strong>Fault Injection</strong></a> (<a href="./sections/04-attack-vectors/03-fault-injection-2.md">Part 2</a>)</td>
+    <td>Glitching techniques</td>
+    <td>Voltage glitching, clock manipulation, laser fault injection</td>
+    <td>Advanced</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/04-attack-vectors/04-hardware-implants.md"><strong>Hardware Implants</strong></a></td>
+    <td>Physical modifications</td>
+    <td>Backdoor circuits, rogue devices, detection techniques</td>
+    <td>Advanced</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/04-attack-vectors/05-supply-chain.md"><strong>Supply Chain</strong></a> (<a href="./sections/04-attack-vectors/05-supply-chain-2.md">Part 2</a>, <a href="./sections/04-attack-vectors/05-supply-chain-3.md">Part 3</a>)</td>
+    <td>Manufacturing threats</td>
+    <td>Component substitution, trojan circuits, counterfeit detection</td>
+    <td>Advanced</td>
+  </tr>
+  
+  <!-- Reverse Engineering -->
+  <tr>
+    <td rowspan="6"><strong>🔍<br>Reverse<br>Engineering</strong></td>
+    <td><a href="./sections/05-reverse-engineering/index.md"><strong>RE Overview</strong></a></td>
+    <td>Methodology basics</td>
+    <td>Approach to unknown hardware, documentation techniques</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/05-reverse-engineering/01-re-fundamentals.md"><strong>RE Fundamentals</strong></a></td>
+    <td>Core concepts</td>
+    <td>Documentation methods, workflow, non-destructive analysis</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/05-reverse-engineering/02-pcb-analysis.md"><strong>PCB Analysis</strong></a></td>
+    <td>Circuit board examination</td>
+    <td>Visual inspection, layer analysis, tracing circuits</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/05-reverse-engineering/03-component-id.md"><strong>Component ID</strong></a></td>
+    <td>Part identification</td>
+    <td>IC marking schemes, package types, component databases</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/05-reverse-engineering/04-circuit-extraction.md"><strong>Circuit Extraction</strong></a></td>
+    <td>Functional analysis</td>
+    <td>Schematic recreation, circuit function analysis</td>
+    <td>Advanced</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/05-reverse-engineering/05-advanced-techniques.md"><strong>Advanced Techniques</strong></a></td>
+    <td>Specialized methods</td>
+    <td>Decapsulation, microscopy, chip photography</td>
+    <td>Advanced</td>
+  </tr>
+  
+  <!-- Embedded Security -->
+  <tr>
+    <td rowspan="6"><strong>🔒<br>Embedded<br>Security</strong></td>
+    <td><a href="./sections/06-embedded-security/index.md"><strong>Security Principles</strong></a></td>
+    <td>Protective design</td>
+    <td>Threat modeling, security architecture, defense in depth</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/06-embedded-security/01-secure-boot.md"><strong>Secure Boot</strong></a></td>
+    <td>Trusted startup</td>
+    <td>Root of trust, code signing, boot verification</td>
+    <td>Advanced</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/06-embedded-security/02-memory-protection.md"><strong>Memory Protection</strong></a></td>
+    <td>Data security</td>
+    <td>Memory encryption, secure storage, anti-tampering</td>
+    <td>Advanced</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/06-embedded-security/03-secure-communications.md"><strong>Secure Communications</strong></a></td>
+    <td>Data transmission</td>
+    <td>Crypto implementations, key management, secure protocols</td>
+    <td>Advanced</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/06-embedded-security/04-physical-security.md"><strong>Physical Security</strong></a></td>
+    <td>Tamper resistance</td>
+    <td>Secure enclosures, tamper detection, protective measures</td>
+    <td>Intermediate</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/06-embedded-security/05-security-testing.md"><strong>Security Testing</strong></a></td>
+    <td>Validation methods</td>
+    <td>Test methodologies, security verification, penetration testing</td>
+    <td>Advanced</td>
+  </tr>
+  
+  <!-- Specialized Domains -->
+  <tr>
+    <td rowspan="2"><strong>📱<br>Specialized<br>Domains</strong></td>
+    <td><a href="./sections/07-specialized-domains/01-mobile-hacking.md"><strong>Mobile Security</strong></a></td>
+    <td>Phone/tablet hardware</td>
+    <td>Baseband processors, secure elements, biometric systems</td>
+    <td>Advanced</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/07-specialized-domains/02-iot-security.md"><strong>IoT Security</strong></a></td>
+    <td>Connected devices</td>
+    <td>Smart device security, cloud connections, privacy considerations</td>
+    <td>Advanced</td>
+  </tr>
+  
+  <!-- Professional Development -->
+  <tr>
+    <td rowspan="6"><strong>🚀<br>Professional<br>Development</strong></td>
+    <td><a href="./sections/08-professional/01-learning-path.md"><strong>Learning Path</strong></a></td>
+    <td>Skill progression</td>
+    <td>Knowledge roadmap, learning strategies, skill assessment</td>
+    <td>All Levels</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/08-professional/02-certifications.md"><strong>Certifications</strong></a></td>
+    <td>Formal education</td>
+    <td>Hardware security certifications, training programs, courses</td>
+    <td>All Levels</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/08-professional/03-community-resources.md"><strong>Community</strong></a></td>
+    <td>Knowledge sharing</td>
+    <td>Forums, chat platforms, conferences, online resources</td>
+    <td>All Levels</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/08-professional/04-legal-ethical.md"><strong>Legal & Ethics</strong></a></td>
+    <td>Responsible practice</td>
+    <td>Legal considerations, responsible disclosure, ethics</td>
+    <td>All Levels</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/08-professional/05-project-ideas.md"><strong>Project Ideas</strong></a></td>
+    <td>Practical exercises</td>
+    <td>Hands-on projects, skill-building activities, challenges</td>
+    <td>All Levels</td>
+  </tr>
+  <tr>
+    <td><a href="./sections/08-professional/06-glossary.md"><strong>Glossary</strong></a></td>
+    <td>Terminology</td>
+    <td>Hardware security terms, acronyms, concepts defined</td>
+    <td>All Levels</td>
   </tr>
 </table>
 
