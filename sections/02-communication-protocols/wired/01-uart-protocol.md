@@ -491,4 +491,4 @@ Mastering UART identification, connection, and analysis techniques establishes a
 
 As you progress in your hardware hacking journey, remember that responsible security research involves proper disclosure of vulnerabilities to manufacturers, allowing them to address issues before public revelation. The skills developed through UART exploration can contribute significantly to improving the security of the devices we increasingly depend upon in our connected world.
 
-In the next section, we'll explore [I²C Protocol](./05b-i2c-protocol.md), another common communication standard with different security implications.
+In the next section, we'll explore [I²C Protocol](./02-i2c-protocol.md), another common communication standard with different security implications.

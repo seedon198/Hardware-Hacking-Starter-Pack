@@ -8,11 +8,11 @@ This section explores hardware reverse engineering methodologies, from initial r
 
 Hardware reverse engineering encompasses many specialized techniques. We've organized this content into several focused articles:
 
-- [Reverse Engineering Fundamentals](./08a-re-fundamentals.md)
-- [PCB Analysis and Circuit Tracing](./08b-pcb-analysis.md)
-- [Component Identification](./08c-component-id.md)
-- [Circuit Extraction and Schematic Capture](./08d-circuit-extraction.md)
-- [Advanced Techniques: Decapsulation and Microprobing](./08e-advanced-techniques.md)
+- [Reverse Engineering Fundamentals](./01-re-fundamentals.md)
+- [PCB Analysis and Circuit Tracing](./02-pcb-analysis.md)
+- [Component Identification](./03-component-id.md)
+- [Circuit Extraction and Schematic Capture](./04-circuit-extraction.md)
+- [Advanced Techniques: Decapsulation and Microprobing](./05-advanced-techniques.md)
 
 Each article builds upon the previous, guiding you through the process of understanding unknown hardware from initial documentation to detailed functional analysis.
 
@@ -62,4 +62,4 @@ The journey of hardware reverse engineering begins with curiosity and careful ob
 
 Start with simpler devices as you build your skills, and don't hesitate to document your findings and share them with the community. Hardware hacking thrives on collaborative knowledge-sharing and the excitement of discovery.
 
-Ready to begin? Let's explore the [Reverse Engineering Fundamentals](./08a-re-fundamentals.md).
+Ready to begin? Let's explore the [Reverse Engineering Fundamentals](./01-re-fundamentals.md).

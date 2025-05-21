@@ -14,11 +14,11 @@ In this section, we'll explore embedded security from a hardware hacker's perspe
 
 To make this topic manageable, we've divided it into focused subsections:
 
-- [Secure Boot and Trust Anchors](./09a-secure-boot.md)
-- [Memory Protection and Execution Security](./09b-memory-protection.md)
-- [Secure Communications for Embedded Devices](./09c-secure-communications.md)
-- [Physical Security Mechanisms](./09d-physical-security.md)
-- [Security Testing and Vulnerability Assessment](./09e-security-testing.md)
+- [Secure Boot and Trust Anchors](./01-secure-boot.md)
+- [Memory Protection and Execution Security](./02-memory-protection.md)
+- [Secure Communications for Embedded Devices](./03-secure-communications.md)
+- [Physical Security Mechanisms](./04-physical-security.md)
+- [Security Testing and Vulnerability Assessment](./05-security-testing.md)
 
 Each section provides both theoretical understanding and practical guidance for implementing or evaluating embedded security.
 
@@ -230,4 +230,4 @@ Embedded system security requires balancing strong protection with the practical
 
 The following sections delve deeper into specific embedded security domains, from secure boot processes to physical protection mechanisms. Each section provides both theoretical understanding and practical implementation guidance for hardware hackers working with embedded systems.
 
-Let's begin by exploring [Secure Boot and Trust Anchors](./09a-secure-boot.md), the foundation upon which embedded device security is built.
+Let's begin by exploring [Secure Boot and Trust Anchors](./01-secure-boot.md), the foundation upon which embedded device security is built.

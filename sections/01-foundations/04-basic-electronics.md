@@ -875,4 +875,4 @@ The hardware security field rewards those who understand both the theoretical an
 
 Next, let's explore the communication protocols commonly found in hardware devices, building upon the electronic foundations established in this section. Understanding how devices talk to each other opens new avenues for security analysis and potential vulnerability discovery.
 
-Continue to [Hardware Communication Protocols](./05-communication-protocols.md).
+Continue to [Hardware Communication Protocols]../../sections/02-communication-protocols/index.md).

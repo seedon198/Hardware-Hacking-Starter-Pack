@@ -233,4 +233,4 @@ As hardware becomes increasingly embedded in critical infrastructure, medical de
 
 ---
 
-This concludes our exploration of hardware attack vectors. In the next section, we'll examine techniques for [Reverse Engineering Hardware](./08-reverse-engineering.md), which builds upon many of the concepts we've covered so far.
+This concludes our exploration of hardware attack vectors. In the next section, we'll examine techniques for [Reverse Engineering Hardware](../../sections/05-reverse-engineering/index.md), which builds upon many of the concepts we've covered so far.

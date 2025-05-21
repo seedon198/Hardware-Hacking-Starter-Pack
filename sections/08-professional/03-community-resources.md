@@ -56,7 +56,7 @@ The hardware hacking community offers resources in various formats, each with un
 In the following sections, we'll explore each of these resource types in detail. You'll find information about specific communities, platforms, and opportunities, along with guidance on how to effectively engage with them.
 
 See the following sub-sections for detailed information:
-- [Online Forums and Discussion Platforms](./14a-forums-discussions.md)
-- [Chat Platforms and Events](./14b-chat-events.md) 
-- [Content Platforms and Publications](./14c-content-publications.md)
-- [Open Source Projects and Tools](./14d-opensource-tools.md)
+- [Online Forums and Discussion Platforms](./03a-forums-discussions.md)
+- [Chat Platforms and Events](./03b-chat-events.md) 
+- [Content Platforms and Publications](./03c-content-publications.md)
+- [Open Source Projects and Tools](./03d-opensource-tools.md)
