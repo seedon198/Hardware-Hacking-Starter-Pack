@@ -11,27 +11,27 @@ At its essence, hardware hacking embodies the hacker ethos of deep curiosity and
 ```
            The Hardware Hacking Landscape
            
-           ┌───────────────────────────────────┐
-           │                                   │
-           │          SOFTWARE LAYER           │
-           │                                   │
-           ├───────────────────────────────────┤
-           │                                   │
-           │          FIRMWARE LAYER           │
-           │                                   │
-           ├───────────────────────────────────┤
-           │                                   │
-           │          HARDWARE LAYER           │
-           │                                   │
-           └───────────────────────────────────┘
+        ┌───────────────────────────────────┐
+        │                                   │
+        │          SOFTWARE LAYER           │
+        │                                   │
+        ├───────────────────────────────────┤
+        │                                   │
+        │          FIRMWARE LAYER           │
+        │                                   │
+        ├───────────────────────────────────┤
+        │                                   │
+        │          HARDWARE LAYER           │
+        │                                   │
+        └───────────────────────────────────┘
                           │
-         ┌───────────────┼───────────────┐
-         │               │               │
-┌────────┴─────────┐┌───┴───────┐┌──────┴──────────┐
-│                  ││           ││                  │
-│  Circuit Analysis ││  Signals  ││ Component Access │
-│                  ││           ││                  │
-└──────────────────┘└───────────┘└──────────────────┘
+          ┌───────────────┼───────────────┐
+          │               │               │
+┌─────────┴─────────┐┌────┴──────┐┌───────┴──────────┐
+│                   ││           ││                  │
+│ Circuit Analysis  ││  Signals  ││ Component Access │
+│                   ││           ││                  │
+└───────────────────┘└───────────┘└──────────────────┘
 ```
 
 ## Why Learn Hardware Hacking?
@@ -44,11 +44,11 @@ Professionally, the field offers expanding opportunities. Organizations increasi
 
 | Motivation | Description | Example Outcomes |
 |------------|-------------|------------------|
-| Security Research | Identifying and addressing vulnerabilities before exploitation | Discovering authentication bypasses in consumer devices |
-| Product Development | Creating more secure hardware through understanding attacks | Implementing tamper-evident enclosures |
-| Knowledge Integration | Combining electrical, software, and security skills | Building custom security assessment tools |
-| IoT Security | Securing the expanding ecosystem of connected devices | Hardening smart home systems against attack |
-| Career Development | Developing specialized expertise in growing demand | Security consulting and specialized penetration testing |
+| **Security Research** | Identifying and addressing vulnerabilities before exploitation | Discovering authentication bypasses in consumer devices |
+| **Product Development** | Creating more secure hardware through understanding attacks | Implementing tamper-evident enclosures |
+| **Knowledge Integration** | Combining electrical, software, and security skills | Building custom security assessment tools |
+| **IoT Security** | Securing the expanding ecosystem of connected devices | Hardening smart home systems against attack |
+| **Career Development** | Developing specialized expertise in growing demand | Security consulting and specialized penetration testing |
 
 ## Core Concepts in Hardware Hacking
 
