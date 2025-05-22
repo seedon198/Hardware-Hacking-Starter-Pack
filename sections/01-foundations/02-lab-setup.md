@@ -11,17 +11,17 @@ The physical environment forms the foundation of your hardware hacking practice.
 
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  ┌──────────────┐  ┌───────────────┐  ┌─────────────┐  │
-│  │              │  │               │  │             │  │
-│  │ Test Devices │  │  Work Area    │  │ Computer    │  │
-│  │              │  │               │  │ Station     │  │
-│  └──────────────┘  └───────────────┘  └─────────────┘  │
+│  ┌──────────────┐  ┌───────────────┐  ┌─────────────┐   │
+│  │              │  │               │  │             │   │
+│  │ Test Devices │  │  Work Area    │  │ Computer    │   │
+│  │              │  │               │  │ Station     │   │
+│  └──────────────┘  └───────────────┘  └─────────────┘   │
 │                                                         │
-│  ┌──────────────┐  ┌───────────────┐  ┌─────────────┐  │
-│  │              │  │               │  │             │  │
-│  │   Storage    │  │  Soldering    │  │ Test        │  │
-│  │              │  │  Station      │  │ Equipment   │  │
-│  └──────────────┘  └───────────────┘  └─────────────┘  │
+│  ┌──────────────┐  ┌───────────────┐  ┌─────────────┐   │
+│  │              │  │               │  │             │   │
+│  │   Storage    │  │  Soldering    │  │ Test        │   │
+│  │              │  │  Station      │  │ Equipment   │   │
+│  └──────────────┘  └───────────────┘  └─────────────┘   │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -75,27 +75,10 @@ Cutting tools including fine wire cutters, precision knives, and small scissors 
 
 Magnification systems overcome the limitations of human vision when working with miniaturized modern electronics. Options range from simple magnifying glasses to digital microscopes with image capture capabilities. The ideal solution provides hands-free operation, allowing you to work with tools while maintaining visual clarity. USB microscopes offer the additional benefit of documenting your work through screenshots and videos.
 
-```
-     Essential Hand Tools for Hardware Hacking
-     
-     ┌───────────────────┐  ┌───────────────────┐
-     │   Screwdrivers    │  │     Tweezers      │
-     │                   │  │                   │
-     │    ┌─┐  ┌──┐     │  │    /\      /─\   │
-     │    │ │  │++│     │  │   /  \    /   \  │
-     │    │ │  │++│     │  │  /    \__/     \ │
-     │    └─┘  └──┘     │  │                   │
-     └───────────────────┘  └───────────────────┘
+### Essential Hand Tools for Hardware Hacking
 
-     ┌───────────────────┐  ┌───────────────────┐
-     │  Opening Tools    │  │  Magnification    │
-     │                   │  │                   │
-     │   ───────────    │  │     ┌─────┐       │
-     │  /           \   │  │     │  o  │       │
-     │  \___________/   │  │     └─────┘       │
-     │                   │  │                   │
-     └───────────────────┘  └───────────────────┘
-```
+![Essential Hand Tools for Hardware Hacking](./../../assets/01/01-02-01.svg)
+
 
 ### Soldering and Rework Equipment
 
@@ -131,12 +114,12 @@ Bridging the gap between your computer and target hardware devices requires spec
         │                                 │
         │     Interface Adapters          │
         │                                 │
-        │  ┌─────────┐     ┌─────────┐   │
-        │  │         │     │         │   │
-        │  │ Protocol│     │ Level   │   │
-        │  │ Convert │     │ Shifting│   │
-        │  │         │     │         │   │
-        │  └─────────┘     └─────────┘   │
+        │  ┌─────────┐     ┌─────────┐    │
+        │  │         │     │         │    │
+        │  │ Protocol│     │ Level   │    │
+        │  │ Convert │     │ Shifting│    │
+        │  │         │     │         │    │
+        │  └─────────┘     └─────────┘    │
         │                                 │
         └─────────────────────────────────┘
 ```

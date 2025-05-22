@@ -14,18 +14,18 @@ Hardware systems communicate through electrical signals that remain invisible wi
      │  Observation            Information Density  │
      │     Level                                    │
      │                                              │
-     │  ┌──────────────┐         Low               │
-     │  │ Multimeter   │          │               │
-     │  └──────────────┘          │               │
-     │                            │               │
-     │  ┌──────────────┐          │               │
-     │  │ Oscilloscope │          │               │
-     │  └──────────────┘          │               │
-     │                            │               │
-     │  ┌──────────────┐          │               │
-     │  │ Logic        │          │               │
-     │  │ Analyzer     │          ▼               │
-     │  └──────────────┘         High              │
+     │  ┌──────────────┐         Low                │
+     │  │ Multimeter   │          │                 │
+     │  └──────────────┘          │                 │
+     │                            │                 │
+     │  ┌──────────────┐          │                 │
+     │  │ Oscilloscope │          │                 │
+     │  └──────────────┘          │                 │
+     │                            │                 │
+     │  ┌──────────────┐          │                 │
+     │  │ Logic        │          │                 │
+     │  │ Analyzer     │          ▼                 │
+     │  └──────────────┘         High               │
      │                                              │
      └──────────────────────────────────────────────┘
 ```
@@ -68,15 +68,15 @@ While logic analyzers excel at digital protocol analysis, oscilloscopes reveal t
      High  │     ■■■■■■■■■■       ■■■■■■■■■■■■■■
            │
      Low   │■■■■■             ■■■■■          ■■■
-           └─────────────────────────────────────
+           └─────────────────────────────────────────
                                            Time
      
      Same Signal - Analog View (Oscilloscope)
      
-     High  │      /\_____       /\_____________
-           │     /        \     /                \
-           │    /          \___/                  \
-     Low   │___/                                   \___
+     High  │      /\_____        /\_____________
+           │     /        \     /               \
+           │    /          \___/                 \
+     Low   │___/                                  \__
            └─────────────────────────────────────────
                                            Time
      
@@ -103,12 +103,12 @@ Quality soldering equipment forms the foundation for successful hardware modific
     ┌─────────────────────────────────────────────────────┐
     │                                                     │
     │   Control Unit             Handpiece                │
-    │  ┌──────────────┐         ┌──────────────┐         │
-    │  │ ┌──────────┐ │         │              │         │
-    │  │ │ 350°C    │ │         │   ─────┐    │         │
-    │  │ └──────────┘ │◄───────►│        └───►│         │
-    │  │ ┌┐ ┌┐ ┌┐ ┌┐  │   Cable │              │         │
-    │  │ └┘ └┘ └┘ └┘  │         └──────────────┘         │
+    │  ┌──────────────┐         ┌──────────────┐          │
+    │  │ ┌──────────┐ │         │              │          │
+    │  │ │ 350°C    │ │         │   ─────┐     │          │
+    │  │ └──────────┘ │◄───────►│        └───► │          │
+    │  │ ┌┐ ┌┐ ┌┐ ┌┐  │   Cable │              │          │
+    │  │ └┘ └┘ └┘ └┘  │         └──────────────┘          │
     │  └──────────────┘                                   │
     │                                                     │
     │                  Stand                              │
@@ -156,25 +156,25 @@ Serial interfaces represent the most fundamental communication channel in embedd
      
       Computer              Target Device
      ┌─────────┐          ┌─────────┐
-     │           │          │           │
-     │    USB    │          │   UART    │
-     │           │          │           │
+     │         │          │         │
+     │    USB  │          │   UART  │
+     │         │          │         │
      └────┴────┘          └────┴────┘
-           │                      │
-           ▼                      ▼
-      ┌────────────────────────┐
-      │                            │
-      │     USB-UART Adapter        │
-      │  ┌───────────────────┐  │
-      │  │  ┌─────┐ ┌─────┐  │  │
-      │  │  │Chip │ │Level │  │  │
-      │  │  └─────┘ └─────┘  │  │
-      │  └───────────────────┘  │
-      │                            │
-      └────────────────────────┘
-         TX→               ←RX
-         RX←               →TX
-         GND───────────────GND
+          │                    │
+          ▼                    ▼
+       ┌──────────────────────────┐
+       │                          │
+       │     USB-UART Adapter     │
+       │  ┌───────────────────┐   │
+       │  │  ┌─────┐ ┌─────┐  │   │
+       │  │  │Chip │ │Level│  │   │
+       │  │  └─────┘ └─────┘  │   │
+       │  └───────────────────┘   │
+       │                          │
+       └──────────────────────────┘
+          TX→               ←RX
+          RX←               →TX
+          GND───────────────GND
 ```
 
 When selecting a USB-UART adapter, several features determine its utility for hardware hacking. Multiple voltage level support (typically 3.3V and 5V) enables interfacing with various device generations without damaging them. Hardware flow control support (RTS/CTS lines) allows communication with devices requiring these signals for proper operation. Multiple serial interface capabilities on a single adapter reduce the need for different tools when working with various targets. Driver compatibility with your operating system ensures reliable operation without troubleshooting overhead.
@@ -220,27 +220,27 @@ The Bus Pirate represents perhaps the most versatile dedicated hardware hacking 
 ```
     Bus Pirate Functionality Overview
     
-    ┌──────────────────────────────────────────────┐
-    │                                                  │
-    │                 Bus Pirate                       │
-    │                                                  │
-    │  ┌──────────────┐    ┌───────────────┐     │
-    │  │ USB Interface │    │ Protocol Modes │     │
-    │  │              │    │ - I²C         │     │
-    │  └──────────────┘    │ - SPI         │     │
-    │                       │ - UART        │     │
-    │  ┌──────────────┐    │ - 1-Wire      │     │
-    │  │ Measurement   │    │ - JTAG        │     │
-    │  │ - Voltage     │    └───────────────┘     │
-    │  │ - Frequency   │                          │
-    │  └──────────────┘    ┌───────────────┐     │
-    │                       │ Configuration  │     │
-    │  ┌──────────────┐    │ - Pull-ups     │     │
-    │  │ Macros        │    │ - Power output │     │
-    │  │ - Scripting   │    │ - Pin direction│     │
-    │  └──────────────┘    └───────────────┘     │
-    │                                                  │
-    └──────────────────────────────────────────────┘
+    ┌────────────────────────────────────────────────┐
+    │                                                │
+    │                 Bus Pirate                     │
+    │                                                │
+    │  ┌────────────────┐    ┌───────────────┐       │
+    │  │ USB Interface  │    │ Protocol Modes│       │
+    │  │                │    │ - I²C         │       │
+    │  └────────────────┘    │ - SPI         │       │
+    │                        │ - UART        │       │
+    │  ┌──────────────┐      │ - 1-Wire      │       │
+    │  │ Measurement  │      │ - JTAG        │       │
+    │  │ - Voltage    │      └───────────────┘       │
+    │  │ - Frequency  │                              │
+    │  └──────────────┘      ┌────────────────┐      │
+    │                        │ Configuration  │      │
+    │  ┌──────────────┐      │ - Pull-ups     │      │
+    │  │ Macros       │      │ - Power output │      │
+    │  │ - Scripting  │      │ - Pin direction│      │
+    │  └──────────────┘      └────────────────┘      │
+    │                                                │
+    └────────────────────────────────────────────────┘
 ```
 
 The Bus Pirate's capabilities extend across multiple domains that make it remarkably versatile for hardware exploration. Protocol support encompasses most common embedded communication standards including I²C, SPI, UART, 1-Wire, and JTAG, allowing interaction with almost any digital component without requiring separate adapters for each protocol. Built-in voltage measurement provides quick diagnostic capabilities without switching to a separate multimeter. Scripting features automate repetitive operations through macros and programmable sequences. Configurable pull-up resistors eliminate the need for external components when working with open-collector or open-drain interfaces that require them.
@@ -276,24 +276,24 @@ Software Defined Radio (SDR) represents perhaps the most revolutionary developme
        v                                      v
     ┌──────────┐    ┌──────────┐    ┌──────────────────┐
     │  Antenna │────│   SDR    │────│ Computer Running │
-    │          │    │ Hardware │    │   SDR Software  │
+    │          │    │ Hardware │    │   SDR Software   │
     └──────────┘    └──────────┘    └──────────────────┘
                          |                   |
                          v                   v
                     ┌──────────┐    ┌──────────────────┐
-                    │ Sampling │    │ Signal Processing │
+                    │ Sampling │    │ Signal Processing│
                     │   ADC    │    │    Demodulation  │
                     └──────────┘    │    Decoding      │
-                         |          │    Analysis       │
+                         |          │    Analysis      │
                          v          └──────────────────┘
                     ┌──────────┐             |
                     │  DAC     │             v
-                    │(TX-only) │    ┌──────────────────┐
+                    │(TX-only) │    ┌───────────────────┐
                     └──────────┘    │    Applications   │
                                     │  - Visualization  │
                                     │  - Protocol anal. │
                                     │  - Signal capture │
-                                    └──────────────────┘
+                                    └───────────────────┘
 ```
 
 When selecting an SDR for hardware hacking, several technical specifications determine its capabilities and appropriate applications. The frequency range dictates which wireless systems you can investigate, from low-frequency RFID and key fobs to high-frequency satellite communications. Sample rate determines the bandwidth of signals you can capture—higher sample rates allow for wider signal analysis but require more processing power. Bit depth affects dynamic range and sensitivity, with higher bit depth allowing better discrimination between weak signals and noise. Transmit capability (found only in more advanced models) enables not just passive monitoring but active testing and interaction with wireless systems.
@@ -315,21 +315,21 @@ While specialized measurement and analysis tools provide the means to observe an
 ```
     Development Board Applications in Hardware Hacking
     
-    ┌──────────────────────────────────────────────┐
-    │                                                  │
-    │             Development Boards                  │
-    │                                                  │
+    ┌────────────────────────────────────────────────┐
+    │                                                │
+    │             Development Boards                 │
+    │                                                │
     │  ┌───────────────────┐    ┌───────────────┐    │
-    │  │  Custom Tool     │    │  Target for    │    │
-    │  │  Development     │    │  Practice      │    │
+    │  │  Custom Tool      │    │  Target for   │    │
+    │  │  Development      │    │  Practice     │    │
     │  └───────────────────┘    └───────────────┘    │
-    │       ↑  ↓                ↑  ↓            │
+    │           ↑  ↓                  ↑  ↓           │
     │  ┌───────────────────┐    ┌───────────────┐    │
-    │  │  Signal         │    │  Protocol     │    │
-    │  │  Generation     │    │  Emulation    │    │
+    │  │  Signal           │    │  Protocol     │    │
+    │  │  Generation       │    │  Emulation    │    │
     │  └───────────────────┘    └───────────────┘    │
-    │                                                  │
-    └──────────────────────────────────────────────┘
+    │                                                │
+    └────────────────────────────────────────────────┘
 ```
 
 ### Beginner-Friendly Development Platforms
@@ -391,27 +391,27 @@ For beginners seeking structured learning experiences, dedicated educational pla
 Beyond the core hardware hacking tools and equipment, an array of supporting accessories and consumable supplies plays a critical role in practical hardware security work. These items may seem minor compared to digital oscilloscopes or logic analyzers, but their absence can completely halt progress on otherwise straightforward tasks. A well-stocked inventory of these supporting materials transforms frustrating roadblocks into smooth workflow transitions.
 
 ```
-    Hardware Hacking Accessories Ecosystem
+      Hardware Hacking Accessories Ecosystem
     
-    ┌──────────────────────────────────────────────┐
-    │                                                  │
-    │             Accessories Ecosystem               │
-    │                                                  │
-    │  ┌──────────────┐    ┌───────────────┐     │
-    │  │ Connectivity  │    │ Hand Tools    │     │
-    │  │ - Wires      │    │ - Precision   │     │
-    │  │ - Adapters   │    │ - Opening     │     │
-    │  │ - Connectors │    │ - Holding     │     │
-    │  └──────────────┘    └───────────────┘     │
-    │       ↑  ↓                ↑  ↓            │
-    │  ┌──────────────┐    ┌───────────────┐     │
-    │  │ Consumables  │    │ Organization  │     │
-    │  │ - Materials  │    │ - Storage     │     │
-    │  │ - Chemicals  │    │ - Transport   │     │
-    │  │ - Disposables│    │ - Labeling    │     │
-    │  └──────────────┘    └───────────────┘     │
-    │                                                  │
-    └──────────────────────────────────────────────┘
+    ┌─────────────────────────────────────────┐
+    │                                         │
+    │             Accessories Ecosystem       │
+    │                                         │
+    │  ┌──────────────┐    ┌───────────────┐  │
+    │  │ Connectivity │    │ Hand Tools    │  │
+    │  │ - Wires      │    │ - Precision   │  │
+    │  │ - Adapters   │    │ - Opening     │  │
+    │  │ - Connectors │    │ - Holding     │  │
+    │  └──────────────┘    └───────────────┘  │
+    │       ↑  ↓                ↑  ↓          │
+    │  ┌──────────────┐    ┌───────────────┐  │
+    │  │ Consumables  │    │ Organization  │  │
+    │  │ - Materials  │    │ - Storage     │  │
+    │  │ - Chemicals  │    │ - Transport   │  │
+    │  │ - Disposables│    │ - Labeling    │  │
+    │  └──────────────┘    └───────────────┘  │
+    │                                         │
+    └─────────────────────────────────────────┘
 ```
 
 ### Connection & Interface Accessories
@@ -535,30 +535,30 @@ The path to assembling a comprehensive hardware hacking toolkit typically unfold
     Hardware Hacking Toolkit Evolution
     
     ╔════════════════════════════════════════╗
-    ║                                            ║
-    ║          Toolkit Progression              ║
-    ║                                            ║
-    ╠═══════════╦═══════════╦════════════════╣
-    ║ STARTER    ║ INTERMEDIATE ║ ADVANCED        ║
-    ╠═══════════╦═══════════╦════════════════╣
-    ║ Multimeter  ║ Logic       ║ Oscilloscope     ║
-    ║            ║ Analyzer    ║                 ║
-    ╠═══════════╦═══════════╦════════════════╣
-    ║ Soldering   ║ Soldering   ║ Specialized      ║
-    ║ Iron       ║ Station     ║ Tools (SDR,      ║
-    ║            ║ + Hot Air   ║ Proxmark3)       ║
-    ╠═══════════╦═══════════╦════════════════╣
-    ║ USB-UART    ║ Bus Pirate   ║ Lab Power        ║
-    ║ Adapter    ║ + Debuggers ║ Supply           ║
-    ╠═══════════╦═══════════╦════════════════╣
-    ║ Hand Tools  ║ Programmers ║ Digital          ║
-    ║            ║            ║ Microscope       ║
-    ╠═══════════╦═══════════╦════════════════╣
-    ║ Dev Board   ║            ║ Professional     ║
-    ║ + Breadboard║            ║ Test Equipment   ║
-    ╠═══════════╩═══════════╩════════════════╣
-    ║  $100-200     $300-700      $1000+        ║
-    ║                                            ║
+    ║                                        ║
+    ║          Toolkit Progression           ║
+    ║                                        ║
+    ╠═══════════╦══════════════╦═════════════╣
+    ║ STARTER   ║ INTERMEDIATE ║ ADVANCED    ║
+    ╠═══════════╦══════════════╦═════════════╣
+    ║ Multimeter║ Logic        ║ Oscilloscope║
+    ║           ║ Analyzer     ║             ║
+    ╠═══════════╦══════════════╦═════════════╣
+    ║ Soldering ║ Soldering    ║ Specialized ║
+    ║ Iron      ║ Station      ║ Tools (SDR, ║
+    ║           ║ + Hot Air    ║ Proxmark3)  ║
+    ╠═══════════╦══════════════╦═════════════╣
+    ║ USB-UART  ║ Bus Pirate   ║ Lab Power   ║
+    ║ Adapter   ║ + Debuggers  ║ Supply      ║
+    ╠═══════════╦══════════════╦═════════════╣
+    ║ Hand Tools║ Programmers  ║ Digital     ║
+    ║           ║              ║ Microscope  ║
+    ╠═══════════╦══════════════╦═════════════╣
+    ║ Dev Board ║              ║ Professional║
+    ║ Breadboard║              ║ Equipment   ║
+    ╠═══════════╩══════════════╩═════════════╣
+    ║  $100-200     $300-700      $1000+     ║
+    ║                                        ║
     ╚════════════════════════════════════════╝
 ```
 
