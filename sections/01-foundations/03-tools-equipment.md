@@ -65,9 +65,9 @@ While logic analyzers excel at digital protocol analysis, oscilloscopes reveal t
      
      Digital View (Logic Analyzer)
      
-     High  │     ■■■■■■■■■■       ■■■■■■■■■■■■■■
+     High  │     ■■■■■■■■■■     ■■■■■■■■■■■■■■■
            │
-     Low   │■■■■■             ■■■■■          ■■■
+     Low   │■■■■■          ■■■■■               ■■■■■
            └─────────────────────────────────────────
                                            Time
      
