@@ -345,4 +345,6 @@ Each of these exercises should be performed on hardware you legally own or have 
 **Section: Communication Protocols**
 
 * Previous: [README](../../README.md)
+* Next: [Wired Protocols - UART](./wired/01-uart-protocol.md)
+* Next: [Wireless Protocols](./wireless/index.md)
 * [Back to Main Index](../../README.md)
