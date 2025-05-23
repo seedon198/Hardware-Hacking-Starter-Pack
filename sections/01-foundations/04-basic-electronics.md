@@ -6,20 +6,20 @@ Every hardware hack begins with an understanding of the fundamental electronic p
      Electronic Fundamentals Framework
      
      ┌──────────────────────────────────────────┐
-     │                                              │
-     │         HARDWARE HACKING FOUNDATION          │
-     │                                              │
-     └───────────────┤──────────────────────┘
-               │                       │
-     ┌──────────╦───────────┤─────────────────┐
-     │ Electrical ║ Components and │ Circuit Analysis │
-     │ Principles ║ Their Functions │ & Measurement   │
-     └──────────╩───────────┤─────────────────┘
-         │          │            │
-     ┌───┬───────┐ ┌──────────┐ ┌──────────────┐
-     │ V │ I │ R │ │  Active &   │ │ Signals, Test  │
-     │   │   │   │ │  Passive    │ │ Points & Tools │
-     └───┴───┴───┘ └──────────┘ └──────────────┘
+     │                                          │
+     │         HARDWARE HACKING FOUNDATION      │
+     │                                          │
+     └──────────────────────────────────────────┘
+                           │
+   ┌────────────╦──────────┴─────╦─────────────────┐
+   │ Electrical ║ Components and ║ Circuit Analysis│
+   │ Principles ║ Their Functions║ & Measurement   │
+   └────────────╩────────────────╩─────────────────┘
+           │              │               │
+     ┌───┬───────┐  ┌──────────┐  ┌───────────────┐
+     │ V │ I │ R │  │ Active & │  │ Signals, Test │
+     │   │   │   │  │ Passive  │  │ Points & Tools│
+     └───┴───┴───┘  └──────────┘  └───────────────┘
 ```
 
 ## Fundamental Concepts
@@ -49,30 +49,30 @@ The mathematical relationships between voltage, current, and resistance form pre
 ```
     Ohm's Law & Power Relationships
     
-            Voltage (V)
-               │
-               ▼
+          Voltage (V)
+              │
+              ▼
     ┌───────────────────┐
     │                   │
-    │       V = I × R   │
+    │      V = I × R    │
     │                   │
     └───────────────────┘
         ▲           ▲
         │           │
         │           │
-   Current (I)  Resistance (R)
+  Current (I)  Resistance (R)
         │           │
         │           │
         ▼           ▼
     ┌───────────────────┐
     │                   │
-    │      P = V × I    │
+    │     P = V × I     │
     │                   │
     └───────────────────┘
                │
                ▼
-            Power (P)
-             (Watts)
+           Power (P)
+            (Watts)
 ```
 
 **Ohm's Law** (V = I × R) defines the fundamental relationship between voltage, current, and resistance. This elegant formula can be rearranged to solve for any of the three variables: I = V/R or R = V/I. In hardware security research, Ohm's Law enables critical calculations for safe and effective device interaction. For example, determining the appropriate current-limiting resistor value when probing unknown test points prevents accidental damage to sensitive components. It also allows calculation of expected voltage drops across components, helping identify potential circuit vulnerabilities where excessive voltage might appear across inadequately rated components.
@@ -86,21 +86,23 @@ Electronic systems communicate through signals that broadly fall into two catego
 ```
     Digital vs. Analog Signal Comparison
     
-    Digital Signal               Analog Signal
-    ┌──────────────────┐    ┌──────────────────┐
-    │       5V              │    │    Voltage      /\│
-    │                       │    │              /  \│
-    │   ▄▄▄▄    ▄▄▄▄     │    │             /    \│
-    │   ████    ████     │    │            /      \│
-    │   ████    ████     │    │  ________/        \│
-    │   ████    ████     │    │                      \│
-    │                       │    │                       \│
-    │       0V              │    │                        \│
-    │   Time →              │    │   Time →               │
-    └──────────────────┘    └──────────────────┘
+       Digital Signal            Analog Signal
+    ┌──────────────────┐       ┌───────────────┐
+    │       5V         │       │    Voltage ↑  │
+    │                  │       │               │
+    │   ▄▄▄▄    ▄▄▄▄   │       │      /\       │
+    │   ████    ████   │       │     /  \      │
+    │   ████    ████   │       │    /    \     │
+    │   ████    ████   │       │   /      \    │
+    │   ████    ████   │       │  /        \   │
+    │   ████    ████   │       │ /          \  │
+    │                  │       │               │
+    │       0V         │       │               │
+    │     Time →       │       │     Time →    │
+    └──────────────────┘       └───────────────┘
     Discrete states (1/0)      Continuous value range
-    Clock-synchronized          Time and amplitude
-    Protocol-defined            Rich information content
+    Clock-synchronized         Time and amplitude
+    Protocol-defined           Rich information content
 ```
 
 | Signal Type | Characteristics | Hardware Hacking Relevance | Analysis Tools |
@@ -120,23 +122,24 @@ The boundary between analog and digital domains represents a particularly intere
 
 Electronic devices consist of components that manipulate electrical signals in predictable ways. For hardware hackers, understanding component behavior, limitations, and common applications provides the foundation for analyzing circuits and identifying potential security vulnerabilities.
 
-```
-    Component Categories in Hardware Hacking
-    
-                   Electronic Components
-                   ┌────────┬─────────┐
-                   │         │           │
-                   │         │           │
-            ┌────────┘         └─────────┐
-            │                                 │
-    ┌───────┬───────┐    ┌───────┬───────┬───────┐
-    │ Passive │         │    │ Diodes  │ Trans-  │  ICs   │
-    │         │         │    │         │ istors │        │
-    └───────┘         ┘    └───────┴───────┴───────┘
-    ┌────┬────┬─────┐
-    │ R  │  C │  L  │
-    │    │    │     │
-    └────┴────┴─────┘
+```ascii
+          Component Categories in Hardware Hacking
+
+                   ┌─────────────────────────┐
+                   │   Electronic Components │
+                   └────────────┬────────────┘
+                                │
+              ┌─────────────────┴────────────────┐
+              │                                  │
+     ┌────────▼─────────┐              ┌─────────▼───────────┐
+     │   Passive        │              │     Active          │
+     └────────┬─────────┘              └─────────┬───────────┘
+              │                                  │
+    ┌─────────▼────────┐               ┌────────▼─────────────┐
+    │ Resistor (R)     │               │ Diodes               │
+    │ Capacitor (C)    │               │ Transistors          │
+    │ Inductor (L)     │               │ Integrated Circuits  │
+    └──────────────────┘               └──────────────────────┘
 ```
 
 ### Passive Components: The Foundation Elements
@@ -187,26 +190,26 @@ Circuit diagrams—also called schematics—represent the language of hardware d
              ┌────────┴───────┐
              │                │
     ┌────────▼───────┐ ┌──────▼──────────┐
-    │   Component    │ │   Connection     │
-    │ Identification │ │    Analysis      │
+    │   Component    │ │   Connection    │
+    │ Identification │ │    Analysis     │
     └────────┬───────┘ └──────┬──────────┘
              │                │
         ┌────▼────┐      ┌────▼─────┐
-        │ Symbols │      │  Signal   │
-        │ Types   │      │   Flow    │
-        │ Values  │      │  Power    │
-        └─────────┘      │ Ground    │
-                         └──────────┐
-                                    │
-                          ┌─────────▼───────┐
-                          │ Functional Block │
-                          │ Identification   │
-                          └─────────┬───────┘
-                                    │
-                          ┌─────────▼───────┐
-                          │ Security-Critical│
-                          │    Circuits      │
-                          └─────────────────┘
+        │ Symbols │      │  Signal  │
+        │ Types   │      │   Flow   │
+        │ Values  │      │  Power   │
+        └─────────┘      │ Ground   │
+                         └────┬─────┘
+                              │
+                     ┌────────▼─────────┐
+                     │ Functional Block │
+                     │ Identification   │
+                     └────────┬─────────┘
+                              │
+                     ┌────────▼─────────┐
+                     │ Security-Critical│
+                     │    Circuits      │
+                     └──────────────────┘
 ```
 
 ### Schematic Symbols: The Visual Vocabulary
@@ -233,16 +236,16 @@ Once component symbols are understood, circuit analysis becomes a methodical pro
 ```
     Signal Path Analysis Example
 
-    Power Input     Regulation        Processing      Output Interface
+    Power Input      Regulation      Processing    Output Interface
     ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
-    │ Connector │───►Regulator │───►Processor │───►Interface │
+    │ Connector│───►│Regulator │───►│Processor │───►│Interface │
     │          │    │ Circuit  │    │    IC    │    │Controller│
     └──────────┘    └────┬─────┘    └────┬─────┘    └────┬─────┘
-           │             │                │               │
-    ┌──────▼─────┐  ┌────▼─────┐     ┌───▼────┐     ┌───▼────┐
+          │              │               │               │
+    ┌─────▼──────┐  ┌────▼─────┐     ┌───▼────┐     ┌────▼────┐
     │Protection  │  │ Filter   │     │ Memory │     │Physical │
     │ Components │  │Capacitors│     │  ICs   │     │Interface│
-    └────────────┘  └──────────┘     └────────┘     └────────┘
+    └────────────┘  └──────────┘     └────────┘     └─────────┘
 ```
 
 Effective circuit analysis begins with identifying major functional blocks and understanding the overall system architecture. Power inputs and regulation circuits typically appear at the left or top of schematics, followed by processing components (microcontrollers, memory, interface ICs) and output stages. Following signal paths from input to output reveals how information flows through the system and identifies critical nodes where security mechanisms might be implemented or potentially bypassed.
@@ -282,17 +285,17 @@ Every electronic device contains physical access points designed for manufacturi
     Common Hardware Access Points
     
                 Electronic Device
-    ┌───────────────────────────────────────┐
-    │                                         │
-    │  ┌────────────┐ ┌───────────┐ ┌──────────┐  │
-    │  │ Test Points │ │  Headers  │ │  Debug    │  │
-    │  └────────────┘ └───────────┘ └──────────┘  │
+    ┌──────────────────────────────────────────────┐
+    │                                              │
+    │  ┌─────────────┐ ┌───────────┐ ┌──────────┐  │
+    │  │ Test Points │ │  Headers  │ │   Debug  │  │
+    │  └─────────────┘ └───────────┘ └──────────┘  │
     │   • TP1-TPx      • Serial      • JTAG/SWD    │
     │   • Vias         • UART        • ICSP        │
-    │   • Unpopulated   • SPI         • TAG         │
-    │     footprints     • I2C                      │
-    │                                         │
-    └───────────────────────────────────────┘
+    │   • Unpopulated  • SPI         • TAG         │
+    │     footprints   • I2C                       │
+    │                                              │
+    └──────────────────────────────────────────────┘
 ```
 
 ### Identifying Test Points: The Hidden Gateways
@@ -322,22 +325,22 @@ Beyond test points, standardized communication interfaces represent crucial acce
     Common Hardware Communication Interfaces
     
     ┌───────────┐    ┌────────────┐    ┌───────────┐
-    │    UART    │    │     SPI     │    │    I2C     │
-    └────┬─────┘    └────┬──────┘    └───┬──────┘
-         │               │                │
-     TX ○───►      MOSI ○───►        SDA ○───◄►
-     RX ○───◄      MISO ○───◄        SCL ○───►
-    GND ○────      SCLK ○───►        GND ○────
-                   CS ○───►
-                   GND ○────
+    │    UART   │    │     SPI    │    │    I2C    │
+    └────┬──────┘    └─────┬──────┘    └─────┬─────┘
+         │                 │                 │
+     TX ○───►        MOSI ○───►        SDA ○───◄►
+     RX ○───◄        MISO ○───◄        SCL ○───►
+    GND ○────        SCLK ○───►        GND ○────
+                     CS   ○───►
+                     GND  ○────
     
     ┌────────────┐    ┌────────────┐
-    │    JTAG     │    │     SWD     │
-    └────┬──────┘    └───┬───────┘
-         │                │
-     TDI ○───►       SWDIO ○───◄►
-     TDO ○───◄       SWCLK ○───►
-     TCK ○───►        GND ○────
+    │    JTAG    │    │     SWD    │
+    └─────┬──────┘    └──────┬─────┘
+          │                  │
+     TDI ○───►        SWDIO ○───◄►
+     TDO ○───◄        SWCLK ○───►
+     TCK ○───►        GND   ○────
      TMS ○───►
     TRST ○───►
      GND ○────
@@ -368,24 +371,23 @@ Power distribution networks within electronic devices form the foundation upon w
 ```
     Power Distribution System
     
-    ┌────────────┐       ┌───────────┐      ┌────────────┐
-    │ Power Input  │────►│ Regulation │────►│ Distribution │
-    │ (5-12V)     │       │ Circuitry │      │ Network     │
-    └────────────┘       └────┬─────┘      └────┬──────┘
-                                │                    │
-              ┌─────────────▼─────────────┐
-              │     Multiple Voltage Rails      │
-              └────┬─────┬─────┬─────┘
-                   │       │       │       │
-           ┌──────▼────┌─────▼────┌─────▼────┐
-           │  3.3V   │   │  1.8V  │   │  1.2V  │
-           │         │   │        │   │        │
-           └───┬────┘   └──┬────┘   └──┬────┘
-               │           │           │
-     ┌───────▼─────┌─────▼─────┌─────▼─────┐
-     │ Interface │   │ Memory  │   │   CPU   │
-     │ Circuits │   │ Chips   │   │  Core   │
-     └──────────┘   └────────┘   └────────┘
+    ┌────────────┐       ┌───────────┐       ┌────────────┐
+    │ Power Input│──────►│ Regulation│──────►│Distribution│
+    │ (5-12V)    │       │ Circuitry │       │ Network    │
+    └────────────┘       └───────────┘       └──────┬─────┘
+                                                    │
+                                      ┌─────────────▼─────────────┐
+                                      │   Multiple Voltage Rails  │
+                                      └──────┬──────┬───────┬─────┘
+                                             │      │       │
+                                          ┌──▼──┐┌──▼──┐ ┌──▼──┐
+                                          │ 3.3V││1.8V │ │1.2V │
+                                          └──┬──┘└──┬──┘ └──┬──┘
+                                             │      │       │
+                                       ┌─────▼───┐┌─▼────┐┌─▼──┐
+                                       │Interface││Memory││CPU │
+                                       │Circuits ││Chips ││Core│
+                                       └─────────┘└──────┘└────┘
 ```
 
 ### Voltage Rails: The Power Highways
@@ -394,10 +396,10 @@ Most electronic devices operate with multiple voltage domains or "rails," each p
 
 | Voltage Rail | Typical Usage | Identification Methods | Security Implications |
 |--------------|---------------|------------------------|------------------------|
-| 5V | Legacy logic, USB interfaces, peripheral power | Red test points, VCC labels, larger regulator packages | Directly hackable with common equipment; easier to measure and manipulate |
-| 3.3V | Modern digital logic, microcontrollers, interfaces | Common test points, voltage regulators with "33" markings | Standard working voltage for hardware hacking tools; good balance of accessibility |
-| 1.8V | Memory chips, some processors, low-power logic | Smaller regulators, traces leading to memory & processors | More sensitive to electrical noise; potential for glitching attacks |
-| 1.2V & lower | CPU/GPU cores, advanced memory, high-efficiency circuits | Tiny regulators with extensive filtering near main processors | Extremely sensitive to interference; prime targets for power analysis attacks |
+| **5V** | Legacy logic, USB interfaces, peripheral power | Red test points, VCC labels, larger regulator packages | Directly hackable with common equipment; easier to measure and manipulate |
+| **3.3V** | Modern digital logic, microcontrollers, interfaces | Common test points, voltage regulators with "33" markings | Standard working voltage for hardware hacking tools; good balance of accessibility |
+| **1.8V** | Memory chips, some processors, low-power logic | Smaller regulators, traces leading to memory & processors | More sensitive to electrical noise; potential for glitching attacks |
+| **1.2V & lower** | CPU/GPU cores, advanced memory, high-efficiency circuits | Tiny regulators with extensive filtering near main processors | Extremely sensitive to interference; prime targets for power analysis attacks |
 
 Identifying voltage rails begins with visual inspection of regulator components, which typically appear as multi-pin ICs with identifying markings indicating their output voltage. These regulators serve as the starting points for tracing power distribution networks throughout a device. Power planes on multilayer circuit boards distribute these voltages efficiently, while decoupling capacitors (small ceramic components near ICs) indicate which voltage domain powers specific components. In modern designs, power management ICs (PMICs) often generate multiple voltage rails from a single input source, centrally controlling power distribution throughout the system.
 
@@ -410,22 +412,20 @@ Voltage rail measurements provide baseline data crucial for subsequent analysis 
 Power distribution networks frequently represent overlooked attack surfaces in electronic systems. While manufacturers focus extensively on securing data lines and software interfaces, power systems often receive less security scrutiny despite their critical role in stable operation.
 
 ```
-    Power-Based Attack Vectors
-    
-    Normal Operation          Glitch Attack          Power Analysis
-    ┌────────────┐       ┌────────────┐      ┌────────────┐
-    │ Power      ┃       │ Power      ┃      │ Power      ┃
-    │ Supply     ┃       │ Supply     ┃      │ Supply     ┃
-    │ 3.3V ───────│       │         /\───│      │ ────/\───│
-    │            │       │        /  \  │      │     /  \    │
-    │ Stable     │       │ Induced\   /│      │ Measured    │
-    │ Voltage    │       │ Voltage\/ │      │ Consumption │
-    └────────────┘       └────────────┘      └────────────┘
-         │                    │                  │
-    ┌────▼────┐       ┌────▼────┐      ┌────▼────┐
-    │ Normal    │       │ Security │      │ Data      │
-    │ Operation │       │ Bypass   │      │ Leakage   │
-    └─────────┘       └─────────┘      └─────────┘
+              Power-Based Attack Vectors
+
+  Normal Operation      Glitch Attack         Power Analysis
+  ┌────────────┐       ┌────────────┐        ┌────────────┐
+  │  Power     │       │  Power     │        │  Power     │
+  │  Supply    │       │  Supply    │        │  Supply    │
+  │  3.3V      │       │  Glitched  │        │  Monitored │
+  │  Stable    │       │  Voltage   │        │  Usage     │
+  └────────────┘       └────────────┘        └────────────┘
+        │                    │                      │
+  ┌─────▼─────┐        ┌─────▼─────┐          ┌─────▼─────┐
+  │  Normal   │        │ Security  │          │  Data     │
+  │ Operation │        │ Bypass    │          │ Leakage   │
+  └───────────┘        └───────────┘          └───────────┘
 ```
 
 **Voltage glitching** exploits the dependency of digital circuits on stable power supplies to operate correctly. By precisely timing momentary drops or spikes in supply voltage, attackers can induce computational errors, skip instructions, or force systems into abnormal states. These glitches, typically lasting microseconds or less, create transient conditions where digital gates may not switch properly or memory cells might change state unexpectedly. Hardware hackers implement glitching using various techniques, from simple capacitor-based circuits that momentarily load down power rails to sophisticated FPGA-controlled systems that generate precisely timed interference patterns. Target points for voltage glitching include the main supply inputs, regulator feedback pins, or power distribution points near critical components like security processors. The effectiveness of voltage glitching varies significantly based on the target device's power filtering components and protection mechanisms—devices with minimal filtering capacitance or lacking supervisory circuits often prove more vulnerable.
@@ -442,22 +442,22 @@ Effectively analyzing hardware requires not just knowledge but also practical sk
     Hardware Measurement Hierarchy
     
                    Measurement Techniques
-                   ┌────────┬─────────┐
-                   │         │           │
-             ┌───────┴───────┐ ┌─────┴──────┐
-             │  Basic Electrical  │ │ Advanced Signal │
-             │    Measurement    │ │    Analysis     │
-             └─────┬───────┘ └─────┬──────┘
-                    │                 │
-        ┌─────────▼─────┌────────▼─────┐
-        │  Multimeter  │   │ Oscilloscope │
-        └──────┬────┘   └─────┬─────┘
-               │               │
-    ┌────────▼─────┌────────▼─────┐
-    │  Voltmeter │   │ Continuity │
-    │  Ammeter   │   │  Testing   │
-    │  Ohmmeter  │   │           │
-    └───────────┘   └──────────┘
+                   ┌────────────────────────┐
+                   │                        │
+           ┌───────┴────────┐      ┌────────┴────────┐
+           │Basic Electrical│      │ Advanced Signal │
+           │  Measurement   │      │    Analysis     │
+           └───────┬────────┘      └────────┬────────┘
+                   │                        │
+         ┌─────────▼─────┐         ┌────────▼───────┐
+         │  Multimeter   │         │  Oscilloscope  │
+         └────────┬──────┘         └────────┬───────┘
+                  │                         │
+           ┌──────▼───────┐           ┌──────▼──────┐
+           │   Voltmeter  │           │  Continuity │
+           │   Ammeter    │           │  Testing    │
+           │   Ohmmeter   │           └─────────────┘
+           └──────────────┘           
 ```
 
 ### Using a Multimeter Effectively: The Primary Instrument
@@ -484,18 +484,17 @@ The multimeter represents the most fundamental and versatile measurement tool in
 While multimeters provide excellent static measurements, understanding hardware behavior often requires analyzing time-varying signals. Advanced measurement techniques reveal timing relationships, protocol details, and subtle patterns invisible to basic measurements.
 
 ```
-    Signal Analysis Comparison
-    
-    Multimeter (Static)      Oscilloscope (Dynamic)    Logic Analyzer (Digital)
-    ┌────────────┐       ┌────────────┐      ┌────────────┐
-    │ Voltage: 3.3V │       │    /\▔▔\       │      │ ▔▔▔▔  ▔▔▔▔   │
-    │              │       │   /  \  \      │      │ ▒   ▒ ▒   ▒   │
-    │ Single Value  │       │ _/    \__\____ │      │ ▒   ▒ ▒   ▒   │
-    │              │       │              │      │ ▒▔▔▔▒ ▒▔▔▔▒   │
-    │ No Timing     │       │ Signal vs Time │      │ CH1  CH2 CH3   │
-    │ Information   │       │ Relationships   │      │ Multiple     │
-    │              │       │              │      │ Channels     │
-    └────────────┘       └────────────┘      └────────────┘
+              Signal Analysis Comparison
+
+ ┌────────────────┐   ┌────────────────────┐   ┌─────────────────────┐
+ │  Multimeter    │   │    Oscilloscope    │   │   Logic Analyzer    │
+ ├────────────────┤   ├────────────────────┤   ├─────────────────────┤
+ │ Voltage: 3.3V  │   │     /\    /\       │   │ ▔▔▔▔   ▔▔▔▔   ▔▔▔▔  │
+ │ Single Value   │   │    /  \__/  \___   │   │ ▒ ▒ ▒  ▒ ▒ ▒  ▒ ▒ ▒ │
+ │ No Timing Info │   │ Signal vs Time     │   │ Digital Channels    │
+ │ Static Signals │   │ Dynamic Signals    │   │ CH1  CH2  CH3       │
+ └────────────────┘   └────────────────────┘   └─────────────────────┘
+
 ```
 
 **Oscilloscope analysis** transforms electronic signals from invisible electrical phenomena into visual waveforms that reveal timing, amplitude, and shape characteristics. Unlike multimeters that display a single value, oscilloscopes plot voltage against time, showing how signals evolve. For hardware hackers, oscilloscopes prove invaluable for analyzing clock signals, data transmissions, power fluctuations, and critical timing relationships. Modern digital oscilloscopes provide features particularly relevant to security research: trigger functions that capture specific events (like voltage glitches or clock transitions), math functions that calculate real-time parameters (like frequency or power), and deep memory that stores long signal sequences for later analysis. When probing circuits with oscilloscopes, proper grounding becomes critical—the probe's ground clip should connect to the circuit's ground as close as possible to the measurement point to avoid introducing noise or ground loops. Signal integrity concerns become pronounced at higher frequencies, requiring careful probe placement and sometimes specialized high-frequency probes with minimal loading effects. For power analysis attacks, oscilloscopes capture the subtle variations in current consumption that reveal computational activities, with statistical processing of multiple captures potentially exposing cryptographic keys or sensitive operations.
@@ -511,25 +510,25 @@ While multimeters provide excellent static measurements, understanding hardware 
 Printed Circuit Board (PCB) analysis forms the cornerstone of hardware hacking, allowing you to understand how electronic systems are physically implemented. Mastering this skill requires both analytical thinking and methodical examination techniques.
 
 ```
-   ┌─────────────────────────────────────────────┐
-   │                  PCB LAYERS                  │
-   │                                             │
-   │  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   │
-   │  █                TOP LAYER               █   │
-   │  █   Components, Silkscreen, Soldermask   █   │
-   │  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   │
-   │                                             │
-   │  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   │
-   │  █             INTERNAL LAYERS           █   │
-   │  █    Signal, Power, Ground Planes       █   │
-   │  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   │
-   │                                             │
-   │  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   │
-   │  █              BOTTOM LAYER            █   │
-   │  █   Solder Points, Some Components      █   │
-   │  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   ┌────────────────────────────────────────────┐
+   │                  PCB LAYERS                │
+   │                                            │
+   │  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  │
+   │  █                TOP LAYER             █  │
+   │  █   Components, Silkscreen, Soldermask █  │
+   │  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  │
+   │                                            │
+   │  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  │
+   │  █             INTERNAL LAYERS          █  │
+   │  █    Signal, Power, Ground Planes      █  │
+   │  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  │
+   │                                            │
+   │  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  │
+   │  █              BOTTOM LAYER            █  │
+   │  █   Solder Points, Some Components     █  │
+   │  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  │
+   │                                            │
+   └────────────────────────────────────────────┘
 ```
 
 **Layer identification** is the first step in PCB analysis. Modern electronic devices often employ multi-layer PCBs, with components and traces distributed across different planes. The top layer typically hosts most components and is covered with a soldermask (usually green, blue, or black) that protects copper traces while leaving soldering points exposed. The bottom layer may contain additional components or serve primarily for connections. Internal layers, invisible without specialized equipment, often carry power planes, ground planes, and additional signal routing. For hardware hackers, understanding layer organization provides critical insights into how signals propagate through the device.
@@ -580,18 +579,18 @@ Soldering skills separate casual hardware enthusiasts from effective hardware ha
 **Adding test points** to existing boards allows you to monitor signals without permanently altering circuit behavior. This technique involves identifying bare copper on traces of interest and carefully soldering fine magnet wire or test hooks to these points. For crowded boards with fine traces, use thin (30-34 AWG) wire and a fine-tipped soldering iron with temperature control. Apply a small amount of flux to the target area, tin both the wire and the trace with minimal solder, then join them with a quick, precise touch. Secure the wire with a small dot of hot glue or epoxy to prevent mechanical stress from breaking the connection. These minimally invasive taps can capture data from communication buses or monitor control signals without alerting the system to your presence.
 
 ```
-   ┌──────────────────────────────────────────────────┐
-   │          SOLDERING TEST POINT TECHNIQUE          │
-   │                                                  │
-   │   1. Identify signal trace     ════════════════  │
-   │                                                  │
-   │   2. Add micro wire           ════╦═════════    │
-   │                                    ║             │
-   │   3. Secure with adhesive     ════╬═════════    │
-   │                                   ╔╝             │
-   │   4. Route to test equipment  ═══╝              │
-   │                                                  │
-   └──────────────────────────────────────────────────┘
+   ┌──────────────────────────────────┐
+   │  SOLDERING TEST POINT TECHNIQUE  │
+   │                                  │
+   │   1. Identify signal trace       │
+   │                                  │
+   │   2. Add micro wire              │
+   │                                  │
+   │   3. Secure with adhesive        │
+   │                                  │
+   │   4. Route to test equipment     │
+   │                                  │
+   └──────────────────────────────────┘
 ```
 
 **Removing and replacing components** is an essential skill for bypassing security measures or recovering from damaged boards. Surface Mount Technology (SMT) components require different techniques than through-hole parts. For small SMT components, use hot air rework stations that apply controlled heat to melt all solder joints simultaneously. Chip quik, a special low-temperature solder alloy, can be applied to existing solder joints to keep them molten longer, facilitating clean removal. When replacing components, use flux liberally, ensure proper alignment (sometimes requiring a microscope or magnifying glass), and avoid overheating sensitive parts. Particularly for security research, replacing memory chips or swapping firmware storage devices may require precise control of heating profiles and specialized tools like hot plates or infrared reflow stations.
@@ -698,29 +697,29 @@ Electrical hazards represent the most immediate danger in hardware hacking. Even
 
 ```
    ┌─────────────────────────────────────────────┐
-   │          ELECTRICAL SAFETY HIERARCHY         │
+   │          ELECTRICAL SAFETY HIERARCHY        │
    │                                             │
-   │   MOST EFFECTIVE                            │
-   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
-   │   █  ELIMINATION - Power off, discharge  █   │
-   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
+   │                MOST EFFECTIVE               │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  │
+   │   █  ELIMINATION - Power off, discharge  █  │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  │
    │                                             │
-   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
-   │   █  ISOLATION - Transformers, gloves   █   │
-   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  │
+   │   █   ISOLATION - Transformers, gloves   █  │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  │
    │                                             │
-   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
-   │   █  ENGINEERING - GFCI, fused tools   █   │
-   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  │
+   │   █   ENGINEERING - GFCI, fused tools    █  │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  │
    │                                             │
-   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
-   │   █  ADMIN - Procedures, knowledge     █   │
-   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  │
+   │   █     ADMIN - Procedures, knowledge    █  │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  │
    │                                             │
-   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
-   │   █  PPE - Last line of defense        █   │
-   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    │
-   │   LEAST EFFECTIVE                          │
+   │   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  │
+   │   █      PPE - Last line of defense      █  │
+   │   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  │
+   │               LEAST EFFECTIVE               │
    │                                             │
    └─────────────────────────────────────────────┘
 ```
@@ -771,23 +770,23 @@ While ensuring your personal safety is paramount, protecting the electronic comp
 
 ```
    ┌─────────────────────────────────────────────┐
-   │             ESD PROTECTION ZONES             │
+   │             ESD PROTECTION ZONES            │
    │                                             │
-   │       ╔═════════════╗                     │
-   │       ║  ESD SAFE AREA  ║      ▔▔▔▔▔▔▔▔▔▔▔     │
-   │       ║  ═════════════  ║      ┃  STATIC ┃     │
-   │       ║ │ Wrist Strap │ ║      ┃  DANGER ┃     │
-   │       ║ │ Mat/Bench   │ ║      ┃  ZONE   ┃     │
-   │       ║ │ Packaging   │ ║─────┃         ┃     │
-   │       ║ │ Ion Fan     │ ║    ┗▔▔▔▔▔▔▔▔▔▔┓     │
-   │       ║  ═════════════  ║                     │
-   │       ║     ════════     ║                     │
-   │       ║  Grounded Tools  ║                     │
-   │       ║  & Equipment     ║                     │
-   │       ╠═════════════╣                     │
-   │       ║   SENSITIVE     ║                     │
-   │       ║   COMPONENTS    ║                     │
-   │       ╰═════════════╯                     │
+   │       ╔═════════════════╗                   │
+   │       ║  ESD SAFE AREA  ║      ---------    │
+   │       ║  ═════════════  ║     ┃  STATIC ┃   │
+   │       ║ │ Wrist Strap │ ║     ┃  DANGER ┃   │
+   │       ║ │ Mat/Bench   │ ║     ┃  ZONE   ┃   │
+   │       ║ │ Packaging   │ ║─────┃         ┃   │
+   │       ║ │ Ion Fan     │ ║      ---------    │
+   │       ║  ═════════════  ║                   │
+   │       ║═════════════════║                   │
+   │       ║  Grounded Tools ║                   │
+   │       ║  & Equipment    ║                   │
+   │       ╠═════════════════╣                   │
+   │       ║   SENSITIVE     ║                   │ 
+   │       ║   COMPONENTS    ║                   │
+   │       ╰═════════════════╯                   │
    └─────────────────────────────────────────────┘
 ```
 
@@ -835,30 +834,30 @@ While ensuring your personal safety is paramount, protecting the electronic comp
 ## Conclusion
 
 ```
-   ┌─────────────────────────────────────────────┐
-   │      ELECTRONICS KNOWLEDGE PROGRESSION       │
-   │                                             │
-   │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   │
-   │                                ↑          │
-   │                             ADVANCED       │
-   │   • Hardware Implants                     │
-   │   • Side-Channel Analysis                  │
-   │   • Fault Injection                        │
-   │   • Custom Circuit Design                   │
-   │                                             │
-   │                          INTERMEDIATE       │
-   │   • Protocol Analysis                       │
-   │   • Signal Manipulation                     │
-   │   • Firmware Extraction                     │
-   │   • Board Modification                      │
-   │                                             │
-   │                       FUNDAMENTAL           │
-   │   • Voltage, Current, Resistance            │
-   │   • Component Identification                │
-   │   • Measurement Techniques                  │
-   │   • Circuit Analysis                        │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   ┌────────────────────────────────────────────────┐
+   │      ELECTRONICS KNOWLEDGE PROGRESSION         │
+   │                                                │
+   │  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━        │
+   │                                              ↑ │
+   │                                       ADVANCED │
+   │   • Hardware Implants                          │
+   │   • Side-Channel Analysis                      │
+   │   • Fault Injection                            │
+   │   • Custom Circuit Design                      │
+   │                                                │
+   │                                   INTERMEDIATE │
+   │   • Protocol Analysis                          │
+   │   • Signal Manipulation                        │
+   │   • Firmware Extraction                        │
+   │   • Board Modification                         │
+   │                                                │
+   │                                    FUNDAMENTAL │
+   │   • Voltage, Current, Resistance               │
+   │   • Component Identification                   │
+   │   • Measurement Techniques                     │
+   │   • Circuit Analysis                           │
+   │                                                │
+   └────────────────────────────────────────────────┘
 ```
 
 A solid foundation in electronics is essential for effective hardware hacking. The concepts covered in this section will serve as building blocks for more advanced techniques discussed later in this guide. Electronics isn't just theoretical knowledge—it's a practical discipline that becomes intuitive through consistent application and experimentation.
