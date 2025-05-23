@@ -46,15 +46,6 @@ The strategic value of understanding these protocols for hardware security resea
 This section provides a comprehensive overview of the protocols you'll most frequently encounter during hardware security assessments, offering both theoretical understanding and practical techniques for leveraging these communication channels in your hacking endeavors.
 
 ## Table of Contents
-- [UART/Serial Communication](#uart-serial-communication)
-- [I2C (Inter-Integrated Circuit)](#i2c-inter-integrated-circuit)
-- [SPI (Serial Peripheral Interface)](#spi-serial-peripheral-interface) 
-- [JTAG and SWD](#jtag-and-swd)
-- [USB (Universal Serial Bus)](#usb-universal-serial-bus)
-- [Ethernet and Network Protocols](#ethernet-and-network-protocols)
-- [Wireless Protocols](#wireless-protocols)
-- [Protocol Analysis Methodology](#protocol-analysis-methodology)
-- [Practical Exercises](#practical-exercises)
 
 For detailed information on each protocol, see the following sub-sections:
 - [UART Protocol](./wired/01-uart-protocol.md)
@@ -154,41 +145,58 @@ Understanding the relative strengths, weaknesses, and characteristics of differe
 </table>
 
 ```
-   ┌─────────────────────────────────────────────┐
-   │        PROTOCOL SELECTION FLOWCHART          │
-   │                                             │
-   │                 START                       │
-   │                   │                         │
-   │                   ╰───╢                      │
-   │                         │                   │
-   │     Need debugging      │   Need external     │
-   │     or testing? ───────┴──── connection?      │
-   │      │      │                │      │      │
-   │     Yes     No               Yes     No     │
-   │      │      │                │      │      │
-   │   ────┴────              ────┴────   │
-   │   │        │              │        │   │
-   │  JTAG/    Multiple           USB/     On-board  │
-   │  SWD     devices?         Ethernet    only     │
-   │           │    │                         │
-   │          Yes   No                        │
-   │           │    │                         │
-   │           │  Simple or                    │
-   │           │  Complex?                     │
-   │           │    │   │                     │
-   │           │ Simple Complex                 │
-   │           │    │   │                     │
-   │           │  UART  │                     │
-   │           │        │                     │
-   │        ───┴──     │                     │
-   │        │         │                     │
-   │      Speed       │                      │
-   │     Priority?   SPI                      │
-   │        │                               │
-   │        │                               │
-   │       I2C                               │
-   │                                             │
-   └─────────────────────────────────────────────┘
+┌─────────────────────────────────────────────┐
+│        PROTOCOL SELECTION FLOWCHART         │
+├─────────────────────────────────────────────┤
+│                  START                      │
+│                     │                       │
+│     ┌───────────────┴───────────────┐       │
+│     │ Need debugging or testing?    │       │
+│     └───────────────┬───────────────┘       │
+│                     │                       │
+│                 Yes │ No                    │
+│                     │                       │
+│         ┌───────────┴───────────┐           │
+│         │ JTAG / SWD Available? │           │
+│         └───────┬───────────────┘           │
+│                 │                           │
+│              Yes│No                         │
+│                 │                           │
+│          Use JTAG/SWD     ┌──────────────┐  │
+│                           │ UART for log │  │
+│                           │ or CLI debug │  │
+│                           └────┬─────────┘  │
+│                                │            │
+│                         ┌──────┴────────┐   │
+│                         │ External conn?│   │
+│                         └──────┬────────┘   │
+│                                │            │
+│                           Yes  │ No         │
+│                                │            │
+│                   ┌────────────┴──────────┐ │
+│                   │ USB / Ethernet needed?│ │
+│                   └──────┬──────────┬─────┘ │
+│                          │          │       │
+│                       USB/Eth    On-board   │
+│                                    only     │
+│                                     │       │
+│                         ┌───────────┴──────┐│
+│                         │ Multiple devices?││
+│                         └──────┬───────────┘│
+│                                │            │
+│                       ┌───────────────┐     │
+│                       │ Use I2C (slow)│     │
+│                       └──────┬────────┘     │
+│                              │              │
+│                       Need high speed?      │
+│                              │              │
+│                              Yes            │
+│                              │              |
+│                      ┌───────┴────────┐     │
+│                      │ Use SPI (fast) │     │
+│                      └────────────────┘     │
+└─────────────────────────────────────────────┘
+
 ```
 
 ## Protocol Analysis Methodology
