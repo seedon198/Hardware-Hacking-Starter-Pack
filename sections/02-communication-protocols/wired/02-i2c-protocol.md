@@ -2,25 +2,25 @@
 
 ```
    ┌─────────────────────────────────────────────┐
-   │             I²C BUS TOPOLOGY               │
+   │             I²C BUS TOPOLOGY                │
    │                                             │
-   │                 VCC                          │
-   │                  │                           │
-   │                  │                           │
-   │    R1║           R2║                        │
-   │       ║              ║                     │
-   │       ↓              ↓                     │
-   │  ┌───────────────────────────────────────┐    │
-   │  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  │    │
-   │  │  │  MASTER   │  │  SLAVE 1  │  │  SLAVE 2  │  │    │
-   │  │  └─────┬─────┘  └─────┬─────┘  └─────┬─────┘  │    │
-   │  │      │           │           │      │    │
-   │  │ SDA ─┬───────────┬───────────┬──── │    │
-   │  │      ┴           ┴           ┴      │    │
-   │  │ SCL ─┬───────────┬───────────┬──── │    │
-   │  │      ┴           ┴           ┴      │    │
-   │  └───────────────────────────────────────┘    │
-   │    R1, R2 = Pull-up resistors (typ. 4.7kΩ)      │
+   │                 VCC                         │
+   │                  │                          │
+   │                  │                          │
+   │          R1║─────────── R2║                 │
+   │            ║              ║                 │
+   │            ↓              ↓                 │
+   │  ┌───────────────────────────────────────┐  │
+   │  │  ┌─────────┐  ┌─────────┐  ┌─────────┐│  │
+   │  │  │ MASTER  │  │ SLAVE 1 │  │ SLAVE 2 ││  │
+   │  │  └────┬────┘  └────┬────┘  └────┬────┘│  │
+   │  │       │            │            │     │  │
+   │  │ SDA ─┬───────────┬───────────┬────    │  │
+   │  │      ┴           ┴           ┴        │  │
+   │  │ SCL ─┬───────────┬───────────┬────    │  │
+   │  │      ┴           ┴           ┴        │  │
+   │  └───────────────────────────────────────┘  |
+   │   R1, R2 = Pull-up resistors (typ. 4.7kΩ)   |
    └─────────────────────────────────────────────┘
 ```
 
@@ -81,24 +81,22 @@ The elegant efficiency of I²C stems from its fundamental design principles, whi
 
 ### Signal Structure
 
+
 ```
-   ┌─────────────────────────────────────────────┐
-   │           I²C TRANSACTION STRUCTURE           │
-   │                                             │
-   │     START   ADDRESS + R/W   ACK     DATA     ACK    STOP  │
-   │                                             │
-   │ SCL  ██▓▒▓▓▓▒▓▓▓▒▓▓▓▒▓▓▓▒▓▓▓▒▓▓▓▒▓▓▓▒▓▓▓▒▓▓██  │
-   │      high ┐      ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐  ┌─  │
-   │           │      │ │ │ │ │ │ │ │ │ │ │ │ │ │  │   │
-   │      low  ┴──────┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴──┘   │
-   │                                             │
-   │ SDA  ██▓██▓▒▓▓▓▒██▓▓▓▒▓▓█▓▒▒▓▓▒██▒██▓▒▓█▓▒▓▓██  │
-   │      high ┐   ┌─┐ ┌─┐    ┌─┐ ┌─┐   ┌─┐    ┌─┐  ┌─  │
-   │           │   │ │ │ │    │ │ │ │   │ │    │ │  │   │
-   │      low  ┴───┘ └─┘ └────┘ └─┘ └───┘ └────┘ └──┘   │
-   │             S   A6-A0  R/W  A  D7-D0   A     P    │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   ┌──────────────────────────────────────────────────────────────────────────┐
+   │                  I²C TRANSACTION STRUCTURE                               │
+   │                                                                          │
+   │            START  [ ADDRESS + R/W ]    ACK   [   DATA   ]   ACK  STOP    │
+   │                                                                          │
+   │ SCL  high ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐    │
+   │           │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │    │
+   │       low └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴    │
+   │                                                                          │
+   │ SDA  high ┌────┐ ┌────────────┐ ┌───┐ ┌───┐ ┌────────────┐ ┌───┐ ┌───┐   │
+   │           │ S  │ │  A6 - A0   │ │R/W│ │ACK│ │   D7 - D0  │ │ACK│ │ P │   │
+   │       low └────┘ └────────────┘ └───┘ └───┘ └────────────┘ └───┘ └───┘   │
+   │                                                                          │
+   └──────────────────────────────────────────────────────────────────────────┘
 ```
 
 I²C communications follow a structured sequence of well-defined signal patterns that create a reliable framework for data exchange. Understanding these patterns is essential for hardware hackers seeking to monitor, decode, or manipulate I²C traffic.
@@ -116,25 +114,25 @@ I²C communications follow a structured sequence of well-defined signal patterns
 ## Identifying I²C Interfaces
 
 ```
-   ┌─────────────────────────────────────────────┐
+   ┌──────────────────────────────────────────────┐
    │         COMMON I²C PCB IDENTIFIERS           │
-   │                                             │
-   │   Labeled Header:       Pull-up Resistors:    │
-   │                                             │
+   │                                              │
+   │   Labeled Header:       Pull-up Resistors:   │
+   │                                              │
    │    SCL  ○             R1             R2      │
-   │    SDA  ○           ▰▱▱▱▰         ▰▱▱▱▰     │
-   │    VCC  ○             |             |      │
-   │    GND  ○             |             |      │
+   │    SDA  ○           ▰▱▱▱▰         ▰▱▱▱▰      │
+   │    VCC  ○             |             |        │
+   │    GND  ○             |             |        │
    │                        SCL           SDA     │
-   │                                             │
+   │                                              │
    │   EEPROM Footprint:    Connected Devices:    │
-   │                                             │
-   │    ┌───────┐            EEPROM          │
-   │    │  24LC   │           Temperature Sensors │
-   │    │  EEPROM │           Real-time Clocks   │
-   │    └───────┘           Display Controllers │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   │                                              │
+   │    ┌─────────┐         EEPROM                │
+   │    │  24LC   │         Temperature Sensors   │
+   │    │  EEPROM │         Real-time Clocks      │
+   │    └─────────┘         Display Controllers   │
+   │                                              │
+   └──────────────────────────────────────────────┘
 ```
 
 Discovering I²C interfaces on unfamiliar hardware represents the critical first step in any hardware hacking endeavor targeting this protocol. The ubiquity of I²C across embedded systems makes it a high-value target, but manufacturers employ varying approaches to exposing—or obscuring—these interfaces. Successful identification combines visual inspection, electrical measurement, and signal analysis techniques.
@@ -177,26 +175,26 @@ Even without protocol-specific analyzers, these patterns are visually distinctiv
 ## Hardware for I²C Hacking
 
 ```
-   ┌─────────────────────────────────────────────┐
-   │          I²C HARDWARE TOOLKIT               │
-   │                                             │
-   │    ┌─────────────┐                         │
+   ┌────────────────────────────────────────────────────┐
+   │          I²C HARDWARE TOOLKIT                      │
+   │                                                    │
+   │    ┌────────────────┐                              │
    │    │ LOGIC ANALYZER │─────────> PASSIVE MONITORING │
-   │    └─────────────┘                         │
-   │                                             │
-   │    ┌─────────────┐                         │
-   │    │  BUS PIRATE   │─────────> ACTIVE INTERACTION │
-   │    └─────────────┘                         │
-   │                                             │
-   │    ┌─────────────┐                         │
-   │    │ ARDUINO/ESP32 │─────────> CUSTOM ATTACKS     │
-   │    └─────────────┘                         │
-   │                                             │
-   │    ┌─────────────┐                         │
-   │    │ CONNECTORS    │─────────> RELIABLE ACCESS    │
-   │    └─────────────┘                         │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   │    └────────────────┘                              │
+   │                                                    │
+   │    ┌─────────────┐                                 │
+   │    │  BUS PIRATE │─────────> ACTIVE INTERACTION    │
+   │    └─────────────┘                                 │
+   │                                                    │
+   │    ┌──────────────┐                                │
+   │    │ ARDUINO/ESP32│─────────> CUSTOM ATTACKS       │
+   │    └──────────────┘                                │
+   │                                                    │
+   │    ┌─────────────┐                                 │
+   │    │ CONNECTORS  │─────────> RELIABLE ACCESS       │
+   │    └─────────────┘                                 │
+   │                                                    │
+   └────────────────────────────────────────────────────┘
 ```
 
 Successful I²C hacking requires specialized hardware and software tools that enable observation, analysis, and interaction with this two-wire protocol. While basic exploration can be accomplished with minimal equipment, a comprehensive toolkit enables more sophisticated attacks and data extraction techniques.
@@ -325,32 +323,32 @@ For many hardware security researchers, Python-SMBus provides an ideal balance o
 ## I²C Hacking Techniques
 
 ```
-   ┌─────────────────────────────────────────────┐
-   │         I²C ATTACK METHODOLOGY              │
-   │                                             │
-   │    ┌────────────┐                         │
-   │    │ 1. DISCOVERY │                         │
-   │    └─────┬─────┘                         │
-   │          │                                   │
-   │          ↓                                   │
-   │    ┌────────────┐                         │
-   │    │ 2. PASSIVE  │                         │
-   │    │ MONITORING  │                         │
-   │    └─────┬─────┘                         │
-   │          │                                   │
-   │          ↓                                   │
-   │    ┌────────────┐      ┌──────────────┐ │
-   │    │ 3. ACTIVE   │────>│ MODIFY TRAFFIC │ │
-   │    │ INTERACTION │      └──────────────┘ │
-   │    └─────┬─────┘                         │
-   │          │         ┌──────────────┐ │
-   │          ↓         │ DEVICE SPOOFING │ │
-   │    ┌────────────┐  └──────────────┘ │
-   │    │ 4. DATA     │                         │
-   │    │ EXTRACTION  │      ┌──────────────┐ │
-   │    └───────────┘      │ MEMORY READING │ │
-   │                       └──────────────┘ │
-   └─────────────────────────────────────────────┘
+   ┌────────────────────────────────────────────┐
+   │         I²C ATTACK METHODOLOGY             │
+   │                                            │
+   │    ┌──────────────┐                        │
+   │    │ 1. DISCOVERY │                        │
+   │    └───────┬──────┘                        │
+   │            │                               │
+   │            ↓                               │
+   │    ┌──────────────┐                        │
+   │    │ 2. PASSIVE   │                        │
+   │    │ MONITORING   │                        │
+   │    └───────┬──────┘                        │
+   │            │                               │
+   │            ↓                               │
+   │    ┌──────────────┐     ┌────────────────┐ │
+   │    │ 3. ACTIVE    │────>│ MODIFY TRAFFIC │ │
+   │    │ INTERACTION  │     └────────────────┘ │
+   │    └───────┬──────┘                        │
+   │            │           ┌─────────────────┐ │
+   │            ↓           │ DEVICE SPOOFING │ │
+   │     ┌─────────────┐    └─────────────────┘ │
+   │     │ 4. DATA     │                        │
+   │     │ EXTRACTION  │     ┌────────────────┐ │
+   │     └─────────────┘     │ MEMORY READING │ │
+   │                         └────────────────┘ │
+   └────────────────────────────────────────────┘
 ```
 
 With the appropriate hardware and software tools in hand, a systematic approach to I²C hacking unlocks significant insights into target devices. The techniques described below progress from non-invasive reconnaissance to increasingly sophisticated interactions with the target system, building upon the knowledge gained at each stage.
@@ -542,21 +540,21 @@ The extraction process varies significantly based on the specific target device 
 
 ```
    ┌─────────────────────────────────────────────┐
-   │        I²C SECURITY VULNERABILITIES          │
+   │         I²C SECURITY VULNERABILITIES        │
    │                                             │
    │     !─────────────!     !─────────────!     │
-   │     ! NO AUTHEN- !     ! CLEARTEXT   !     │
-   │     ! TICATION   !     ! DATA        !     │
-   │     !─────────────!     !─────────────!     │
-   │                                             │
-   │     !─────────────!     !─────────────!     │
-   │     ! EXPOSED    !     ! WEAK ACCESS !     │
-   │     ! STORAGE    !     ! CONTROLS    !     │
+   │     ! NO AUTHEN-  !     ! CLEARTEXT   !     │
+   │     ! TICATION    !     ! DATA        !     │
    │     !─────────────!     !─────────────!     │
    │                                             │
    │     !─────────────!     !─────────────!     │
-   │     ! PHYSICAL   !     ! SIDE-CHANNEL!     │
-   │     ! ACCESS     !     ! LEAKAGE     !     │
+   │     ! EXPOSED     !     ! WEAK ACCESS !     │
+   │     ! STORAGE     !     ! CONTROLS    !     │
+   │     !─────────────!     !─────────────!     │
+   │                                             │
+   │     !─────────────!     !─────────────!     │
+   │     ! PHYSICAL    !     ! SIDE-CHANNEL!     │
+   │     ! ACCESS      !     ! LEAKAGE     !     │
    │     !─────────────!     !─────────────!     │
    │                                             │
    └─────────────────────────────────────────────┘
@@ -657,39 +655,39 @@ Advanced attackers can leverage these side-channels to extract information even 
 ## Practical I²C Hacking Exercise: EEPROM Extraction
 
 ```
-   ┌─────────────────────────────────────────────┐
-   │        I²C EEPROM EXTRACTION FLOW           │
-   │                                             │
-   │    ┌─────────────┐                         │
-   │    │ IDENTIFY     │                         │
-   │    │ EEPROM CHIP  │                         │
-   │    └─────┬─────┘                         │
-   │          │                                   │
-   │          ↓                                   │
-   │    ┌─────────────┐                         │
-   │    │ CONNECT TO   │                         │
-   │    │ BUS SIGNALS  │                         │
-   │    └─────┬─────┘                         │
-   │          │                                   │
-   │          ↓                                   │
-   │    ┌─────────────┐                         │
-   │    │ SCAN FOR     │                         │
-   │    │ DEVICE ADDR  │                         │
-   │    └─────┬─────┘                         │
-   │          │                                   │
-   │          ↓                                   │
-   │    ┌─────────────┐    ┌─────────────┐  │
-   │    │ READ EEPROM  │───>│ SAVE TO FILE  │  │
-   │    │ CONTENTS     │    └─────────────┘  │
-   │    └─────┬─────┘                         │
-   │          │                                   │
-   │          ↓                                   │
-   │    ┌─────────────┐                         │
-   │    │ ANALYZE DATA │                         │
-   │    │ & DOCUMENT   │                         │
-   │    └───────────┘                         │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   ┌───────────────────────────────────────────┐
+   │        I²C EEPROM EXTRACTION FLOW         │
+   │                                           │
+   │    ┌─────────────┐                        │
+   │    │ IDENTIFY    │                        │
+   │    │ EEPROM CHIP │                        │
+   │    └──────┬──────┘                        │
+   │           │                               │
+   │           ↓                               │
+   │    ┌─────────────┐                        │
+   │    │ CONNECT TO  │                        │
+   │    │ BUS SIGNALS │                        │
+   │    └──────┬──────┘                        │
+   │           │                               │
+   │           ↓                               │
+   │    ┌─────────────┐                        │
+   │    │ SCAN FOR    │                        │
+   │    │ DEVICE ADDR │                        │
+   │    └──────┬──────┘                        │
+   │           │                               │
+   │           ↓                               │
+   │    ┌──────────────┐    ┌─────────────┐    │
+   │    │ READ EEPROM  │───>│ SAVE TO FILE│    │
+   │    │ CONTENTS     │    └─────────────┘    │
+   │    └──────┬───────┘                       │
+   │           │                               │
+   │           ↓                               │
+   │    ┌─────────────┐                        │
+   │    │ ANALYZE DATA│                        │
+   │    │ & DOCUMENT  │                        │
+   │    └─────────────┘                        │
+   │                                           │
+   └───────────────────────────────────────────┘
 ```
 
 ### Extracting Data from an I²C EEPROM
@@ -831,22 +829,22 @@ Evaluate the security impact based on the sensitivity of discovered data and the
 
 ```
    ┌─────────────────────────────────────────────┐
-   │        I²C SECURITY DEFENSE LAYERS           │
+   │        I²C SECURITY DEFENSE LAYERS          │
    │                                             │
-   │       ┌─────────────────────────────┐     │
-   │       │         APPLICATION LAYER        │     │
-   │       │      [Encryption, Auth APIs]      │     │
-   │       └─────────────────────────────┘     │
+   │       ┌─────────────────────────────┐       │
+   │       │         APPLICATION LAYER   │       │
+   │       │      [Encryption, Auth APIs]│       │
+   │       └─────────────────────────────┘       │
    │                      ↑                      │
-   │       ┌─────────────────────────────┐     │
-   │       │           DEVICE LAYER          │     │
-   │       │ [Access Controls, Address Filters] │     │
-   │       └─────────────────────────────┘     │
+   │    ┌───────────────────────────────────┐    │
+   │    │           DEVICE LAYER            │    │
+   │    │ [Access Controls, Address Filters]│    │
+   │    └───────────────────────────────────┘    │
    │                      ↑                      │
-   │       ┌─────────────────────────────┐     │
-   │       │          PHYSICAL LAYER         │     │
-   │       │   [Bus Isolation, Tamper-Proofing] │     │
-   │       └─────────────────────────────┘     │
+   │    ┌────────────────────────────────────┐   │
+   │    │          PHYSICAL LAYER            │   │
+   │    │   [Bus Isolation, Tamper-Proofing] │   │
+   │    └────────────────────────────────────┘   │
    │                                             │
    └─────────────────────────────────────────────┘
 ```
@@ -955,35 +953,36 @@ While hardware hacking often focuses on exploiting weaknesses, a comprehensive u
 The most effective approach combines multiple layers of protection rather than relying on any single security measure. This defense-in-depth strategy ensures that even if one protective layer is compromised, others remain to prevent or limit the impact of an attack. For hardware hackers, understanding these protective measures is essential for comprehensively evaluating the security posture of target devices and identifying which layers might present vulnerabilities.
 
 ## Advanced I²C Topics
-
 ```
    ┌─────────────────────────────────────────────┐
-   │            I²C PROTOCOL FAMILY               │
+   │              I²C PROTOCOL FAMILY            │
    │                                             │
-   │    ┌─────────────┐    ┌─────────────┐    │
-   │    │  STANDARD I²C │    │     SMBus     │    │
-   │    │  100kHz      │    │  100kHz      │    │
-   │    └───────┬───┘    └─────┬─────┘    │
-   │           │               │               │
-   │    ┌───────┴─────────────┴───────┐    │
-   │    │           FAST MODE               │    │
-   │    │             400 kHz                │    │
-   │    └────────────┬─────────────┘    │
-   │                   │                      │
-   │    ┌────────────┴─────────────┐    │
-   │    │       FAST MODE PLUS (FM+)        │    │
-   │    │               1 MHz                │    │
-   │    └────────────┬─────────────┘    │
-   │                   │         ┌─────────┐    │
-   │    ┌────────────┴───────┘ │   PMBus   │    │
-   │    │       HIGH-SPEED MODE          │    │
-   │    │            3.4 MHz              │    │
-   │    └──────────────────────┐ └─────────┘    │
+   │   ┌───────────────┐    ┌─────────────┐      │
+   │   │ STANDARD I²C  │    │    SMBus    │      │
+   │   │    100 kHz    │    │   100 kHz   │      │
+   │   └──────┬────────┘    └─────┬───────┘      │
+   │          │                   │              │
+   │          └──────┬────────────┘              │
+   │                 │                           │
+   │         ┌───────┴────────┐                  │
+   │         │   FAST MODE    │                  │
+   │         │    400 kHz     │                  │
+   │         └──────┬─────────┘                  │
+   │                │                            │
+   │     ┌──────────┴─────────────┐              │
+   │     │    FAST MODE PLUS      │              │
+   │     │         1 MHz          │              │
+   │     └──────────┬─────────────┘              │
+   │                │                            │
+   │     ┌──────────┴──────────────┐   ┌────────┐│
+   │     │   HIGH-SPEED MODE       │   │ PMBus  ││
+   │     │        3.4 MHz          │   │        ││
+   │     └─────────────────────────┘   └────────┘│
    │                                             │
-   │    ┌─────────────────────────────┐    │
-   │    │            I³C                   │    │
-   │    │   (IMPROVED I²C - NEWER STANDARD)  │    │
-   │    └─────────────────────────────┘    │
+   │   ┌──────────────────────────────────────┐  │
+   │   │                I³C                   │  │
+   │   │   (IMPROVED I²C - NEWER STANDARD)    │  │
+   │   └──────────────────────────────────────┘  │
    │                                             │
    └─────────────────────────────────────────────┘
 ```
@@ -1095,16 +1094,17 @@ For hardware hackers, multi-master systems present both challenges and opportuni
    ┌─────────────────────────────────────────────┐
    │       I²C MULTI-MASTER ARBITRATION          │
    │                                             │
-   │ SCL  ‾‾‾‾\_____/‾‾‾\_____/‾‾‾\______    │
+   │ SCL  ‾‾‾‾\_____/‾‾‾\_____/‾‾‾\______        │
    │                                             │
-   │ SDA1 ‾‾‾‾‾‾‾‾‾\_______________/‾‾‾‾‾‾    │
+   │ SDA1 ‾‾‾‾‾‾‾‾‾\_______________/‾‾‾‾‾‾       │
    │                                             │
-   │ SDA2 ‾‾‾‾‾‾‾‾‾‾‾‾\___________/‾‾‾‾‾    │
+   │ SDA2 ‾‾‾‾‾‾‾‾‾‾‾‾\___________/‾‾‾‾‾         │
    │                                             │
-   │ SDA  ‾‾‾‾‾‾‾‾‾\___________________/‾‾    │
-   │      Arbitration                             │
-   │      point: Master 2                         │
-   │      loses arbitration                        │
+   │ SDA  ‾‾‾‾‾‾‾‾‾\___________________/‾‾       │
+   │                                             │
+   │      Arbitration                            │
+   │      point: Master 2                        │
+   │      loses arbitration                      │
    │                                             │
    └─────────────────────────────────────────────┘
 ```
