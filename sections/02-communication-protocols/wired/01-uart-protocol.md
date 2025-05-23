@@ -5,18 +5,18 @@
    │            UART COMMUNICATION               │
    │                                             │
    │    DEVICE A                 DEVICE B        │
-   │    ┌─────────────┐       ┌─────────────┐   │
-   │    │             │       │             │   │
-   │    │    MCU      │       │    MCU      │   │
-   │    │             │       │             │   │
-   │    └────┬───────┘       └────┬───────┘   │
-   │         │                   │           │
-   │       TX │ ──────────────────> │ RX        │
-   │         │                   │           │
-   │       RX │ <────────────────── │ TX        │
-   │         │                   │           │
-   │       GND│───────────────────│GND        │
-   │         │                   │           │
+   │    ┌─────────────┐       ┌─────────────┐    │
+   │    │             │       │             │    │
+   │    │    MCU      │       │    MCU      │    │
+   │    │             │       │             │    │
+   │    └────┬────────┘       └──────┬──────┘    │
+   │         │                       │           │
+   │      TX │  ──────────────────>  │ RX        │
+   │         │                       │           │
+   │      RX │  <──────────────────  │ TX        │
+   │         │                       │           │
+   │     GND │───────────────────────│ GND       │
+   │         │                       │           │
    └─────────────────────────────────────────────┘
 ```
 
@@ -35,19 +35,20 @@ The **full-duplex capability** of UART enables simultaneous bidirectional commun
 The **minimal pin requirement**—typically just TX, RX, and a common ground—makes UART interfaces easy to identify and access on crowded circuit boards. This simplicity stands in stark contrast to more complex protocols that may require four or more connections, making UART an ideal starting point when investigating unknown hardware.
 
 ```ascii-art
-   ┌─────────────────────────────────────────────┐
-   │                UART FRAME                   │
-   │                                             │
-   │   START  D0   D1   D2   D3   D4   D5   D6   D7   P   STOP  │
-   │    ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄    │
-   │       ██   ██   ██   ██   ██   ██   ██       ██       │
-   │    ▀▀       ▀▀           ▀▀       ▀▀   ▀▀   ▀▀    │
-   │                                             │
-   │    ↓    ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓    ↓     ↓    │
-   │   Idle  <-- 8 Data Bits -->  Parity  Idle   │
-   │    1     0  1  0  1  0  1  0  1    1     1    │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   ┌──────────────────────────────────────────────────────────────┐
+   │                        UART FRAME                            │
+   │                                                              │
+   │  Idle  START  D0   D1   D2   D3   D4   D5   D6   D7   P  STOP│
+   │   ▄▄    ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄   ▄▄ │
+   │       ██   ██   ██   ██   ██   ██   ██       ██       ██     │
+   │   ▀▀       ▀▀           ▀▀       ▀▀   ▀▀   ▀▀       ▀▀       │
+   │                                                              │
+   │    ↓     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓    ↓     ↓     ↓     │
+   │    1      0  1   0   1   0   1   0   1      1     1     1    │
+   │          <--        8 Data Bits       -->  Parity  Stop      │
+   └──────────────────────────────────────────────────────────────┘
+
+# TODO: Add UART Frame SVG file
 ```
 
 The **communication speed** or baud rate must match between devices for successful communication. Common rates include 9600, 115200, 57600, and 38400 bits per second, with 115200 being particularly prevalent in modern embedded systems. When the baud rate is unknown, systematic testing of common values or signal analysis with an oscilloscope becomes necessary.
@@ -105,19 +106,19 @@ When connecting modern logic-level UART to RS-232 equipment, level converters su
 
 ```ascii-art
    ┌─────────────────────────────────────────────┐
-   │          COMMON UART HEADER LAYOUTS          │
+   │          COMMON UART HEADER LAYOUTS         │
    │                                             │
-   │   Labeled Headers:        Unlabeled:         │
+   │   Labeled Headers:        Unlabeled:        │
    │                                             │
-   │   ┌───────────┐      ┌─────────┐     │
-   │   │ ● TX  ● RX  │      │ ●  ●  ●  │     │
-   │   │ ● GND ● VCC │      │          │     │
-   │   └───────────┘      └─────────┘     │
+   │   ┌────────────┐         ┌─────────┐        │
+   │   │ ● TX  ● RX │         │ ●  ●  ● │        │
+   │   │ ● GND ● VCC│         │         │        │
+   │   └────────────┘         └─────────┘        │
    │                                             │
-   │   Test Points:          Silkscreen:          │
+   │   Test Points:            Silkscreen:       │
    │                                             │
-   │   ○──────────○      TX ○      ○ RX     │
-   │   TP1      TP2      GND ○                  │
+   │   ○──────────○          TX ○     ○ RX       │
+   │   TP1      TP2         GND ○                │
    │                                             │
    └─────────────────────────────────────────────┘
 ```
@@ -149,26 +150,26 @@ When visual identification doesn't yield clear results, more active discovery te
 ## Connecting to UART Interfaces
 
 ```ascii-art
-   ┌─────────────────────────────────────────────┐
-   │           UART CONNECTION SETUP              │
-   │                                             │
-   │                                             │
-   │    ┌─────────────┐      ┌─────────────┐  │
-   │    │  TARGET DEVICE │      │  USB ADAPTER   │  │
-   │    └─────┬──────┘      └─────┬──────┘  │
-   │          │                   │         │
-   │        TX │ ───────────────> │ RX       │
-   │          │                   │         │
-   │        RX │ <─────────────── │ TX       │
-   │          │                   │         │
-   │       GND │ ───────────────> │ GND      │
-   │          │                   │         │
-   │          │      ┌─────────┐  │         │
-   │          │      │ TERMINAL │  │         │
-   │          │      │ SOFTWARE │  │         │
-   │          │      └─────────┘  │         │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   ┌────────────────────────────────────────────────┐
+   │           UART CONNECTION SETUP                │
+   │                                                │
+   │                                                │
+   │    ┌────────────────┐      ┌───────────────┐   │
+   │    │  TARGET DEVICE │      │  USB ADAPTER  │   │
+   │    └────────┬───────┘      └───────┬───────┘   │
+   │             │                      │           │
+   │          TX │ ───────────────────> │ RX        │
+   │             │                      │           │
+   │          RX │ <─────────────────── │ TX        │
+   │             │                      │           │
+   │         GND │ ───────────────────> │ GND       │
+   │             │                      │           │
+   │             │      ┌─────────┐     │           │
+   │             │      │ TERMINAL│     │           │
+   │             │      │ SOFTWARE│     │           │
+   │             │      └─────────┘     │           │
+   │                                                │
+   └────────────────────────────────────────────────┘
 ```
 
 Once UART pins have been identified, the next step involves establishing a connection to capture and interact with the data passing through this interface. The proper equipment and connection technique determine whether your efforts yield valuable insights or remain frustratingly unproductive.
@@ -202,23 +203,23 @@ Establishing a proper UART connection follows a methodical process that minimize
 ## Working with UART
 
 ```ascii-art
-   ┌─────────────────────────────────────────────┐
-   │         DETERMINING UART BAUD RATE            │
-   │                                             │
-   │    ┌─────────────────────────────┐       │
-   │    │   LOGIC ANALYZER CAPTURE   │       │
-   │    └─────────────────────────────┘       │
-   │                                             │
-   │    ───▀▀───▀▀▀▀───▀▀───▀▀▀▀───▀▀──       │
-   │                                             │
-   │           Measure Bit Width                  │
-   │          ←─────────→                      │
-   │            = 8.68 µs                        │
-   │                                             │
-   │    Baud Rate = 1/bit time = 115,207 bps       │
-   │    → Closest standard rate: 115,200 bps     │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   ┌───────────────────────────────────────┐
+   │       DETERMINING UART BAUD RATE      │
+   │                                       │
+   │    ┌─────────────────────────────┐    │
+   │    │    LOGIC ANALYZER CAPTURE   │    │
+   │    └─────────────────────────────┘    │
+   │                                       │
+   │    ───▀▀───▀▀▀▀───▀▀───▀▀▀▀───▀▀──    │
+   │                                       │
+   │           Measure Bit Width           │
+   │              ←─────────→              │
+   │               = 8.68 µs               │
+   │                                       │
+   │ Baud Rate = 1/bit time = 115,207 bps  │
+   │ → Closest standard rate: 115,200 bps  │
+   │                                       │
+   └───────────────────────────────────────┘
 ```
 
 After establishing a physical connection to a UART interface, several technical challenges must be overcome to extract meaningful data and interact with the target system. These include determining the correct communication parameters and navigating the interface to discover valuable information.
@@ -286,26 +287,26 @@ UART interfaces frequently expose significant security vulnerabilities that woul
 
 ```ascii-art
    ┌─────────────────────────────────────────────┐
-   │         EXAMPLE DEBUG CONSOLE OUTPUT         │
+   │         EXAMPLE DEBUG CONSOLE OUTPUT        │
    │                                             │
-   │  U-Boot 2018.03 (Apr 10 2019 - 11:44:42)     │
-   │  CPU: Amlogic S905X                          │
-   │  DRAM:  1.5 GiB                              │
-   │  Relocation offset: 756b5000                  │
-   │  NAND:  16 MiB                               │
-   │  MMC:   SDIO Port B: 0, SDIO Port C: 1        │
-   │  Loading Environment from FAT... OK           │
-   │  Video: 1080p60hz                             │
-   │  In:    serial                                │
-   │  Out:   serial                                │
-   │  Err:   serial                                │
-   │  Net:   eth0: ethernet@c9410000               │
-   │  Hit any key to stop autoboot:  3             │
-   │  => printenv                                  │
-   │  bootcmd=run boot_normal                      │
-   │  root_password=admin123                       │
-   │  encryption_key=A37dC#8Q1%f$7lPp              │
-   │  =>                                           │
+   │  U-Boot 2018.03 (Apr 10 2019 - 11:44:42)    │
+   │  CPU: Amlogic S905X                         │
+   │  DRAM:  1.5 GiB                             │
+   │  Relocation offset: 756b5000                │
+   │  NAND:  16 MiB                              │
+   │  MMC:   SDIO Port B: 0, SDIO Port C: 1      │
+   │  Loading Environment from FAT... OK         │
+   │  Video: 1080p60hz                           │
+   │  In:    serial                              │
+   │  Out:   serial                              │
+   │  Err:   serial                              │
+   │  Net:   eth0: ethernet@c9410000             │
+   │  Hit any key to stop autoboot:  3           │
+   │  => printenv                                │
+   │  bootcmd=run boot_normal                    │
+   │  root_password=admin123                     │
+   │  encryption_key=A37dC#8Q1%f$7lPp            │
+   │  =>                                         │
    └─────────────────────────────────────────────┘
 ```
 
