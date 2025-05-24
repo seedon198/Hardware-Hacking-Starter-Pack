@@ -46,7 +46,8 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
 ├── 🕵️‍♂️ 05-reverse-engineering/     — Understanding unknown hardware  
 ├── 🔐 06-embedded-security/       — Securing embedded systems  
 ├── 📱 07-specialized-domains/     — Mobile and IoT security  
-└── 🧑‍💼 08-professional/            — Career development resources  
+├── 🧑‍💼 08-professional/            — Career development resources  
+└── 📚 09-resources/                — Conferences, talks, labs, and bug bounties  
 ```
 
 ## Content Overview
@@ -358,6 +359,33 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td class="topic-column">Terminology</td>
     <td>Hardware security terms, acronyms, concepts defined</td>
     <td><span class="difficulty-all">All Levels</span></td>
+  </tr>
+
+  <!-- External Resources -->
+  <tr>
+    <td rowspan="4"><strong>📚<br>Resources</strong></td>
+    <td><a href="./sections/09-resources/01-conferences.md"><strong>Conferences</strong></a></td>
+    <td class="topic-column">Hardware security events</td>
+    <td>Conferences and events with hardware security tracks</td>
+    <td><span class="difficulty-all">All Levels</span></td>
+  </tr>
+  <tr>
+    <td><a href="./sections/09-resources/02-talks-videos.md"><strong>Talks & Videos</strong></a></td>
+    <td class="topic-column">Recorded presentations</td>
+    <td>Notable hardware security presentations and videos</td>
+    <td><span class="difficulty-all">All Levels</span></td>
+  </tr>
+  <tr>
+    <td><a href="./sections/09-resources/03-labs.md"><strong>Labs</strong></a></td>
+    <td class="topic-column">Practice environments</td>
+    <td>Hardware security labs and interactive learning platforms</td>
+    <td><span class="difficulty-all">All Levels</span></td>
+  </tr>
+  <tr>
+    <td><a href="./sections/09-resources/04-bug-bounties.md"><strong>Bug Bounties</strong></a></td>
+    <td class="topic-column">Vulnerability programs</td>
+    <td>Hardware-focused bug bounty programs</td>
+    <td><span class="difficulty-intermediate">Intermediate+</span></td>
   </tr>
 </table>
 
