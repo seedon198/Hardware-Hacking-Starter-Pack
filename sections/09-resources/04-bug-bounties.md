@@ -2,98 +2,303 @@
 
 This page lists bug bounty programs that specifically target hardware vulnerabilities or include hardware in their scope.
 
+## About Hardware Bug Bounties
+
+Hardware bug bounty programs offer security researchers the opportunity to discover and report vulnerabilities in physical devices, chips, and embedded systems. Unlike software-only bug bounties, hardware security research often requires specialized equipment, physical access to devices, and knowledge of electronic components.
+
+## Finding Hardware Bug Bounty Programs
+
+Hardware bug bounty programs can be found through:
+
+- **Dedicated bug bounty platforms**: [HackerOne](https://hackerone.com/directory/programs?asset_type=HARDWARE), [Bugcrowd](https://bugcrowd.com), [Intigriti](https://www.intigriti.com)
+- **Company security pages**: Most major hardware manufacturers maintain security pages with vulnerability disclosure information
+- **Security conferences**: New programs are often announced at events like DEF CON, Black Hat, and Hardwear.io
+
+## Types of Hardware Vulnerabilities
+
+| Vulnerability Type | Description | Examples |
+|---|---|---|
+| **Side-Channel Attacks** | Extracting information by observing physical implementation | Timing attacks, power analysis, electromagnetic leakage |
+| **Fault Injection** | Deliberately causing faults to bypass security | Voltage glitching, clock manipulation, laser fault injection |
+| **Hardware Backdoors** | Malicious modifications to hardware design | Hidden circuits, undocumented functionality |
+| **Hardware Design Flaws** | Fundamental security issues in architecture | Spectre, Meltdown, Rowhammer |
+| **Physical Security Bypasses** | Bypassing physical protections | Lock bypassing, tamper protection circumvention |
+| **Firmware Exploitation** | Targeting the low-level code running on hardware | Boot ROM vulnerabilities, secure boot bypasses |
+
 ## Major Hardware Bug Bounty Programs
 
-### Intel Bug Bounty Program
-- **Website**: [intel.com/content/www/us/en/security-center/bug-bounty-program.html](https://www.intel.com/content/www/us/en/security-center/bug-bounty-program.html)
-- **Scope**: Intel hardware, firmware, and software
-- **Rewards**: $500 - $100,000+
-- **Description**: Covers vulnerabilities in Intel processors, chipsets, and other hardware components.
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Program</th>
+      <th>Scope</th>
+      <th>Rewards</th>
+      <th>Platform</th>
+      <th>Difficulty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Chip Manufacturers -->
+    <tr>
+      <td rowspan="4"><strong>Chip Manufacturers</strong></td>
+      <td><a href="https://www.intel.com/content/www/us/en/security-center/bug-bounty-program.html">Intel</a></td>
+      <td>Processors, chipsets, firmware</td>
+      <td>$500 - $100,000+</td>
+      <td>Direct</td>
+      <td>Advanced</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.amd.com/en/security/vulnerability-disclosure">AMD</a></td>
+      <td>CPUs, GPUs, firmware</td>
+      <td>Varies by severity</td>
+      <td>Direct</td>
+      <td>Advanced</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.qualcomm.com/company/product-security">Qualcomm</a></td>
+      <td>Mobile/IoT chipsets</td>
+      <td>Up to $15,000</td>
+      <td>Direct</td>
+      <td>Advanced</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.arm.com/support/security-update">ARM</a></td>
+      <td>Processor designs, IP</td>
+      <td>Varies by severity</td>
+      <td>Direct</td>
+      <td>Advanced</td>
+    </tr>
+    <!-- IoT Devices -->
+    <tr>
+      <td rowspan="3"><strong>IoT Devices</strong></td>
+      <td><a href="https://www.google.com/nest/security-rewards/">Google Nest</a></td>
+      <td>Smart home devices</td>
+      <td>$100 - $20,000</td>
+      <td>Direct</td>
+      <td>Intermediate</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.samsung.com/smartthings/security-reporting">Samsung SmartThings</a></td>
+      <td>IoT ecosystem, devices</td>
+      <td>$200 - $20,000</td>
+      <td>Direct</td>
+      <td>Intermediate</td>
+    </tr>
+    <tr>
+      <td><a href="https://bugcrowd.com/ring">Ring</a></td>
+      <td>Security devices, cameras</td>
+      <td>$100 - $10,000</td>
+      <td>Bugcrowd</td>
+      <td>Intermediate</td>
+    </tr>
+    <!-- Automotive -->
+    <tr>
+      <td rowspan="3"><strong>Automotive</strong></td>
+      <td><a href="https://bugcrowd.com/tesla">Tesla</a></td>
+      <td>Vehicles, charging systems</td>
+      <td>$100 - $15,000</td>
+      <td>Bugcrowd</td>
+      <td>Advanced</td>
+    </tr>
+    <tr>
+      <td><a href="https://hackerone.com/gm">GM</a></td>
+      <td>Vehicles, infotainment</td>
+      <td>$100 - $12,000</td>
+      <td>HackerOne</td>
+      <td>Advanced</td>
+    </tr>
+    <tr>
+      <td><a href="https://hackerone.com/ford">Ford</a></td>
+      <td>Vehicles, connected systems</td>
+      <td>Varies by severity</td>
+      <td>HackerOne</td>
+      <td>Advanced</td>
+    </tr>
+    <!-- Consumer Tech -->
+    <tr>
+      <td rowspan="3"><strong>Consumer Tech</strong></td>
+      <td><a href="https://security.apple.com/bounty/">Apple</a></td>
+      <td>iPhone, Mac, Watch, etc.</td>
+      <td>$5,000 - $1,000,000</td>
+      <td>Direct</td>
+      <td>Advanced</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.microsoft.com/en-us/msrc/bounty">Microsoft</a></td>
+      <td>Surface, Xbox, etc.</td>
+      <td>$1,000 - $250,000</td>
+      <td>Direct</td>
+      <td>Advanced</td>
+    </tr>
+    <tr>
+      <td><a href="https://hackerone.com/nintendo">Nintendo</a></td>
+      <td>Gaming consoles, accessories</td>
+      <td>$100 - $20,000</td>
+      <td>HackerOne</td>
+      <td>Intermediate</td>
+    </tr>
+  </tbody>
+</table>
 
-### AMD Bug Bounty Program
-- **Website**: [amd.com/en/security/vulnerability-disclosure](https://www.amd.com/en/security/vulnerability-disclosure)
-- **Scope**: AMD processors and hardware
-- **Rewards**: Varies based on severity
-- **Description**: Focuses on AMD CPUs, GPUs, and other hardware products.
+## Specialized Hardware Bug Bounty Platforms
 
-### Qualcomm Product Security Initiative
-- **Website**: [qualcomm.com/company/product-security](https://www.qualcomm.com/company/product-security)
-- **Scope**: Qualcomm chipsets and hardware
-- **Rewards**: Up to $15,000
-- **Description**: Covers Qualcomm's mobile and IoT hardware products.
+| Platform | Focus | URL | Notes |
+|---|---|---|---|
+| **HackerOne Hardware Category** | Various hardware programs | [View Programs](https://hackerone.com/directory/programs?asset_type=HARDWARE) | Largest collection of hardware bounties |
+| **Bugcrowd Hardware Programs** | Various hardware vendors | [View Programs](https://bugcrowd.com) | Search for hardware in scope |
+| **Synack Red Team** | Enterprise hardware | [Synack](https://www.synack.com) | Invite-only platform with hardware targets |
 
-### ARM Bug Bounty Program
-- **Website**: [arm.com/support/security-update](https://www.arm.com/support/security-update)
-- **Scope**: ARM processors and IP
-- **Rewards**: Varies based on severity
-- **Description**: Focuses on ARM processor designs and intellectual property.
+## Hardware Bug Bounty Research Methodology
 
-## IoT Device Bug Bounty Programs
+<table>
+  <thead>
+    <tr>
+      <th>Phase</th>
+      <th>Activities</th>
+      <th>Tools & Resources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Reconnaissance</strong></td>
+      <td>
+        <ul>
+          <li>Study product documentation</li>
+          <li>Identify components and architecture</li>
+          <li>Research known vulnerabilities</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Datasheets</li>
+          <li>FCC documentation</li>
+          <li>Teardowns</li>
+          <li>CVE databases</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>2. Physical Analysis</strong></td>
+      <td>
+        <ul>
+          <li>Identify test points</li>
+          <li>Map circuit board connections</li>
+          <li>Locate debug interfaces</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Multimeter</li>
+          <li>Microscope</li>
+          <li>Logic analyzer</li>
+          <li>Board schematics</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>3. Interface Probing</strong></td>
+      <td>
+        <ul>
+          <li>Test UART, JTAG, SPI, I2C</li>
+          <li>Analyze communication protocols</li>
+          <li>Identify authentication mechanisms</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Bus Pirate</li>
+          <li>JTAGulator</li>
+          <li>Protocol analyzers</li>
+          <li>Custom adapters</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>4. Firmware Analysis</strong></td>
+      <td>
+        <ul>
+          <li>Extract firmware</li>
+          <li>Reverse engineer code</li>
+          <li>Identify security functions</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Flashrom</li>
+          <li>Binwalk</li>
+          <li>Ghidra/IDA Pro</li>
+          <li>QEMU for emulation</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>5. Security Testing</strong></td>
+      <td>
+        <ul>
+          <li>Test authentication bypasses</li>
+          <li>Perform side-channel analysis</li>
+          <li>Attempt fault injection</li>
+          <li>Test hardware interfaces</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>ChipWhisperer</li>
+          <li>Software-defined radio</li>
+          <li>Glitching equipment</li>
+          <li>Custom test harnesses</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>6. Reporting</strong></td>
+      <td>
+        <ul>
+          <li>Document findings clearly</li>
+          <li>Create proof-of-concept</li>
+          <li>Assess impact and exploitability</li>
+          <li>Submit through proper channels</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Video demonstrations</li>
+          <li>Clear step-by-step guides</li>
+          <li>Circuit diagrams</li>
+          <li>Code snippets</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-### Google Nest Security Rewards Program
-- **Website**: [google.com/nest/security-rewards](https://www.google.com/nest/security-rewards/)
-- **Scope**: Google Nest devices including hardware vulnerabilities
-- **Rewards**: $100 - $20,000
-- **Description**: Covers Google's smart home devices including hardware components.
+## Tips for Hardware Bug Bounty Success
 
-### Samsung SmartThings Bug Bounty Program
-- **Website**: [samsungdevelopers.com/securityreporting](https://developer.samsung.com/smartthings/security-reporting)
-- **Scope**: SmartThings devices and hardware
-- **Rewards**: $200 - $20,000
-- **Description**: Covers Samsung's IoT ecosystem including hardware devices.
+1. **Start with easier targets** - Consumer IoT devices often have more accessible vulnerabilities than professional equipment
+2. **Invest in the right tools** - Budget for essential hardware security tools appropriate to your skill level
+3. **Join hardware hacking communities** - Connect with others at conferences and online forums
+4. **Document everything** - Hardware research requires meticulous documentation of all tests and findings
+5. **Consider legal implications** - Hardware testing may involve DMCA or warranty considerations
+6. **Develop specialized skills** - Focus on areas like RF security, embedded systems, or specific protocols
+7. **Be patient** - Hardware security research typically takes longer than software vulnerability discovery
 
-### Ring Security Bug Bounty Program
-- **Website**: [bugcrowd.com/ring](https://bugcrowd.com/ring)
-- **Scope**: Ring devices including hardware vulnerabilities
-- **Rewards**: $100 - $10,000
-- **Description**: Covers Amazon's Ring smart home security devices.
+## Books and Learning Resources
 
-## Automotive Bug Bounty Programs
-
-### Tesla Bug Bounty Program
-- **Website**: [bugcrowd.com/tesla](https://bugcrowd.com/tesla)
-- **Scope**: Tesla vehicles including hardware components
-- **Rewards**: $100 - $15,000
-- **Description**: Covers vulnerabilities in Tesla's electric vehicles including hardware systems.
-
-### GM Bug Bounty Program
-- **Website**: [hackerone.com/gm](https://hackerone.com/gm)
-- **Scope**: GM vehicles and systems including hardware
-- **Rewards**: $100 - $12,000
-- **Description**: Covers General Motors vehicles and their components.
-
-### Ford Bug Bounty Program
-- **Website**: [hackerone.com/ford](https://hackerone.com/ford)
-- **Scope**: Ford vehicles and systems
-- **Rewards**: Varies based on severity
-- **Description**: Covers Ford's vehicles and their hardware components.
-
-## Platform Bug Bounty Programs That Include Hardware
-
-### Apple Security Bounty
-- **Website**: [apple.com/security-bounty](https://security.apple.com/bounty/)
-- **Scope**: Apple devices including hardware vulnerabilities
-- **Rewards**: $5,000 - $1,000,000
-- **Description**: Covers Apple's hardware products including iPhone, Mac, Apple Watch, etc.
-
-### Microsoft Bug Bounty Program
-- **Website**: [microsoft.com/en-us/msrc/bounty](https://www.microsoft.com/en-us/msrc/bounty)
-- **Scope**: Microsoft hardware (Surface, Xbox, etc.)
-- **Rewards**: $1,000 - $250,000
-- **Description**: Includes Microsoft's hardware products like Surface and Xbox.
-
-### HackerOne Hardware Category
-- **Website**: [hackerone.com/directory/programs?asset_type=HARDWARE](https://hackerone.com/directory/programs?asset_type=HARDWARE)
-- **Description**: Directory of bug bounty programs on HackerOne that include hardware in scope.
-
-## Tips for Hardware Bug Bounty Hunters
-
-1. **Understand the Rules**: Carefully read the program's terms and conditions before testing.
-2. **Document Thoroughly**: Hardware vulnerabilities often require detailed reproduction steps.
-3. **Consider Impact**: Focus on vulnerabilities with real-world impact to maximize rewards.
-4. **Responsible Disclosure**: Always follow the program's disclosure policy.
-5. **Specialized Equipment**: Some hardware testing requires specialized tools and equipment.
+| Title | Author | Focus Area | Difficulty |
+|---|---|---|---|
+| **Practical Hardware Pentesting** | Jean-Georges Valle | General hardware testing | Beginner-Intermediate |
+| **The Hardware Hacker** | Andrew "bunnie" Huang | Hardware exploration and manufacturing | Intermediate |
+| **Hardware Security: Design, Threats, and Safeguards** | Debdeep Mukhopadhyay | Academic approach to hardware security | Advanced |
+| **IoT Penetration Testing Cookbook** | Aaron Guzman & Aditya Gupta | IoT hardware testing | Intermediate |
+| **The Car Hacker's Handbook** | Craig Smith | Automotive security | Intermediate-Advanced |
 
 ## Contributing
 
-Know of a hardware bug bounty program that should be listed here? Please contribute by submitting a pull request!
+Know of a hardware bug bounty program that should be listed here? Please contribute by submitting a pull request! When contributing, please include:
+
+- Program name and link
+- Scope details (specific hardware covered)
+- Reward ranges if available
+- Platform (direct, HackerOne, Bugcrowd, etc.)
+- Any special requirements or notes for researchers
