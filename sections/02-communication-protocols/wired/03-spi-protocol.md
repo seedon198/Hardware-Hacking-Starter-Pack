@@ -2,32 +2,26 @@
 
 ```
    ┌─────────────────────────────────────────────┐
-   │          SPI COMMUNICATION MODEL             │
+   │           SPI COMMUNICATION MODEL           │
    │                                             │
-   │    ┌─────────────┐                         │
-   │    │    MASTER    │                         │
-   │    └─┬─┬─┬─┬─┘                         │
-   │      │ │ │ │                           │
-   │  SCLK │ │ │ │                           │
-   │  ────── │ │ │                           │
-   │  MOSI │ │ │ │                           │
-   │  ─────── │ │                           │
-   │  MISO │ │ │ │                           │
-   │  ──────── │                           │
-   │  CS1  │ │ │                            │
-   │  ─────────                            │
-   │  CS2  │ │                             │
-   │  ──────────                            │
-   │  CS3  │                              │
-   │  ──────────                            │
-   │      │ │ │ │                           │
-   │      ↓ ↓ ↓ ↓                           │
-   │    ┌──┬─┘ ┌──┬─┘ ┌──┬─┘             │
-   │    │SLAVE│ │SLAVE│ │SLAVE│             │
-   │    │  1  │ │  2  │ │  3  │             │
-   │    └────┘ └────┘ └────┘             │
+   │               ┌─────────────┐               │
+   │               │   MASTER    │               │
+   │               └────┬──┬─────┘               │
+   │                    │  │                     │
+   │               SCLK │  │                     │
+   │               ─────┘  │                     │
+   │               MOSI ───┘                     │
+   │               MISO ───┐                     │
+   │                    ┌──┴────┐                │
+   │          ┌────────►│ SLAVE1│                │
+   │          │ CS1 ────┘└──────┘                │
+   │          ├────────►│ SLAVE2│                │
+   │          │ CS2 ────┘└──────┘                │
+   │          └────────►│ SLAVE3│                │
+   │             CS3 ───┘└──────┘                │
    │                                             │
    └─────────────────────────────────────────────┘
+
 ```
 
 In the ecosystem of embedded communications, the Serial Peripheral Interface (SPI) stands as a high-performance contender, offering remarkable simplicity paired with impressive speed capabilities. Developed by Motorola in the mid-1980s, SPI has evolved into one of the most widely adopted protocols for short-distance communication in embedded systems, particularly where speed-critical applications demand efficient data transfer.
@@ -71,19 +65,23 @@ Slave devices remain passive participants, responding only when selected by the 
 
 ```
    ┌─────────────────────────────────────────────┐
-   │           SPI SIGNAL TRANSFER                │
+   │             SPI SIGNAL TRANSFER             │
    │                                             │
-   │  CS   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄    │
-   │       ██                              ██    │
-   │  SCLK ██████_██████_██████_██████_██████    │
+   │  CS     ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄        │
+   │        █                            █       |
+   |                                             │
+   │  SCLK  ░░▀▀░░▀▀░░▀▀░░▀▀░░▀▀░░▀▀░░▀▀░░       │
    │                                             │
-   │  MOSI ████████__██__████████__██__██████    │
-   │            bit7  bit6  bit5  bit4  bit3      │
+   │  MOSI  ████░░░░██░░████████░░░░██░░██       │
+   │           ↑     ↑     ↑     ↑     ↑         │
+   │         bit7  bit6  bit5  bit4  bit3        │
    │                                             │
-   │  MISO ██__████████__██__████████__██__    │
-   │            bit7  bit6  bit5  bit4  bit3      │
+   │  MISO  ██░░████████░░░░██░░████████░░       │
+   │           ↑     ↑     ↑     ↑     ↑         │
+   │         bit7  bit6  bit5  bit4  bit3        │
    │                                             │
    └─────────────────────────────────────────────┘
+
 ```
 
 **The absence of an addressing scheme** differentiates SPI from protocols like I²C. Rather than sending address information over the data lines, SPI uses dedicated Chip Select (CS) lines for each slave device. When the master wishes to communicate with a specific slave, it activates only that slave's CS line (typically by driving it low) while keeping all other CS lines inactive. This direct selection approach:
@@ -219,23 +217,23 @@ During security assessments, it's sometimes necessary to attempt communication u
 
 ```
    ┌─────────────────────────────────────────────┐
-   │        COMMON SPI INTERFACE INDICATORS       │
+   │        COMMON SPI INTERFACE INDICATORS      │
    │                                             │
-   │   PCB Labels:            Flash Packages:     │
+   │   PCB Labels:            Flash Packages:    │
    │                                             │
-   │    MOSI ○               ┌────────┐     │
-   │    MISO ○               │ W25Q128  │     │
-   │    SCLK ○               │ SOIC-8   │     │
-   │    CS   ○               └────────┘     │
+   │    MOSI ○               ┌──────────┐        │
+   │    MISO ○               │ W25Q128  │        │
+   │    SCLK ○               │ SOIC-8   │        │
+   │    CS   ○               └──────────┘        │
    │                                             │
-   │   Test Points:          Pin Headers:         │
+   │   Test Points:          Pin Headers:        │
    │                                             │
-   │    ○──○──○──○         ●──●──●──●        │
-   │    TP1 TP2 TP3 TP4      1  2  3  4        │
-   │                        S  M  M  G        │
-   │                        C  O  I  N        │
-   │                        L  S  S  D        │
-   │                        K  I  O           │
+   │    ○──○──○──○           ●──●──●──●          │
+   │    TP1 TP2 TP3 TP4      1  2  3  4          │
+   │                         S  M  M  G          │
+   │                         C  O  I  N          │
+   │                         L  S  S  D          │
+   │                         K  I  O             │
    │                                             │
    └─────────────────────────────────────────────┘
 ```
@@ -352,25 +350,25 @@ By examining the precise timing between clock and data signals, you can not only
 
 ```
    ┌─────────────────────────────────────────────┐
-   │           SPI HACKING TOOLKIT                │
+   │           SPI HACKING TOOLKIT               │
    │                                             │
-   │   ┌──────────────┐                      │
+   │   ┌─────────────────┐                       │
    │   │  LOGIC ANALYZER │          ANALYSIS     │
-   │   └──────────────┘                      │
+   │   └─────────────────┘                       │
    │                                             │
-   │   ┌──────────────┐                      │
+   │   ┌────────────────┐                        │
    │   │    USB-TO-SPI  │          INTERACTION   │
-   │   └──────────────┘                      │
+   │   └────────────────┘                        │
    │                                             │
-   │   ┌──────────────┐                      │
+   │   ┌────────────────┐                        │
    │   │     CLIPS &    │          CONNECTION    │
-   │   │     PROBES     │                      │
-   │   └──────────────┘                      │
+   │   │     PROBES     │                        │
+   │   └────────────────┘                        │
    │                                             │
-   │   ┌──────────────┐                      │
+   │   ┌────────────────┐                        │
    │   │    SOFTWARE    │          EXTRACTION    │
-   │   │    UTILITIES   │                      │
-   │   └──────────────┘                      │
+   │   │    UTILITIES   │                        │
+   │   └────────────────┘                        │
    │                                             │
    └─────────────────────────────────────────────┘
 ```
@@ -529,24 +527,24 @@ A basic SPI hacking toolkit can be assembled for under $100, with a CH341A progr
 ### Passive Techniques
 
 ```
-   ┌─────────────────────────────────────────────┐
-   │        SPI ATTACK METHODOLOGY                │
-   │                                             │
-   │  ┌────────────────────────────────────┐  │
-   │  │      OBSERVE      ANALYZE      EXPLOIT   │  │
-   │  │                                        │  │
-   │  │  1. Identify   1. Protocol  1. Read      │  │
-   │  │     Interface     Analysis     Memory     │  │
-   │  │                                        │  │
-   │  │  2. Monitor    2. Command   2. Modify    │  │
-   │  │     Traffic      Patterns     Firmware   │  │
-   │  │                                        │  │
-   │  │  3. Capture    3. Data      3. Inject    │  │
-   │  │     Signals      Formats      Commands   │  │
-   │  │                                        │  │
-   │  └────────────────────────────────────┘  │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   ┌───────────────────────────────────────────────┐
+   │             SPI ATTACK METHODOLOGY            │
+   │                                               │
+   │  ┌─────────────────────────────────────────┐  │
+   │  │      OBSERVE      ANALYZE      EXPLOIT  │  │
+   │  │                                         │  │
+   │  │  1. Identify   1. Protocol  1. Read     │  │
+   │  │     Interface     Analysis     Memory   │  │
+   │  │                                         │  │
+   │  │  2. Monitor    2. Command   2. Modify   │  │
+   │  │     Traffic      Patterns     Firmware  │  │
+   │  │                                         │  │
+   │  │  3. Capture    3. Data      3. Inject   │  │
+   │  │     Signals      Formats      Commands  │  │
+   │  │                                         │  │
+   │  └─────────────────────────────────────────┘  │
+   │                                               │
+   └───────────────────────────────────────────────┘
 ```
 
 The direct, high-speed nature of SPI communication makes it particularly susceptible to hardware-level security analysis. With no built-in authentication, encryption, or protection mechanisms, SPI relies entirely on physical security to safeguard the data it transfers. This characteristic makes SPI interfaces high-value targets for hardware security researchers and potential adversaries. Mastering both passive and active SPI hacking techniques provides powerful capabilities for firmware extraction, device analysis, and security assessment.
@@ -689,26 +687,26 @@ The goal of fault injection is typically to bypass security mechanisms by disrup
 ## Common SPI Security Issues
 
 ```
-   ┌─────────────────────────────────────────────┐
-   │        SPI SECURITY VULNERABILITIES          │
-   │                                             │
-   │       ╔═════════════════════╗          │
-   │       ║  PROTOCOL WEAKNESSES  ║          │
-   │       ╠═════════════════════╣          │
-   │       ║ • No Authentication  ║          │
-   │       ║ • No Encryption     ║          │
-   │       ║ • No Integrity Check ║          │
-   │       ║ • Physical Exposure  ║          │
-   │       ╗═════════════════════╔          │
-   │       ║ IMPLEMENTATION FLAWS ║          │
-   │       ╠═════════════════════╣          │
-   │       ║ • Unprotected Flash  ║          │
-   │       ║ • Sensitive Data     ║          │
-   │       ║ • Weak Protection    ║          │
-   │       ║ • Debug Interfaces   ║          │
-   │       ╙═════════════════════╜          │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   ┌───────────────────────────────────────────────┐
+   │      SPI SECURITY VULNERABILITIES             │
+   │                                               │
+   │       ╔═══════════════════════╗               │
+   │       ║  PROTOCOL WEAKNESSES  ║               │
+   │       ╠═══════════════════════╣               │
+   │       ║ • No Authentication   ║               │
+   │       ║ • No Encryption       ║               │
+   │       ║ • No Integrity Check  ║               │
+   │       ║ • Physical Exposure   ║               │
+   │       ╚═══════════════════════╝               │
+   │       ║ IMPLEMENTATION FLAWS  ║               │
+   │       ╠═══════════════════════╣               │
+   │       ║ • Unprotected Flash   ║               │
+   │       ║ • Sensitive Data      ║               │
+   │       ║ • Weak Protection     ║               │
+   │       ║ • Debug Interfaces    ║               │
+   │       ╚═══════════════════════╝               │
+   │                                               │
+   └───────────────────────────────────────────────┘
 ```
 
 The SPI protocol's design emphasizes performance and simplicity over security, resulting in numerous vulnerabilities that security researchers and potential attackers can exploit. These security issues fall into two primary categories: fundamental protocol weaknesses inherent to SPI's design, and implementation weaknesses introduced by device manufacturers. Understanding these vulnerabilities is essential for both exploiting them for legitimate security assessment or addressing them in secure product design.
@@ -838,22 +836,22 @@ The combination of protocol-level vulnerabilities and implementation weaknesses 
 ## Practical SPI Hacking: Flash Memory Extraction
 
 ```
-   ┌─────────────────────────────────────────────┐
+   ┌──────────────────────────────────────────────┐
    │       SPI FLASH EXTRACTION WORKFLOW          │
-   │                                             │
+   │                                              │
    │   1. ┌──────────────┐   2. ┌──────────────┐  │
-   │      │  IDENTIFY   │      │  CONNECT    │  │
-   │      │  CHIP      │      │  HARDWARE   │  │
+   │      │  IDENTIFY    │      │  CONNECT     │  │
+   │      │  CHIP        │      │  HARDWARE    │  │
    │      └──────────────┘      └──────────────┘  │
-   │                ↓                ↓           │
-   │                                             │
+   │              ↓                   ↓           │
+   │                                              │
    │   4. ┌──────────────┐   3. ┌──────────────┐  │
-   │      │  ANALYZE    │      │  EXTRACT    │  │
-   │      │  FIRMWARE   │      │  DATA       │  │
+   │      │  ANALYZE     │      │  EXTRACT     │  │
+   │      │  FIRMWARE    │      │  DATA        │  │
    │      └──────────────┘      └──────────────┘  │
-   │                ↑                ↓           │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   │              ↑                   ↓           │
+   │                                              │
+   └──────────────────────────────────────────────┘
 ```
 
 Among all hardware hacking techniques, SPI flash memory extraction stands as one of the most valuable and widely applicable skills. These unassuming chips, often costing less than a dollar, frequently contain the complete firmware, configuration settings, encryption keys, and sometimes even hardcoded credentials for the devices they support. For hardware security researchers, successfully extracting and analyzing the contents of an SPI flash chip often represents the critical first breakthrough in understanding a device's inner workings.
@@ -947,13 +945,13 @@ For a standard 8-pin SOIC flash chip with a CH341A programmer, a typical connect
 
 ```
    FLASH CHIP (TOP VIEW)    CH341A PROGRAMMER
-     _________
-    |         |
- CS -| 1     8 |- VCC --------- 3.3V/VCC
- MISO -| 2     7 |- HOLD ------- 3.3V/VCC 
- WP -| 3     6 |- SCLK -------- SCLK
- GND -| 4     5 |- MOSI -------- MOSI
-    |_________|
+        _________
+       |         |
+ CS ---| 1     8 |--- VCC --------- 3.3V/VCC
+ MISO -| 2     7 |-- HOLD ------- 3.3V/VCC 
+ WP ---| 3     6 |-- SCLK -------- SCLK
+ GND --| 4     5 |-- MOSI -------- MOSI
+       |_________|
       
         CS -------------- CS
        MISO ------------- MISO
@@ -1053,22 +1051,21 @@ For particularly sensitive applications, extracted firmware should be handled se
 ## Securing SPI Communications
 
 ```
-   ┌─────────────────────────────────────────────┐
-   │       SPI SECURITY DEFENSE LAYERS             │
-   │                                             │
+   ┌───────────────────────────────────────────┐
+   │       SPI SECURITY DEFENSE LAYERS         │
+   │                                           │
    │    ┌─────────────────────────────────┐    │
-   │    │       PHYSICAL PROTECTION        │    │
+   │    │       PHYSICAL PROTECTION       │    │
    │    └─────────────────────────────────┘    │
-   │                   ↓                      │
+   │                     ↓                     │
    │    ┌─────────────────────────────────┐    │
    │    │     CRYPTOGRAPHIC CONTROLS      │    │
    │    └─────────────────────────────────┘    │
-   │                   ↓                      │
+   │                     ↓                     │
    │    ┌─────────────────────────────────┐    │
-   │    │    APPLICATION AUTHENTICATION    │    │
+   │    │    APPLICATION AUTHENTICATION   │    │
    │    └─────────────────────────────────┘    │
-   │                                             │
-   └─────────────────────────────────────────────┘
+   └───────────────────────────────────────────┘
 ```
 
 While the SPI protocol itself lacks built-in security features, hardware engineers and system architects can implement various defensive measures to mitigate its inherent vulnerabilities. A comprehensive security approach for SPI interfaces requires multiple layers of protection, combining physical security, cryptographic controls, and application-level authentication. Understanding these security measures is essential not only for protecting devices but also for assessing their effectiveness during hardware security testing.
