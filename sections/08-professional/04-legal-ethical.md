@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: legal, ethics, responsible-disclosure, authorization -->
+
 # Legal and Ethical Considerations in Hardware Hacking
 
 Hardware hacking exists at the intersection of technical curiosity and multiple legal and ethical frameworks. Understanding these considerations is not merely academic—it directly impacts what activities are permissible, what risks you assume, and how your work contributes to broader security ecosystems. This section explores the complex landscape of laws, regulations, and ethical principles affecting hardware security research.

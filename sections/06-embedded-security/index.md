@@ -1,3 +1,5 @@
+<!-- tags: embedded, security, boot, memory, testing -->
+
 # Embedded Device Security
 
 Embedded systems surround us—from smart home devices and medical equipment to automotive controllers and industrial systems. These specialized computing devices often control critical functions yet face unique security challenges due to their constrained resources, specialized architectures, and growing connectivity. Understanding embedded security is essential for hardware hackers, whether you're securing your own designs or evaluating the security of existing systems.

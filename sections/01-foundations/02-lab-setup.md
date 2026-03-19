@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: lab, setup, tools, environment -->
+
 # Setting Up Your Hardware Hacking Lab
 
 The environment where you conduct hardware exploration directly influences your effectiveness, safety, and enjoyment of the process. A thoughtfully designed hardware hacking workspace provides not just the physical foundation for your work, but creates the conditions where focused analysis and creative problem-solving flourish. This section guides you through establishing a functional laboratory that balances practical requirements with resource constraints.

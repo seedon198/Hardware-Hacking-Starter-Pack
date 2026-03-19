@@ -1,3 +1,5 @@
+<!-- tags: protocols, wired, wireless, overview -->
+
 # Hardware Communication Protocols
 
 ```

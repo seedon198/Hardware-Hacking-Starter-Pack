@@ -1,3 +1,5 @@
+<!-- tags: wireless, rf, protocols -->
+
 # The Wireless Spectrum: Protocols, Hardware, and Security
 
 ## Introduction to Wireless Hardware Hacking

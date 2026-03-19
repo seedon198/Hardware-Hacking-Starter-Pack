@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: bug-bounty, hof, programs, rewards -->
+
 # Hardware Bug Bounty Programs
 
 This page lists bug bounty programs that specifically target hardware vulnerabilities or include hardware in their scope.

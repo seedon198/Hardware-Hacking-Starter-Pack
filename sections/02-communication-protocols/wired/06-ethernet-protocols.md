@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: ethernet, tcp-ip, network -->
+
 # Ethernet and Network Protocols: The Physical Gateway to Data
 
 ```

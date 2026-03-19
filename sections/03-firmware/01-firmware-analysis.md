@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: firmware, binwalk, extraction, analysis, reverse-engineering -->
+
 # Firmware: The Digital Soul of Hardware
 
 ## Unlocking the Hidden Code

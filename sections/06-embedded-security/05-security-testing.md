@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: testing, fuzzing, pentest, methodology -->
+
 # Security Testing and Vulnerability Assessment
 
 The security of an embedded system isn't determined by what you put into it, but by what an attacker can't get out of it. Security testing and vulnerability assessment provide the crucial reality check that transforms theoretical security into practical protection.

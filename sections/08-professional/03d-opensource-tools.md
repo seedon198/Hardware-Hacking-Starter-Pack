@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: tools, open-source, github, firmware -->
+
 # Open Source Projects and Tools
 
 Open source projects form the backbone of the hardware hacking ecosystem. These collaborative efforts produce the software tools, hardware designs, and documentation that enable hardware security work across skill levels. Beyond their practical utility, open source projects create communities where knowledge transfers organically through code review, issue discussions, and design decisions.

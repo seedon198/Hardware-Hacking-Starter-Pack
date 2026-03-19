@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: usb, hid, enumeration, descriptors -->
+
 # USB: The Universal Gateway to Device Hacking
 
 ```

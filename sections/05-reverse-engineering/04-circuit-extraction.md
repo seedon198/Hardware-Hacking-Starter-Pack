@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: circuit, netlist, extraction, schematic -->
+
 # Circuit Extraction and Schematic Capture
 
 After identifying components and tracing connections on a PCB, the next critical step is documenting these findings in a usable format. Circuit extraction and schematic capture transform your physical observations into logical representations that reveal how a device functions. This process bridges the gap between hardware examination and functional understanding.

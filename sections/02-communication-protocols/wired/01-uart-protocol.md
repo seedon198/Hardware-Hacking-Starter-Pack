@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: uart, serial, debug, baud-rate -->
+
 # UART/Serial Communication
 
 ```

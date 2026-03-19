@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: physical, tamper, enclosures, potting, epoxy -->
+
 # Physical Security Mechanisms
 
 Software-based security measures are only as effective as the hardware they run on. Physical security mechanisms protect embedded devices against attacks requiring direct access to device components. If an attacker can open your device and connect test equipment directly to its internals, even the strongest cryptographic algorithms may be bypassed.

@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: jtag, swd, debug, boundary-scan -->
+
 # JTAG and SWD Protocols: The Ultimate Backdoors
 
 ```

@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: components, identification, datasheets, markings -->
+
 # Component Identification
 
 Understanding the individual components on a PCB is crucial for hardware reverse engineering. Each component provides clues about a device's functionality, capabilities, and potential vulnerabilities. This section explores how to identify and understand the various electronic components you'll encounter during hardware hacking.

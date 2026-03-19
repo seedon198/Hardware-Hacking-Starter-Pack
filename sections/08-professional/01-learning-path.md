@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: learning, roadmap, career, skills -->
+
 # Learning Path & Progression
 
 The journey to mastering hardware hacking resembles climbing a mountain—the path winds through different terrains, each requiring specific skills and presenting unique challenges. Some routes are steeper than others, but all lead to expanded capabilities and deeper understanding. This section outlines a structured progression from beginner to advanced levels, helping you chart your course through the hardware hacking landscape.

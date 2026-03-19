@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: supply-chain, tampering, counterfeits -->
+
 # Supply Chain Attacks - Part 1: Introduction and Fundamentals
 
 The journey of an electronic device from design to your hands involves numerous companies, facilities, and people. This complex network creates countless opportunities for security compromises that are particularly difficult to detect and mitigate.

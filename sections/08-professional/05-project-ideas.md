@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: projects, practice, beginner, ideas -->
+
 # Project Ideas for Hardware Hackers
 
 Building practical skills in hardware hacking requires hands-on experience with real devices and systems. This section presents a progression of project ideas organized by difficulty level, technical focus, and required equipment. Each project includes learning objectives, suggested approaches, and reference resources to support your journey from initial exploration to advanced hardware security research.

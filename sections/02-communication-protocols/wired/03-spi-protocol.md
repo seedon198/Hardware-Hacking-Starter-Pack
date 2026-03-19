@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: spi, four-wire, flash, eeprom -->
+
 # SPI (Serial Peripheral Interface) Protocol
 
 ```

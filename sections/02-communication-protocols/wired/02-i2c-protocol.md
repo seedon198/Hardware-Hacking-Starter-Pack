@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: i2c, two-wire, bus, sensor -->
+
 # I²C (Inter-Integrated Circuit) Protocol
 
 ```

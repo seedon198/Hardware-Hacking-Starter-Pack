@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: electronics, voltage, current, resistors, capacitors -->
+
 # Basic Electronics for Hackers
 
 Every hardware hack begins with an understanding of the fundamental electronic principles that govern how devices function. While software exploits manipulate instructions in memory, hardware hacking requires comprehension of the physical manifestation of technology—the paths electrons follow, the components that direct them, and the signals they create. This section introduces the essential electronics concepts that serve as the foundation for effective hardware security research and exploitation.

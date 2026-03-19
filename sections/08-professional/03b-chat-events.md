@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: defcon, conferences, events, ctf -->
+
 # Chat Platforms and Events
 
 While forums excel at persistent knowledge organization, real-time communication platforms and in-person events create different opportunities for hardware hackers. These spaces enable immediate assistance, collaborative problem-solving, and the formation of personal connections that frequently evolve into mentorship relationships and project collaborations.

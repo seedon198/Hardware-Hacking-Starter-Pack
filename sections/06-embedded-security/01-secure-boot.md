@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: secure-boot, tpm, attestation, chain-of-trust -->
+
 # Secure Boot and Trust Anchors
 
 Secure boot represents the cornerstone of embedded device security. When implemented properly, it ensures that only authorized code executes on a device, providing a foundation for all other security measures. This section explores how secure boot works, implementation approaches, and techniques for both implementing and analyzing secure boot systems.

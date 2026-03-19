@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: tls, encryption, certificates, secure-channel -->
+
 # Secure Communications for Embedded Devices
 
 Embedded devices rarely operate in isolation. Most connect to sensors, actuators, other devices, or remote services—creating numerous attack vectors through these communication channels. Securing these connections is essential to maintain overall system security, even when secure boot and memory protection are properly implemented.

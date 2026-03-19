@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: wifi, 802.11, wpa, deauth -->
+
 # WiFi (IEEE 802.11): A Hardware Hacker's Journey
 
 ## The Invisible Network Around Us

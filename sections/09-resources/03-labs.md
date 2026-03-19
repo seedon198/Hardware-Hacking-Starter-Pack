@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: labs, practice, online, hardware -->
+
 # Hardware Security Labs & Training Environments
 
 This page provides a comprehensive resource for hardware security labs, training environments, and interactive platforms where you can develop practical skills in a structured setting.

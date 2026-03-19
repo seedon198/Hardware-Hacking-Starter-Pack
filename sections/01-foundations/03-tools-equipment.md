@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: tools, oscilloscope, multimeter, logic-analyzer -->
+
 # Essential Tools & Equipment for Hardware Hacking
 
 The hardware hacker's workbench represents a specialized collection of tools that extend human capabilities—allowing us to see invisible signals, manipulate tiny components, and communicate with digital systems that speak languages our senses cannot directly perceive. This section explores the essential instruments that form the foundation of hardware security research, discussing their applications, selection criteria, and proper usage within an integrated toolkit.

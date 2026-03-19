@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: fault-injection, methodology, countermeasures -->
+
 # Fault Injection Techniques (Part 2)
 
 ## Optical Fault Injection

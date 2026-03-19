@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: side-channel, power-analysis, timing, dpa -->
+
 # Side-Channel Attacks
 
 Side-channel attacks exploit information gained from the physical implementation of a system rather than weaknesses in algorithms or protocols. These attacks analyze physical characteristics like timing, power consumption, electromagnetic emissions, or sound to extract sensitive information.

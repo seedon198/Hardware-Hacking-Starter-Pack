@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: books, papers, blogs, publications -->
+
 # Content Platforms and Publications
 
 Beyond interactive communities, hardware hackers learn through various content platforms and publications that document techniques, discoveries, and foundational knowledge. These resources range from informal blogs and videos to formal academic papers and books, each offering different perspectives and knowledge types.

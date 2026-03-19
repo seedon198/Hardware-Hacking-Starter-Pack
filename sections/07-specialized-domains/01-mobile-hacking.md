@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: mobile, android, ios, baseband, modem, at-commands -->
+
 # Mobile Device Hardware Hacking
 
 Mobile devices represent a fascinating frontier for hardware hackers. These pocket-sized computers contain an impressive array of sensors, communication interfaces, and security mechanisms packed into a remarkably small form factor. Whether you're interested in security research, repair, or modification, understanding the hardware aspects of mobile devices opens up new possibilities for exploration and discovery.

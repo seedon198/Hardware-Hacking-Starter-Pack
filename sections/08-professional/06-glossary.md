@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: glossary, terms, definitions, reference -->
+
 # Glossary of Hardware Hacking Terms
 
 This glossary provides definitions for specialized terminology used throughout the Hardware Hacking Starter Pack. Technical terms are organized alphabetically with cross-references to related concepts and relevant guide sections where applicable.

@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: resources, references, links -->
+
 # Hardware Security Resources
 
 This section provides a curated collection of external resources to supplement your hardware security journey. These resources have been carefully selected to help you advance your skills, stay current with industry developments, and connect with the broader hardware security community.

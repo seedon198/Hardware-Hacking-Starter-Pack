@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: decapsulation, microscopy, sem, microprobing, fib -->
+
 # Advanced Techniques: Decapsulation and Microprobing
 
 When conventional reverse engineering methods reach their limits, hardware hackers turn to more sophisticated techniques. Decapsulation, microprobing, and other advanced approaches allow direct access to the silicon die inside integrated circuits, revealing details invisible through external analysis. These techniques represent the cutting edge of hardware hacking, opening new possibilities for security research and functional analysis.

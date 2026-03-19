@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: pcb, layers, components, schematics, x-ray -->
+
 # PCB Analysis and Circuit Tracing
 
 The printed circuit board (PCB) forms the foundation of modern electronic devices. By analyzing PCB layout and tracing connections between components, hardware hackers can understand how a device functions even without official documentation. This section explores techniques for PCB analysis, from visual inspection to advanced circuit tracing.

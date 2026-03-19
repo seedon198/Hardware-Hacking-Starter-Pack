@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: supply-chain, mitigation, secure-procurement -->
+
 # Supply Chain Attacks - Part 3: Security Practices and Future Trends
 
 ## Building Supply Chain Resilience

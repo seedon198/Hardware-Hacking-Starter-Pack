@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: overview, getting-started, hardware-hacking -->
+
 # Introduction to Hardware Hacking
 
 The world of electronic devices surrounds us with ever-increasing complexity and connectivity. Beneath the sleek interfaces and carefully crafted user experiences lie intricate systems of hardware components—the tangible foundation upon which our digital experiences are built. Hardware hacking opens these closed systems to exploration, understanding, and improvement.

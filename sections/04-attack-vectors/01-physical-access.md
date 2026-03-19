@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: physical-access, jtag, uart, glitching -->
+
 # Physical Access Attacks
 
 Physical access attacks are often the first step in hardware hacking, leveraging direct interaction with the target device to bypass security measures or extract sensitive information.

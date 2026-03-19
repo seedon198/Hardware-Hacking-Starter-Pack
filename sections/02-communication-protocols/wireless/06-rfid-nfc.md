@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: rfid, nfc, mifare, emulation -->
+
 # RFID and NFC: The Invisible Interface
 
 ## The Silent Handshake: Understanding RFID and NFC

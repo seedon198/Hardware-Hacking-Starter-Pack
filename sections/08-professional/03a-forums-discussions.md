@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: forums, reddit, discord, community -->
+
 # Online Forums and Discussion Platforms
 
 Online forums provide accessible entry points to hardware hacking communities. These platforms host discussions ranging from beginner questions to advanced technical deep-dives, creating persistent knowledge repositories that benefit the entire field.

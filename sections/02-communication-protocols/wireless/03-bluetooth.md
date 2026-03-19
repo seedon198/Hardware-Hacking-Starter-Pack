@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: bluetooth, ble, pairing, sniffing -->
+
 # Bluetooth and BLE: Unraveling the Invisible Threads of Personal Connectivity
 
 ## The Omnipresent Wireless Companion

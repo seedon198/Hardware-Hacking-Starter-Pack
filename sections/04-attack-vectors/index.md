@@ -1,3 +1,5 @@
+<!-- tags: attack-vectors, physical, side-channel, fault-injection -->
+
 # Hardware Attack Vectors
 
 Hardware attacks represent a powerful approach to security assessment that can bypass software protections by targeting the physical implementation of systems. This section explores the various hardware attack vectors available to security researchers and hackers.

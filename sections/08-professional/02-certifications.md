@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: certifications, oscp, ecea, training -->
+
 # Certifications & Training
 
 The world of hardware hacking exists at a fascinating intersection of formal education and self-taught exploration. While many accomplished hardware hackers developed their skills through independent projects and community engagement, formal training and certifications can accelerate learning, validate expertise, and open professional doors. This section explores the educational landscape for hardware security, from structured courses to recognized credentials.

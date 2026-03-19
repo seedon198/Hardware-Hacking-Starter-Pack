@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: supply-chain, detection, verification -->
+
 # Supply Chain Attacks - Part 2: More Attack Vectors and Detection
 
 ## Circuit Board Assembly Vulnerabilities

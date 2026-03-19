@@ -1,3 +1,5 @@
+<!-- tags: reverse-engineering, pcb, components, circuits -->
+
 # Reverse Engineering Hardware
 
 Reverse engineering sits at the heart of hardware hacking. It's the process of analyzing existing hardware to understand how it functions, identify vulnerabilities, and potentially modify its behavior. Unlike software reverse engineering, hardware analysis involves physical components, making it a multi-disciplinary practice combining electronics knowledge, analytical thinking, and specialized tools.

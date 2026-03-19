@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: reverse-engineering, methodology, tools, binwalk -->
+
 # Reverse Engineering Fundamentals
 
 Reverse engineering hardware begins with a structured approach. Whether you're examining a simple IoT device or a complex security module, the fundamental process remains consistent. This section explores the essential mindset, methodology, and initial techniques that form the foundation of hardware reverse engineering.

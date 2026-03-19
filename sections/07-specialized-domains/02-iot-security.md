@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: iot, cloud, mqtt, firmware-update, ota -->
+
  # IoT Device Security
 
 The Internet of Things has transformed everyday objects into networked devices, creating a vast ecosystem of connected products with varying security practices. From smart light bulbs to industrial sensors, these devices present unique security challenges that combine hardware, firmware, and network vulnerabilities in novel ways.

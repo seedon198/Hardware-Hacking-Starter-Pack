@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: zigbee, 802.15.4, mesh, iot -->
+
 # Zigbee: The Silent Backbone of Smart Homes and Industrial Control
 
 ## The Unsung Hero of the IoT Revolution

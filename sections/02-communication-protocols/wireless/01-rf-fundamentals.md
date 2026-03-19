@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: rf, frequency, modulation, antenna -->
+
 # RF Physics for Hardware Hackers
 
 ## Overview
