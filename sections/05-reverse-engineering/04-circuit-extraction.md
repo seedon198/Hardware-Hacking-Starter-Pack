@@ -253,7 +253,7 @@ Circuit extraction and schematic capture transform physical observations into us
 
 Remember that schematics from reverse engineering always represent your current understanding, which continues to evolve with further investigation. The best documentation acknowledges uncertainty where it exists while clearly communicating confirmed observations.
 
-In the next section, [Advanced Techniques: Decapsulation and Microprobing](./08e-advanced-techniques.md), we'll explore more specialized techniques for accessing and analyzing the internal structures of electronic components themselves.
+In the next section, [Advanced Techniques: Decapsulation and Microprobing](./05-advanced-techniques.md), we'll explore more specialized techniques for accessing and analyzing the internal structures of electronic components themselves.
 
 ---
 

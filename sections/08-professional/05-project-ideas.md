@@ -782,7 +782,7 @@ When selecting your next project, consider:
 
 Remember that documented failures often provide as much learning value as successes. The hardware hacking journey involves continuous experimentation, adaptation, and refinement of both technical approaches and mental models.
 
-The next section presents a [Glossary of Hardware Hacking Terms](../sectio./06-glossary.md), providing reference definitions for the specialized terminology used throughout this guide.
+The next section presents a [Glossary of Hardware Hacking Terms](./06-glossary.md), providing reference definitions for the specialized terminology used throughout this guide.
 
 ---
 

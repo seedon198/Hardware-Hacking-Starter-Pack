@@ -51,7 +51,7 @@ Why reverse engineer hardware? The skills and knowledge you'll gain have numerou
 
 ## Legal and Ethical Considerations
 
-Hardware reverse engineering exists in a complex legal landscape. While we cover this in more detail in the [Legal and Ethical Considerations](./15-legal-ethical.md) section, keep these principles in mind:
+Hardware reverse engineering exists in a complex legal landscape. While we cover this in more detail in the [Legal and Ethical Considerations](../08-professional/04-legal-ethical.md) section, keep these principles in mind:
 
 - Always reverse engineer devices you legally own
 - Be aware of patents, copyrights, and other intellectual property considerations

@@ -317,7 +317,7 @@ Physical access attacks are often the first step in hardware hacking, leveraging
 
 Physical access attacks are foundational to hardware security assessment. While they require direct access to the target device, they often provide the deepest level of system access and can bypass software protections entirely. Understanding these attack vectors helps security professionals identify and mitigate hardware vulnerabilities effectively.
 
-In the next section, we'll explore [Side-Channel Attacks](./07b-side-channel.md), which allow extracting information by observing the physical characteristics of a system during operation.
+In the next section, we'll explore [Side-Channel Attacks](./02-side-channel.md), which allow extracting information by observing the physical characteristics of a system during operation.
 
 ---
 

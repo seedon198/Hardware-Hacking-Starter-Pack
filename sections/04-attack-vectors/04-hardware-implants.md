@@ -116,7 +116,7 @@ Hardware implants represent both a significant security threat and an important 
 
 For hardware hackers, studying implant technology offers insights into miniaturization, power efficiency, wireless communication, and covert operation—skills valuable across many security disciplines. The cat-and-mouse game between implant creators and detection mechanisms continues to drive innovation in both offensive and defensive security techniques.
 
-As we continue our exploration of hardware hacking, we'll next examine [Supply Chain Attacks](./07e-supply-chain.md), where security vulnerabilities are introduced during product manufacturing or distribution.
+As we continue our exploration of hardware hacking, we'll next examine [Supply Chain Attacks](./05-supply-chain-1.md), where security vulnerabilities are introduced during product manufacturing or distribution.
 
 ---
 

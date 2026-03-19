@@ -315,7 +315,7 @@ These observations reveal whether verification actually occurs, which algorithms
 
 Extracting and analyzing firmware provides direct insight into secure boot implementations:
 
-1. **Extract firmware** using techniques covered in the [Firmware Extraction section](./06-firmware-analysis.md)
+1. **Extract firmware** using techniques covered in the [Firmware Extraction section](../03-firmware/01-firmware-analysis.md)
 2. **Identify verification code** through static analysis
 3. **Locate cryptographic routines** for signature verification
 4. **Find key storage** locations and access controls
@@ -380,7 +380,7 @@ Secure boot provides the foundation for trusted computing in embedded systems. B
 
 Remember that secure boot represents just one element of a comprehensive security strategy. While essential, it must work alongside memory protection, secure communication, and physical security measures to create truly secure embedded systems.
 
-In the next section, [Memory Protection and Execution Security](./09b-memory-protection.md), we'll explore how to protect code and data once a system has securely booted.
+In the next section, [Memory Protection and Execution Security](./02-memory-protection.md), we'll explore how to protect code and data once a system has securely booted.
 
 ---
 

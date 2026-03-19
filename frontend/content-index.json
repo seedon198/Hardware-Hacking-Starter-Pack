@@ -659,7 +659,7 @@
   },
   {
     "path": "sections/07-specialized-domains/02-iot-security",
-    "title": "02 Iot Security",
+    "title": "IoT Device Security",
     "section_num": 7,
     "section": "Specialized Domains",
     "subsection": null,

@@ -51,7 +51,7 @@ The **minimal pin requirement**—typically just TX, RX, and a common ground—m
    │          <--        8 Data Bits       -->  Parity  Stop      │
    └──────────────────────────────────────────────────────────────┘
 
-# TODO: Add UART Frame SVG file
+<!-- TODO: Add UART Frame SVG file -->
 ```
 
 The **communication speed** or baud rate must match between devices for successful communication. Common rates include 9600, 115200, 57600, and 38400 bits per second, with 115200 being particularly prevalent in modern embedded systems. When the baud rate is unknown, systematic testing of common values or signal analysis with an oscilloscope becomes necessary.

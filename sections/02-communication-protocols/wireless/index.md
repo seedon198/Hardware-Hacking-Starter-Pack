@@ -79,7 +79,7 @@ Understanding defensive measures helps identify security weaknesses:
 
 ---
 
-In the next section, we'll explore techniques for [Firmware Extraction & Analysis](./06-firmware-analysis.md) that complement the wireless hardware hacking skills presented here.
+In the next section, we'll explore techniques for [Firmware Extraction & Analysis](../../03-firmware/01-firmware-analysis.md) that complement the wireless hardware hacking skills presented here.
 
 ---
 

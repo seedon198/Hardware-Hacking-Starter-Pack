@@ -190,7 +190,7 @@ As you complete this initial survey, you'll develop hypotheses about device func
 
 These advanced techniques build upon the foundation established through these fundamental approaches. By following this methodical process, you'll develop a structured understanding of the device that informs more specialized analysis.
 
-In the next section, [PCB Analysis and Circuit Tracing](./08b-pcb-analysis.md), we'll explore techniques for understanding the complex interconnections within electronic devices.
+In the next section, [PCB Analysis and Circuit Tracing](./02-pcb-analysis.md), we'll explore techniques for understanding the complex interconnections within electronic devices.
 
 ---
 

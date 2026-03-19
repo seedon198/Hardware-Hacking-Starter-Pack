@@ -230,7 +230,7 @@ The distributed nature of hardware hacking knowledge makes multi-channel communi
 
 By thoughtfully engaging across these complementary community spaces, you'll develop both technical knowledge and the professional network that supports continued growth in hardware hacking.
 
-The next section explores [Content Platforms and Publications](./14c-content-publications.md), examining how blogs, videos, books, and academic papers contribute to the hardware hacking knowledge ecosystem.
+The next section explores [Content Platforms and Publications](./03c-content-publications.md), examining how blogs, videos, books, and academic papers contribute to the hardware hacking knowledge ecosystem.
 
 ---
 
