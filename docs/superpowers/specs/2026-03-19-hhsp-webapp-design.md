@@ -179,60 +179,62 @@ Lines are rendered with CSS `border` on connecting `<div>` spacer elements (hori
 
 Three pre-defined ordered article lists in `app.js` (by `path` value from `content-index.json`):
 
-**BEGINNER** (foundations-first, wired basics, no advanced topics):
+Path arrays use the full `path` value from `content-index.json` (including the `sections/` prefix). Runtime lookup is `index.find(a => a.path === entry)`.
+
+**BEGINNER** (foundations-first, wired basics, no advanced topics — `03-firmware/01-firmware-analysis` is tagged `beginner` via metadata comment during the content pass):
 ```
-01-foundations/01-introduction
-01-foundations/02-lab-setup
-01-foundations/03-tools-equipment
-01-foundations/04-basic-electronics
-02-communication-protocols/index          ← section overview
-02-communication-protocols/wired/01-uart-protocol
-02-communication-protocols/wired/02-i2c-protocol
-02-communication-protocols/wired/03-spi-protocol
-03-firmware/01-firmware-analysis
-08-professional/01-learning-path
-08-professional/05-project-ideas
-08-professional/06-glossary
+sections/01-foundations/01-introduction
+sections/01-foundations/02-lab-setup
+sections/01-foundations/03-tools-equipment
+sections/01-foundations/04-basic-electronics
+sections/02-communication-protocols/index
+sections/02-communication-protocols/wired/01-uart-protocol
+sections/02-communication-protocols/wired/02-i2c-protocol
+sections/02-communication-protocols/wired/03-spi-protocol
+sections/03-firmware/01-firmware-analysis
+sections/08-professional/01-learning-path
+sections/08-professional/05-project-ideas
+sections/08-professional/06-glossary
 ```
 
 **SOFTWARE DEV** (firmware and software-adjacent attack paths):
 ```
-01-foundations/01-introduction
-01-foundations/04-basic-electronics
-03-firmware/01-firmware-analysis
-04-attack-vectors/index
-04-attack-vectors/01-physical-access
-04-attack-vectors/02-side-channel
-04-attack-vectors/03-fault-injection
-06-embedded-security/index
-06-embedded-security/01-secure-boot
-06-embedded-security/02-memory-protection
-06-embedded-security/03-secure-communications
-07-specialized-domains/02-iot-security
-08-professional/04-legal-ethical
+sections/01-foundations/01-introduction
+sections/01-foundations/04-basic-electronics
+sections/03-firmware/01-firmware-analysis
+sections/04-attack-vectors/index
+sections/04-attack-vectors/01-physical-access
+sections/04-attack-vectors/02-side-channel
+sections/04-attack-vectors/03-fault-injection
+sections/06-embedded-security/index
+sections/06-embedded-security/01-secure-boot
+sections/06-embedded-security/02-memory-protection
+sections/06-embedded-security/03-secure-communications
+sections/07-specialized-domains/02-iot-security
+sections/08-professional/04-legal-ethical
 ```
 
 **ELECTRONICS ENG** (protocol-heavy, RE-focused):
 ```
-01-foundations/01-introduction
-01-foundations/03-tools-equipment
-01-foundations/04-basic-electronics
-02-communication-protocols/index
-02-communication-protocols/wired/01-uart-protocol
-02-communication-protocols/wired/02-i2c-protocol
-02-communication-protocols/wired/03-spi-protocol
-02-communication-protocols/wired/04-jtag-swd
-02-communication-protocols/wired/05-usb-protocol
-02-communication-protocols/wired/06-ethernet-protocols
-02-communication-protocols/wireless/01-rf-fundamentals
-02-communication-protocols/wireless/06-rfid-nfc
-05-reverse-engineering/index
-05-reverse-engineering/01-re-fundamentals
-05-reverse-engineering/02-pcb-analysis
-05-reverse-engineering/03-component-id
-05-reverse-engineering/04-circuit-extraction
-04-attack-vectors/01-physical-access
-04-attack-vectors/04-hardware-implants
+sections/01-foundations/01-introduction
+sections/01-foundations/03-tools-equipment
+sections/01-foundations/04-basic-electronics
+sections/02-communication-protocols/index
+sections/02-communication-protocols/wired/01-uart-protocol
+sections/02-communication-protocols/wired/02-i2c-protocol
+sections/02-communication-protocols/wired/03-spi-protocol
+sections/02-communication-protocols/wired/04-jtag-swd
+sections/02-communication-protocols/wired/05-usb-protocol
+sections/02-communication-protocols/wired/06-ethernet-protocols
+sections/02-communication-protocols/wireless/01-rf-fundamentals
+sections/02-communication-protocols/wireless/06-rfid-nfc
+sections/05-reverse-engineering/index
+sections/05-reverse-engineering/01-re-fundamentals
+sections/05-reverse-engineering/02-pcb-analysis
+sections/05-reverse-engineering/03-component-id
+sections/05-reverse-engineering/04-circuit-extraction
+sections/04-attack-vectors/01-physical-access
+sections/04-attack-vectors/04-hardware-implants
 ```
 
 Paths are stored as arrays of path strings (without `.md` extension). The app resolves them against `content-index.json` at runtime. Articles not in `content-index.json` are silently skipped.
@@ -354,7 +356,7 @@ Reads all markdown files under `sections/`, extracts the following fields per fi
 | `07-specialized-domains/*` | `advanced` |
 | `08-professional/*` | `all` |
 | `09-resources/*` | `all` |
-| `*/index.md` | inherits section's lowest difficulty |
+| `*/index.md` | inherits section's lowest difficulty — determined by scanning all non-index articles in the same section directory tree recursively |
 
 `all`-difficulty articles are always visible regardless of the active difficulty filter.
 
@@ -370,9 +372,9 @@ Outputs `frontend/content-index.json`. Run locally to bootstrap; also runs as a 
 - Remove duplicate "Secure Communications" row (appears twice in the embedded security section)
 - Fix the `<div align="center">` wrapping the full document — keep only around the header badge block
 
-### All 55 Markdown Files
+### All 57 Markdown Files
 
-1. **Metadata comments** — add `<!-- difficulty: beginner -->` and `<!-- tags: ... -->` to every file for `build-index.py`
+1. **Metadata comments** — add `<!-- difficulty: beginner -->` and `<!-- tags: ... -->` to every file for `build-index.py`. Special case: `sections/03-firmware/01-firmware-analysis.md` must receive `<!-- difficulty: beginner -->` (it appears in the BEGINNER learning path and must not be filtered out when the user selects beginner-only)
 2. **ASCII art fencing** — re-fence all ASCII diagrams with ` ```ascii ` so the webapp highlights them
 3. **ASCII art errors** — fix misaligned characters, broken box-drawing, incorrect signal timing diagrams
 4. **Shallow sections** — expand thin content in the following files to a minimum of 500 words of body text each: `04-attack-vectors/03-fault-injection-2.md`, `04-attack-vectors/05-supply-chain-2.md`, `04-attack-vectors/05-supply-chain-3.md`, `05-reverse-engineering/05-advanced-techniques.md` (decapsulation + microscopy methodology), `07-specialized-domains/01-mobile-hacking.md` (baseband processor section)
