@@ -712,7 +712,8 @@ function configureMarked() {
   };
 
   renderer.heading = function(text, level) {
-    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const plain = text.replace(/<[^>]+>/g, '');
+    const id = plain.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     return `<h${level} id="${escHtml(id)}">${text}</h${level}>`;
   };
 
