@@ -514,3 +514,78 @@ function initSearch() {
     results[_searchFocusIdx]?.scrollIntoView({ block: 'nearest' });
   });
 }
+
+/* ═══════════════════════════════════════════════ §7 SKILL TREE */
+
+function computeNodeState(sectionNum) {
+  const entries = getEntriesForSection(sectionNum).filter(e => !e.is_index);
+  if (entries.length === 0) return 'empty';
+  const done = entries.filter(e => _completed.has(e.path));
+  if (done.length === entries.length) return 'completed';
+  if (done.length > 0) return 'in-progress';
+  return 'not-started';
+}
+
+function renderSkillTree() {
+  const graph = document.getElementById('skillTreeGraph');
+  if (!graph) return;
+
+  const row1 = [1, 2, 3, 4, 5];
+  const row2 = [9, 8, 7, 6];
+
+  function nodeHtml(num) {
+    const meta = SECTIONS_META.find(s => s.num === num);
+    const state = computeNodeState(num);
+    const entries = getEntriesForSection(num).filter(e => !e.is_index);
+    const done = entries.filter(e => _completed.has(e.path)).length;
+    const pct = entries.length ? Math.round((done / entries.length) * 100) : 0;
+    const name = meta ? meta.name.replace(/^\d+ — /, '') : `SECTION ${num}`;
+    return `
+      <div class="skilltree-node ${state}" data-sec="${num}">
+        <div class="skilltree-node-num">0${num}</div>
+        <div class="skilltree-node-name">${escHtml(name)}</div>
+        <div class="skilltree-node-pct">${pct}%</div>
+      </div>`;
+  }
+
+  const connector = '<div class="skilltree-connector"></div>';
+
+  const row1Html = row1.map((n, i) => nodeHtml(n) + (i < row1.length - 1 ? connector : '')).join('');
+  const row2Html = row2.map((n, i) => nodeHtml(n) + (i < row2.length - 1 ? connector : '')).join('');
+
+  graph.innerHTML = `
+    <div class="skilltree-row">${row1Html}</div>
+    <div class="skilltree-row" style="flex-direction:row-reverse">${row2Html}</div>`;
+
+  graph.querySelectorAll('.skilltree-node').forEach(el => {
+    el.addEventListener('click', () => {
+      const num = parseInt(el.dataset.sec);
+      closeSkillTree();
+      const entries = getEntriesForSection(num);
+      const indexEntry = entries.find(e => e.is_index);
+      const firstEntry = entries.find(e => !e.is_index);
+      const target = indexEntry || firstEntry;
+      if (target) navigate(target.path);
+    });
+  });
+}
+
+function openSkillTree() {
+  renderSkillTree();
+  document.getElementById('skillTreeOverlay').hidden = false;
+}
+
+function closeSkillTree() {
+  document.getElementById('skillTreeOverlay').hidden = true;
+}
+
+function initSkillTree() {
+  document.getElementById('skillTreeFab').addEventListener('click', openSkillTree);
+  document.getElementById('skillTreeClose').addEventListener('click', closeSkillTree);
+  document.getElementById('skillTreeBackdrop').addEventListener('click', closeSkillTree);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !document.getElementById('skillTreeOverlay').hidden) {
+      closeSkillTree();
+    }
+  });
+}
