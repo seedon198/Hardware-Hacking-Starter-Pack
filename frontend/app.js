@@ -402,3 +402,115 @@ function escHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
+
+/* ═══════════════════════════════════════════════ §6 SEARCH */
+
+let _searchFocusIdx = -1;
+
+function openSearch() {
+  const overlay = document.getElementById('searchOverlay');
+  const input = document.getElementById('searchInput');
+  overlay.hidden = false;
+  input.value = '';
+  input.focus();
+  renderSearchResults('');
+}
+
+function closeSearch() {
+  document.getElementById('searchOverlay').hidden = true;
+  _searchFocusIdx = -1;
+}
+
+function searchIndex(query) {
+  if (!query.trim()) return [];
+  const q = query.toLowerCase();
+  return _index
+    .filter(e => {
+      return e.title.toLowerCase().includes(q) ||
+             e.section.toLowerCase().includes(q) ||
+             e.preview.toLowerCase().includes(q) ||
+             e.tags.some(t => t.toLowerCase().includes(q));
+    })
+    .slice(0, 20);
+}
+
+function highlightMatch(text, query) {
+  if (!query) return escHtml(text);
+  const idx = text.toLowerCase().indexOf(query.toLowerCase());
+  if (idx === -1) return escHtml(text);
+  const before = escHtml(text.slice(0, idx));
+  const match  = escHtml(text.slice(idx, idx + query.length));
+  const after  = escHtml(text.slice(idx + query.length));
+  return `${before}<mark>${match}</mark>${after}`;
+}
+
+function renderSearchResults(query) {
+  const container = document.getElementById('searchResults');
+  const results = searchIndex(query);
+  _searchFocusIdx = -1;
+
+  if (!query.trim()) {
+    container.innerHTML = '<div class="search-empty">Type to search all articles...</div>';
+    return;
+  }
+  if (results.length === 0) {
+    container.innerHTML = `<div class="search-empty">No results for "${escHtml(query)}"</div>`;
+    return;
+  }
+
+  container.innerHTML = results.map((e, i) =>
+    `<div class="search-result" data-path="${escHtml(e.path)}" data-idx="${i}" role="option">
+      <div class="search-result-meta">
+        <span class="diff-badge ${e.difficulty}">${e.difficulty.slice(0,3).toUpperCase()}</span>
+        <span style="color:var(--text-muted);font-size:10px">${escHtml(e.section)}</span>
+      </div>
+      <div class="search-result-title">${highlightMatch(e.title, query)}</div>
+      <div class="search-result-preview">${highlightMatch(e.preview.slice(0, 120), query)}</div>
+    </div>`
+  ).join('');
+
+  container.querySelectorAll('.search-result').forEach(el => {
+    el.addEventListener('click', () => {
+      closeSearch();
+      navigate(el.dataset.path);
+    });
+  });
+}
+
+function initSearch() {
+  document.getElementById('searchTrigger').addEventListener('click', openSearch);
+  document.getElementById('searchBackdrop').addEventListener('click', closeSearch);
+
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearch();
+    }
+    if (e.key === 'Escape') {
+      if (!document.getElementById('searchOverlay').hidden) closeSearch();
+    }
+  });
+
+  document.getElementById('searchInput').addEventListener('input', e => {
+    renderSearchResults(e.target.value);
+  });
+
+  document.getElementById('searchInput').addEventListener('keydown', e => {
+    const results = document.querySelectorAll('.search-result');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      _searchFocusIdx = Math.min(_searchFocusIdx + 1, results.length - 1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      _searchFocusIdx = Math.max(_searchFocusIdx - 1, 0);
+    } else if (e.key === 'Enter' && _searchFocusIdx >= 0) {
+      const el = results[_searchFocusIdx];
+      if (el) { closeSearch(); navigate(el.dataset.path); }
+      return;
+    } else {
+      return;
+    }
+    results.forEach((r, i) => r.classList.toggle('focused', i === _searchFocusIdx));
+    results[_searchFocusIdx]?.scrollIntoView({ block: 'nearest' });
+  });
+}
