@@ -1,0 +1,3 @@
+<!-- difficulty: intermediate -->
+
+# Communication Protocols
