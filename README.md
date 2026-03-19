@@ -4,6 +4,11 @@
 
 <div align="center">
 
+<!-- Live Site -->
+<a href="https://hw101.me/Hardware-Hacking-Starter-Pack/">
+<img src="https://img.shields.io/badge/Live_Site-hw101.me-ffff33?style=for-the-badge&labelColor=111111" alt="Live Site"/>
+</a>
+
 <!-- Skill Level -->
 <img src="https://img.shields.io/badge/Skill-Beginner_to_Advanced-black?style=for-the-badge" alt="Skill Level"/>
 
@@ -22,6 +27,8 @@
 Welcome to the **Hardware Hacking Starter Pack**! This comprehensive resource is designed to be your go-to guide for learning hardware security, from basic concepts to advanced techniques. Whether you're a cybersecurity professional looking to expand into hardware, an electronics enthusiast curious about security implications, or a student preparing for a career in security research, this guide provides the knowledge, methodologies, and practical exercises you need to succeed.
 
 In today's interconnected world, hardware security has become increasingly critical. As more devices become **"smart"** and connected to networks, the attack surface expands beyond traditional software vulnerabilities to include hardware components. Understanding how to analyze, test, and secure hardware is an essential skill for comprehensive security assessment and protection.
+
+> **Interactive version available at [hw101.me/Hardware-Hacking-Starter-Pack](https://hw101.me/Hardware-Hacking-Starter-Pack/)** — a full webapp with progress tracking, difficulty filters, bookmarks, search, and learning paths. The markdown source in this repo is the canonical content.
 
 ## Why Hardware Hacking Matters
 
@@ -410,7 +417,9 @@ While this guide starts from foundational concepts, having some background in th
 
 ## How to Use This Guide
 
-This resource is designed to be flexible for different learning styles and experience levels:
+**Recommended:** Use the interactive webapp at **[hw101.me/Hardware-Hacking-Starter-Pack](https://hw101.me/Hardware-Hacking-Starter-Pack/)** for the best experience — it includes progress tracking, curated learning paths, full-text search, bookmarks, and difficulty filtering.
+
+You can also read the markdown files directly in this repository:
 
 - **Sequential Learning**: Begin with section 1 and progress through in order for a comprehensive education
 - **Topic-Based Exploration**: Jump to specific sections based on your immediate needs or interests
