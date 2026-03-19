@@ -589,3 +589,111 @@ function initSkillTree() {
     }
   });
 }
+
+/* ═══════════════════════════════════════════════ §8 LEARNING PATHS */
+
+function getActivePath() {
+  return _activePath ? LEARNING_PATHS[_activePath] : null;
+}
+
+function getResolvedPathArticles(pathKey) {
+  const path = LEARNING_PATHS[pathKey];
+  if (!path) return [];
+  return path.articles
+    .map(p => getEntry(p))
+    .filter(Boolean);
+}
+
+function getVisiblePathArticles(pathKey) {
+  return getResolvedPathArticles(pathKey)
+    .filter(e => isDifficultyVisible(e.difficulty));
+}
+
+function getNextArticle(currentPath) {
+  if (!_activePath) return null;
+  const articles = getVisiblePathArticles(_activePath);
+  const idx = articles.findIndex(e => e.path === currentPath);
+  if (idx === -1 || idx >= articles.length - 1) return null;
+  return articles[idx + 1];
+}
+
+function getPrevArticle(currentPath) {
+  if (!_activePath) return null;
+  const articles = getVisiblePathArticles(_activePath);
+  const idx = articles.findIndex(e => e.path === currentPath);
+  if (idx <= 0) return null;
+  return articles[idx - 1];
+}
+
+function getPathPosition(currentPath) {
+  if (!_activePath) return null;
+  const articles = getVisiblePathArticles(_activePath);
+  const idx = articles.findIndex(e => e.path === currentPath);
+  if (idx === -1) return null;
+  return { current: idx + 1, total: articles.length };
+}
+
+function renderPathModal() {
+  const modal = document.getElementById('pathModal');
+  const current = _activePath;
+  modal.innerHTML = `
+    <h2>CHOOSE LEARNING PATH</h2>
+    <p>Select a path to get guided navigation and progress tracking. You can change this at any time.</p>
+    ${Object.entries(LEARNING_PATHS).map(([key, path]) => `
+      <div class="path-option ${current === key ? 'selected' : ''}" data-key="${key}">
+        <div class="path-option-name">${escHtml(path.label)}</div>
+        <div class="path-option-desc">${escHtml(path.description)}</div>
+        <div class="path-option-count">${getResolvedPathArticles(key).length} articles</div>
+      </div>
+    `).join('')}
+    <button class="path-skip" id="pathSkip">Skip — browse freely</button>
+  `;
+
+  modal.querySelectorAll('.path-option').forEach(el => {
+    el.addEventListener('click', () => {
+      _activePath = el.dataset.key;
+      localStorage.setItem(LS_PATH_KEY, _activePath);
+      closePathModal();
+      updateProgress();
+      renderNavTree();
+      updatePathPosition();
+    });
+  });
+
+  document.getElementById('pathSkip').addEventListener('click', () => {
+    _activePath = null;
+    localStorage.removeItem(LS_PATH_KEY);
+    localStorage.setItem(LS_PATH_KEY + '_skipped', '1');
+    closePathModal();
+    updateProgress();
+    updatePathPosition();
+  });
+}
+
+function openPathModal() {
+  renderPathModal();
+  document.getElementById('pathOverlay').hidden = false;
+}
+
+function closePathModal() {
+  document.getElementById('pathOverlay').hidden = true;
+}
+
+function updatePathPosition() {
+  const el = document.getElementById('pathPosition');
+  if (!el) return;
+  if (!_activePath || !_currentPath) { el.textContent = ''; return; }
+  const pos = getPathPosition(_currentPath);
+  if (!pos) { el.textContent = ''; return; }
+  el.textContent = `PATH: ${escHtml(LEARNING_PATHS[_activePath].label)} ▸ Topic ${pos.current} of ${pos.total}`;
+}
+
+function initPathModal() {
+  document.getElementById('changePathBtn').addEventListener('click', openPathModal);
+  document.getElementById('pathBackdrop').addEventListener('click', closePathModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !document.getElementById('pathOverlay').hidden) {
+      closePathModal();
+    }
+  });
+}
