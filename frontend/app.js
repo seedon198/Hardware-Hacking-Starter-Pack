@@ -234,7 +234,7 @@ function renderNavTree() {
       const badge = e.difficulty !== 'all'
         ? `<span class="diff-badge ${e.difficulty}">${e.difficulty.slice(0,3).toUpperCase()}</span>`
         : '';
-      return `<div class="${cls}" data-path="${e.path}">${check} ${escHtml(e.title)} ${badge}</div>`;
+      return `<div class="${cls}" data-path="${escHtml(e.path)}">${check} ${escHtml(e.title)} ${badge}</div>`;
     }).join('');
 
     return `
@@ -846,7 +846,7 @@ function showDashboard() {
       </div>
       <div class="dashboard-card">
         <div class="dashboard-card-label">ACTIVE PATH</div>
-        <div class="dashboard-card-value" style="font-size:14px">${_activePath ? LEARNING_PATHS[_activePath].label : '—'}</div>
+        <div class="dashboard-card-value" style="font-size:14px">${_activePath ? escHtml(LEARNING_PATHS[_activePath].label) : '—'}</div>
         <div class="dashboard-card-sub">${_activePath ? getResolvedPathArticles(_activePath).length + ' articles' : 'Browse freely'}</div>
       </div>
       <div class="dashboard-card">
