@@ -98,13 +98,17 @@ def _fallback_difficulty(rel_path):
 
 def _compute_index_difficulty(section_dir, all_entries):
     order = ['beginner', 'intermediate', 'advanced', 'all']
-    siblings = [
+    all_siblings = [
         e for e in all_entries
-        if not e['is_index'] and e['path'].startswith(section_dir) and e['difficulty'] != 'all'
+        if not e['is_index'] and e['path'].startswith(section_dir)
     ]
-    if not siblings:
+    if not all_siblings:
         return 'beginner'
-    difficulties = [e['difficulty'] for e in siblings]
+    # If all siblings are 'all', inherit 'all'
+    non_all_siblings = [e for e in all_siblings if e['difficulty'] != 'all']
+    if not non_all_siblings:
+        return 'all'
+    difficulties = [e['difficulty'] for e in non_all_siblings]
     for d in order:
         if d in difficulties:
             return d
@@ -180,7 +184,8 @@ def build(sections_root):
     for e in entries:
         if e['difficulty'] is None and e['is_index']:
             path_parts = e['path'].split('/')
-            section_dir = '/'.join(path_parts[:2]) + '/'
+            # Use the directory containing the index file (all parts except the last)
+            section_dir = '/'.join(path_parts[:-1]) + '/'
             e['difficulty'] = _compute_index_difficulty(section_dir, entries)
 
     return entries

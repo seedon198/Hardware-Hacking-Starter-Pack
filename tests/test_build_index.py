@@ -131,6 +131,29 @@ class TestPreview:
             assert len(e['preview']) <= 300
 
 
+class TestIndexDifficulty:
+    def test_index_inherits_siblings(self, tmp_path):
+        """index.md in a section with only intermediate files should get intermediate."""
+        sec = tmp_path / 'sections' / '03-firmware'
+        sec.mkdir(parents=True)
+        (sec / 'index.md').write_text('# Firmware\n\nOverview.')
+        (sec / '01-analysis.md').write_text('# Analysis\n\nFirmware analysis content.')
+        entries = build_index.build(str(tmp_path))
+        idx = next(e for e in entries if e['is_index'])
+        # 03-firmware fallback is intermediate
+        assert idx['difficulty'] == 'intermediate'
+
+    def test_index_inherits_all_when_all_siblings_are_all(self, tmp_path):
+        """index.md in a section where all siblings are 'all' should get 'all'."""
+        sec = tmp_path / 'sections' / '08-professional'
+        sec.mkdir(parents=True)
+        (sec / 'index.md').write_text('# Professional\n\nOverview.')
+        (sec / '01-learning-path.md').write_text('# Learning Path\n\nContent.')
+        entries = build_index.build(str(tmp_path))
+        idx = next(e for e in entries if e['is_index'])
+        assert idx['difficulty'] == 'all'
+
+
 class TestOutputJSON:
     def test_writes_valid_json(self, tmp_path):
         out_path = tmp_path / 'content-index.json'
