@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: tools, oscilloscope, multimeter, logic-analyzer -->
+
 # Essential Tools & Equipment for Hardware Hacking
 
 The hardware hacker's workbench represents a specialized collection of tools that extend human capabilities—allowing us to see invisible signals, manipulate tiny components, and communicate with digital systems that speak languages our senses cannot directly perceive. This section explores the essential instruments that form the foundation of hardware security research, discussing their applications, selection criteria, and proper usage within an integrated toolkit.
@@ -6,7 +9,7 @@ The hardware hacker's workbench represents a specialized collection of tools tha
 
 Hardware systems communicate through electrical signals that remain invisible without proper measurement tools. The instruments in this category serve as your eyes and ears into the electronic domain, revealing the conversations occurring within digital devices and allowing you to interpret their meaning.
 
-```
+```ascii
      The Hardware Hacker's Visibility Stack
      
      ┌──────────────────────────────────────────────┐
@@ -60,7 +63,7 @@ Effective logic analyzer usage depends on proper setup and methodology. Always e
 
 While logic analyzers excel at digital protocol analysis, oscilloscopes reveal the analog reality underneath digital abstractions. Oscilloscopes visualize electrical signals as they actually exist—showing timing relationships, voltage levels, noise characteristics, and transitions that might be oversimplified or completely missed by digital-only tools. This analog perspective proves essential when troubleshooting hardware issues like signal integrity problems, power supply noise, or timing violations.
 
-```
+```ascii
      Digital vs. Analog Signal Representation
      
      Digital View (Logic Analyzer)
@@ -97,7 +100,7 @@ While measurement tools allow observation of hardware systems, soldering equipme
 
 Quality soldering equipment forms the foundation for successful hardware modification. The core instrument—a temperature-controlled soldering iron or station—creates reliable electrical connections through precisely applied heat. Unlike basic hardware store soldering irons with fixed temperatures, adjustable tools allow adapting to different components and board types, preventing damage to heat-sensitive parts while still providing sufficient heat for larger connections.
 
-```
+```ascii
     Modern Soldering Station Components
     
     ┌─────────────────────────────────────────────────────┐
@@ -151,7 +154,7 @@ Hardware systems speak their own digital languages through various communication
 
 Serial interfaces represent the most fundamental communication channel in embedded systems, with UART (Universal Asynchronous Receiver/Transmitter) serving as the simplest and most prevalent protocol. USB-to-UART adapters transform modern computer USB ports into serial interfaces compatible with embedded devices, often providing the first interactive access point to a target system.
 
-```
+```ascii
      UART Communication Structure
      
       Computer              Target Device
@@ -217,7 +220,7 @@ Beyond general-purpose test equipment and interface adapters, the hardware hacki
 
 The Bus Pirate represents perhaps the most versatile dedicated hardware hacking tool, functioning as a comprehensive bridge between your computer and various hardware interfaces. Developed as an open-source project, this tool combines protocol translation, voltage measurement, and interactive exploration capabilities in a compact package that has become a staple in hardware hackers' toolkits.
 
-```
+```ascii
     Bus Pirate Functionality Overview
     
     ┌────────────────────────────────────────────────┐
@@ -268,7 +271,7 @@ Successful use of the Proxmark3 involves progressive skill development. Begin wi
 
 Software Defined Radio (SDR) represents perhaps the most revolutionary development in hardware hacking tools of the past decade. These versatile devices transform radio frequency (RF) signals into digital data that can be processed, analyzed, and manipulated through software, essentially replacing rooms full of specialized radio equipment with a single USB device and appropriate software. For hardware hackers, SDRs open up the entire electromagnetic spectrum as a potential attack surface, allowing exploration of wireless protocols from simple remote controls to complex cellular communications.
 
-```
+```ascii
     SDR Functional Overview
     
     RF Signals                         Software Processing
@@ -312,7 +315,7 @@ Effective use of SDRs requires attention to several practical considerations. An
 
 While specialized measurement and analysis tools provide the means to observe and interact with hardware, development boards offer a different and equally essential dimension to the hardware hacker's toolkit. These programmable platforms serve multiple critical roles: they function as versatile building blocks for creating custom hardware hacking tools, provide controlled environments for learning and experimentation, and offer a practical means to test attack techniques before applying them to real-world targets.
 
-```
+```ascii
     Development Board Applications in Hardware Hacking
     
     ┌────────────────────────────────────────────────┐
@@ -390,7 +393,7 @@ For beginners seeking structured learning experiences, dedicated educational pla
 
 Beyond the core hardware hacking tools and equipment, an array of supporting accessories and consumable supplies plays a critical role in practical hardware security work. These items may seem minor compared to digital oscilloscopes or logic analyzers, but their absence can completely halt progress on otherwise straightforward tasks. A well-stocked inventory of these supporting materials transforms frustrating roadblocks into smooth workflow transitions.
 
-```
+```ascii
       Hardware Hacking Accessories Ecosystem
     
     ┌─────────────────────────────────────────┐
@@ -531,7 +534,7 @@ Consumable inventory management prevents project interruptions caused by unexpec
 
 The path to assembling a comprehensive hardware hacking toolkit typically unfolds as an evolutionary journey rather than a single massive investment. This progressive approach allows skill development to occur in parallel with equipment acquisition, ensuring that each new tool enhances capability while building upon established techniques. Strategic acquisition also distributes costs over time, making hardware hacking more financially accessible.
 
-```
+```ascii
     Hardware Hacking Toolkit Evolution
     
     ╔════════════════════════════════════════╗

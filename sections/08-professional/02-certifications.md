@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: certifications, oscp, ecea, training -->
+
 # Certifications & Training
 
 The world of hardware hacking exists at a fascinating intersection of formal education and self-taught exploration. While many accomplished hardware hackers developed their skills through independent projects and community engagement, formal training and certifications can accelerate learning, validate expertise, and open professional doors. This section explores the educational landscape for hardware security, from structured courses to recognized credentials.
@@ -14,7 +17,7 @@ For those considering investments in formal education, understanding the differe
 
 Traditional university programs offer structured approaches to hardware security knowledge, typically embedded within broader electrical engineering or computer science curricula. The university path provides comprehensive theoretical foundations and increasingly includes practical laboratory components.
 
-```
+```ascii
       University Education Pathways
       
       ┌───────────────────────────────────┐
@@ -138,7 +141,7 @@ The IoT Security Foundation offers the "IoT Security Professional" course with s
 
 Cybrary's "Hardware Hacking" course provides an introduction to hardware security concepts, basic electronic principles, and entry-level hardware assessment techniques with practical demonstrations.
 
-```
+```ascii
     Virtual Labs for Hardware Security
     
     ┌─────────────────────────────────────────┐

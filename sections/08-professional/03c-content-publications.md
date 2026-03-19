@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: books, papers, blogs, publications -->
+
 # Content Platforms and Publications
 
 Beyond interactive communities, hardware hackers learn through various content platforms and publications that document techniques, discoveries, and foundational knowledge. These resources range from informal blogs and videos to formal academic papers and books, each offering different perspectives and knowledge types.
@@ -30,7 +33,7 @@ Video content offers unique advantages for hardware topics, demonstrating physic
 
 **YouTube Channels:**
 
-```
+```ascii
 Video Content Value Spectrum
 │                                                                  │
 │  Quick Tips         Project Walkthroughs         Deep Tutorials  │
@@ -242,7 +245,7 @@ Whatever platform you choose, consider licensing your content under open terms (
 
 The diverse and distributed nature of hardware hacking knowledge requires developing strong information evaluation skills:
 
-```
+```ascii
                 Information Quality Evaluation
                 
           Low                                    High
@@ -284,7 +287,7 @@ The most effective hardware hackers develop personalized information ecosystems 
 
 As your hardware hacking journey progresses, consider how your experiences might contribute to this knowledge ecosystem. Even modest documentation efforts help bridge gaps between specialized subcommunities and preserve techniques that might otherwise be lost to time.
 
-The next section explores [Open Source Projects and Tools](./14d-opensource-tools.md), examining how collaborative development efforts create the software and hardware tools that enable hardware hacking work.
+The next section explores [Open Source Projects and Tools](./03d-opensource-tools.md), examining how collaborative development efforts create the software and hardware tools that enable hardware hacking work.
 
 ---
 

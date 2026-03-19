@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: memory, mpu, nx, dep, aslr, stack-protection -->
+
 # Memory Protection and Execution Security
 
 After establishing a secure boot process, the next critical challenge in embedded security is maintaining system integrity during runtime. Memory protection and execution security mechanisms prevent attackers from exploiting vulnerabilities to inject code, access sensitive data, or otherwise compromise a running system.

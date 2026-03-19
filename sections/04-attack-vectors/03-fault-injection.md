@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: fault-injection, glitching, voltage, laser -->
+
 # Fault Injection Techniques
 
 In the world of hardware security, fault injection stands as one of the most powerful and versatile techniques available to researchers and attackers alike. Unlike passive side-channel analysis, fault injection actively manipulates a target system's operating conditions to induce errors that can lead to security failures.

@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: implants, supply-chain, evil-maid -->
+
 # Hardware Implants
 
 The world of hardware implants represents perhaps the most tangible manifestation of hardware hacking. Unlike software vulnerabilities that exist as code flaws, hardware implants are physical devices deliberately added to a target system to compromise its security. These small, often ingeniously designed additions to existing hardware can provide persistent access, data interception capabilities, or other security compromises that remain effective even after software patches and updates.
@@ -113,7 +116,7 @@ Hardware implants represent both a significant security threat and an important 
 
 For hardware hackers, studying implant technology offers insights into miniaturization, power efficiency, wireless communication, and covert operation—skills valuable across many security disciplines. The cat-and-mouse game between implant creators and detection mechanisms continues to drive innovation in both offensive and defensive security techniques.
 
-As we continue our exploration of hardware hacking, we'll next examine [Supply Chain Attacks](./07e-supply-chain.md), where security vulnerabilities are introduced during product manufacturing or distribution.
+As we continue our exploration of hardware hacking, we'll next examine [Supply Chain Attacks](./05-supply-chain-1.md), where security vulnerabilities are introduced during product manufacturing or distribution.
 
 ---
 

@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: reverse-engineering, methodology, tools, binwalk -->
+
 # Reverse Engineering Fundamentals
 
 Reverse engineering hardware begins with a structured approach. Whether you're examining a simple IoT device or a complex security module, the fundamental process remains consistent. This section explores the essential mindset, methodology, and initial techniques that form the foundation of hardware reverse engineering.
@@ -16,7 +19,7 @@ Before touching a screwdriver or multimeter, begin with careful observation and 
 
 Start by creating a complete external inventory of the device. Photograph all sides, noting physical dimensions, external interfaces, model numbers, regulatory markings, and any visible screws or seams. These external clues often reveal valuable information about internal components and design.
 
-```
+```ascii
 External Documentation Checklist:
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
@@ -77,7 +80,7 @@ Electromagnetic emissions, detected with near-field probes, can pinpoint active 
 
 Power consumption analysis offers valuable insights into device operation:
 
-```
+```ascii
 Basic Power Analysis Setup:
                          ┌─────────────┐
                          │             │
@@ -135,7 +138,7 @@ If you encounter resistance, stop and reassess rather than applying force. Many 
 
 Once the device is open, conduct a thorough survey before disturbing any components:
 
-```
+```ascii
 Internal Component Survey:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
@@ -187,7 +190,7 @@ As you complete this initial survey, you'll develop hypotheses about device func
 
 These advanced techniques build upon the foundation established through these fundamental approaches. By following this methodical process, you'll develop a structured understanding of the device that informs more specialized analysis.
 
-In the next section, [PCB Analysis and Circuit Tracing](./08b-pcb-analysis.md), we'll explore techniques for understanding the complex interconnections within electronic devices.
+In the next section, [PCB Analysis and Circuit Tracing](./02-pcb-analysis.md), we'll explore techniques for understanding the complex interconnections within electronic devices.
 
 ---
 

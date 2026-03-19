@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: tools, open-source, github, firmware -->
+
 # Open Source Projects and Tools
 
 Open source projects form the backbone of the hardware hacking ecosystem. These collaborative efforts produce the software tools, hardware designs, and documentation that enable hardware security work across skill levels. Beyond their practical utility, open source projects create communities where knowledge transfers organically through code review, issue discussions, and design decisions.
@@ -12,7 +15,7 @@ Tools that facilitate communication with target hardware provide essential capab
 
 **Bus Pirate** revolutionized hardware hacking by creating an affordable, versatile interface between computers and raw hardware protocols. This open-source tool supports multiple protocols (UART, I²C, SPI, 1-Wire) through a simple terminal interface, making it an ideal first tool for many hardware hackers.
 
-```
+```ascii
     Bus Pirate Simplified Architecture
     
     ┌────────────────┐      ┌─────────────────┐
@@ -81,7 +84,7 @@ Some tools address specific aspects of hardware security assessment:
 - Extensive tutorials and example targets
 - A supportive community sharing techniques and improvements
 
-```
+```ascii
     ChipWhisperer Simplified Workflow
     
     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
@@ -233,7 +236,7 @@ When considering project contributions, several factors indicate project health 
 
 **Contribution Guidelines** indicate organized development processes. Clear guidelines reduce friction for new contributors while ensuring contributions maintain project quality standards.
 
-```
+```ascii
     Project Health Indicators
     
     High            ┌───────────────────────────────────┐
@@ -340,7 +343,7 @@ Contributing to open source hardware security projects provides multiple benefit
 
 Whether using existing tools, contributing improvements, or starting new projects, engagement with the open source hardware security ecosystem connects individual efforts to a broader community advancing the state of hardware security for everyone.
 
-This concludes our exploration of community resources for hardware hackers. The next section discusses [Legal & Ethical Considerations](../sectio./04-legal-ethical.md) in more detail, providing guidance for navigating the complex landscape surrounding hardware security research.
+This concludes our exploration of community resources for hardware hackers. The next section discusses [Legal & Ethical Considerations](./04-legal-ethical.md) in more detail, providing guidance for navigating the complex landscape surrounding hardware security research.
 
 ---
 

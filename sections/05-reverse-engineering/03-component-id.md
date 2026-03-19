@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: components, identification, datasheets, markings -->
+
 # Component Identification
 
 Understanding the individual components on a PCB is crucial for hardware reverse engineering. Each component provides clues about a device's functionality, capabilities, and potential vulnerabilities. This section explores how to identify and understand the various electronic components you'll encounter during hardware hacking.
@@ -14,7 +17,7 @@ Passive components don't amplify or process signals but instead modify electrica
 
 Resistors limit current flow and divide voltage in circuits. Surface-mount resistors rarely display their values directly. Instead, they use standardized marking schemes or may have no markings at all.
 
-```
+```ascii
 Common Resistor Packages:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -42,7 +45,7 @@ The physical size of SMD resistors provides clues about their power handling cap
 
 Capacitors store electrical charge temporarily. They come in various types with different characteristics:
 
-```
+```ascii
 Common Capacitor Types:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -76,7 +79,7 @@ For unmarked capacitors, measurement in-circuit is challenging. Context, physica
 
 Inductors store energy in magnetic fields and resist changes in current flow. They appear in power supplies, filters, and RF circuits:
 
-```
+```ascii
 Common Inductor Types:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -108,7 +111,7 @@ Active components amplify signals or perform complex functions by controlling cu
 
 Diodes allow current to flow in only one direction. They serve various functions depending on their type:
 
-```
+```ascii
 Common Diode Types:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -138,7 +141,7 @@ Testing diodes requires a multimeter's diode test function. A working diode show
 
 Transistors are semiconductor devices that switch or amplify electronic signals. Common types include:
 
-```
+```ascii
 Common Transistor Packages:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -167,7 +170,7 @@ The context provides important clues—transistors near power sections likely ha
 
 Integrated circuits (ICs) present the greatest identification challenge. These complex components often contain entire systems and may be marked with obscure codes.
 
-```
+```ascii
 Common IC Package Types:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -218,7 +221,7 @@ Beyond standard components, you'll encounter specialized elements that provide i
 
 These components provide timing references for digital circuits:
 
-```
+```ascii
 Crystal and Oscillator Types:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -245,7 +248,7 @@ The frequency marking on these components reveals important information about th
 
 Connectors provide insights into both internal and external interfaces:
 
-```
+```ascii
 Common Connector Types:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -273,7 +276,7 @@ Standard pin arrangements often reveal connector purposes. For example, a 2x5 he
 
 Wireless capabilities involve specialized components:
 
-```
+```ascii
 RF Component Examples:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -339,7 +342,7 @@ Component identification forms a crucial skill in hardware reverse engineering. 
 
 Remember that component identification often involves some uncertainty, especially with unmarked or generic parts. When exact identification isn't possible, narrowing down to a family of components with similar characteristics is often sufficient for practical reverse engineering.
 
-In the next section, [Circuit Extraction and Schematic Capture](./08d-circuit-extraction.md), we'll explore how to translate your component identification work into functional circuit documentation.
+In the next section, [Circuit Extraction and Schematic Capture](./04-circuit-extraction.md), we'll explore how to translate your component identification work into functional circuit documentation.
 
 ---
 

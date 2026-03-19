@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: fault-injection, methodology, countermeasures -->
+
 # Fault Injection Techniques (Part 2)
 
 ## Optical Fault Injection
@@ -94,6 +97,102 @@ Physical protection through specialized packaging or active mesh shields can pre
 Protocol-level countermeasures include challenge-response mechanisms that resist replay attacks even if individual operations are compromised. Carefully designed protocols can remain secure even if some constituent operations fail.
 
 These defenses come with tradeoffs in performance, cost, and complexity. Depending on the security requirements and threat model, designers must carefully balance protection against practical constraints.
+
+## Clock Glitching in Practice
+
+Clock glitching manipulates the timing signal that synchronizes processor operations. Processors sample their inputs at precise moments dictated by the clock edge. When you insert a spurious extra clock pulse or stretch/compress a cycle, the processor attempts to execute logic that has not had sufficient time to settle, producing incorrect results at architecturally visible boundaries.
+
+### Practical Clock Glitching Circuit
+
+A crowbar-style clock glitcher uses a fast MOSFET to momentarily short the clock line to ground, creating a narrow runt pulse that the target processor misinterprets as a valid cycle.
+
+```ascii
+Clock Glitcher – Crowbar Circuit:
+
+         3.3 V
+           │
+           ├──────────────────────────┐
+           │                          │
+    Xtal   ▼  R1 10Ω                  │
+    Osc ──[R1]──────────┬─────────> Target CLK
+                        │
+                        │  Q1 (BSS138 or similar NMOS)
+                        ├──────────┐
+                        │  Drain   │
+                       [Q1]        │
+                        │  Source  │
+                       GND         │
+                        │          │
+           Trigger ─────┤Gate      │
+           (from MCU     │          │
+            or FPGA)     └──────────┘
+
+Trigger pulse width: 2 ns – 50 ns (tune empirically)
+Trigger delay from reference: adjustable in 1 ns steps
+```
+
+The glitch control MCU monitors a trigger signal—such as a UART activity line or a GPIO that the target toggles when entering sensitive code—and fires the gate of Q1 after a programmable delay. The resulting runt pulse corrupts exactly one clock cycle in the instruction pipeline.
+
+### EM Fault Injection Setup
+
+Electromagnetic fault injection (EMFI) requires a small coil placed directly above the target IC package. A fast high-current pulse through the coil induces a magnetic field that perturbs supply or signal lines inside the package without requiring direct contact.
+
+Coil construction: wind 3–5 turns of 0.2 mm enamelled copper wire on a 3–5 mm diameter former. Keep inductance below 200 nH to achieve sub-nanosecond rise times. Drive the coil from a dedicated pulser circuit (e.g., a half-bridge with GaN FETs) capable of delivering 20–50 A peak into the coil impedance.
+
+Placement and timing are the two critical variables. Mount the coil on an XY stage with 100 µm resolution and sweep it systematically across the package surface while looping the target through a sensitive operation. Log every trial's offset coordinates alongside the observed outcome (normal, crash, or exploitable fault). Good injection spots tend to cluster over the clock distribution network or power delivery mesh of the target die.
+
+### VCC Glitching Methodology
+
+VCC glitching briefly collapses the power supply to a level too low for reliable logic operation. Most processors have a valid operating range of, say, 2.7–3.6 V; pulling VCC to 1.8 V for 10–100 ns causes one or more pipeline stages to miscompute while preserving enough energy for the device to continue running.
+
+A typical glitch campaign follows this workflow:
+
+1. Establish a timing reference. Use a GPIO toggle, UART character, or SPI transaction that occurs a known number of cycles before the target instruction.
+2. Coarse sweep. Vary offset (0–10 ms in 10 µs steps) and width (10–500 ns in 10 ns steps). Record three outcome classes: no effect, crash, and anomalous response.
+3. Fine sweep. Narrow the window around promising offsets to 1 ns resolution using an FPGA-based glitch engine such as ChipWhisperer.
+4. Exploit development. Confirm that the anomalous response corresponds to the security bypass (wrong PIN accepted, secure boot skipped, readout protection disabled).
+
+### Example Attack Walkthrough: Bypassing a Security Check
+
+Consider a microcontroller that stores a four-byte PIN in protected flash and compares it byte-by-byte against user input before allowing firmware readout. The comparison loop looks roughly like:
+
+```c
+for (int i = 0; i < 4; i++) {
+    if (input[i] != stored_pin[i]) {
+        lock_device();   // branch-taken on mismatch
+        return;
+    }
+}
+enable_debug_readout();
+```
+
+The goal is to corrupt the conditional branch instruction so the processor falls through to `enable_debug_readout()` despite the PIN mismatch.
+
+Step 1 – Identify the timing reference. The target sends a UART ACK after receiving the four PIN bytes and before executing the comparison. Oscilloscope captures show this ACK arrives approximately 45 µs before the first comparison.
+
+Step 2 – Set offset to 44–48 µs and width to 20–60 ns. Run 10 000 trials per parameter combination.
+
+Step 3 – At offset 45.3 µs and width 35 ns, the device responds with the debug readout response rather than the lock response on roughly 1 in 200 attempts.
+
+Step 4 – Run in a loop with an incorrect PIN. After an average of 200 attempts, readout protection is bypassed and flash contents are retrieved.
+
+This class of attack has been demonstrated on real devices including PIC, STM32, and Nordic Semiconductor targets by researchers at Riscure, LimitedResults, and independent security groups.
+
+## Detection Methods and Countermeasures
+
+Defending against clock and voltage glitching requires detecting the abnormal conditions and responding before sensitive state is compromised.
+
+**Voltage monitors (brown-out detectors):** Place a comparator on VCC with a threshold set 5–10% below nominal. On detection, assert a hardware reset or erase keys before the MCU can execute further instructions. Many modern microcontrollers include configurable brown-out reset circuits; ensure the threshold is set in fuse bytes and that it cannot be overridden via software.
+
+**Clock integrity detectors:** A secondary oscillator or ring oscillator running in parallel can detect clock stretching or extra pulses. If the primary and secondary clocks drift by more than one cycle within a window, flag a tamper event.
+
+**Redundant computation:** Execute the critical comparison twice and compare results. A glitch that corrupts one execution is unlikely to produce the same incorrect result twice, so a mismatch triggers a lock.
+
+**Temporal jitter:** Insert a random delay (sourced from a hardware TRNG) between the timing reference and the sensitive operation. This forces an attacker to sweep a much wider parameter space, increasing the trial count by orders of magnitude.
+
+**Active mesh and shields:** BGA packaging with ground planes above the die makes EM injection significantly harder by attenuating the induced field before it reaches sensitive structures.
+
+**Security policy on reset:** On any unexpected reset or tamper flag, increment a counter stored in non-volatile memory. Exceed a threshold and lock the device permanently or require factory intervention to unlock.
 
 ## Conclusion
 

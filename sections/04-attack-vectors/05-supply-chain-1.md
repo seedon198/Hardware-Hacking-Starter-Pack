@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: supply-chain, tampering, counterfeits -->
+
 # Supply Chain Attacks - Part 1: Introduction and Fundamentals
 
 The journey of an electronic device from design to your hands involves numerous companies, facilities, and people. This complex network creates countless opportunities for security compromises that are particularly difficult to detect and mitigate.
@@ -6,7 +9,7 @@ The journey of an electronic device from design to your hands involves numerous 
 
 A typical hardware supply chain looks something like this:
 
-```
+```ascii
                                           ┌─────────────┐
 ┌─────────┐     ┌──────────┐     ┌───────┐│  Component  │┌───────────┐
 │ Design  │────>│ Component│────>│ Board ││Manufacturer ││  System   │
@@ -38,7 +41,7 @@ Supply chain attacks generally fall into several distinct categories, each targe
 
 This straightforward approach involves replacing legitimate components with malicious or counterfeit alternatives. The substituted parts appear identical to the original but contain hidden modifications.
 
-```
+```ascii
    Legitimate Component           Counterfeit Component
 ┌─────────────────────┐        ┌─────────────────────┐
 │ ┌───┐  ┌─────────┐  │        │ ┌───┐  ┌─────────┐  │
@@ -61,7 +64,7 @@ A concerning real-world example occurred in 2008 when counterfeit Cisco routers 
 
 This approach targets the code rather than physical components. During manufacturing, legitimate firmware is replaced with or modified to include malicious code.
 
-```
+```ascii
 Normal Manufacturing Process:
 ┌─────────────┐     ┌───────────────┐     ┌───────────────┐
 │ Component   │────>│ Load Official │────>│ Test & Ship   │
@@ -104,7 +107,7 @@ Modern semiconductor manufacturing presents significant security challenges:
 - Verification of all transistors in modern chips (often billions) is practically impossible
 - Trojans can be designed to activate only under specific conditions
 
-```
+```ascii
 Simplified Chip Design & Fabrication Flow:
 ┌─────────┐     ┌───────────┐     ┌────────────┐     ┌───────────┐
 │ Design  │────>│ Design    │────>│ Foundry    │────>│ Testing & │

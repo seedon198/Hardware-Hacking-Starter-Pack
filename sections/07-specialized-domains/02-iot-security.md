@@ -1,4 +1,7 @@
- # IoT Device Security
+<!-- difficulty: advanced -->
+<!-- tags: iot, cloud, mqtt, firmware-update, ota -->
+
+# IoT Device Security
 
 The Internet of Things has transformed everyday objects into networked devices, creating a vast ecosystem of connected products with varying security practices. From smart light bulbs to industrial sensors, these devices present unique security challenges that combine hardware, firmware, and network vulnerabilities in novel ways.
 
@@ -327,7 +330,7 @@ Hardware hackers bring valuable perspectives to this domain by understanding the
 
 As IoT continues expanding into increasingly sensitive applications, security takes on greater importance. Devices that control physical systems, access personal information, or connect to critical infrastructure require security commensurate with these responsibilities. Hardware hackers play essential roles in both identifying vulnerabilities in existing systems and developing more secure approaches for future devices.
 
-The next section explores [Learning Path & Progression](../sectio../../sections/08-professional/01-learning-path.md), providing guidance for developing your hardware hacking skills from beginner to advanced levels.
+The next section explores [Learning Path & Progression](../08-professional/01-learning-path.md), providing guidance for developing your hardware hacking skills from beginner to advanced levels.
 
 ---
 

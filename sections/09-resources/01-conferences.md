@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: defcon, blackhat, conferences, talks -->
+
 # Hardware Security Conferences
 
 This page lists conferences, events, and meetups focused on hardware security, with detailed information to help you plan your participation and professional development.

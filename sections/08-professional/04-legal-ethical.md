@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: legal, ethics, responsible-disclosure, authorization -->
+
 # Legal and Ethical Considerations in Hardware Hacking
 
 Hardware hacking exists at the intersection of technical curiosity and multiple legal and ethical frameworks. Understanding these considerations is not merely academic—it directly impacts what activities are permissible, what risks you assume, and how your work contributes to broader security ecosystems. This section explores the complex landscape of laws, regulations, and ethical principles affecting hardware security research.
@@ -6,7 +9,7 @@ Hardware hacking exists at the intersection of technical curiosity and multiple 
 
 Hardware security research intersects with multiple legal domains that vary significantly by jurisdiction, creating a complex patchwork of requirements and restrictions:
 
-```
+```ascii
     Legal Domains Impacting Hardware Security
     
     ┌────────────────────┐   ┌───────────────────┐
@@ -164,7 +167,7 @@ Several ethical frameworks offer guidance for hardware security research:
 
 Several principles help navigate ethical complexities in hardware hacking:
 
-```
+```ascii
          Ethical Principles in Hardware Hacking
          
 ┌───────────────────┐  ┌───────────────────┐  ┌───────────────────┐
@@ -501,7 +504,7 @@ For most hardware hackers, the path forward involves:
 
 By approaching hardware security research with careful attention to these legal and ethical dimensions, researchers contribute to improving security while advancing the legitimacy and recognition of hardware hacking as valuable security work.
 
-The next section explores [Project Ideas](../sectio./05-project-ideas.md) for applying the knowledge and skills developed throughout this guide while maintaining the legal and ethical principles discussed here.
+The next section explores [Project Ideas](./05-project-ideas.md) for applying the knowledge and skills developed throughout this guide while maintaining the legal and ethical principles discussed here.
 
 ---
 

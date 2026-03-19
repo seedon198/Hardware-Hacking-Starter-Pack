@@ -1,6 +1,9 @@
+<!-- difficulty: beginner -->
+<!-- tags: spi, four-wire, flash, eeprom -->
+
 # SPI (Serial Peripheral Interface) Protocol
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │           SPI COMMUNICATION MODEL           │
    │                                             │
@@ -63,13 +66,13 @@ Additional signal lines may appear in some implementations, such as write protec
 
 Slave devices remain passive participants, responding only when selected by the master via their respective CS lines. This centralized control simplifies the protocol by eliminating the need for bus arbitration or collision detection mechanisms found in multi-master protocols, but it also concentrates security control at the master device.
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │             SPI SIGNAL TRANSFER             │
    │                                             │
    │  CS     ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄        │
-   │        █                            █       |
-   |                                             │
+   │        █                            █       │
+   │                                             │
    │  SCLK  ░░▀▀░░▀▀░░▀▀░░▀▀░░▀▀░░▀▀░░▀▀░░       │
    │                                             │
    │  MOSI  ████░░░░██░░████████░░░░██░░██       │
@@ -215,7 +218,7 @@ During security assessments, it's sometimes necessary to attempt communication u
 
 ## Identifying SPI Interfaces
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │        COMMON SPI INTERFACE INDICATORS      │
    │                                             │
@@ -348,7 +351,7 @@ By examining the precise timing between clock and data signals, you can not only
 
 ## Hardware for SPI Hacking
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │           SPI HACKING TOOLKIT               │
    │                                             │
@@ -526,7 +529,7 @@ A basic SPI hacking toolkit can be assembled for under $100, with a CH341A progr
 
 ### Passive Techniques
 
-```
+```ascii
    ┌───────────────────────────────────────────────┐
    │             SPI ATTACK METHODOLOGY            │
    │                                               │
@@ -686,7 +689,7 @@ The goal of fault injection is typically to bypass security mechanisms by disrup
 
 ## Common SPI Security Issues
 
-```
+```ascii
    ┌───────────────────────────────────────────────┐
    │      SPI SECURITY VULNERABILITIES             │
    │                                               │
@@ -835,7 +838,7 @@ The combination of protocol-level vulnerabilities and implementation weaknesses 
 
 ## Practical SPI Hacking: Flash Memory Extraction
 
-```
+```ascii
    ┌──────────────────────────────────────────────┐
    │       SPI FLASH EXTRACTION WORKFLOW          │
    │                                              │
@@ -943,7 +946,7 @@ The connection process typically involves:
 
 For a standard 8-pin SOIC flash chip with a CH341A programmer, a typical connection would follow this pinout:
 
-```
+```ascii
    FLASH CHIP (TOP VIEW)    CH341A PROGRAMMER
         _________
        |         |
@@ -1050,7 +1053,7 @@ For particularly sensitive applications, extracted firmware should be handled se
 
 ## Securing SPI Communications
 
-```
+```ascii
    ┌───────────────────────────────────────────┐
    │       SPI SECURITY DEFENSE LAYERS         │
    │                                           │

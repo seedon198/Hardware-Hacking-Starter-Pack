@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: community, forums, resources -->
+
 # Community Resources
 
 Hardware hacking thrives on community knowledge sharing and collaboration. Unlike fields with centralized information repositories, hardware hacking wisdom often resides within diverse communities spanning academic research groups, industry professionals, hobbyist collectives, and independent security researchers. This section maps the landscape of hardware hacking communities, connecting you with places to learn, share, and grow your skills.
@@ -8,7 +11,7 @@ The hardware hacking ecosystem resembles a constellation rather than a single st
 
 At the broadest level, hardware hacking communities typically organize around shared interests, methodologies, or professional contexts:
 
-```
+```ascii
                  Hardware Hacking Communities
                  
     Research                             Professional

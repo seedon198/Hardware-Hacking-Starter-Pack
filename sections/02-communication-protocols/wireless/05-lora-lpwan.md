@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: lora, lpwan, lorawan, iot -->
+
 # LoRa and LPWAN: The Whispering Networks of the IoT Revolution
 
 ## The Invisible Threads of Connection

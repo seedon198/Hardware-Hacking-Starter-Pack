@@ -1,6 +1,9 @@
+<!-- difficulty: intermediate -->
+<!-- tags: ethernet, tcp-ip, network -->
+
 # Ethernet and Network Protocols: The Physical Gateway to Data
 
-```
+```ascii
                      THE NETWORK STACK
 ┌─────────────────┬──────────────────────────────┐
 │ APPLICATION LAYER   │ HTTP, FTP, SSH, DNS           │
@@ -32,7 +35,7 @@ In this section, we'll dive beneath the software abstraction to explore the phys
 
 ## Inside the Wire: Ethernet Hardware Fundamentals
 
-```
+```ascii
                  ETHERNET HARDWARE ARCHITECTURE
 ┌─────────────────────────────────────────────────┐
 │                                                  │
@@ -112,7 +115,7 @@ In modern devices, the MAC is often integrated directly into the main processor 
 
 ### Common Ethernet Controller ICs: The Brains Behind the Connection
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │  ETHERNET CONTROLLER ARCHITECTURES              │
 ├───────────────────┬─────────────────────────┤
@@ -182,7 +185,7 @@ Understanding which controller architecture your target uses will guide your app
 
 ## Capturing the Invisible: Hardware Access to Network Traffic
 
-```
+```ascii
                 NETWORK TRAFFIC INTERCEPTION POINTS
                 
 ┌─────────────────────────────────────────────────┐
@@ -335,7 +338,7 @@ By combining the right hardware tapping methods with appropriate analysis tools,
 
 ## Breaking the Barriers: Common Network Hardware Attack Vectors
 
-```
+```ascii
             NETWORK HARDWARE ATTACK SURFACE MAP
 
 ┌─────────────────────────────────────────────────┐
@@ -449,7 +452,7 @@ Understanding these attack vectors is essential not just for offensive security 
 
 ## Beyond Standard Ethernet: Specialized Network Hardware Interfaces
 
-```
+```ascii
            SPECIALIZED ETHERNET INTERFACES
 
 ┌─────────────────────────────────────────────────┐
@@ -550,7 +553,7 @@ The real-world consequences of exploiting industrial Ethernet hardware can be si
 
 ## Network Boot and Configuration Hardware: The Vulnerable Beginning
 
-```
+```ascii
            NETWORK BOOT SEQUENCE ATTACK POINTS
 
 ┌─────────────────────────────────────────────────┐
@@ -624,7 +627,7 @@ For hardware security researchers, understanding these boot and configuration me
 
 ## Hands-On Network Hardware Hacking: From Theory to Practice
 
-```
+```ascii
                 NETWORK HARDWARE HACKING WORKFLOW
 
 ┌─────────────────────────────────────────────────┐
@@ -831,7 +834,7 @@ These practical exercises provide hands-on experience with fundamental network h
 
 ## The Cutting Edge: Advanced Topics in Network Hardware Security
 
-```
+```ascii
            ADVANCED NETWORK HARDWARE ATTACK VECTORS
 
 ┌─────────────────────────────────────────────────┐
@@ -954,7 +957,7 @@ For hardware hackers, understanding these detection techniques is essential both
 
 ## Defending the Digital Fortress: Securing Network Hardware
 
-```
+```ascii
             NETWORK HARDWARE DEFENSE IN DEPTH
 
 ┌─────────────────────────────────────────────────┐
@@ -1079,16 +1082,16 @@ Understanding these defensive measures is essential for hardware hackers not jus
 
 ## The Hardware Hacker's Arsenal: Network Hardware Analysis Toolkit
 
-```
+```ascii
             NETWORK HARDWARE ANALYSIS TOOLKIT
 
 ┌─────────────────────────────────────────────────┐
 │                                                  │
-│                      |                         │
+│                      │                         │
 │  ┌───────────────┬────────────┬─────────────┐  │
 │  │      HARDWARE     │    SOFTWARE    │  REFERENCE   │  │
 │  └───────────────┴────────────┴─────────────┘  │
-│                      |                         │
+│                      │                         │
 │  ┌───────────────┬────────────┬─────────────┐  │
 │  │  • Logic Analyzer │ • Wireshark    │ • Datasheets   │  │
 │  │  • Oscilloscope   │ • OpenFPGA     │ • IEEE Std.    │  │
@@ -1098,7 +1101,7 @@ Understanding these defensive measures is essential for hardware hackers not jus
 │  │  • Fault Injectors │ • Reverse       │ • Community    │  │
 │  │                  │   Engineering   │   Research     │  │
 │  └───────────────┴────────────┴─────────────┘  │
-│                      |                         │
+│                      │                         │
 │                   ANALYSIS                      │
 │                                                  │
 └─────────────────────────────────────────────────┘
@@ -1216,7 +1219,7 @@ Remember that a well-considered, carefully selected toolkit that matches your sp
 
 ## Beyond the Digital Realm: Conclusion
 
-```
+```ascii
           THE HARDWARE HACKER'S JOURNEY
 
 ┌─────────────────────────────────────────────────┐

@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: defcon, conferences, events, ctf -->
+
 # Chat Platforms and Events
 
 While forums excel at persistent knowledge organization, real-time communication platforms and in-person events create different opportunities for hardware hackers. These spaces enable immediate assistance, collaborative problem-solving, and the formation of personal connections that frequently evolve into mentorship relationships and project collaborations.
@@ -12,7 +15,7 @@ Discord has emerged as a prominent platform for hardware hacking communities, of
 
 **Hardware Hacking Discord** (invite link: https://discord.gg/hwsecurity) represents one of the largest dedicated hardware security communities. With thousands of members ranging from curious beginners to professional researchers, this community maintains specialized channels for different aspects of hardware hacking:
 
-```
+```ascii
 Hardware Hacking Discord
 ├── Announcements
 ├── General Discussion
@@ -64,7 +67,7 @@ Several established security conferences feature significant hardware security c
 
 **DEF CON** hosts the Hardware Hacking Village, IoT Village, and numerous hardware-focused talks and workshops. The Hardware Hacking Village provides workstations equipped with soldering equipment, logic analyzers, and other tools, creating a supportive environment for hands-on learning:
 
-```
+```ascii
                   DEF CON Hardware Hacking Village
                   
          ┌───────────────────────────────────────────┐
@@ -227,7 +230,7 @@ The distributed nature of hardware hacking knowledge makes multi-channel communi
 
 By thoughtfully engaging across these complementary community spaces, you'll develop both technical knowledge and the professional network that supports continued growth in hardware hacking.
 
-The next section explores [Content Platforms and Publications](./14c-content-publications.md), examining how blogs, videos, books, and academic papers contribute to the hardware hacking knowledge ecosystem.
+The next section explores [Content Platforms and Publications](./03c-content-publications.md), examining how blogs, videos, books, and academic papers contribute to the hardware hacking knowledge ecosystem.
 
 ---
 

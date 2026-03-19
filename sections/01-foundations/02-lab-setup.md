@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: lab, setup, tools, environment -->
+
 # Setting Up Your Hardware Hacking Lab
 
 The environment where you conduct hardware exploration directly influences your effectiveness, safety, and enjoyment of the process. A thoughtfully designed hardware hacking workspace provides not just the physical foundation for your work, but creates the conditions where focused analysis and creative problem-solving flourish. This section guides you through establishing a functional laboratory that balances practical requirements with resource constraints.
@@ -6,7 +9,7 @@ The environment where you conduct hardware exploration directly influences your 
 
 The physical environment forms the foundation of your hardware hacking practice. While commercial electronic labs might feature specialized workbenches and elaborate equipment setups, effective hardware hacking spaces can take many forms, from dedicated rooms to compact workstations in shared spaces. The key principles remain consistent regardless of scale.
 
-```
+```ascii
           Ideal Hardware Hacking Workspace Layout
 
 ┌─────────────────────────────────────────────────────────┐
@@ -100,7 +103,7 @@ Respiratory safety deserves serious consideration when soldering. Fume extractor
 
 Bridging the gap between your computer and target hardware devices requires specialized interface adapters. These tools translate between the protocols used by different systems, enabling communication, analysis, and modification of embedded devices. This category forms the critical link that makes hardware hacking possible, transforming mysterious embedded devices into accessible systems that can be analyzed and modified.
 
-```
+```ascii
         Hardware Interfacing Architecture
         
         Your Computer         Target Hardware

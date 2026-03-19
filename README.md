@@ -52,7 +52,7 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
 
 ## Content Overview
 
-<table class="glass-table">
+<table>
   <thead>
     <tr>
       <th>Category</th>
@@ -68,25 +68,25 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
       <td><a href="./sections/01-foundations/01-introduction.md">Introduction</a></td>
       <td class="topic-column">Core concepts and mindset</td>
       <td>Hardware security fundamentals, threat models, approaches</td>
-      <td><span class="difficulty-beginner">Beginner</span></td>
+      <td><span>Beginner</span></td>
     </tr>
     <tr>
       <td><a href="./sections/01-foundations/02-lab-setup.md">Lab Setup</a></td>
       <td class="topic-column">Workspace setup</td>
       <td>Safety, organization, equipment selection, budget considerations</td>
-      <td><span class="difficulty-beginner">Beginner</span></td>
+      <td><span>Beginner</span></td>
     </tr>
     <tr>
       <td><a href="./sections/01-foundations/03-tools-equipment.md">Tools & Equipment</a></td>
       <td class="topic-column">Hardware essentials</td>
       <td>Multimeters, oscilloscopes, logic analyzers, soldering tools</td>
-      <td><span class="difficulty-beginner">Beginner</span></td>
+      <td><span>Beginner</span></td>
     </tr>
     <tr>
       <td><a href="./sections/01-foundations/04-basic-electronics.md">Basic Electronics</a></td>
       <td class="topic-column">Electrical fundamentals</td>
       <td>Components, circuits, schematics, power considerations</td>
-      <td><span class="difficulty-beginner">Beginner</span></td>
+      <td><span>Beginner</span></td>
     </tr>
   <!-- Communication Protocols -->
   <tr>
@@ -94,7 +94,7 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/02-communication-protocols/index.md"><strong>Protocol Overview</strong></a></td>
     <td class="topic-column">Communication basics</td>
     <td>Protocol selection, analysis methodology, common tools</td>
-    <td><span class="difficulty-beginner">Beginner</span></td>
+    <td><span>Beginner</span></td>
   </tr>
   
   <!-- Communication Protocols - Wired -->
@@ -103,37 +103,37 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/02-communication-protocols/wired/01-uart-protocol.md"><strong>UART</strong></a></td>
     <td class="topic-column">Serial communication</td>
     <td>Baud rates, signal levels, debugging interfaces, console access</td>
-    <td><span class="difficulty-beginner">Beginner</span></td>
+    <td><span>Beginner</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wired/02-i2c-protocol.md"><strong>I²C</strong></a></td>
     <td class="topic-column">Two-wire interface</td>
     <td>Address space, bus arbitration, sensor interfaces, sniffing</td>
-    <td><span class="difficulty-beginner">Beginner</span></td>
+    <td><span>Beginner</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wired/03-spi-protocol.md"><strong>SPI</strong></a></td>
     <td class="topic-column">Synchronous serial</td>
     <td>Clock synchronization, chip select, flash memory interfaces</td>
-    <td><span class="difficulty-beginner">Beginner</span></td>
+    <td><span>Beginner</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wired/04-jtag-swd.md"><strong>JTAG/SWD</strong></a></td>
     <td class="topic-column">Debug interfaces</td>
     <td>Boundary scan, debugging protocols, memory access, code extraction</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wired/05-usb-protocol.md"><strong>USB</strong></a></td>
     <td class="topic-column">Universal Serial Bus</td>
     <td>USB versions, device classes, packet analysis, USB attacks</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wired/06-ethernet-protocols.md"><strong>Ethernet</strong></a></td>
     <td class="topic-column">Network communication</td>
     <td>Physical layer, packet structure, analysis techniques</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   
   <!-- Communication Protocols - Wireless -->
@@ -142,43 +142,43 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/02-communication-protocols/wireless/index.md"><strong>Wireless Overview</strong></a></td>
     <td class="topic-column">RF communication basics</td>
     <td>Spectrum analysis, wireless security principles</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wireless/01-rf-fundamentals.md"><strong>RF Fundamentals</strong></a></td>
     <td class="topic-column">Radio basics</td>
     <td>Frequencies, modulation, antennas, signal analysis</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wireless/02-wifi.md"><strong>WiFi</strong></a></td>
     <td class="topic-column">Wireless networking</td>
     <td>802.11 standards, authentication, encryption, attacks</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wireless/03-bluetooth.md"><strong>Bluetooth</strong></a></td>
     <td class="topic-column">Short-range wireless</td>
     <td>Pairing, BLE, sniffing, security vulnerabilities</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wireless/04-zigbee.md"><strong>Zigbee</strong></a></td>
     <td class="topic-column">Mesh networking</td>
     <td>Network structure, smart home applications, security analysis</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wireless/05-lora-lpwan.md"><strong>LoRa/LPWAN</strong></a></td>
     <td class="topic-column">Long-range protocols</td>
     <td>Low-power design, IoT applications, security considerations</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   <tr>
     <td><a href="./sections/02-communication-protocols/wireless/06-rfid-nfc.md"><strong>RFID/NFC</strong></a></td>
     <td class="topic-column">Contactless systems</td>
     <td>Reader/tag interaction, card cloning, access control systems</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   
   <!-- Firmware -->
@@ -187,7 +187,7 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/03-firmware/01-firmware-analysis.md"><strong>Firmware Analysis</strong></a></td>
     <td class="topic-column">Code extraction & review</td>
     <td>Extraction methods, binary analysis, vulnerability research</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   
   <!-- Attack Vectors -->
@@ -196,37 +196,37 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/04-attack-vectors/index.md"><strong>Attack Overview</strong></a></td>
     <td class="topic-column">Vulnerability types</td>
     <td>Attack methodologies, risk assessment, hardware threats</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/04-attack-vectors/01-physical-access.md"><strong>Physical Access</strong></a></td>
     <td class="topic-column">Direct hardware attacks</td>
     <td>Tamper techniques, bus snooping, memory extraction</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/04-attack-vectors/02-side-channel.md"><strong>Side-Channel</strong></a></td>
     <td class="topic-column">Passive analysis</td>
     <td>Power analysis, EM emissions, timing attacks, acoustic analysis</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   <tr>
     <td><a href="./sections/04-attack-vectors/03-fault-injection.md"><strong>Fault Injection</strong></a> (<a href="./sections/04-attack-vectors/03-fault-injection-2.md">Part 2</a>)</td>
     <td class="topic-column">Glitching techniques</td>
     <td>Voltage glitching, clock manipulation, laser fault injection</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   <tr>
     <td><a href="./sections/04-attack-vectors/04-hardware-implants.md"><strong>Hardware Implants</strong></a></td>
     <td class="topic-column">Physical modifications</td>
     <td>Backdoor circuits, rogue devices, detection techniques</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   <tr>
     <td><a href="./sections/04-attack-vectors/05-supply-chain-1.md"><strong>Supply Chain</strong></a> (<a href="./sections/04-attack-vectors/05-supply-chain-2.md">Part 2</a>, <a href="./sections/04-attack-vectors/05-supply-chain-3.md">Part 3</a>)</td>
     <td class="topic-column">Manufacturing threats</td>
     <td>Component substitution, trojan circuits, counterfeit detection</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   
   <!-- Reverse Engineering -->
@@ -235,37 +235,37 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/05-reverse-engineering/index.md"><strong>RE Overview</strong></a></td>
     <td class="topic-column">Methodology basics</td>
     <td>Approach to unknown hardware, documentation techniques</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/05-reverse-engineering/01-re-fundamentals.md"><strong>RE Fundamentals</strong></a></td>
     <td class="topic-column">Core concepts</td>
     <td>Documentation methods, workflow, non-destructive analysis</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/05-reverse-engineering/02-pcb-analysis.md"><strong>PCB Analysis</strong></a></td>
     <td class="topic-column">Circuit board examination</td>
     <td>Visual inspection, layer analysis, tracing circuits</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/05-reverse-engineering/03-component-id.md"><strong>Component ID</strong></a></td>
     <td class="topic-column">Part identification</td>
     <td>IC marking schemes, package types, component databases</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/05-reverse-engineering/04-circuit-extraction.md"><strong>Circuit Extraction</strong></a></td>
     <td class="topic-column">Functional analysis</td>
     <td>Schematic recreation, circuit function analysis</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   <tr>
     <td><a href="./sections/05-reverse-engineering/05-advanced-techniques.md"><strong>Advanced Techniques</strong></a></td>
     <td class="topic-column">Specialized methods</td>
     <td>Decapsulation, microscopy, chip photography</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   
   <!-- Embedded Security -->
@@ -274,37 +274,37 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/06-embedded-security/index.md"><strong>Security Principles</strong></a></td>
     <td class="topic-column">Protective design</td>
     <td>Threat modeling, security architecture, defense in depth</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/06-embedded-security/01-secure-boot.md"><strong>Secure Boot</strong></a></td>
     <td class="topic-column">Trusted startup</td>
     <td>Root of trust, code signing, boot verification</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   <tr>
     <td><a href="./sections/06-embedded-security/02-memory-protection.md"><strong>Memory Protection</strong></a></td>
     <td class="topic-column">Data security</td>
     <td>Memory encryption, secure storage, anti-tampering</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   <tr>
     <td><a href="./sections/06-embedded-security/03-secure-communications.md"><strong>Secure Communications</strong></a></td>
     <td class="topic-column">Data transmission</td>
     <td>Crypto implementations, key management, secure protocols</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   <tr>
     <td><a href="./sections/06-embedded-security/04-physical-security.md"><strong>Physical Security</strong></a></td>
     <td class="topic-column">Tamper resistance</td>
     <td>Secure enclosures, tamper detection, protective measures</td>
-    <td><span class="difficulty-intermediate">Intermediate</span></td>
+    <td><span>Intermediate</span></td>
   </tr>
   <tr>
     <td><a href="./sections/06-embedded-security/05-security-testing.md"><strong>Security Testing</strong></a></td>
     <td class="topic-column">Validation methods</td>
     <td>Test methodologies, security verification, penetration testing</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   
   <!-- Specialized Domains -->
@@ -313,13 +313,13 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/07-specialized-domains/01-mobile-hacking.md"><strong>Mobile Security</strong></a></td>
     <td class="topic-column">Phone/tablet hardware</td>
     <td>Baseband processors, secure elements, biometric systems</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   <tr>
     <td><a href="./sections/07-specialized-domains/02-iot-security.md"><strong>IoT Security</strong></a></td>
     <td class="topic-column">Connected devices</td>
     <td>Smart device security, cloud connections, privacy considerations</td>
-    <td><span class="difficulty-advanced">Advanced</span></td>
+    <td><span>Advanced</span></td>
   </tr>
   
   <!-- Professional Development -->
@@ -328,37 +328,37 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/08-professional/01-learning-path.md"><strong>Learning Path</strong></a></td>
     <td class="topic-column">Skill progression</td>
     <td>Knowledge roadmap, learning strategies, skill assessment</td>
-    <td><span class="difficulty-all">All Levels</span></td>
+    <td><span>All Levels</span></td>
   </tr>
   <tr>
     <td><a href="./sections/08-professional/02-certifications.md"><strong>Certifications</strong></a></td>
     <td>Formal education</td>
     <td>Hardware security certifications, training programs, courses</td>
-    <td><span class="difficulty-all">All Levels</span></td>
+    <td><span>All Levels</span></td>
   </tr>
   <tr>
     <td><a href="./sections/08-professional/03-community-resources.md"><strong>Community</strong></a></td>
     <td class="topic-column">Knowledge sharing</td>
     <td>Forums, chat platforms, conferences, online resources</td>
-    <td><span class="difficulty-all">All Levels</span></td>
+    <td><span>All Levels</span></td>
   </tr>
   <tr>
     <td><a href="./sections/08-professional/04-legal-ethical.md"><strong>Legal & Ethics</strong></a></td>
     <td class="topic-column">Responsible practice</td>
     <td>Legal considerations, responsible disclosure, ethics</td>
-    <td><span class="difficulty-all">All Levels</span></td>
+    <td><span>All Levels</span></td>
   </tr>
   <tr>
     <td><a href="./sections/08-professional/05-project-ideas.md"><strong>Project Ideas</strong></a></td>
     <td class="topic-column">Practical exercises</td>
     <td>Hands-on projects, skill-building activities, challenges</td>
-    <td><span class="difficulty-all">All Levels</span></td>
+    <td><span>All Levels</span></td>
   </tr>
   <tr>
     <td><a href="./sections/08-professional/06-glossary.md"><strong>Glossary</strong></a></td>
     <td class="topic-column">Terminology</td>
     <td>Hardware security terms, acronyms, concepts defined</td>
-    <td><span class="difficulty-all">All Levels</span></td>
+    <td><span>All Levels</span></td>
   </tr>
 
   <!-- External Resources -->
@@ -367,25 +367,25 @@ This Hardware Hacker Starter Pack is organized into a logical folder structure t
     <td><a href="./sections/09-resources/01-conferences.md"><strong>Conferences</strong></a></td>
     <td class="topic-column">Hardware security events</td>
     <td>Conferences and events with hardware security tracks</td>
-    <td><span class="difficulty-all">All Levels</span></td>
+    <td><span>All Levels</span></td>
   </tr>
   <tr>
     <td><a href="./sections/09-resources/02-talks-videos.md"><strong>Talks & Videos</strong></a></td>
     <td class="topic-column">Recorded presentations</td>
     <td>Notable hardware security presentations and videos</td>
-    <td><span class="difficulty-all">All Levels</span></td>
+    <td><span>All Levels</span></td>
   </tr>
   <tr>
     <td><a href="./sections/09-resources/03-labs.md"><strong>Labs</strong></a></td>
     <td class="topic-column">Practice environments</td>
     <td>Hardware security labs and interactive learning platforms</td>
-    <td><span class="difficulty-all">All Levels</span></td>
+    <td><span>All Levels</span></td>
   </tr>
   <tr>
     <td><a href="./sections/09-resources/04-bug-bounties.md"><strong>Bug Bounties</strong></a></td>
     <td class="topic-column">Vulnerability programs</td>
     <td>Hardware-focused bug bounty programs</td>
-    <td><span class="difficulty-intermediate">Intermediate+</span></td>
+    <td><span>Intermediate+</span></td>
   </tr>
 </table>
 

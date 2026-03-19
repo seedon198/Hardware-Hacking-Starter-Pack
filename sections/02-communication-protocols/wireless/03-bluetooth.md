@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: bluetooth, ble, pairing, sniffing -->
+
 # Bluetooth and BLE: Unraveling the Invisible Threads of Personal Connectivity
 
 ## The Omnipresent Wireless Companion
@@ -167,7 +170,7 @@ Across all these pairing mechanisms, key protection features determine what happ
 
 Intercepting Bluetooth communications at the hardware level presents unique challenges compared to other wireless protocols. The frequency hopping nature of Bluetooth BR/EDR and the complexity of packet formats require specialized equipment and techniques. This section explores practical approaches to capturing and analyzing Bluetooth traffic at the physical layer.
 
-```
+```ascii
 Bluetooth Classic (BR/EDR) Frequency Hopping Visualization
 
 Frequency  ^

@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: forums, reddit, discord, community -->
+
 # Online Forums and Discussion Platforms
 
 Online forums provide accessible entry points to hardware hacking communities. These platforms host discussions ranging from beginner questions to advanced technical deep-dives, creating persistent knowledge repositories that benefit the entire field.
@@ -40,7 +43,7 @@ Security-oriented platforms often include significant hardware hacking content:
 
 **The Exploitee.rs Forum** focuses specifically on embedded device security, with detailed discussions of hardware vulnerabilities, exploitation techniques, and tool development. Their wiki contains extensive documentation of known vulnerabilities and exploitation techniques for various embedded devices.
 
-```
+```ascii
 Exploitee.rs Community Structure
 
 Device Categories
@@ -178,7 +181,7 @@ Online forums serve as essential knowledge repositories for hardware hackers at 
 
 The distributed nature of hardware hacking knowledge makes forum participation particularly valuable—insights that might appear in just one specialized community could provide the key breakthrough for your project. By maintaining connections across multiple forums, you develop a more comprehensive understanding of hardware security while contributing to the field's continued growth.
 
-The next section examines [Chat Platforms and Events](./14b-chat-events.md), exploring real-time communication channels and in-person gatherings that complement forum-based knowledge sharing.
+The next section examines [Chat Platforms and Events](./03b-chat-events.md), exploring real-time communication channels and in-person gatherings that complement forum-based knowledge sharing.
 
 ---
 

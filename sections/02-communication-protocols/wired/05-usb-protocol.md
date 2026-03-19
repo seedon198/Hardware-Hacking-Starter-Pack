@@ -1,6 +1,9 @@
+<!-- difficulty: intermediate -->
+<!-- tags: usb, hid, enumeration, descriptors -->
+
 # USB: The Universal Gateway to Device Hacking
 
-```
+```ascii
     COMPUTER                          DEVICE
 ┌─────────────┐                  ┌─────────────┐
 │             │                  │             │
@@ -24,7 +27,7 @@ Before diving into how to attack USB interfaces, we need to understand the found
 
 ### USB Architecture: Built for Universal Connectivity
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │  USB SYSTEM ARCHITECTURE                        │
 ├─────────────────────┬──────────────────────────┤
@@ -68,7 +71,7 @@ Another user-friendly feature that creates security implications is USB's **hot-
 
 ### USB Signal Lines: The Physical Layer Exposed
 
-```
+```ascii
       USB 2.0 CONNECTOR               USB 3.0 CONNECTOR
       ┌───────────┐               ┌───────────┐
       │ ●●●●       │               │ ●●●●●●●●● │
@@ -102,7 +105,7 @@ When working with USB, hardware hackers often use breakout boards or custom cabl
 
 ### USB Communication Model: The Protocol's Heartbeat
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │                                                │
 │  1. ENUMERATION         2. ENDPOINT SETUP      │
@@ -173,7 +176,7 @@ These descriptors are often the first target for hardware hackers, as they revea
 
 ## USB Hacking Methodology: The Art of Device Exploitation
 
-```
+```ascii
       ┌────────────┐        ┌────────────┐       ┌────────────┐
       │            │        │            │       │            │
       │ RECONNAISSANCE│ ───► │  ANALYSIS   │ ───► │ EXPLOITATION │
@@ -246,7 +249,7 @@ This protocol analysis often requires patience and pattern recognition skills. T
 
 ### USB Hacking Tools: The Hardware Hacker's Arsenal
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │   USB HARDWARE HACKING TOOLKIT                  │
 ├─────────────────┬──────────────────────────┤
@@ -339,7 +342,7 @@ A skilled hardware hacker typically combines these tools based on the specific t
 
 ## USB Attack Vectors: Exploiting the Universal Interface
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │          USB ATTACK TAXONOMY                    │
 ├────────────────────┬─────────────────────────┤
@@ -526,7 +529,7 @@ USB attacks continue to evolve as new vulnerabilities are discovered and new USB
 
 ## USB Device Analysis: From Hardware to Protocol
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │        USB ANALYSIS WORKFLOW                    │
 │                                                │
@@ -752,7 +755,7 @@ For hardware hackers, the goal is to move from passive observation to active exp
 
 ## USB Security Testing Case Studies: Real-World Applications
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │                                                │
 │      CASE STUDY 1             CASE STUDY 2      │
@@ -777,7 +780,7 @@ A common USB flash drive was selected for firmware analysis to assess its vulner
 
 #### Methodology: The Firmware Hunt
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │  FLASH DRIVE FIRMWARE ANALYSIS WORKFLOW         │
 ├──────────────────┬──────────────────────────┤

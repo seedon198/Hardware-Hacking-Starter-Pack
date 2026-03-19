@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: pcb, layers, components, schematics, x-ray -->
+
 # PCB Analysis and Circuit Tracing
 
 The printed circuit board (PCB) forms the foundation of modern electronic devices. By analyzing PCB layout and tracing connections between components, hardware hackers can understand how a device functions even without official documentation. This section explores techniques for PCB analysis, from visual inspection to advanced circuit tracing.
@@ -8,7 +11,7 @@ Modern PCBs are sophisticated multi-layer constructions. Before diving into anal
 
 A typical PCB consists of layers of conductive material (usually copper) separated by insulating substrate. The simplest boards have just one or two layers, while complex designs might use 8, 16, or even more layers. This layered structure allows designers to create complex interconnections in a compact space.
 
-```
+```ascii
 Simplified PCB Cross-Section:
                  ┌───────────────────────────────────┐
                  │ Component (e.g., resistor, IC)    │
@@ -61,7 +64,7 @@ This initial map helps focus your analysis on relevant areas based on what you'r
 
 PCB silkscreen layers contain valuable information. Manufacturers print reference designators, component values, test points, and other markings to assist with assembly and testing. These markings provide important clues for reverse engineers:
 
-```
+```ascii
 Common PCB Markings:
 ┌───────────────────────────────────────────────────────────┐
 │                                                           │
@@ -119,7 +122,7 @@ This process works well for simple boards but becomes challenging with multi-lay
 
 When traces aren't visually traceable, a multimeter's continuity function becomes indispensable:
 
-```
+```ascii
 Basic Continuity Testing:
 ┌───────────────────────────────────┐
 │                                   │
@@ -187,7 +190,7 @@ Identifying which category a signal belongs to helps understand its role in the 
 
 Many signals organize into buses—groups of lines that function together. Common bus types include:
 
-```
+```ascii
 Common Digital Buses:
 ┌───────────────────────────────────────────────────────┐
 │                                                       │
@@ -262,7 +265,7 @@ PCB analysis forms the backbone of hardware reverse engineering. By methodically
 
 Remember that successful PCB analysis requires patience and careful documentation. Take your time, record your findings systematically, and recognize that complex boards might require multiple sessions to fully understand.
 
-In the next section, [Component Identification](./08c-component-id.md), we'll explore techniques for identifying and understanding the various electronic components found on PCBs.
+In the next section, [Component Identification](./03-component-id.md), we'll explore techniques for identifying and understanding the various electronic components found on PCBs.
 
 ---
 

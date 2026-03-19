@@ -1,3 +1,5 @@
+<!-- tags: reverse-engineering, pcb, components, circuits -->
+
 # Reverse Engineering Hardware
 
 Reverse engineering sits at the heart of hardware hacking. It's the process of analyzing existing hardware to understand how it functions, identify vulnerabilities, and potentially modify its behavior. Unlike software reverse engineering, hardware analysis involves physical components, making it a multi-disciplinary practice combining electronics knowledge, analytical thinking, and specialized tools.
@@ -20,7 +22,7 @@ Each article builds upon the previous, guiding you through the process of unders
 
 Successful hardware reverse engineering follows a methodical approach, moving from non-destructive analysis to progressively more invasive techniques as needed:
 
-```
+```ascii
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │  Documentation  │────>│  Non-destructive│────>│  Semi-invasive  │
 │  & Planning     │     │  Analysis       │     │  Techniques     │
@@ -49,7 +51,7 @@ Why reverse engineer hardware? The skills and knowledge you'll gain have numerou
 
 ## Legal and Ethical Considerations
 
-Hardware reverse engineering exists in a complex legal landscape. While we cover this in more detail in the [Legal and Ethical Considerations](./15-legal-ethical.md) section, keep these principles in mind:
+Hardware reverse engineering exists in a complex legal landscape. While we cover this in more detail in the [Legal and Ethical Considerations](../08-professional/04-legal-ethical.md) section, keep these principles in mind:
 
 - Always reverse engineer devices you legally own
 - Be aware of patents, copyrights, and other intellectual property considerations

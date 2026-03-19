@@ -1,6 +1,9 @@
+<!-- difficulty: beginner -->
+<!-- tags: i2c, two-wire, bus, sensor -->
+
 # I²C (Inter-Integrated Circuit) Protocol
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │             I²C BUS TOPOLOGY                │
    │                                             │
@@ -19,8 +22,8 @@
    │  │      ┴           ┴           ┴        │  │
    │  │ SCL ─┬───────────┬───────────┬────    │  │
    │  │      ┴           ┴           ┴        │  │
-   │  └───────────────────────────────────────┘  |
-   │   R1, R2 = Pull-up resistors (typ. 4.7kΩ)   |
+   │  └───────────────────────────────────────┘  │
+   │   R1, R2 = Pull-up resistors (typ. 4.7kΩ)   │
    └─────────────────────────────────────────────┘
 ```
 
@@ -82,7 +85,7 @@ The elegant efficiency of I²C stems from its fundamental design principles, whi
 ### Signal Structure
 
 
-```
+```ascii
    ┌──────────────────────────────────────────────────────────────────────────┐
    │                  I²C TRANSACTION STRUCTURE                               │
    │                                                                          │
@@ -113,7 +116,7 @@ I²C communications follow a structured sequence of well-defined signal patterns
 
 ## Identifying I²C Interfaces
 
-```
+```ascii
    ┌──────────────────────────────────────────────┐
    │         COMMON I²C PCB IDENTIFIERS           │
    │                                              │
@@ -174,7 +177,7 @@ Even without protocol-specific analyzers, these patterns are visually distinctiv
 
 ## Hardware for I²C Hacking
 
-```
+```ascii
    ┌────────────────────────────────────────────────────┐
    │          I²C HARDWARE TOOLKIT                      │
    │                                                    │
@@ -322,7 +325,7 @@ For many hardware security researchers, Python-SMBus provides an ideal balance o
 
 ## I²C Hacking Techniques
 
-```
+```ascii
    ┌────────────────────────────────────────────┐
    │         I²C ATTACK METHODOLOGY             │
    │                                            │
@@ -538,7 +541,7 @@ The extraction process varies significantly based on the specific target device 
 
 ## Common I²C Security Issues
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │         I²C SECURITY VULNERABILITIES        │
    │                                             │
@@ -654,7 +657,7 @@ Advanced attackers can leverage these side-channels to extract information even 
 
 ## Practical I²C Hacking Exercise: EEPROM Extraction
 
-```
+```ascii
    ┌───────────────────────────────────────────┐
    │        I²C EEPROM EXTRACTION FLOW         │
    │                                           │
@@ -827,7 +830,7 @@ Evaluate the security impact based on the sensitivity of discovered data and the
 
 ## Securing I²C Communications
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │        I²C SECURITY DEFENSE LAYERS          │
    │                                             │
@@ -953,7 +956,7 @@ While hardware hacking often focuses on exploiting weaknesses, a comprehensive u
 The most effective approach combines multiple layers of protection rather than relying on any single security measure. This defense-in-depth strategy ensures that even if one protective layer is compromised, others remain to prevent or limit the impact of an attack. For hardware hackers, understanding these protective measures is essential for comprehensively evaluating the security posture of target devices and identifying which layers might present vulnerabilities.
 
 ## Advanced I²C Topics
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │              I²C PROTOCOL FAMILY            │
    │                                             │
@@ -1090,7 +1093,7 @@ From a security perspective, clock stretching creates opportunities for timing a
 
 For hardware hackers, multi-master systems present both challenges and opportunities. The added complexity can make analysis more difficult but also increases the likelihood of design flaws or implementation errors that can be exploited. When encountering such systems, particular attention should be paid to the interaction between different master devices and how they manage shared access to sensitive slave components.
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │       I²C MULTI-MASTER ARBITRATION          │
    │                                             │

@@ -1,0 +1,915 @@
+[
+  {
+    "path": "sections/01-foundations/01-introduction",
+    "title": "Introduction to Hardware Hacking",
+    "section_num": 1,
+    "section": "Foundations",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "beginner",
+    "tags": [
+      "overview",
+      "getting-started",
+      "hardware-hacking"
+    ],
+    "preview": "The world of electronic devices surrounds us with ever-increasing complexity and connectivity. Beneath the sleek interfaces and carefully crafted user experiences lie intricate systems of hardware components—the tangible foundation upon which our digital experiences are built. Hardware hacking opens"
+  },
+  {
+    "path": "sections/01-foundations/02-lab-setup",
+    "title": "Setting Up Your Hardware Hacking Lab",
+    "section_num": 1,
+    "section": "Foundations",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "beginner",
+    "tags": [
+      "lab",
+      "setup",
+      "tools",
+      "environment"
+    ],
+    "preview": "The environment where you conduct hardware exploration directly influences your effectiveness, safety, and enjoyment of the process. A thoughtfully designed hardware hacking workspace provides not just the physical foundation for your work, but creates the conditions where focused analysis and creat"
+  },
+  {
+    "path": "sections/01-foundations/03-tools-equipment",
+    "title": "Essential Tools & Equipment for Hardware Hacking",
+    "section_num": 1,
+    "section": "Foundations",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "beginner",
+    "tags": [
+      "tools",
+      "oscilloscope",
+      "multimeter",
+      "logic-analyzer"
+    ],
+    "preview": "The hardware hacker's workbench represents a specialized collection of tools that extend human capabilities—allowing us to see invisible signals, manipulate tiny components, and communicate with digital systems that speak languages our senses cannot directly perceive. This section explores the essen"
+  },
+  {
+    "path": "sections/01-foundations/04-basic-electronics",
+    "title": "Basic Electronics for Hackers",
+    "section_num": 1,
+    "section": "Foundations",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "beginner",
+    "tags": [
+      "electronics",
+      "voltage",
+      "current",
+      "resistors",
+      "capacitors"
+    ],
+    "preview": "Every hardware hack begins with an understanding of the fundamental electronic principles that govern how devices function. While software exploits manipulate instructions in memory, hardware hacking requires comprehension of the physical manifestation of technology—the paths electrons follow, the c"
+  },
+  {
+    "path": "sections/02-communication-protocols/index",
+    "title": "Hardware Communication Protocols",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": null,
+    "is_index": true,
+    "difficulty": "beginner",
+    "tags": [
+      "protocols",
+      "wired",
+      "wireless",
+      "overview"
+    ],
+    "preview": "Understanding communication protocols is essential for hardware hackers, serving as the decoder ring to the secret conversations happening inside electronic devices. These protocols govern how components within a system exchange information—defining the electrical signals, timing relationships, data"
+  },
+  {
+    "path": "sections/02-communication-protocols/wired/01-uart-protocol",
+    "title": "UART/Serial Communication",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wired",
+    "is_index": false,
+    "difficulty": "beginner",
+    "tags": [
+      "uart",
+      "serial",
+      "debug",
+      "baud-rate"
+    ],
+    "preview": "UART (Universal Asynchronous Receiver-Transmitter) stands as the gateway to embedded systems—a ubiquitous protocol that provides direct insight into a device's operation. In the hardware hacking landscape, UART interfaces often represent the path of least resistance for initial exploration, frequent"
+  },
+  {
+    "path": "sections/02-communication-protocols/wired/02-i2c-protocol",
+    "title": "I²C (Inter-Integrated Circuit) Protocol",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wired",
+    "is_index": false,
+    "difficulty": "beginner",
+    "tags": [
+      "i2c",
+      "two-wire",
+      "bus",
+      "sensor"
+    ],
+    "preview": "In the intricate landscape of embedded system communication, the I²C (Inter-Integrated Circuit) protocol stands as a marvel of efficiency and practicality. Developed by Philips Semiconductors (now NXP) in the early 1980s, this versatile bus system has evolved into one of the most ubiquitous communic"
+  },
+  {
+    "path": "sections/02-communication-protocols/wired/03-spi-protocol",
+    "title": "SPI (Serial Peripheral Interface) Protocol",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wired",
+    "is_index": false,
+    "difficulty": "beginner",
+    "tags": [
+      "spi",
+      "four-wire",
+      "flash",
+      "eeprom"
+    ],
+    "preview": "In the ecosystem of embedded communications, the Serial Peripheral Interface (SPI) stands as a high-performance contender, offering remarkable simplicity paired with impressive speed capabilities. Developed by Motorola in the mid-1980s, SPI has evolved into one of the most widely adopted protocols f"
+  },
+  {
+    "path": "sections/02-communication-protocols/wired/04-jtag-swd",
+    "title": "JTAG and SWD Protocols: The Ultimate Backdoors",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wired",
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "jtag",
+      "swd",
+      "debug",
+      "boundary-scan"
+    ],
+    "preview": "When you're exploring a device with seemingly impenetrable security, there's often an overlooked gateway waiting to be discovered: the debug ports. JTAG (Joint Test Action Group) and SWD (Serial Wire Debug) interfaces are the hardware hacker's equivalent of finding the master key to a building - the"
+  },
+  {
+    "path": "sections/02-communication-protocols/wired/05-usb-protocol",
+    "title": "USB: The Universal Gateway to Device Hacking",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wired",
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "usb",
+      "hid",
+      "enumeration",
+      "descriptors"
+    ],
+    "preview": "In the vast landscape of hardware hacking, few interfaces offer as much opportunity as Universal Serial Bus (USB). This ubiquitous connection technology has become the de facto standard for connecting peripherals to computers - from keyboards and mice to complex medical equipment and industrial cont"
+  },
+  {
+    "path": "sections/02-communication-protocols/wired/06-ethernet-protocols",
+    "title": "Ethernet and Network Protocols: The Physical Gateway to Data",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wired",
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "ethernet",
+      "tcp-ip",
+      "network"
+    ],
+    "preview": "When most security professionals think about network attacks, they focus on software vulnerabilities, protocol exploits, and application-level weaknesses. But beneath these familiar layers lies a physical realm where bits become electrical signals, where protocols are implemented in silicon, and whe"
+  },
+  {
+    "path": "sections/02-communication-protocols/wireless/01-rf-fundamentals",
+    "title": "RF Physics for Hardware Hackers",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wireless",
+    "is_index": false,
+    "difficulty": "beginner",
+    "tags": [
+      "rf",
+      "frequency",
+      "modulation",
+      "antenna"
+    ],
+    "preview": "Radio Frequency (RF) fundamentals form the physical foundation of all wireless protocols. Before diving into specific wireless technologies, hardware hackers must understand the physics, engineering principles, and terminology that govern electromagnetic communications. 1. **Common Frequency Bands**"
+  },
+  {
+    "path": "sections/02-communication-protocols/wireless/02-wifi",
+    "title": "WiFi (IEEE 802.11): A Hardware Hacker's Journey",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wireless",
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "wifi",
+      "802.11",
+      "wpa",
+      "deauth"
+    ],
+    "preview": "In the electromagnetic wilderness that surrounds us, one signal stands above all others in its ubiquity and importance to modern life: WiFi. This technology, formally known as IEEE 802.11, has transformed how we connect to the digital world. From coffee shops to corporate boardrooms, from smart refr"
+  },
+  {
+    "path": "sections/02-communication-protocols/wireless/03-bluetooth",
+    "title": "Bluetooth and BLE: Unraveling the Invisible Threads of Personal Connectivity",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wireless",
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "bluetooth",
+      "ble",
+      "pairing",
+      "sniffing"
+    ],
+    "preview": "In the intricate tapestry of wireless technologies that surround us, Bluetooth stands as perhaps the most intimate and personal thread. Unlike WiFi that connects our devices to the vast internet or cellular networks that span continents, Bluetooth operates in our immediate personal space—linking the"
+  },
+  {
+    "path": "sections/02-communication-protocols/wireless/04-zigbee",
+    "title": "Zigbee: The Silent Backbone of Smart Homes and Industrial Control",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wireless",
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "zigbee",
+      "802.15.4",
+      "mesh",
+      "iot"
+    ],
+    "preview": "While WiFi connects us to the digital world and Bluetooth links our personal devices, another wireless technology quietly orchestrates the automation revolution happening in our homes, buildings, and industrial facilities. Zigbee, often operating unseen and unheralded, forms the communications backb"
+  },
+  {
+    "path": "sections/02-communication-protocols/wireless/05-lora-lpwan",
+    "title": "LoRa and LPWAN: The Whispering Networks of the IoT Revolution",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wireless",
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "lora",
+      "lpwan",
+      "lorawan",
+      "iot"
+    ],
+    "preview": "In the quietest corners of the wireless spectrum, far from the crowded highways of cellular networks and WiFi transmissions, a revolution in connectivity has been quietly unfolding. Low-Power Wide-Area Networks (LPWANs), with LoRa (Long Range) as their enigmatic flagship, have emerged as the silent "
+  },
+  {
+    "path": "sections/02-communication-protocols/wireless/06-rfid-nfc",
+    "title": "RFID and NFC: The Invisible Interface",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wireless",
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "rfid",
+      "nfc",
+      "mifare",
+      "emulation"
+    ],
+    "preview": "In a world increasingly defined by digital boundaries, Radio Frequency Identification (RFID) and Near Field Communication (NFC) technologies create some of the most intriguing intersections between physical and virtual security. These technologies operate silently around us—embedded in the access ca"
+  },
+  {
+    "path": "sections/02-communication-protocols/wireless/index",
+    "title": "The Wireless Spectrum: Protocols, Hardware, and Security",
+    "section_num": 2,
+    "section": "Communication Protocols",
+    "subsection": "wireless",
+    "is_index": true,
+    "difficulty": "beginner",
+    "tags": [
+      "wireless",
+      "rf",
+      "protocols"
+    ],
+    "preview": "Wireless interfaces present both unique challenges and special opportunities for hardware hackers. Unlike wired protocols, wireless systems communicate through electromagnetic waves, removing the need for physical connections but introducing complex RF engineering principles. While this makes analys"
+  },
+  {
+    "path": "sections/03-firmware/01-firmware-analysis",
+    "title": "Firmware: The Digital Soul of Hardware",
+    "section_num": 3,
+    "section": "Firmware",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "beginner",
+    "tags": [
+      "firmware",
+      "binwalk",
+      "extraction",
+      "analysis",
+      "reverse-engineering"
+    ],
+    "preview": "Deep within every embedded device lies a layer of code that breathes life into otherwise inert silicon and circuitry. This digital soul—known as firmware—represents the crucial bridge between physical hardware components and the software applications that users interact with. For hardware security r"
+  },
+  {
+    "path": "sections/04-attack-vectors/01-physical-access",
+    "title": "Physical Access Attacks",
+    "section_num": 4,
+    "section": "Attack Vectors",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "physical-access",
+      "jtag",
+      "uart",
+      "glitching"
+    ],
+    "preview": "Physical access attacks are often the first step in hardware hacking, leveraging direct interaction with the target device to bypass security measures or extract sensitive information. 1. **Discovery Techniques** - Visual inspection for labeled pins (TX, RX, GND) - Multimeter continuity testing - Lo"
+  },
+  {
+    "path": "sections/04-attack-vectors/02-side-channel",
+    "title": "Side-Channel Attacks",
+    "section_num": 4,
+    "section": "Attack Vectors",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "side-channel",
+      "power-analysis",
+      "timing",
+      "dpa"
+    ],
+    "preview": "Side-channel attacks exploit information gained from the physical implementation of a system rather than weaknesses in algorithms or protocols. These attacks analyze physical characteristics like timing, power consumption, electromagnetic emissions, or sound to extract sensitive information. 1. **So"
+  },
+  {
+    "path": "sections/04-attack-vectors/03-fault-injection-2",
+    "title": "Fault Injection Techniques (Part 2)",
+    "section_num": 4,
+    "section": "Attack Vectors",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "fault-injection",
+      "methodology",
+      "countermeasures"
+    ],
+    "preview": "Among the most precise fault injection methods available to hardware security researchers is optical fault injection. This technique uses focused light—typically from lasers—to induce localized currents within semiconductor materials. When photons with sufficient energy strike silicon, they create e"
+  },
+  {
+    "path": "sections/04-attack-vectors/03-fault-injection",
+    "title": "Fault Injection Techniques",
+    "section_num": 4,
+    "section": "Attack Vectors",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "fault-injection",
+      "glitching",
+      "voltage",
+      "laser"
+    ],
+    "preview": "In the world of hardware security, fault injection stands as one of the most powerful and versatile techniques available to researchers and attackers alike. Unlike passive side-channel analysis, fault injection actively manipulates a target system's operating conditions to induce errors that can lea"
+  },
+  {
+    "path": "sections/04-attack-vectors/04-hardware-implants",
+    "title": "Hardware Implants",
+    "section_num": 4,
+    "section": "Attack Vectors",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "implants",
+      "supply-chain",
+      "evil-maid"
+    ],
+    "preview": "The world of hardware implants represents perhaps the most tangible manifestation of hardware hacking. Unlike software vulnerabilities that exist as code flaws, hardware implants are physical devices deliberately added to a target system to compromise its security. These small, often ingeniously des"
+  },
+  {
+    "path": "sections/04-attack-vectors/05-supply-chain-1",
+    "title": "Supply Chain Attacks - Part 1: Introduction and Fundamentals",
+    "section_num": 4,
+    "section": "Attack Vectors",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "supply-chain",
+      "tampering",
+      "counterfeits"
+    ],
+    "preview": "The journey of an electronic device from design to your hands involves numerous companies, facilities, and people. This complex network creates countless opportunities for security compromises that are particularly difficult to detect and mitigate. A typical hardware supply chain looks something lik"
+  },
+  {
+    "path": "sections/04-attack-vectors/05-supply-chain-2",
+    "title": "Supply Chain Attacks - Part 2: More Attack Vectors and Detection",
+    "section_num": 4,
+    "section": "Attack Vectors",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "supply-chain",
+      "detection",
+      "verification"
+    ],
+    "preview": "Even with legitimate chips, the circuit board assembly process provides ample opportunities for malicious modifications. Assembly facilities handle thousands of boards, making comprehensive inspection difficult. An attacker with access to the assembly process might: Real-world cases have revealed de"
+  },
+  {
+    "path": "sections/04-attack-vectors/05-supply-chain-3",
+    "title": "Supply Chain Attacks - Part 3: Security Practices and Future Trends",
+    "section_num": 4,
+    "section": "Attack Vectors",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "supply-chain",
+      "mitigation",
+      "secure-procurement"
+    ],
+    "preview": "Defending against supply chain attacks requires a layered approach. No single measure can provide complete protection, but combining multiple strategies significantly improves security posture. Trust, but verify. Before incorporating components or systems into your supply chain, thoroughly evaluate "
+  },
+  {
+    "path": "sections/04-attack-vectors/index",
+    "title": "Hardware Attack Vectors",
+    "section_num": 4,
+    "section": "Attack Vectors",
+    "subsection": null,
+    "is_index": true,
+    "difficulty": "intermediate",
+    "tags": [
+      "attack-vectors",
+      "physical",
+      "side-channel",
+      "fault-injection"
+    ],
+    "preview": "Hardware attacks represent a powerful approach to security assessment that can bypass software protections by targeting the physical implementation of systems. This section explores the various hardware attack vectors available to security researchers and hackers. Hardware attack vectors can be clas"
+  },
+  {
+    "path": "sections/05-reverse-engineering/01-re-fundamentals",
+    "title": "Reverse Engineering Fundamentals",
+    "section_num": 5,
+    "section": "Reverse Engineering",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "reverse-engineering",
+      "methodology",
+      "tools",
+      "binwalk"
+    ],
+    "preview": "Reverse engineering hardware begins with a structured approach. Whether you're examining a simple IoT device or a complex security module, the fundamental process remains consistent. This section explores the essential mindset, methodology, and initial techniques that form the foundation of hardware"
+  },
+  {
+    "path": "sections/05-reverse-engineering/02-pcb-analysis",
+    "title": "PCB Analysis and Circuit Tracing",
+    "section_num": 5,
+    "section": "Reverse Engineering",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "pcb",
+      "layers",
+      "components",
+      "schematics",
+      "x-ray"
+    ],
+    "preview": "The printed circuit board (PCB) forms the foundation of modern electronic devices. By analyzing PCB layout and tracing connections between components, hardware hackers can understand how a device functions even without official documentation. This section explores techniques for PCB analysis, from v"
+  },
+  {
+    "path": "sections/05-reverse-engineering/03-component-id",
+    "title": "Component Identification",
+    "section_num": 5,
+    "section": "Reverse Engineering",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "components",
+      "identification",
+      "datasheets",
+      "markings"
+    ],
+    "preview": "Understanding the individual components on a PCB is crucial for hardware reverse engineering. Each component provides clues about a device's functionality, capabilities, and potential vulnerabilities. This section explores how to identify and understand the various electronic components you'll encou"
+  },
+  {
+    "path": "sections/05-reverse-engineering/04-circuit-extraction",
+    "title": "Circuit Extraction and Schematic Capture",
+    "section_num": 5,
+    "section": "Reverse Engineering",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "circuit",
+      "netlist",
+      "extraction",
+      "schematic"
+    ],
+    "preview": "After identifying components and tracing connections on a PCB, the next critical step is documenting these findings in a usable format. Circuit extraction and schematic capture transform your physical observations into logical representations that reveal how a device functions. This process bridges "
+  },
+  {
+    "path": "sections/05-reverse-engineering/05-advanced-techniques",
+    "title": "Advanced Techniques: Decapsulation and Microprobing",
+    "section_num": 5,
+    "section": "Reverse Engineering",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "decapsulation",
+      "microscopy",
+      "sem",
+      "microprobing",
+      "fib"
+    ],
+    "preview": "When conventional reverse engineering methods reach their limits, hardware hackers turn to more sophisticated techniques. Decapsulation, microprobing, and other advanced approaches allow direct access to the silicon die inside integrated circuits, revealing details invisible through external analysi"
+  },
+  {
+    "path": "sections/05-reverse-engineering/index",
+    "title": "Reverse Engineering Hardware",
+    "section_num": 5,
+    "section": "Reverse Engineering",
+    "subsection": null,
+    "is_index": true,
+    "difficulty": "intermediate",
+    "tags": [
+      "reverse-engineering",
+      "pcb",
+      "components",
+      "circuits"
+    ],
+    "preview": "Reverse engineering sits at the heart of hardware hacking. It's the process of analyzing existing hardware to understand how it functions, identify vulnerabilities, and potentially modify its behavior. Unlike software reverse engineering, hardware analysis involves physical components, making it a m"
+  },
+  {
+    "path": "sections/06-embedded-security/01-secure-boot",
+    "title": "Secure Boot and Trust Anchors",
+    "section_num": 6,
+    "section": "Embedded Security",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "secure-boot",
+      "tpm",
+      "attestation",
+      "chain-of-trust"
+    ],
+    "preview": "Secure boot represents the cornerstone of embedded device security. When implemented properly, it ensures that only authorized code executes on a device, providing a foundation for all other security measures. This section explores how secure boot works, implementation approaches, and techniques for"
+  },
+  {
+    "path": "sections/06-embedded-security/02-memory-protection",
+    "title": "Memory Protection and Execution Security",
+    "section_num": 6,
+    "section": "Embedded Security",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "memory",
+      "mpu",
+      "nx",
+      "dep",
+      "aslr",
+      "stack-protection"
+    ],
+    "preview": "After establishing a secure boot process, the next critical challenge in embedded security is maintaining system integrity during runtime. Memory protection and execution security mechanisms prevent attackers from exploiting vulnerabilities to inject code, access sensitive data, or otherwise comprom"
+  },
+  {
+    "path": "sections/06-embedded-security/03-secure-communications",
+    "title": "Secure Communications for Embedded Devices",
+    "section_num": 6,
+    "section": "Embedded Security",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "tls",
+      "encryption",
+      "certificates",
+      "secure-channel"
+    ],
+    "preview": "Embedded devices rarely operate in isolation. Most connect to sensors, actuators, other devices, or remote services—creating numerous attack vectors through these communication channels. Securing these connections is essential to maintain overall system security, even when secure boot and memory pro"
+  },
+  {
+    "path": "sections/06-embedded-security/04-physical-security",
+    "title": "Physical Security Mechanisms",
+    "section_num": 6,
+    "section": "Embedded Security",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "intermediate",
+    "tags": [
+      "physical",
+      "tamper",
+      "enclosures",
+      "potting",
+      "epoxy"
+    ],
+    "preview": "Software-based security measures are only as effective as the hardware they run on. Physical security mechanisms protect embedded devices against attacks requiring direct access to device components. If an attacker can open your device and connect test equipment directly to its internals, even the s"
+  },
+  {
+    "path": "sections/06-embedded-security/05-security-testing",
+    "title": "Security Testing and Vulnerability Assessment",
+    "section_num": 6,
+    "section": "Embedded Security",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "testing",
+      "fuzzing",
+      "pentest",
+      "methodology"
+    ],
+    "preview": "The security of an embedded system isn't determined by what you put into it, but by what an attacker can't get out of it. Security testing and vulnerability assessment provide the crucial reality check that transforms theoretical security into practical protection. Effective security testing require"
+  },
+  {
+    "path": "sections/06-embedded-security/index",
+    "title": "Embedded Device Security",
+    "section_num": 6,
+    "section": "Embedded Security",
+    "subsection": null,
+    "is_index": true,
+    "difficulty": "intermediate",
+    "tags": [
+      "embedded",
+      "security",
+      "boot",
+      "memory",
+      "testing"
+    ],
+    "preview": "Embedded systems surround us—from smart home devices and medical equipment to automotive controllers and industrial systems. These specialized computing devices often control critical functions yet face unique security challenges due to their constrained resources, specialized architectures, and gro"
+  },
+  {
+    "path": "sections/07-specialized-domains/01-mobile-hacking",
+    "title": "Mobile Device Hardware Hacking",
+    "section_num": 7,
+    "section": "Specialized Domains",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "mobile",
+      "android",
+      "ios",
+      "baseband",
+      "modem",
+      "at-commands"
+    ],
+    "preview": "Mobile devices represent a fascinating frontier for hardware hackers. These pocket-sized computers contain an impressive array of sensors, communication interfaces, and security mechanisms packed into a remarkably small form factor. Whether you're interested in security research, repair, or modifica"
+  },
+  {
+    "path": "sections/07-specialized-domains/02-iot-security",
+    "title": "IoT Device Security",
+    "section_num": 7,
+    "section": "Specialized Domains",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "advanced",
+    "tags": [
+      "iot",
+      "cloud",
+      "mqtt",
+      "firmware-update",
+      "ota"
+    ],
+    "preview": "The Internet of Things has transformed everyday objects into networked devices, creating a vast ecosystem of connected products with varying security practices. From smart light bulbs to industrial sensors, these devices present unique security challenges that combine hardware, firmware, and network"
+  },
+  {
+    "path": "sections/08-professional/01-learning-path",
+    "title": "Learning Path & Progression",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "learning",
+      "roadmap",
+      "career",
+      "skills"
+    ],
+    "preview": "The journey to mastering hardware hacking resembles climbing a mountain—the path winds through different terrains, each requiring specific skills and presenting unique challenges. Some routes are steeper than others, but all lead to expanded capabilities and deeper understanding. This section outlin"
+  },
+  {
+    "path": "sections/08-professional/02-certifications",
+    "title": "Certifications & Training",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "certifications",
+      "oscp",
+      "ecea",
+      "training"
+    ],
+    "preview": "The world of hardware hacking exists at a fascinating intersection of formal education and self-taught exploration. While many accomplished hardware hackers developed their skills through independent projects and community engagement, formal training and certifications can accelerate learning, valid"
+  },
+  {
+    "path": "sections/08-professional/03-community-resources",
+    "title": "Community Resources",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "community",
+      "forums",
+      "resources"
+    ],
+    "preview": "Hardware hacking thrives on community knowledge sharing and collaboration. Unlike fields with centralized information repositories, hardware hacking wisdom often resides within diverse communities spanning academic research groups, industry professionals, hobbyist collectives, and independent securi"
+  },
+  {
+    "path": "sections/08-professional/03a-forums-discussions",
+    "title": "Online Forums and Discussion Platforms",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "forums",
+      "reddit",
+      "discord",
+      "community"
+    ],
+    "preview": "Online forums provide accessible entry points to hardware hacking communities. These platforms host discussions ranging from beginner questions to advanced technical deep-dives, creating persistent knowledge repositories that benefit the entire field. Several forums focus specifically on hardware ha"
+  },
+  {
+    "path": "sections/08-professional/03b-chat-events",
+    "title": "Chat Platforms and Events",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "defcon",
+      "conferences",
+      "events",
+      "ctf"
+    ],
+    "preview": "While forums excel at persistent knowledge organization, real-time communication platforms and in-person events create different opportunities for hardware hackers. These spaces enable immediate assistance, collaborative problem-solving, and the formation of personal connections that frequently evol"
+  },
+  {
+    "path": "sections/08-professional/03c-content-publications",
+    "title": "Content Platforms and Publications",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "books",
+      "papers",
+      "blogs",
+      "publications"
+    ],
+    "preview": "Beyond interactive communities, hardware hackers learn through various content platforms and publications that document techniques, discoveries, and foundational knowledge. These resources range from informal blogs and videos to formal academic papers and books, each offering different perspectives "
+  },
+  {
+    "path": "sections/08-professional/03d-opensource-tools",
+    "title": "Open Source Projects and Tools",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "tools",
+      "open-source",
+      "github",
+      "firmware"
+    ],
+    "preview": "Open source projects form the backbone of the hardware hacking ecosystem. These collaborative efforts produce the software tools, hardware designs, and documentation that enable hardware security work across skill levels. Beyond their practical utility, open source projects create communities where "
+  },
+  {
+    "path": "sections/08-professional/04-legal-ethical",
+    "title": "Legal and Ethical Considerations in Hardware Hacking",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "legal",
+      "ethics",
+      "responsible-disclosure",
+      "authorization"
+    ],
+    "preview": "Hardware hacking exists at the intersection of technical curiosity and multiple legal and ethical frameworks. Understanding these considerations is not merely academic—it directly impacts what activities are permissible, what risks you assume, and how your work contributes to broader security ecosys"
+  },
+  {
+    "path": "sections/08-professional/05-project-ideas",
+    "title": "Project Ideas for Hardware Hackers",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "projects",
+      "practice",
+      "beginner",
+      "ideas"
+    ],
+    "preview": "Building practical skills in hardware hacking requires hands-on experience with real devices and systems. This section presents a progression of project ideas organized by difficulty level, technical focus, and required equipment. Each project includes learning objectives, suggested approaches, and "
+  },
+  {
+    "path": "sections/08-professional/06-glossary",
+    "title": "Glossary of Hardware Hacking Terms",
+    "section_num": 8,
+    "section": "Professional",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "glossary",
+      "terms",
+      "definitions",
+      "reference"
+    ],
+    "preview": "This glossary provides definitions for specialized terminology used throughout the Hardware Hacking Starter Pack. Technical terms are organized alphabetically with cross-references to related concepts and relevant guide sections where applicable. **Address Bus** The set of signal lines that carry me"
+  },
+  {
+    "path": "sections/09-resources/01-conferences",
+    "title": "Hardware Security Conferences",
+    "section_num": 9,
+    "section": "Resources",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "defcon",
+      "blackhat",
+      "conferences",
+      "talks"
+    ],
+    "preview": "This page lists conferences, events, and meetups focused on hardware security, with detailed information to help you plan your participation and professional development. Hardware security conferences offer unique benefits for researchers, professionals, and enthusiasts: - **Knowledge exchange** - L"
+  },
+  {
+    "path": "sections/09-resources/02-talks-videos",
+    "title": "Hardware Security Talks & Videos",
+    "section_num": 9,
+    "section": "Resources",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "talks",
+      "videos",
+      "youtube",
+      "presentations"
+    ],
+    "preview": "This page contains a curated collection of the most influential and educational hardware security presentations, organized by topic, difficulty level, and format to help you find exactly what you need. This collection is organized in multiple ways to help you find relevant content: - **By Topic** - "
+  },
+  {
+    "path": "sections/09-resources/03-labs",
+    "title": "Hardware Security Labs & Training Environments",
+    "section_num": 9,
+    "section": "Resources",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "labs",
+      "practice",
+      "online",
+      "hardware"
+    ],
+    "preview": "This page provides a comprehensive resource for hardware security labs, training environments, and interactive platforms where you can develop practical skills in a structured setting. Hardware security labs come in various forms, each with unique advantages: 1. **Basic Tools** - Digital multimeter "
+  },
+  {
+    "path": "sections/09-resources/04-bug-bounties",
+    "title": "Hardware Bug Bounty Programs",
+    "section_num": 9,
+    "section": "Resources",
+    "subsection": null,
+    "is_index": false,
+    "difficulty": "all",
+    "tags": [
+      "bug-bounty",
+      "hof",
+      "programs",
+      "rewards"
+    ],
+    "preview": "This page lists bug bounty programs that specifically target hardware vulnerabilities or include hardware in their scope. Hardware bug bounty programs offer security researchers the opportunity to discover and report vulnerabilities in physical devices, chips, and embedded systems. Unlike software-o"
+  },
+  {
+    "path": "sections/09-resources/index",
+    "title": "Hardware Security Resources",
+    "section_num": 9,
+    "section": "Resources",
+    "subsection": null,
+    "is_index": true,
+    "difficulty": "all",
+    "tags": [
+      "resources",
+      "references",
+      "links"
+    ],
+    "preview": "This section provides a curated collection of external resources to supplement your hardware security journey. These resources have been carefully selected to help you advance your skills, stay current with industry developments, and connect with the broader hardware security community. Hardware sec"
+  }
+]

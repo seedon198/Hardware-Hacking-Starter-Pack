@@ -1,3 +1,6 @@
+<!-- difficulty: beginner -->
+<!-- tags: overview, getting-started, hardware-hacking -->
+
 # Introduction to Hardware Hacking
 
 The world of electronic devices surrounds us with ever-increasing complexity and connectivity. Beneath the sleek interfaces and carefully crafted user experiences lie intricate systems of hardware components—the tangible foundation upon which our digital experiences are built. Hardware hacking opens these closed systems to exploration, understanding, and improvement.
@@ -8,7 +11,7 @@ Hardware hacking represents the art and science of understanding electronic devi
 
 At its essence, hardware hacking embodies the hacker ethos of deep curiosity and hands-on learning. It combines elements of electrical engineering, computer science, and security research into a multidisciplinary practice that reveals how systems truly function beneath their carefully polished exteriors.
 
-```
+```ascii
            The Hardware Hacking Landscape
            
         ┌───────────────────────────────────┐
@@ -82,7 +85,7 @@ Manufacturers must ship products with debugging capabilities, service interfaces
 
 Effective hardware security work follows a structured approach, though the specific techniques may vary widely depending on the target device and research goals. The process typically unfolds through several key phases:
 
-```
+```ascii
            Hardware Hacking Methodology
            
            ┌───────────────────────────┐
@@ -156,7 +159,7 @@ Legal compliance varies significantly across jurisdictions, with laws regarding 
 
 Finally, responsible disclosure forms the cornerstone of constructive security research. When vulnerabilities are discovered, working with manufacturers to address issues before public disclosure helps protect users while still ensuring security improvements reach the community.
 
-```
+```ascii
        Ethical Hardware Hacking Framework
        
        ┌─────────────────────────────────────────┐

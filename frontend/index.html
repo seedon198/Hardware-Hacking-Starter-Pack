@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware Hacking Starter Pack</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════ TOP BAR -->
+<header class="topbar" role="banner">
+  <div class="topbar-brand">
+    <span class="topbar-logo">HH<span class="accent">:</span>SP</span>
+    <span class="topbar-subtitle">Hardware Hacking Starter Pack</span>
+  </div>
+  <button class="search-trigger" id="searchTrigger" aria-label="Open search (Ctrl+K)">
+    <span class="search-icon">⌕</span>
+    <span class="search-placeholder">Search articles...</span>
+    <kbd>⌘K</kbd>
+  </button>
+  <nav class="topbar-right" aria-label="Difficulty and theme">
+    <button class="diff-btn active" data-diff="beginner" aria-pressed="true">BEGINNER</button>
+    <button class="diff-btn active" data-diff="intermediate" aria-pressed="true">INTERMEDIATE</button>
+    <button class="diff-btn active" data-diff="advanced" aria-pressed="true">ADVANCED</button>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle light mode">☀ LIGHT</button>
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════ MAIN -->
+<div class="main-layout">
+
+  <!-- ─── SIDEBAR ─── -->
+  <aside class="sidebar" role="complementary" aria-label="Navigation">
+    <div class="sidebar-tabs" role="tablist">
+      <button class="sidebar-tab active" data-tab="contents" role="tab" aria-selected="true">CONTENTS</button>
+      <button class="sidebar-tab" data-tab="onpage" role="tab" aria-selected="false">ON PAGE</button>
+      <button class="sidebar-tab" data-tab="bookmarks" role="tab" aria-selected="false">BOOKMARKS</button>
+    </div>
+
+    <!-- CONTENTS panel -->
+    <div class="sidebar-panel active" id="panel-contents" role="tabpanel">
+      <div class="progress-block">
+        <div class="progress-header">
+          <span class="label-accent">OVERALL PROGRESS</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-bar-outer" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar">
+          <div class="progress-bar-inner" id="progressBarInner"></div>
+        </div>
+        <div class="progress-meta" id="progressMeta"></div>
+      </div>
+      <nav class="nav-tree" id="navTree" aria-label="Section navigation"></nav>
+      <div class="sidebar-footer">
+        <button class="sidebar-footer-btn" id="changePathBtn">[ CHANGE PATH ]</button>
+      </div>
+    </div>
+
+    <!-- ON PAGE panel -->
+    <div class="sidebar-panel" id="panel-onpage" role="tabpanel" hidden>
+      <nav class="toc-list" id="tocList" aria-label="Table of contents"></nav>
+    </div>
+
+    <!-- BOOKMARKS panel -->
+    <div class="sidebar-panel" id="panel-bookmarks" role="tabpanel" hidden>
+      <div class="bookmark-list" id="bookmarkList"></div>
+    </div>
+  </aside>
+
+  <!-- ─── CONTENT AREA ─── -->
+  <main class="content-area" id="contentArea" role="main">
+    <div class="filter-strip" id="filterStrip">
+      <span class="filter-label">FILTER:</span>
+      <div class="filter-indicators" id="filterIndicators"></div>
+      <span class="path-position" id="pathPosition"></span>
+    </div>
+
+    <!-- Dashboard (shown when no article is open) -->
+    <div id="dashboard" class="dashboard" hidden></div>
+
+    <!-- Article view -->
+    <article id="articleView" hidden>
+      <header class="article-header" id="articleHeader"></header>
+      <div class="article-body" id="articleBody"></div>
+      <nav class="article-nav" id="articleNav"></nav>
+    </article>
+
+    <!-- Loading state -->
+    <div id="loadingState" class="loading-state" hidden>
+      <span class="loading-text">LOADING...</span>
+    </div>
+
+    <!-- Error state -->
+    <div id="errorState" class="error-state" hidden></div>
+  </main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ OVERLAYS -->
+
+<!-- Search modal -->
+<div class="overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search" hidden>
+  <div class="search-modal">
+    <div class="search-input-row">
+      <span class="search-icon-lg">⌕</span>
+      <input type="search" id="searchInput" class="search-input" placeholder="Search articles, protocols, techniques..." autocomplete="off" />
+      <kbd class="search-esc">ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults" role="listbox"></div>
+  </div>
+  <div class="overlay-backdrop" id="searchBackdrop"></div>
+</div>
+
+<!-- Skill tree overlay -->
+<div class="overlay" id="skillTreeOverlay" role="dialog" aria-modal="true" aria-label="Skill Tree" hidden>
+  <div class="skilltree-modal">
+    <div class="skilltree-header">
+      <span class="label-accent">SKILL TREE</span>
+      <button class="close-btn" id="skillTreeClose" aria-label="Close skill tree">[ × CLOSE ]</button>
+    </div>
+    <div class="skilltree-graph" id="skillTreeGraph"></div>
+  </div>
+  <div class="overlay-backdrop" id="skillTreeBackdrop"></div>
+</div>
+
+<!-- Learning path selector modal -->
+<div class="overlay" id="pathOverlay" role="dialog" aria-modal="true" aria-label="Choose Learning Path" hidden>
+  <div class="path-modal" id="pathModal"></div>
+  <div class="overlay-backdrop" id="pathBackdrop"></div>
+</div>
+
+<!-- Skill tree FAB -->
+<button class="skilltree-fab" id="skillTreeFab" aria-label="Open skill tree">[ SKILL TREE ]</button>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: wifi, 802.11, wpa, deauth -->
+
 # WiFi (IEEE 802.11): A Hardware Hacker's Journey
 
 ## The Invisible Network Around Us
@@ -388,7 +391,7 @@ These scripts transform an ordinary computer into a convincing counterfeit acces
 
 Beyond the intended communication data, RF signals contain a wealth of unintentional characteristics that can uniquely identify hardware devices.
 
-```
+```ascii
 Clock Skew Fingerprinting Process
 
 ┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐

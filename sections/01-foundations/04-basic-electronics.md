@@ -1,8 +1,11 @@
+<!-- difficulty: beginner -->
+<!-- tags: electronics, voltage, current, resistors, capacitors -->
+
 # Basic Electronics for Hackers
 
 Every hardware hack begins with an understanding of the fundamental electronic principles that govern how devices function. While software exploits manipulate instructions in memory, hardware hacking requires comprehension of the physical manifestation of technology—the paths electrons follow, the components that direct them, and the signals they create. This section introduces the essential electronics concepts that serve as the foundation for effective hardware security research and exploitation.
 
-```
+```ascii
      Electronic Fundamentals Framework
      
      ┌──────────────────────────────────────────┐
@@ -46,7 +49,7 @@ These three fundamental properties interact in predictable ways to determine how
 
 The mathematical relationships between voltage, current, and resistance form predictable patterns that govern all electronic behavior. Understanding these relationships provides the analytical foundation for both normal circuit operation and potential security vulnerabilities.
 
-```
+```ascii
     Ohm's Law & Power Relationships
     
           Voltage (V)
@@ -83,7 +86,7 @@ The **Power Equation** (P = V × I) quantifies the rate of energy transfer in a 
 
 Electronic systems communicate through signals that broadly fall into two categories with fundamentally different characteristics. Understanding the distinction between digital and analog signals is essential for hardware hackers, as each type requires different analysis techniques and presents unique security implications.
 
-```
+```ascii
     Digital vs. Analog Signal Comparison
     
        Digital Signal            Analog Signal
@@ -178,7 +181,7 @@ Active components control electrical signals using power from an external source
 
 Circuit diagrams—also called schematics—represent the language of hardware design, depicting electrical connections between components in a standardized visual format. For hardware hackers, these diagrams serve as critical roadmaps that reveal system architecture, potential attack surfaces, and security mechanisms. Learning to read and interpret circuit diagrams is perhaps the most foundational skill in hardware security analysis.
 
-```
+```ascii
     Circuit Diagram Interpretation Process
 
     ┌─────────────────────────────────────────────┐
@@ -233,7 +236,7 @@ In digital schematics, logic gates have specific symbols that indicate their fun
 
 Once component symbols are understood, circuit analysis becomes a methodical process of tracing signal paths and understanding functional relationships between components.
 
-```
+```ascii
     Signal Path Analysis Example
 
     Power Input      Regulation      Processing    Output Interface
@@ -281,7 +284,7 @@ Certain circuit configurations appear repeatedly across different hardware desig
 
 Every electronic device contains physical access points designed for manufacturing testing, debugging, or expansion. For hardware hackers, these access points represent invaluable entry vectors into otherwise closed systems. Identifying and utilizing these interfaces often provides the first step toward understanding and potentially manipulating a device's internal operations.
 
-```
+```ascii
     Common Hardware Access Points
     
                 Electronic Device
@@ -321,7 +324,7 @@ Existing component connections themselves can serve as improvised test points. I
 
 Beyond test points, standardized communication interfaces represent crucial access vectors for hardware hackers. These interfaces follow established protocols that define their electrical characteristics, timing, and data formats, making them predictable entry points once identified.
 
-```
+```ascii
     Common Hardware Communication Interfaces
     
     ┌───────────┐    ┌────────────┐    ┌───────────┐
@@ -368,7 +371,7 @@ Beyond test points, standardized communication interfaces represent crucial acce
 
 Power distribution networks within electronic devices form the foundation upon which all other functions depend. For hardware hackers, understanding power systems reveals critical insights about device operation and potential security vulnerabilities. The pathways that distribute electricity throughout a system often serve as vectors for both analysis and exploitation.
 
-```
+```ascii
     Power Distribution System
     
     ┌────────────┐       ┌───────────┐       ┌────────────┐
@@ -411,7 +414,7 @@ Voltage rail measurements provide baseline data crucial for subsequent analysis 
 
 Power distribution networks frequently represent overlooked attack surfaces in electronic systems. While manufacturers focus extensively on securing data lines and software interfaces, power systems often receive less security scrutiny despite their critical role in stable operation.
 
-```
+```ascii
               Power-Based Attack Vectors
 
   Normal Operation      Glitch Attack         Power Analysis
@@ -438,7 +441,7 @@ Power distribution networks frequently represent overlooked attack surfaces in e
 
 Effectively analyzing hardware requires not just knowledge but also practical skill in applying measurement tools. The ability to gather accurate electrical data forms the foundation of hardware security research, allowing precise characterization of normal behavior and identification of potential vulnerabilities.
 
-```
+```ascii
     Hardware Measurement Hierarchy
     
                    Measurement Techniques
@@ -483,7 +486,7 @@ The multimeter represents the most fundamental and versatile measurement tool in
 
 While multimeters provide excellent static measurements, understanding hardware behavior often requires analyzing time-varying signals. Advanced measurement techniques reveal timing relationships, protocol details, and subtle patterns invisible to basic measurements.
 
-```
+```ascii
               Signal Analysis Comparison
 
  ┌────────────────┐   ┌────────────────────┐   ┌─────────────────────┐
@@ -509,7 +512,7 @@ While multimeters provide excellent static measurements, understanding hardware 
 
 Printed Circuit Board (PCB) analysis forms the cornerstone of hardware hacking, allowing you to understand how electronic systems are physically implemented. Mastering this skill requires both analytical thinking and methodical examination techniques.
 
-```
+```ascii
    ┌────────────────────────────────────────────┐
    │                  PCB LAYERS                │
    │                                            │
@@ -578,7 +581,7 @@ Soldering skills separate casual hardware enthusiasts from effective hardware ha
 
 **Adding test points** to existing boards allows you to monitor signals without permanently altering circuit behavior. This technique involves identifying bare copper on traces of interest and carefully soldering fine magnet wire or test hooks to these points. For crowded boards with fine traces, use thin (30-34 AWG) wire and a fine-tipped soldering iron with temperature control. Apply a small amount of flux to the target area, tin both the wire and the trace with minimal solder, then join them with a quick, precise touch. Secure the wire with a small dot of hot glue or epoxy to prevent mechanical stress from breaking the connection. These minimally invasive taps can capture data from communication buses or monitor control signals without alerting the system to your presence.
 
-```
+```ascii
    ┌──────────────────────────────────┐
    │  SOLDERING TEST POINT TECHNIQUE  │
    │                                  │
@@ -695,7 +698,7 @@ Hardware hacking involves working with electricity and potentially hazardous com
 
 Electrical hazards represent the most immediate danger in hardware hacking. Even relatively low voltages can pose significant risks in certain circumstances, while higher voltages present serious or fatal dangers.
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │          ELECTRICAL SAFETY HIERARCHY        │
    │                                             │
@@ -768,7 +771,7 @@ Electrical hazards represent the most immediate danger in hardware hacking. Even
 
 While ensuring your personal safety is paramount, protecting the electronic components you're investigating is also critical. Damaged components can exhibit unpredictable behavior that complicates your analysis or permanently destroys valuable evidence during security research.
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │             ESD PROTECTION ZONES            │
    │                                             │
@@ -833,7 +836,7 @@ While ensuring your personal safety is paramount, protecting the electronic comp
 
 ## Conclusion
 
-```
+```ascii
    ┌────────────────────────────────────────────────┐
    │      ELECTRONICS KNOWLEDGE PROGRESSION         │
    │                                                │

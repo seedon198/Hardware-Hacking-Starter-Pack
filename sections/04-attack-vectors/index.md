@@ -1,3 +1,5 @@
+<!-- tags: attack-vectors, physical, side-channel, fault-injection -->
+
 # Hardware Attack Vectors
 
 Hardware attacks represent a powerful approach to security assessment that can bypass software protections by targeting the physical implementation of systems. This section explores the various hardware attack vectors available to security researchers and hackers.
@@ -26,7 +28,7 @@ This section is divided into multiple parts:
 - [Part 2: Side-Channel Attacks](./02-side-channel.md)
 - [Part 3: Fault Injection Techniques](./03-fault-injection.md)
 - [Part 4: Hardware Implants](./04-hardware-implants.md)
-- [Part 5: Supply Chain Attacks](./07e-supply-chain.md)
+- [Part 5: Supply Chain Attacks](./05-supply-chain-1.md)
 
 ---
 

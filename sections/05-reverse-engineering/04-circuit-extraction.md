@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: circuit, netlist, extraction, schematic -->
+
 # Circuit Extraction and Schematic Capture
 
 After identifying components and tracing connections on a PCB, the next critical step is documenting these findings in a usable format. Circuit extraction and schematic capture transform your physical observations into logical representations that reveal how a device functions. This process bridges the gap between hardware examination and functional understanding.
@@ -30,7 +33,7 @@ Several approaches exist for creating schematics from physical hardware, each wi
 
 The incremental approach builds the schematic gradually by adding components and connections as you trace them:
 
-```
+```ascii
 Incremental Schematic Capture Process:
 ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
 │                  │    │                  │    │                  │
@@ -58,7 +61,7 @@ The incremental approach allows you to focus on areas of interest and stop when 
 
 The block-based approach divides the circuit into functional sections and documents each separately:
 
-```
+```ascii
 Block-based Schematic Capture:
 ┌────────────────────────────────────────────────────────┐
 │                                                        │
@@ -113,7 +116,7 @@ This organization makes the circuit's function more apparent than the physical l
 
 Include enough detail to understand functionality without overwhelming the reader:
 
-```
+```ascii
 Component Representation Examples:
 ┌───────────────────────────────────────────────────────┐
 │                                                       │
@@ -182,7 +185,7 @@ Several challenges arise specifically when creating schematics from existing har
 
 When encountering unidentified components, document what you can observe:
 
-```
+```ascii
 Unknown Component Documentation:
 ┌────────────────────────────────────────────┐
 │ Component: U23 (Unknown 8-pin IC)          │
@@ -250,7 +253,7 @@ Circuit extraction and schematic capture transform physical observations into us
 
 Remember that schematics from reverse engineering always represent your current understanding, which continues to evolve with further investigation. The best documentation acknowledges uncertainty where it exists while clearly communicating confirmed observations.
 
-In the next section, [Advanced Techniques: Decapsulation and Microprobing](./08e-advanced-techniques.md), we'll explore more specialized techniques for accessing and analyzing the internal structures of electronic components themselves.
+In the next section, [Advanced Techniques: Decapsulation and Microprobing](./05-advanced-techniques.md), we'll explore more specialized techniques for accessing and analyzing the internal structures of electronic components themselves.
 
 ---
 

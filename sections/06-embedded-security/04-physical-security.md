@@ -1,3 +1,6 @@
+<!-- difficulty: intermediate -->
+<!-- tags: physical, tamper, enclosures, potting, epoxy -->
+
 # Physical Security Mechanisms
 
 Software-based security measures are only as effective as the hardware they run on. Physical security mechanisms protect embedded devices against attacks requiring direct access to device components. If an attacker can open your device and connect test equipment directly to its internals, even the strongest cryptographic algorithms may be bypassed.
@@ -258,7 +261,7 @@ Physical security represents an essential layer in the defense-in-depth approach
 
 When designing embedded systems, consider the physical attack vectors relevant to your threat model, implement appropriate protections, and test their effectiveness against realistic attack scenarios. Remember that physical security exists in balance with other factors—usability, manufacturability, and cost—requiring thoughtful trade-offs based on the specific application.
 
-In the next section, [Security Testing and Vulnerability Assessment](./09e-security-testing.md), we'll explore comprehensive approaches to evaluating embedded security, including both physical and logical attack vectors.
+In the next section, [Security Testing and Vulnerability Assessment](./05-security-testing.md), we'll explore comprehensive approaches to evaluating embedded security, including both physical and logical attack vectors.
 
 ---
 

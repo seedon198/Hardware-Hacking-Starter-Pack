@@ -1,3 +1,6 @@
+<!-- difficulty: all -->
+<!-- tags: talks, videos, youtube, presentations -->
+
 # Hardware Security Talks & Videos
 
 This page contains a curated collection of the most influential and educational hardware security presentations, organized by topic, difficulty level, and format to help you find exactly what you need.

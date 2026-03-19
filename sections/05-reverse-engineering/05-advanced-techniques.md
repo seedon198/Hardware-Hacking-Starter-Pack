@@ -1,3 +1,6 @@
+<!-- difficulty: advanced -->
+<!-- tags: decapsulation, microscopy, sem, microprobing, fib -->
+
 # Advanced Techniques: Decapsulation and Microprobing
 
 When conventional reverse engineering methods reach their limits, hardware hackers turn to more sophisticated techniques. Decapsulation, microprobing, and other advanced approaches allow direct access to the silicon die inside integrated circuits, revealing details invisible through external analysis. These techniques represent the cutting edge of hardware hacking, opening new possibilities for security research and functional analysis.
@@ -12,7 +15,7 @@ This journey into the microscopic world requires specialized tools and technique
 
 Decapsulation exposes the silicon die inside an integrated circuit by removing its protective packaging. This delicate process requires precision and care—the goal is to remove the package material without damaging the fragile chip inside or the tiny bond wires connecting it to the package pins.
 
-```
+```ascii
 Simplified IC Construction:
 ┌───────────────────────────────────────────────────┐
 │                                                   │
@@ -89,7 +92,7 @@ While mechanical methods require less hazardous materials, they carry higher ris
 
 Once the silicon die is exposed, microprobing allows direct interaction with its circuits, accessing signals unavailable at the package pins.
 
-```
+```ascii
 Basic Microprobing Setup:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
@@ -217,6 +220,178 @@ FIB systems enable direct modification of circuit structures:
 
 This advanced technique directly alters the chip's function, potentially bypassing security features or enabling access to protected functionality. While requiring sophisticated equipment, it demonstrates that hardware security ultimately depends on physical access controls.
 
+## Decapsulation Methodology in Depth
+
+Choosing between chemical and laser decapsulation depends on what you need to preserve and the resources available to you.
+
+### Chemical Decapsulation: Nitric Acid Process
+
+Fuming nitric acid (HNO₃, >98%) is the workhorse chemical for plastic-encapsulated devices. It attacks the epoxy mold compound aggressively while leaving aluminum bond wires and silicon largely intact. Red fuming nitric acid is occasionally used for packages with particularly resistant epoxy formulations.
+
+**Safety prerequisites:** Perform all acid work inside a fume hood with adequate airflow (>100 FPM face velocity). Wear a full-face shield, nitrile gloves rated for concentrated nitric acid (verify your specific glove's breakthrough time—most are rated for only 30 minutes of immersion), an acid-resistant apron, and closed-toe shoes. Keep a large water supply and sodium bicarbonate (baking soda) on hand for neutralization.
+
+**Procedure:**
+
+1. Protect the lead frame pins by applying acid-resistant nail varnish or commercial stop-off lacquer to all exposed metal except the package top.
+2. Place the device in a small PTFE or borosilicate dish. PTFE is preferred; glass will be attacked by hydrofluoric acid if used for passivation removal later, and it is safer to establish the habit.
+3. Apply 2–4 drops of fuming nitric acid to the package top. The acid attacks the epoxy vigorously, generating brown NO₂ fumes. Allow the reaction to proceed for 30–90 seconds until bubbling slows.
+4. Decant the spent acid into a waste container, rinse the device with acetone, then isopropyl alcohol, then deionized water. Repeat acid application as needed until the die surface is visible.
+5. Neutralize all waste with sodium bicarbonate before disposal according to local regulations.
+
+The primary advantage over laser decap is that chemical methods preserve bond wires, allowing the device to remain functional—essential if you need to probe the circuit while it is powered.
+
+### Laser Decapsulation
+
+Industrial laser decap systems use a focused CO₂ or Nd:YAG laser to ablate the mold compound layer by layer. The system monitors reflected signal or images the surface between passes to halt automatically when the die is exposed.
+
+Laser decap is cleaner, faster, and produces no chemical waste. It also allows highly localized opening—you can expose a 500 µm × 500 µm window directly above a specific functional block without opening the entire package. This precision is valuable when you want to inject a laser fault into one circuit region without disturbing the surrounding package.
+
+The tradeoff is cost: entry-level laser decap systems cost $30,000–$100,000. Some university labs and commercial failure analysis services offer fee-based access.
+
+## Die Photography: Microscope Setup and Stitching
+
+A freshly decapped die reveals its floorplan under an optical microscope, but the field of view at useful magnification is far smaller than the full die area. Die photography stitches hundreds of individual frames into a single high-resolution composite.
+
+**Microscope configuration:**
+
+Use a metallurgical (reflected-light) microscope rather than a biological (transmitted-light) one. Objectives of 5×, 20×, and 50× cover most work. A 5× objective gives full-die context at moderate resolution; 50× resolves individual poly lines on 90 nm and older processes. Mount a camera adapter with a 1× or 0.5× relay lens to avoid vignetting.
+
+Illumination matters. Brightfield illumination (coaxial, through the objective) reveals metal layer topology. Darkfield illumination (oblique, from the side) enhances edge contrast and reveals scratches or surface damage. A green filter (550 nm bandpass) increases contrast between silicon, oxide, and metal layers under brightfield.
+
+```ascii
+Die Photography Stitching Concept:
+
+  Full die area (e.g. 5 mm × 5 mm):
+  ┌──────────────────────────────────┐
+  │ [F1][F2][F3][F4][F5][F6][F7][F8] │  Row 1: 8 frames at 20×
+  │ [F9][F10]..........................│  Row 2: overlap 10–20% on X and Y
+  │ ...                              │
+  │ [F_n].........................[Fm]│  Row N
+  └──────────────────────────────────┘
+
+  Each frame: ~800 µm × 600 µm at 20×, 2048×1536 px
+  Total frames for 5×5 mm die: ~60–80 frames
+  Stitched output: ~16000×12000 px (200 MP composite)
+```
+
+**Stitching workflow:**
+
+1. Set up an automated stage with repeatability better than 2 µm. Most modern microscope stages qualify.
+2. Configure overlap between adjacent frames at 15–20%. More overlap provides better blending; less overlap speeds acquisition.
+3. Acquire all frames with consistent focus and exposure. Use autofocus between frames or pre-map the focus surface with a z-map pass.
+4. Stitch using software such as Microsoft Image Composite Editor (free), FIJI/ImageJ with the Grid/Collection Stitching plugin, or commercial options like Zeiss ZEN. These tools use phase correlation or feature matching to align frames and blend seams.
+5. Export as a pyramidal TIFF or use VIPS for memory-efficient handling of multi-gigapixel images.
+
+The resulting composite map becomes the reference for identifying functional blocks, comparing against known architectures, and planning microprobe placement.
+
+## SEM and FIB Analysis
+
+### Scanning Electron Microscopy (SEM)
+
+SEM images the die surface by raster-scanning a focused electron beam and detecting secondary or backscattered electrons. Secondary electron images reveal topography in fine detail; backscattered electron images provide material contrast (heavier elements appear brighter), making them useful for distinguishing metal layers from oxide.
+
+**What you learn from SEM:**
+
+- Process node estimation. Measure the minimum metal pitch and gate length. 130 nm metal pitch suggests a 65 nm process; 80 nm pitch suggests 28–40 nm.
+- Layer stack identification. Cross-section the die (by FIB, described below) and image the cut face. Count metal layers, measure dielectric thicknesses, and identify barrier metals.
+- Surface modification detection. Security researchers use SEM to find evidence of FIB-based circuit edits performed by an adversary, visible as subtle surface redeposition artifacts.
+- Probe mark mapping. After microprobing, SEM reveals exactly where contact was made, useful for repeatable probe placement.
+
+### Focused Ion Beam (FIB) Analysis
+
+A FIB system uses a focused beam of gallium ions to sputter material from the sample surface with nanometer precision. The same system usually incorporates an SEM column for simultaneous imaging. FIB enables:
+
+**Cross-sectioning:** Mill a trench perpendicular to the surface to expose the vertical layer stack. Combined with SEM imaging of the trench face, this reveals every metal and dielectric layer, via connections, and transistor structure. A skilled operator can section exactly through a specific via or transistor of interest.
+
+**Circuit editing:** Deposit platinum or tungsten from a gas injection system to create new conductive bridges (jumpers) between traces. Mill through a metal layer to cut a specific net. This allows a researcher to rewire a portion of the chip—for example, disconnecting a security fuse read line or creating a bypass around a protection comparator—without lifting a bond wire.
+
+**Failure analysis:** Identify opens, shorts, or electromigration damage in metal traces with nanometer precision.
+
+FIB systems cost $500,000–$1,500,000 new. Access is typically via a university cleanroom, commercial failure analysis laboratory, or a national laboratory user facility.
+
+## Microprobing: Probe Placement and Measuring Individual Nets
+
+Microprobing translates the die's stitched optical map into actionable electrical measurements. The process begins with careful preparation and demands patience at every step.
+
+### Probe Placement Strategy
+
+Before touching the die, complete a planning session on the stitched image:
+
+1. Identify the target nets from schematic inference, known architecture documentation, or hypothesis based on floorplan analysis.
+2. Find accessible contact points: bond pads (typically 60–100 µm wide), top-metal buses, or vias exposed by FIB cross-section. Passivation must be removed from any point you intend to probe.
+3. Assign a probe to each target net and plan approach angles to avoid collision between probes or with bond wires.
+
+```ascii
+Microprobe Setup (top-down view of die):
+
+   Bond wire  Bond wire
+      │           │
+  ────┤           ├────
+  ────┤    Die    ├────
+      │           │
+   [Probe 1]  [Probe 2]
+      │    \  /    │
+      │     \/     │
+      │   Target   │
+      │   node     │
+      │ (µm scale) │
+
+Probe 1 → Oscilloscope Ch1
+Probe 2 → Signal Generator output
+```
+
+### Passivation Removal
+
+Silicon nitride or silicon oxynitride passivation covers the die surface. Remove it locally with one of these methods:
+
+- **HF vapor or buffered HF wet etch:** Reliable for silicon nitride. Apply locally using a micropipette or a commercial microchemical etching station.
+- **Plasma etch (CF₄/O₂):** Blanket removal of passivation across the full die. Use a RIE system with a photoresist mask if you want selective removal.
+- **FIB milling:** Most precise, removes passivation only at the target coordinates without chemistry.
+
+### Making Contact
+
+Approach the probe tip at a shallow angle (15–30° from the die surface). Use the fine axis of the micromanipulator to lower the tip in 100 nm increments while watching the current meter on your test equipment. The moment the probe makes contact, DC resistance drops from open circuit to the net's impedance. Stop immediately—driving the tip further scratches the metal and may punch through to an underlying layer.
+
+Once contact is established, lock the manipulator axes that are not in use. Thermal drift and building vibration will slowly move the probe; re-establish contact if the current reading becomes noisy.
+
+### Signal Acquisition
+
+For digital nets: connect to a logic analyzer channel. 1 MΩ input impedance and ≤ 5 pF probe capacitance are acceptable for frequencies below 50 MHz. Higher-speed nets require an active probe buffer mounted close to the tip.
+
+For analog nets (power rails, analog-to-digital converter inputs): connect to an oscilloscope with 50 Ω termination if the net can drive it, otherwise use a high-impedance active probe.
+
+For current injection (fault injection via probe): use a pulse generator with a defined source impedance. Keep pulse amplitude below the supply voltage of the net being targeted to avoid latch-up.
+
+## Fault Injection at Die Level: Laser Fault Injection Setup and Methodology
+
+Laser fault injection (LFI) at the die level offers the highest spatial selectivity of any fault injection technique. A focused infrared laser pulse creates a transient photocurrent in a specific transistor or small group of transistors, producing a controlled single-event upset (SEU) analogous to cosmic ray effects.
+
+### Laser System Requirements
+
+An infrared laser (1064 nm Nd:YAG or 1320 nm) penetrates silicon from the back side without being absorbed by metal layers on the front. This is critical for flip-chip packages and modern logic where metal routing would block a front-side beam.
+
+Minimum system requirements:
+- Pulse width: 1–10 ns (FWHM) for spatial selectivity; longer pulses produce larger disturbed volumes
+- Repetition rate: 1 Hz to 1 kHz for synchronized triggering
+- Spot size: 1–5 µm at the focal plane (requires a 40× or 100× objective with high NA)
+- Pulse energy: 1–50 nJ adjustable; must be empirically tuned for each target process
+
+For back-side injection, thin the die to 50–150 µm using mechanical polishing and a brief final CMP step. Residual substrate below 100 µm is transparent to 1064 nm at the laser powers used.
+
+### LFI Methodology
+
+1. **Mount and align the target.** For back-side injection, flip the device and mount the die on a transparent substrate (sapphire or quartz) with optical quality contact. Align using IR transmission imaging to locate metal layer features visible through the thinned substrate.
+
+2. **Define the scan area.** Using the stitched die map, define a bounding box around the suspected target circuit—the boot ROM, the security fuse block, or the AES key schedule registers.
+
+3. **Synchronize the trigger.** Connect a trigger signal from the target (UART activity, GPIO toggle, SPI chip-select assertion) to the laser's pulse trigger input. Set the delay from trigger to pulse to cover the window when the sensitive instruction executes.
+
+4. **Raster scan with fault detection.** Drive the XY stage through the scan area in 1 µm steps. At each position fire one laser pulse at the programmed delay. Monitor the target for an exploitable response: wrong PIN accepted, secure boot bypassed, secret data output where it should not appear.
+
+5. **Refine.** Once a responsive area is found, reduce the step size to 100 nm and the delay sweep to 1 ns steps to characterize the minimum laser energy and tightest timing window required for reliable fault induction.
+
+LFI at the die level has been used to bypass secure boot on ARM Cortex-M devices, extract AES round keys from hardware accelerators, and defeat read-out protection on microcontrollers where all electrical fault vectors had been patched.
+
 ## Case Study: Security Analysis Through Decapsulation
 
 To illustrate these techniques, consider how they might apply to analyzing a secure microcontroller:
@@ -293,7 +468,7 @@ For hardware security professionals, understanding these capabilities informs be
 
 As manufacturing technologies advance toward smaller process nodes, these techniques grow more challenging—yet the fundamental approaches remain valid even as specific implementations evolve. The cat-and-mouse game between security designers and hardware hackers continues to drive innovation on both sides.
 
-This concludes our exploration of reverse engineering techniques. In our next section, we'll examine [Embedded Device Security](./09-embedded-security.md), building on these fundamentals to understand how modern devices protect (or fail to protect) their critical functionality.
+This concludes our exploration of reverse engineering techniques. In our next section, we'll examine [Embedded Device Security](../06-embedded-security/index.md), building on these fundamentals to understand how modern devices protect (or fail to protect) their critical functionality.
 
 ---
 
