@@ -99,3 +99,67 @@ function initTheme() {
     applyTheme(next);
   });
 }
+
+/* ═══════════════════════════════════════════════ §3 ROUTER */
+
+let _currentPath = null;
+
+function navigate(path, pushState = true) {
+  if (path === _currentPath) return;
+  _currentPath = path;
+  if (pushState) {
+    window.location.hash = path ? `/${path}` : '';
+  }
+  if (path) {
+    showArticle(path);
+  } else {
+    showDashboard();
+  }
+}
+
+function getHashPath() {
+  const hash = window.location.hash;
+  if (!hash || hash === '#' || hash === '#/') return null;
+  return hash.replace(/^#\//, '');
+}
+
+window.addEventListener('hashchange', () => {
+  const path = getHashPath();
+  if (path !== _currentPath) {
+    _currentPath = path;
+    if (path) {
+      showArticle(path);
+    } else {
+      showDashboard();
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════════ §4 CONTENT INDEX */
+
+let _index = [];
+const _articleCache = new Map();
+
+async function loadIndex() {
+  const res = await fetch(INDEX_URL);
+  if (!res.ok) throw new Error(`Failed to load index: ${res.status}`);
+  _index = await res.json();
+}
+
+async function fetchArticle(path) {
+  if (_articleCache.has(path)) return _articleCache.get(path);
+  const url = `${RAW_BASE}${path}.md`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Article not found: ${path} (${res.status})`);
+  const md = await res.text();
+  _articleCache.set(path, md);
+  return md;
+}
+
+function getEntry(path) {
+  return _index.find(e => e.path === path) || null;
+}
+
+function getEntriesForSection(sectionNum) {
+  return _index.filter(e => e.section_num === sectionNum);
+}
