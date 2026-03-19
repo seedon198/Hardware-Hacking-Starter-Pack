@@ -8,7 +8,7 @@
 
 ## Overview
 
-Convert the existing markdown-based Hardware Hacking Starter Pack (~55 articles across 9 sections) into an interactive learning web application, deployed to GitHub Pages. The app adds progress tracking, a skill tree, full-text search, guided learning paths, bookmarks, and difficulty filtering on top of the existing content — without changing the markdown source format or adding a build framework.
+Convert the existing markdown-based Hardware Hacking Starter Pack (57 markdown files across 9 sections) into an interactive learning web application, deployed to GitHub Pages. The app adds progress tracking, a skill tree, full-text search, guided learning paths, bookmarks, and difficulty filtering on top of the existing content — without changing the markdown source format or adding a build framework.
 
 A content quality pass runs in parallel: fix the README structure, standardise ASCII art fencing, repair broken diagrams, and fill shallow sections.
 
@@ -52,7 +52,7 @@ Hardware-Hacking-Starter-Pack/
 
 ### Content Loading
 
-- `frontend/content-index.json` is committed to the repo. It contains for every article: `path`, `title`, `section`, `section_num`, `difficulty`, `tags[]`, and `preview` (first 300 chars of body text). Built by `scripts/build-index.py`.
+- `frontend/content-index.json` is committed to the repo. It contains for every article: `path`, `title`, `section_num`, `section`, `subsection` (e.g. `"wired"`, `"wireless"`, or `null`), `is_index` (boolean — true for `index.md` files), `difficulty`, `tags[]`, and `preview` (first 300 chars of body text). Built by `scripts/build-index.py`.
 - Full article bodies are fetched on demand from GitHub raw URLs (`https://raw.githubusercontent.com/seedon198/Hardware-Hacking-Starter-Pack/main/<path>`) and cached in a `Map` in memory for the session duration.
 - Search, navigation, learning paths, and the skill tree all operate against `content-index.json` — no article body fetches needed until the user opens an article.
 
@@ -101,6 +101,7 @@ Inspired by PCB schematics, datasheet layouts, and terminal interfaces. High con
 --accent-green:  #007700;
 --accent-red:    #cc0000;
 --accent-orange: #cc5500;
+--font-mono:     'Courier New', 'Lucida Console', monospace;  /* same as dark */
 ```
 
 ---
@@ -110,7 +111,7 @@ Inspired by PCB schematics, datasheet layouts, and terminal interfaces. High con
 ### Top Bar (full width, sticky)
 
 ```
-[ HH:SP ] Hardware Hacking Starter Pack    [ ⌕ Search all 55 articles... ⌘K ]  [BEGINNER] [INTERMEDIATE] [ADVANCED]  [☀ LIGHT]
+[ HH:SP ] Hardware Hacking Starter Pack    [ ⌕ Search articles... ⌘K ]  [BEGINNER] [INTERMEDIATE] [ADVANCED]  [☀ LIGHT]
 ```
 
 - Left: `HH:SP` wordmark (monospace, accent-coloured colon) + subtitle
@@ -125,7 +126,7 @@ Two panels side by side, separated by a `2px solid var(--border-strong)` border.
 Three tabs — `CONTENTS` / `ON PAGE` / `BOOKMARKS`
 
 - **CONTENTS tab**: progress bar at top (overall % + active path label), then a collapsible section tree. Each section header shows section number, name, and `n/total ✓` count. Each article item shows completion checkbox (`■` done / `□` todo), title, and a right-aligned difficulty badge.
-- **ON PAGE tab**: auto-generated TOC from `##` and `###` headings in the current article. Active heading highlighted in accent colour as user scrolls (IntersectionObserver).
+- **ON PAGE tab**: auto-generated TOC from `##` and `###` headings only (no deeper). `###` items are indented by 12px. Maximum 20 TOC entries shown; if an article exceeds this, only `##` headings are shown. Active heading highlighted in accent colour as user scrolls (IntersectionObserver).
 - **BOOKMARKS tab**: list of bookmarked articles. Click to navigate, click bookmark icon again to remove.
 
 **Content area (flex: 1):**
@@ -149,12 +150,21 @@ Three tabs — `CONTENTS` / `ON PAGE` / `BOOKMARKS`
 ### 2. Skill Tree
 
 - Full-screen overlay, triggered by the floating `[ SKILL TREE ]` button.
-- Pure CSS/HTML node graph (no SVG, no canvas). Nine section nodes arranged in a left-to-right progression grid, connected by horizontal/diagonal `border` lines via pseudo-elements.
+- Pure CSS/HTML node graph (no SVG, no canvas). Nine section nodes arranged in a two-row grid:
+
+```
+Row 1:  [01 Foundations] ──► [02 Protocols] ──► [03 Firmware] ──► [04 Attacks] ──► [05 RE]
+                                                                          │
+Row 2:                   [09 Resources] ◄── [08 Professional] ◄── [07 Domains] ◄── [06 Embedded]
+```
+
+Lines are rendered with CSS `border` on connecting `<div>` spacer elements (horizontal only — the row break is visual, not a diagonal line). No pseudo-element diagonals.
+
 - Node states:
-  - **Completed** (all articles done): amber border + filled background
-  - **In progress** (some done): white border, amber label
-  - **Not started**: dark grey border, muted label
-- Clicking a node closes the overlay and navigates to that section's first article.
+  - **Completed** (all non-index articles done): amber border + amber-tinted background
+  - **In progress** (≥1 done, not all): white border, amber label
+  - **Not started**: `--border` colour, muted label
+- Clicking a node closes the overlay and navigates to that section's `index.md` if one exists, otherwise the first non-index article by filename order.
 - Close with `Escape` or a `[ × CLOSE ]` button.
 
 ### 3. Full-Text Search
@@ -167,25 +177,78 @@ Three tabs — `CONTENTS` / `ON PAGE` / `BOOKMARKS`
 
 ### 4. Guided Learning Paths
 
-Three pre-defined sequences in `app.js`:
+Three pre-defined ordered article lists in `app.js` (by `path` value from `content-index.json`):
 
-| Path | Sequence summary |
-|------|-----------------|
-| `BEGINNER` | Foundations (all) → Wired Protocols (basic) → Firmware → Projects |
-| `SOFTWARE DEV` | Foundations → Firmware → Attack Vectors → Embedded Security → IoT |
-| `ELECTRONICS ENG` | Foundations (fast) → All Protocols → Reverse Engineering → Attack Vectors |
+**BEGINNER** (foundations-first, wired basics, no advanced topics):
+```
+01-foundations/01-introduction
+01-foundations/02-lab-setup
+01-foundations/03-tools-equipment
+01-foundations/04-basic-electronics
+02-communication-protocols/index          ← section overview
+02-communication-protocols/wired/01-uart-protocol
+02-communication-protocols/wired/02-i2c-protocol
+02-communication-protocols/wired/03-spi-protocol
+03-firmware/01-firmware-analysis
+08-professional/01-learning-path
+08-professional/05-project-ideas
+08-professional/06-glossary
+```
 
-- Selected via a modal on first visit (path stored in `localStorage`).
+**SOFTWARE DEV** (firmware and software-adjacent attack paths):
+```
+01-foundations/01-introduction
+01-foundations/04-basic-electronics
+03-firmware/01-firmware-analysis
+04-attack-vectors/index
+04-attack-vectors/01-physical-access
+04-attack-vectors/02-side-channel
+04-attack-vectors/03-fault-injection
+06-embedded-security/index
+06-embedded-security/01-secure-boot
+06-embedded-security/02-memory-protection
+06-embedded-security/03-secure-communications
+07-specialized-domains/02-iot-security
+08-professional/04-legal-ethical
+```
+
+**ELECTRONICS ENG** (protocol-heavy, RE-focused):
+```
+01-foundations/01-introduction
+01-foundations/03-tools-equipment
+01-foundations/04-basic-electronics
+02-communication-protocols/index
+02-communication-protocols/wired/01-uart-protocol
+02-communication-protocols/wired/02-i2c-protocol
+02-communication-protocols/wired/03-spi-protocol
+02-communication-protocols/wired/04-jtag-swd
+02-communication-protocols/wired/05-usb-protocol
+02-communication-protocols/wired/06-ethernet-protocols
+02-communication-protocols/wireless/01-rf-fundamentals
+02-communication-protocols/wireless/06-rfid-nfc
+05-reverse-engineering/index
+05-reverse-engineering/01-re-fundamentals
+05-reverse-engineering/02-pcb-analysis
+05-reverse-engineering/03-component-id
+05-reverse-engineering/04-circuit-extraction
+04-attack-vectors/01-physical-access
+04-attack-vectors/04-hardware-implants
+```
+
+Paths are stored as arrays of path strings (without `.md` extension). The app resolves them against `content-index.json` at runtime. Articles not in `content-index.json` are silently skipped.
+
+- Selected via a modal on first visit (path stored in `localStorage`). Modal includes a "Skip — browse freely" option; if skipped the filter strip shows no path label and `Topic N of M` is hidden.
 - Active path drives the sidebar progress bar and the filter strip's `Topic N of M` counter.
 - `[ CHANGE PATH ]` button in the sidebar footer re-opens the path selector.
 - Path navigation: `[ ← PREV ]` / `[ NEXT → ]` buttons at the bottom of each article.
+- `getNextArticle(currentPath)` / `getPrevArticle(currentPath)` iterate the active path array, **skipping any articles whose difficulty is currently filtered off**. If all remaining articles are filtered, the button is hidden.
 
 ### 5. Bookmarks
 
 - Bookmark icon button in each article header. Filled when bookmarked.
 - Stored in `localStorage` as an array of `{ path, title, section }`.
 - Accessible from the `BOOKMARKS` sidebar tab.
-- Maximum 50 bookmarks; oldest dropped when limit reached.
+- Maximum 50 bookmarks; oldest by insertion order dropped when limit reached (FIFO).
 
 ### 6. Difficulty Filter
 
@@ -254,15 +317,46 @@ Built incrementally. Each section is self-contained:
 
 ## scripts/build-index.py
 
-Reads all markdown files under `sections/`, extracts:
+Reads all markdown files under `sections/`, extracts the following fields per file:
 
-- `path` — relative path from repo root (e.g. `sections/02-communication-protocols/wired/02-i2c-protocol.md`)
-- `title` — first `# Heading` in the file
-- `section_num` — parsed from directory name (`02`)
-- `section` — human name (e.g. `Communication Protocols`)
-- `difficulty` — from a metadata comment `<!-- difficulty: intermediate -->` at the top of the file, or inferred from directory depth
-- `tags` — from `<!-- tags: uart, serial, debug -->` metadata comment
-- `preview` — first 300 characters of non-heading, non-code body text
+| Field | Source |
+|-------|--------|
+| `path` | Relative path from repo root without `.md` (e.g. `sections/02-communication-protocols/wired/02-i2c-protocol`) |
+| `title` | First `# Heading` in the file. Fallback: filename with hyphens replaced by spaces, title-cased |
+| `section_num` | Integer parsed from first directory name under `sections/` (`02`) |
+| `section` | Human name derived by stripping leading `NN-` from directory name and title-casing (`Communication Protocols`) |
+| `subsection` | Name of the immediate subdirectory if the file is nested one level deeper than the section root (`wired`, `wireless`). `null` for flat files |
+| `is_index` | `true` if filename is `index.md`, else `false` |
+| `difficulty` | From `<!-- difficulty: beginner -->` comment (must be on its own line, within first 10 lines of file). Fallback: the difficulty assigned in the README table for that article (see table below). Final fallback: `"beginner"` |
+| `tags` | From `<!-- tags: uart, serial, debug -->` comment (within first 10 lines). Empty array if absent |
+| `preview` | First 300 characters of non-heading, non-code, non-HTML body text |
+
+**Difficulty fallback table** (used when `<!-- difficulty: -->` comment is absent — matches the README table):
+
+| Articles matching pattern | Default difficulty |
+|---------------------------|--------------------|
+| `01-foundations/*` | `beginner` |
+| `02-.../wired/01` through `wired/03` | `beginner` |
+| `02-.../wired/04` through `wired/06` | `intermediate` |
+| `02-.../wireless/index`, `wireless/01` | `beginner` |
+| `02-.../wireless/02` through `wireless/05` | `intermediate` |
+| `02-.../wireless/06` | `intermediate` |
+| `03-firmware/*` | `intermediate` |
+| `04-attack-vectors/01-physical-access` | `intermediate` |
+| `04-attack-vectors/02` through `04` | `advanced` |
+| `04-attack-vectors/05-supply-chain*` | `advanced` |
+| `05-reverse-engineering/01` through `04` | `intermediate` |
+| `05-reverse-engineering/05` | `advanced` |
+| `06-embedded-security/01-secure-boot` | `advanced` |
+| `06-embedded-security/02-memory*`, `03-secure*` | `advanced` |
+| `06-embedded-security/04-physical*` | `intermediate` |
+| `06-embedded-security/05-security*` | `advanced` |
+| `07-specialized-domains/*` | `advanced` |
+| `08-professional/*` | `all` |
+| `09-resources/*` | `all` |
+| `*/index.md` | inherits section's lowest difficulty |
+
+`all`-difficulty articles are always visible regardless of the active difficulty filter.
 
 Outputs `frontend/content-index.json`. Run locally to bootstrap; also runs as a step in the GitHub Actions deploy workflow so the index auto-updates when articles change.
 
@@ -281,7 +375,7 @@ Outputs `frontend/content-index.json`. Run locally to bootstrap; also runs as a 
 1. **Metadata comments** — add `<!-- difficulty: beginner -->` and `<!-- tags: ... -->` to every file for `build-index.py`
 2. **ASCII art fencing** — re-fence all ASCII diagrams with ` ```ascii ` so the webapp highlights them
 3. **ASCII art errors** — fix misaligned characters, broken box-drawing, incorrect signal timing diagrams
-4. **Shallow sections** — expand thin content in: fault injection pt.2, supply chain pts.2 & 3, advanced RE techniques (decapsulation methodology), mobile security baseband section
+4. **Shallow sections** — expand thin content in the following files to a minimum of 500 words of body text each: `04-attack-vectors/03-fault-injection-2.md`, `04-attack-vectors/05-supply-chain-2.md`, `04-attack-vectors/05-supply-chain-3.md`, `05-reverse-engineering/05-advanced-techniques.md` (decapsulation + microscopy methodology), `07-specialized-domains/01-mobile-hacking.md` (baseband processor section)
 5. **Broken links** — audit and fix all relative cross-links between files
 6. **Consistency** — standardise heading hierarchy (`#` title, `##` sections, `###` subsections) across all files
 
