@@ -102,17 +102,100 @@ Accessing processor debug modes typically requires connecting to test points and
 
 ### Baseband Processors
 
-Cellular baseband processors represent one of the most interesting yet challenging targets for hardware hackers. These subsystems handle all cellular communications and run their own operating systems separate from the main device OS.
+The baseband processor is the dedicated subsystem responsible for all cellular radio communications. It implements the physical and protocol layers of 2G/3G/4G/5G standards—encoding, modulation, timing recovery, and protocol state machines—independently of the application processor that runs Android or iOS. On most mobile SoCs the baseband runs its own proprietary real-time operating system (often a custom RTOS or a lightly modified version of REX, Qualcomm's real-time executive) on a dedicated ARM core or DSP cluster. From a security perspective the baseband is a fully independent computer with its own memory space, its own boot chain, and direct access to the radio frequency hardware that communicates with cellular towers.
 
-Baseband vulnerabilities have significant security implications, potentially allowing remote exploitation via cellular networks. However, baseband hardware is typically:
+#### Why the Baseband Matters for Security
 
-Highly proprietary with minimal public documentation
+The baseband processes all data received over the air before any application-layer software sees it. A vulnerability in baseband firmware can be triggered remotely by a malicious base station—a capability that has been commercially exploited by IMSI catchers and more sophisticated interception platforms. Because the baseband has direct memory-mapped access to shared memory regions and, on some SoCs, to DMA channels that can reach application processor RAM, a compromised baseband can potentially pivot to the application processor without any vulnerability in Android or iOS itself.
 
-Protected by various security mechanisms
+The attack surface includes:
 
-Physically integrated within the SoC in modern devices
+- The GSM/UMTS/LTE/NR protocol parsers, which must handle malformed messages from untrusted base stations
+- The AT command interface, which provides a high-level control plane accessible from the application processor side
+- Debug UART interfaces that expose diagnostic commands during development and sometimes survive into production firmware
+- Over-the-air firmware update mechanisms, where signature verification failures have been demonstrated
 
-Research into baseband security often requires specialized equipment like software-defined radios and protocol analyzers to observe the baseband's interaction with cellular networks.
+```ascii
+Baseband Attack Surface Overview:
+
+  ┌────────────────────────────────────────┐
+  │          Cellular Network              │
+  │  (malicious BTS / IMSI catcher)        │
+  └──────────────────┬─────────────────────┘
+                     │ RF (OTA)
+                     ▼
+  ┌────────────────────────────────────────┐
+  │          RF Front-End / Modem          │
+  │  ┌──────────────────────────────────┐  │
+  │  │     Baseband Processor (DSP/ARM) │  │
+  │  │  ┌───────────┐  ┌─────────────┐  │  │
+  │  │  │ Protocol  │  │  AT Command │  │  │
+  │  │  │ Stack     │  │  Interface  │  │  │
+  │  │  └─────┬─────┘  └──────┬──────┘  │  │
+  │  │        │               │ (IPC)   │  │
+  │  └────────┼───────────────┼─────────┘  │
+  └───────────┼───────────────┼────────────┘
+              │ Shared RAM    │
+              ▼               ▼
+  ┌────────────────────────────────────────┐
+  │       Application Processor            │
+  │  (Android / iOS userspace + kernel)    │
+  └────────────────────────────────────────┘
+```
+
+#### AT Command Interface: Access via Debug UART
+
+The AT command set (Hayes command set, ITU-T V.250) is the standard control interface for cellular modems, dating to the 1980s. Modern basebands expose a large superset of AT commands through two paths: a virtual serial port over USB (using a CDC-ACM or proprietary USB class) accessible from the application processor, and a hardware UART exposed on test pads intended for factory diagnostics.
+
+The debug UART path is particularly interesting because it often bypasses the access control filtering applied to the USB-exposed interface. On development and engineering devices, the UART may provide an AT command interpreter with elevated privileges—sometimes including commands that enumerate memory, read firmware build strings, dump radio calibration data, or enable engineering modes not accessible through production software.
+
+To identify and use the baseband debug UART:
+
+1. Disassemble the device and locate the baseband chip. On Qualcomm-based devices this is the MDM or SDM/SM SoC; on MediaTek devices the modem is integrated into the main SoC. On Samsung Exynos devices a separate Shannon modem die is often stacked in the same package.
+
+2. Search the PCB for unpopulated 3–4 pin test pad clusters near the modem section. Probe for a UART TX signal by monitoring with a logic analyzer while the device boots. Baseband boot messages typically appear at 115200 baud (Qualcomm) or 921600 baud (MediaTek).
+
+3. Connect a 1.8 V UART adapter to TX/RX/GND. Capture the boot log. It will reveal firmware version, chipset identifiers, and sometimes memory layout.
+
+4. Send `AT` followed by CR. A response of `OK` confirms an active AT interpreter. Follow with `AT+CGMR` (firmware revision), `AT+CGSN` (IMEI), and `AT+CMEE=1` (enable extended error codes) to establish a baseline.
+
+5. Enumerate non-standard AT commands using `AT$` or `AT+` prefix sweeps. Qualcomm-based modems respond to a large set of `AT!` commands (note the exclamation mark) including `AT!ENTERCND=` for privileged mode entry using a factory password.
+
+#### Modem Firmware Extraction via UART Debug Port
+
+On devices where the UART provides a privileged AT interpreter, firmware extraction is sometimes possible without additional hardware modification.
+
+The Qualcomm `AT!SYSMAP?` command returns a memory map of the modem subsystem. `AT!DMEMDUMP` variants allow reading memory ranges in hexadecimal. By scripting a loop that steps through the modem's address space and captures the hex output, a researcher can reconstruct firmware images offline. This approach requires patience—reading 16 MB of modem flash at 115200 baud takes several hours—but produces a clean image suitable for disassembly.
+
+For MediaTek modems, an alternative path is the SP Flash Tool protocol exposed on the modem UART during early boot. Sending the MediaTek bootrom handshake sequence at the right moment in the boot process transitions the modem into download mode, from which standard SP Flash Tool commands read the partition table and individual partitions.
+
+Once extracted, modem firmware images are typically in ELF format (Qualcomm AMSS) or a proprietary flat binary (MediaTek). Ghidra with community-developed Qualcomm loader scripts provides the most accessible disassembly environment. IDA Pro with the XTENSA or ARM processor modules handles the DSP and ARM cores respectively.
+
+#### Known Debug Port Locations on Common Mobile SoCs
+
+Test point locations change between board revisions and are not officially documented. The following are community-documented findings that have been shared in repair forums and security research publications:
+
+**Qualcomm Snapdragon 845 (SDM845) – various Android OEMs:** A 4-pad UART cluster at 1.8 V logic level is consistently present on the left side of the mainboard approximately 8–12 mm from the SIM card socket. The cluster carries modem UART TX, modem UART RX, application processor UART TX, and GND. Baud rate 115200 for both.
+
+**MediaTek Helio P60/P70 – mid-range Android devices:** Modem UART test pads are typically located beneath the RF shield near the antenna connectors. The modem boots at 921600 baud and may drop to 115200 for the AT command phase.
+
+**Qualcomm MDM9x50 series (IoT/hotspot devices):** These standalone modem chipsets commonly expose a full diagnostic interface (Qualcomm DIAG protocol) on the USB port without any authentication in early firmware revisions, in addition to a hardware UART.
+
+Always verify test point voltage levels with a multimeter before connecting any adapter—mixing 3.3 V adapters with 1.8 V interfaces will damage the SoC.
+
+#### Historical CVEs Related to Baseband Vulnerabilities
+
+Baseband security research has produced some of the most severe remote code execution vulnerabilities in mobile security history.
+
+**CVE-2015-6637 (Qualcomm MDM):** A heap overflow in the GERAN (GSM Edge Radio Access Network) protocol parser allowed a malicious base station to execute arbitrary code in the baseband firmware context. Because the baseband on affected Qualcomm SoCs shared DMA-accessible memory with the application processor, successful exploitation could reach Android kernel memory without any additional vulnerability.
+
+**CVE-2016-2060 (Qualcomm baseband):** An information disclosure vulnerability in the `netd` daemon on Android exposed the modem's AT command interface to applications with the `INTERNET` permission. An attacker could use standard AT commands to modify the modem's operating parameters, including enabling silent call forwarding.
+
+**CVE-2020-25279 (Samsung Shannon modem):** A heap-based buffer overflow in the Samsung Shannon baseband (used in Exynos-based Galaxy devices) in the 5G NR RRC (Radio Resource Control) message handling allowed remote code execution via a malicious base station. Reported by researchers at Comsecuris.
+
+**Project Triforce / Baseband research at BlackHat 2011 (Weinmann):** Ralf-Philipp Weinmann's landmark research demonstrated full remote code execution in Qualcomm and Infineon basebands via specially crafted GSM protocol messages. This work established the field of systematic baseband security research and motivated several years of subsequent improvements in baseband isolation and firmware signing.
+
+These vulnerabilities share a common theme: the baseband's protocol parsers handle externally supplied binary data from an inherently untrusted source (the cellular network), and memory safety errors in those parsers produce exploitable conditions. Unlike application-layer software, baseband firmware historically received much less scrutiny from security researchers due to the proprietary and opaque nature of the codebase, creating a large accumulated vulnerability surface.
 
 ### Storage Systems
 
