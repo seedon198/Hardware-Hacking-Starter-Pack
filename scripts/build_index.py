@@ -44,6 +44,12 @@ def _strip_leading_num(name):
 
 
 def _extract_metadata_comments(lines):
+    """Parse <!-- difficulty: X --> and <!-- tags: a, b --> from first 10 lines.
+
+    The 10-line limit is intentional: metadata comments must appear at the top
+    of the file before any content. Contributors must place them within the first
+    10 lines for them to be picked up.
+    """
     difficulty = None
     tags = []
     for line in lines[:10]:
@@ -193,13 +199,11 @@ def build(sections_root):
 
 def build_and_write(sections_root, output_path):
     entries = build(sections_root)
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    d = os.path.dirname(output_path)
+    if d:
+        os.makedirs(d, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(entries, f, indent=2, ensure_ascii=False)
     print(f"Wrote {len(entries)} entries to {output_path}")
 
 
-if __name__ == '__main__':
-    root = sys.argv[1] if len(sys.argv) > 1 else SECTIONS_ROOT_DEFAULT
-    out = sys.argv[2] if len(sys.argv) > 2 else OUTPUT_DEFAULT
-    build_and_write(root, out)

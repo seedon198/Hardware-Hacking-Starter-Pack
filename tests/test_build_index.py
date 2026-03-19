@@ -31,7 +31,7 @@ class TestPathField:
     def test_specific_path(self):
         entries = get_entries()
         e = find(entries, '01-foundations/01-introduction')
-        assert e is not None
+        assert e is not None, "01-foundations/01-introduction not found in fixture entries"
         assert e['path'] == 'sections/01-foundations/01-introduction'
 
 
@@ -39,6 +39,7 @@ class TestTitleField:
     def test_extracts_h1(self):
         entries = get_entries()
         e = find(entries, '01-introduction')
+        assert e is not None, "01-introduction not found in fixture entries"
         assert e['title'] == 'Introduction to Hardware Hacking'
 
     def test_fallback_filename(self, tmp_path):
@@ -69,6 +70,7 @@ class TestSectionFields:
     def test_subsection_wired(self):
         entries = get_entries()
         e = find(entries, 'wired/01-uart-protocol')
+        assert e is not None, "wired/01-uart-protocol not found in fixture entries"
         assert e['subsection'] == 'wired'
 
 
