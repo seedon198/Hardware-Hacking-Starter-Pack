@@ -15,7 +15,7 @@ Discord has emerged as a prominent platform for hardware hacking communities, of
 
 **Hardware Hacking Discord** (invite link: https://discord.gg/hwsecurity) represents one of the largest dedicated hardware security communities. With thousands of members ranging from curious beginners to professional researchers, this community maintains specialized channels for different aspects of hardware hacking:
 
-```
+```ascii
 Hardware Hacking Discord
 ├── Announcements
 ├── General Discussion
@@ -67,7 +67,7 @@ Several established security conferences feature significant hardware security c
 
 **DEF CON** hosts the Hardware Hacking Village, IoT Village, and numerous hardware-focused talks and workshops. The Hardware Hacking Village provides workstations equipped with soldering equipment, logic analyzers, and other tools, creating a supportive environment for hands-on learning:
 
-```
+```ascii
                   DEF CON Hardware Hacking Village
                   
          ┌───────────────────────────────────────────┐

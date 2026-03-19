@@ -80,7 +80,7 @@ Your technical capabilities expand to include:
 - Interpreting assembly language and reverse engineering firmware
 - Working with FPGA/CPLD devices for custom hardware interfacing
 
-```
+```ascii
 The Capable Explorer's Reverse Engineering Cycle:
   
     ┌───────────────┐
@@ -316,7 +316,7 @@ Balance breadth and depth as you progress. While specialization becomes importan
 
 Establish concrete learning projects with defined objectives rather than abstract goals like "get better at hardware hacking." Specific projects like "extract and analyze firmware from my wireless router" or "implement a voltage glitching attack against a microcontroller" provide clear direction and measurable completion criteria.
 
-```
+```ascii
      Project Selection Matrix:
 
      │         │     LOW        │    MEDIUM      │     HIGH       │

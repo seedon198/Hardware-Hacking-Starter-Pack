@@ -9,7 +9,7 @@ Deep within every embedded device lies a layer of code that breathes life into o
 
 Unlike application software that users can easily install, update or remove, firmware occupies a privileged position in the device hierarchy. This specialized code runs with the highest possible permissions, directly manipulating hardware registers, configuring security features, and governing the most fundamental behaviors of a system. When compromised or modified, the implications ripple through every layer of the device's security model.
 
-```
+```ascii
                     The Device Stack Architecture
 
 ┌─────────────────────────────────────────────────────┐
@@ -66,7 +66,7 @@ The **main application firmware** constitutes the bulk of the device's executabl
 
 Before analysis can begin, researchers must first acquire the target firmware—a process that varies dramatically in difficulty depending on the device's design, security measures, and availability of documentation. Firmware extraction methods exist on a spectrum from completely non-invasive approaches requiring minimal equipment to highly invasive techniques demanding specialized tools and considerable expertise. The optimal approach depends on the specific target, available resources, and the researcher's skill level.
 
-```
+```ascii
               Firmware Extraction Methods Spectrum
                   (Increasing Invasiveness →)
 
@@ -185,7 +185,7 @@ When software-based approaches reach their limits, hardware-based extraction tec
 
 Most embedded devices store their firmware in non-volatile flash memory chips—either as separate components on the circuit board or integrated within larger systems-on-chip. Direct access to these storage components provides perhaps the most reliable firmware acquisition method, though it requires identifying the correct chip, understanding its communication protocol, and connecting appropriate reading equipment.
 
-```
+```ascii
                     Flash Chip Access Methods
                     
 ┌────────────────────────┐     ┌────────────────────────┐
@@ -200,9 +200,9 @@ Most embedded devices store their firmware in non-volatile flash memory chips—
 │                      |      │     │                          │
 │                      v      │     │       Removed Chip       │
 │                 ┌───────┐     │     │      ┌───────┐        │
-│                 │       │     │     ││ Flash  ││       │
-│                 │Reader │     │     ││ Chip   ││──────│
-│                 │       │     │     │└───────┘        │
+│                 │       │     │     │      │ Flash  │        │
+│                 │Reader │     │     │      │ Chip   │──────  │
+│                 │       │     │     │      └───────┘        │
 │                 └───────┘     │     │          |           │
 │                                    │     │          v           │
 │  + Non-destructive                │     │     ┌───────┐        │

@@ -15,7 +15,7 @@ This journey into the microscopic world requires specialized tools and technique
 
 Decapsulation exposes the silicon die inside an integrated circuit by removing its protective packaging. This delicate process requires precision and care—the goal is to remove the package material without damaging the fragile chip inside or the tiny bond wires connecting it to the package pins.
 
-```
+```ascii
 Simplified IC Construction:
 ┌───────────────────────────────────────────────────┐
 │                                                   │
@@ -92,7 +92,7 @@ While mechanical methods require less hazardous materials, they carry higher ris
 
 Once the silicon die is exposed, microprobing allows direct interaction with its circuits, accessing signals unavailable at the package pins.
 
-```
+```ascii
 Basic Microprobing Setup:
 ┌──────────────────────────────────────────────────────┐
 │                                                      │

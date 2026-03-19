@@ -3,7 +3,7 @@
 
 # UART/Serial Communication
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │            UART COMMUNICATION               │
    │                                             │
@@ -37,7 +37,7 @@ The **full-duplex capability** of UART enables simultaneous bidirectional commun
 
 The **minimal pin requirement**—typically just TX, RX, and a common ground—makes UART interfaces easy to identify and access on crowded circuit boards. This simplicity stands in stark contrast to more complex protocols that may require four or more connections, making UART an ideal starting point when investigating unknown hardware.
 
-```ascii-art
+```ascii
    ┌──────────────────────────────────────────────────────────────┐
    │                        UART FRAME                            │
    │                                                              │
@@ -107,7 +107,7 @@ When connecting modern logic-level UART to RS-232 equipment, level converters su
 
 ## Identifying UART Interfaces
 
-```ascii-art
+```ascii
    ┌─────────────────────────────────────────────┐
    │          COMMON UART HEADER LAYOUTS         │
    │                                             │
@@ -152,7 +152,7 @@ When visual identification doesn't yield clear results, more active discovery te
 
 ## Connecting to UART Interfaces
 
-```ascii-art
+```ascii
    ┌────────────────────────────────────────────────┐
    │           UART CONNECTION SETUP                │
    │                                                │
@@ -205,7 +205,7 @@ Establishing a proper UART connection follows a methodical process that minimize
 
 ## Working with UART
 
-```ascii-art
+```ascii
    ┌───────────────────────────────────────┐
    │       DETERMINING UART BAUD RATE      │
    │                                       │
@@ -288,7 +288,7 @@ The "8N1" configuration (8 data bits, no parity, 1 stop bit) represents the de f
 
 UART interfaces frequently expose significant security vulnerabilities that would otherwise remain inaccessible through standard user interfaces. These represent high-value targets for hardware security researchers:
 
-```ascii-art
+```ascii
    ┌─────────────────────────────────────────────┐
    │         EXAMPLE DEBUG CONSOLE OUTPUT        │
    │                                             │

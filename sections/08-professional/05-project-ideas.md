@@ -9,7 +9,7 @@ Building practical skills in hardware hacking requires hands-on experience with 
 
 Choosing appropriate projects significantly impacts learning effectiveness. Consider these dimensions when selecting your next hardware hacking project:
 
-```
+```ascii
                 Project Selection Matrix
                 
 Skill Level   │    Time     │   Equipment   │    Risk
@@ -185,7 +185,7 @@ These projects provide entry points requiring minimal specialized equipment whil
 - Network analysis tools (Wireshark, etc.)
 - Optional logic analyzer
 
-```
+```ascii
       Smart Plug Analysis Workflow
       
       ┌───────────────────┐

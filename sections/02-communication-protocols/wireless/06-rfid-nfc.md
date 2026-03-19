@@ -17,7 +17,7 @@ At its core, RFID technology enables an invisible conversation between two entit
 
 The ecosystem consists of three key components working in harmony: transponders that carry identification data, readers that extract and interpret this data, and backend systems that process and act upon the information. This seemingly simple architecture belies the sophisticated technology that makes it possible.
 
-```
+```ascii
                           RFID/NFC System Architecture
 
 ┌───────────────┐          ┌───────────────┐          ┌───────────────┐
@@ -63,7 +63,7 @@ Near Field Communication (NFC) represents perhaps the most ubiquitous evolution 
 
 What sets NFC apart from traditional RFID is its flexibility in communication roles. Unlike conventional RFID where tags and readers have fixed roles, NFC devices can dynamically switch between different operational modes:
 
-```
+```ascii
                       NFC Operational Modes
 
 ┌─────────────────────────────────────────────────────────┐
@@ -105,7 +105,7 @@ The RFID and NFC landscape is defined by an intricate web of standards and propr
 
 RFID and NFC standards form a complex hierarchy, with international standards organizations providing fundamental frameworks that industry groups and manufacturers extend and implement. This layered approach creates a rich ecosystem but also introduces potential vulnerabilities at the boundaries between different standards.
 
-```
+```ascii
                        RFID/NFC Standards Landscape
                                     
                International Standards Organizations
@@ -169,7 +169,7 @@ At the heart of RFID and NFC security lies the physical implementation—the tan
 
 RFID tags represent marvels of minimalist engineering, packing remarkable functionality into increasingly tiny packages. Their apparent simplicity conceals sophisticated design considerations that balance power harvesting, signal processing, and manufacturing constraints.
 
-```
+```ascii
                     Anatomy of an RFID Tag
                     
            ┌────────────────────────────────────────┐
@@ -216,7 +216,7 @@ The manufacturing techniques used to create these tags create additional securit
 
 Readers (or interrogators) represent the active counterparts to RFID tags, generating the electromagnetic fields that power passive tags and managing the complex signal processing required to extract meaningful data from subtle backscatter or load modulation changes.
 
-```
+```ascii
                         RFID/NFC Reader Architecture
                         
     ┌──────────────────────────────────────────────────────────────┐
@@ -271,7 +271,7 @@ Readers consist of several critical functional blocks, each presenting distinct 
 
 Unlike many digital systems that hide behind software abstractions, RFID and NFC systems expose physical attack surfaces that can be directly manipulated. These hardware vulnerabilities create opportunities for both offensive research and defensive improvement, highlighting the critical importance of physical security in wireless systems.
 
-```
+```ascii
                     RFID/NFC Physical Attack Surface
 
 ┌────────────────────┐  ┌────────────────────┐  ┌────────────────────┐
@@ -315,7 +315,7 @@ Fault injection creates deliberately abnormal operating conditions to induce err
 
 The rich attack surface of RFID and NFC systems has driven the development of equally sophisticated countermeasures. These defensive hardware implementations address vulnerabilities at multiple levels, from physical design to protocol implementation.
 
-```
+```ascii
                  RFID/NFC Defense-in-Depth Model
 
     ┌─────────────────────────────────────────────────────┐
@@ -427,7 +427,7 @@ For those working with NFC-enabled mobile devices, software tools like NFCGate (
 
 Effective security assessment extends beyond finding vulnerabilities to establishing processes for continuous improvement. These best practices facilitate meaningful security enhancement across the RFID/NFC ecosystem:
 
-```
+```ascii
                    Continuous Security Validation Cycle
 
         ┌──────────────────┐

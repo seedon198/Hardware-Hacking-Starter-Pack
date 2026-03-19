@@ -33,7 +33,7 @@ Several approaches exist for creating schematics from physical hardware, each wi
 
 The incremental approach builds the schematic gradually by adding components and connections as you trace them:
 
-```
+```ascii
 Incremental Schematic Capture Process:
 ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
 │                  │    │                  │    │                  │
@@ -61,7 +61,7 @@ The incremental approach allows you to focus on areas of interest and stop when 
 
 The block-based approach divides the circuit into functional sections and documents each separately:
 
-```
+```ascii
 Block-based Schematic Capture:
 ┌────────────────────────────────────────────────────────┐
 │                                                        │
@@ -116,7 +116,7 @@ This organization makes the circuit's function more apparent than the physical l
 
 Include enough detail to understand functionality without overwhelming the reader:
 
-```
+```ascii
 Component Representation Examples:
 ┌───────────────────────────────────────────────────────┐
 │                                                       │
@@ -185,7 +185,7 @@ Several challenges arise specifically when creating schematics from existing har
 
 When encountering unidentified components, document what you can observe:
 
-```
+```ascii
 Unknown Component Documentation:
 ┌────────────────────────────────────────────┐
 │ Component: U23 (Unknown 8-pin IC)          │

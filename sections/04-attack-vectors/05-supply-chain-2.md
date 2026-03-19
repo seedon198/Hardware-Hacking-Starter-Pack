@@ -9,7 +9,7 @@ Even with legitimate chips, the circuit board assembly process provides ample op
 
 An attacker with access to the assembly process might:
 
-```
+```ascii
 Normal PCB:                      Modified PCB:
 ┌────────────────────────┐      ┌────────────────────────┐
 │  ┌─────┐    ┌─────┐    │      │  ┌─────┐    ┌─────┐    │
@@ -44,7 +44,7 @@ Assembly plants often work with numerous clients, potentially allowing cross-con
 
 After manufacturing, products remain vulnerable during transportation, warehousing, and distribution.
 
-```
+```ascii
 Shipping Chain Interdiction:
                                               ┌──────────┐
 ┌────────────┐      ┌──────────┐     ┌────────┤Inspection│
@@ -73,7 +73,7 @@ For organizations ordering sensitive equipment, this presents a significant chal
 
 Most electronic devices receive their initial software during production, creating an opportunity for compromise:
 
-```
+```ascii
 Factory Programming Process:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
@@ -122,7 +122,7 @@ This approach allowed extremely targeted attacks through a massively distributed
 
 Counterfeit components represent another significant supply chain threat, with both economic and security implications:
 
-```
+```ascii
 Common Counterfeit Methods:
 ┌───────────────────┐    ┌────────────────────┐    ┌────────────────────┐
 │Remarking          │    │Recycling           │    │Cloning             │
@@ -151,7 +151,7 @@ Identifying supply chain attacks presents significant challenges, but several ap
 
 Visual examination forms a first line of defense:
 
-```
+```ascii
 Inspection Points:           Warning Signs:
 ┌─────────────────────┐      ┌─────────────────────────────┐
 │ Component markings  │─────>│ Inconsistent font/printing  │

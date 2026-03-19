@@ -17,7 +17,7 @@ Secure boot addresses this fundamental security gap by verifying the integrity a
 
 Secure boot implements a chain of trust—a sequence of verifications where each software component validates the next before transferring control:
 
-```
+```ascii
 Basic Chain of Trust:
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │ Root of     │     │ Bootloader  │     │ Operating   │
@@ -45,7 +45,7 @@ The foundation of secure boot lies in a hardware root of trust—a component inh
 
 The simplest root of trust consists of immutable code stored in mask ROM—memory programmed during manufacturing that cannot be modified:
 
-```
+```ascii
 ROM-based Root of Trust:
 ┌──────────────────────────────────────────┐
 │ System on Chip                           │
@@ -82,7 +82,7 @@ Both options provide stronger security than simple ROM approaches but add cost a
 
 Modern processors often include secure execution environments isolated from the main processing environment:
 
-```
+```ascii
 Secure Enclave Architecture:
 ┌───────────────────────────────────────────────────┐
 │ System on Chip                                    │
@@ -117,7 +117,7 @@ Within the secure boot process, several mechanisms verify code integrity and aut
 
 Hash functions create a fixed-length "fingerprint" of firmware that changes if any part of the code is modified. Basic secure boot implementations might simply compare calculated hashes against expected values stored in the root of trust:
 
-```
+```ascii
 Hash Verification Process:
 ┌───────────────┐     ┌──────────────────┐
 │ Firmware      │────>│ Hash Function    │─────┐
@@ -154,7 +154,7 @@ This approach prevents attackers from creating valid firmware even if they can m
 
 For complex systems or those requiring revocation capabilities, certificate chains extend the digital signature approach:
 
-```
+```ascii
 Certificate Chain Verification:
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │ Root        │     │ Intermediate│     │ Firmware    │
@@ -217,7 +217,7 @@ For hardware hackers developing secure systems, implementing secure boot require
 
 The security of any secure boot implementation ultimately depends on key management:
 
-```
+```ascii
 Key Management Considerations:
 ┌────────────────────────────────────────────────────┐
 │                                                    │
@@ -287,7 +287,7 @@ While documentation rarely reveals vulnerabilities directly, it provides context
 
 Monitoring the boot process reveals much about secure boot implementation:
 
-```
+```ascii
 Boot Analysis Points:
 ┌─────────────────┐     ┌─────────────┐     ┌─────────────┐
 │ Initial Boot    │────>│ Bootloader  │────>│ OS Kernel   │

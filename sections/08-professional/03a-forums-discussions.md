@@ -43,7 +43,7 @@ Security-oriented platforms often include significant hardware hacking content:
 
 **The Exploitee.rs Forum** focuses specifically on embedded device security, with detailed discussions of hardware vulnerabilities, exploitation techniques, and tool development. Their wiki contains extensive documentation of known vulnerabilities and exploitation techniques for various embedded devices.
 
-```
+```ascii
 Exploitee.rs Community Structure
 
 Device Categories

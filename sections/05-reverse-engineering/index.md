@@ -22,7 +22,7 @@ Each article builds upon the previous, guiding you through the process of unders
 
 Successful hardware reverse engineering follows a methodical approach, moving from non-destructive analysis to progressively more invasive techniques as needed:
 
-```
+```ascii
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │  Documentation  │────>│  Non-destructive│────>│  Semi-invasive  │
 │  & Planning     │     │  Analysis       │     │  Techniques     │

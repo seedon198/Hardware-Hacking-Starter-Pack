@@ -33,7 +33,7 @@ Video content offers unique advantages for hardware topics, demonstrating physic
 
 **YouTube Channels:**
 
-```
+```ascii
 Video Content Value Spectrum
 │                                                                  │
 │  Quick Tips         Project Walkthroughs         Deep Tutorials  │
@@ -245,7 +245,7 @@ Whatever platform you choose, consider licensing your content under open terms (
 
 The diverse and distributed nature of hardware hacking knowledge requires developing strong information evaluation skills:
 
-```
+```ascii
                 Information Quality Evaluation
                 
           Low                                    High

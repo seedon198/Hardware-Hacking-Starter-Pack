@@ -15,7 +15,7 @@ Tools that facilitate communication with target hardware provide essential capab
 
 **Bus Pirate** revolutionized hardware hacking by creating an affordable, versatile interface between computers and raw hardware protocols. This open-source tool supports multiple protocols (UART, I²C, SPI, 1-Wire) through a simple terminal interface, making it an ideal first tool for many hardware hackers.
 
-```
+```ascii
     Bus Pirate Simplified Architecture
     
     ┌────────────────┐      ┌─────────────────┐
@@ -84,7 +84,7 @@ Some tools address specific aspects of hardware security assessment:
 - Extensive tutorials and example targets
 - A supportive community sharing techniques and improvements
 
-```
+```ascii
     ChipWhisperer Simplified Workflow
     
     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
@@ -236,7 +236,7 @@ When considering project contributions, several factors indicate project health 
 
 **Contribution Guidelines** indicate organized development processes. Clear guidelines reduce friction for new contributors while ensuring contributions maintain project quality standards.
 
-```
+```ascii
     Project Health Indicators
     
     High            ┌───────────────────────────────────┐

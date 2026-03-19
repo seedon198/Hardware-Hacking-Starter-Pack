@@ -13,7 +13,7 @@ Defending against supply chain attacks requires a layered approach. No single me
 
 Trust, but verify. Before incorporating components or systems into your supply chain, thoroughly evaluate potential vendors:
 
-```
+```ascii
 Vendor Assessment Framework:
 ┌───────────────────────────────────────────────────────────────────┐
 │                                                                   │
@@ -57,7 +57,7 @@ While significantly more expensive than standard commercial manufacturing, trust
 
 Hardware roots of trust provide verification capabilities built into the system itself:
 
-```
+```ascii
 Root of Trust Architecture:
                      ┌─────────────────────────────────┐
                      │            System               │
@@ -92,7 +92,7 @@ The effectiveness of hardware roots of trust depends on their own security. If t
 
 Avoiding dependency on a single supplier reduces the impact of supply chain compromises:
 
-```
+```ascii
 ┌──────────────────────────────────────────────────────────┐
 │                 Component Diversification                │
 │                                                          │
@@ -137,7 +137,7 @@ The field of supply chain security continues to evolve, with several promising t
 
 Distributed ledger technologies show significant promise for creating transparent, tamper-evident records of a component's journey:
 
-```
+```ascii
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │ Component   │     │ Assembly    │     │ System      │     │ Distribution │
 │ Manufacture │────>│ Phase       │────>│ Integration │────>│ Phase       │
@@ -185,7 +185,7 @@ These technologies share a common goal: creating authentication factors that are
 
 Artificial intelligence offers promising tools for identifying potential supply chain compromises:
 
-```
+```ascii
 ┌───────────────────────────────────────────────────────────────┐
 │                 AI-Based Anomaly Detection                    │
 │                                                               │

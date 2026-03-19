@@ -11,7 +11,7 @@ The hardware hacking ecosystem resembles a constellation rather than a single st
 
 At the broadest level, hardware hacking communities typically organize around shared interests, methodologies, or professional contexts:
 
-```
+```ascii
                  Hardware Hacking Communities
                  
     Research                             Professional

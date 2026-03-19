@@ -50,7 +50,7 @@ Imagine you're standing at the trailhead of wireless communication. The first pa
 
 At its core, amplitude modulation is like controlling the volume of your voice to convey meaning. In the digital realm, this translates to manipulating the strength (amplitude) of the carrier signal to represent different bit values. The simplest expression of this technique is On-Off Keying (OOK).
 
-```
+```ascii
 OOK Modulation (Bit Pattern: 1 0 1 1 0 1 0)
 
 Carrier:  /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
@@ -76,7 +76,7 @@ As we venture further along our wireless communication trail, we discover that m
 
 Imagine yourself whistling a tune to convey a message. By shifting between different notes (frequencies) while maintaining the same volume, you're essentially performing frequency modulation. This approach provides a significant advantage: even if ambient noise temporarily drowns out parts of your signal, the frequency information often remains recoverable.
 
-```
+```ascii
 Binary FSK Modulation (Bit Pattern: 1 0 1 1 0 1 0)
 
 Bit Value:      1     0     1     1     0     1     0
@@ -107,7 +107,7 @@ As our journey through radio frequency modulation continues, we arrive at a more
 
 In phase modulation, we maintain a constant amplitude and frequency but shift the phase of the carrier wave at precise moments. This technique offers superior noise immunity and spectral efficiency compared to both amplitude and frequency modulation methods we've explored so far.
 
-```
+```ascii
 Binary PSK Modulation (Bit Pattern: 1 0 1 1 0)
 
          0°    180°   0°    0°    180°
@@ -121,7 +121,7 @@ The simplest implementation is Binary Phase Shift Keying (BPSK), where we use tw
 
 As engineers sought to increase data rates without sacrificing too much reliability, Quadrature Phase Shift Keying (QPSK) emerged as an elegant solution. By using four different phase states—typically at 45°, 135°, 225°, and 315°—QPSK enables the transmission of two bits per symbol, effectively doubling the data throughput without demanding additional bandwidth.
 
-```
+```ascii
 QPSK Constellation Diagram
                    
                Q
@@ -165,7 +165,7 @@ The crown jewel of these hybrid approaches is Quadrature Amplitude Modulation (Q
 
 To visualize how QAM works, imagine a constellation diagram—a two-dimensional map where each point represents a unique combination of amplitude and phase values. Each point in this constellation corresponds to a specific bit pattern:
 
-```
+```ascii
 16-QAM Constellation Diagram
              Q
              │
@@ -215,7 +215,7 @@ Two primary flavors of spread spectrum have emerged over the decades: Direct Seq
 
 Direct Sequence Spread Spectrum works through a beautifully simple principle: multiplication. By multiplying the original data signal with a much faster pseudorandom sequence (called a spreading code or chip sequence), DSSS smears the signal energy across a wide bandwidth, as shown below:
 
-```
+```ascii
 Direct Sequence Spread Spectrum (DSSS)
 
 Data:       010011...
@@ -238,7 +238,7 @@ This technology has revolutionized both civilian and military communications. Wh
 
 The second major spread spectrum approach takes a fundamentally different tack. Rather than spreading the signal across frequency at a single moment, Frequency Hopping Spread Spectrum (FHSS) rapidly jumps the transmission from one frequency channel to another, following a pseudorandom sequence known to both transmitter and receiver:
 
-```
+```ascii
 Frequency Hopping Spread Spectrum (FHSS)
 
 Frequency │    ┌───┐            ┌───┐
@@ -397,7 +397,7 @@ Pure power measurements, while fundamental, tell only part of the story in RF co
 
 The most fundamental quality metric is Signal-to-Noise Ratio (SNR)—the comparison between our desired signal and the inevitable background noise present in all electronic systems. This concept is beautifully intuitive: how much louder is our signal compared to the surrounding noise?
 
-```
+```ascii
 Signal-to-Noise Ratio Visualization
 
 Power│
@@ -437,7 +437,7 @@ In our journey through the electromagnetic landscape, we encounter one of the mo
 
 To visualize the relationship between channel allocation and actual signal usage, consider this representation:
 
-```
+```ascii
 Channel vs. Occupied Bandwidth
 
 Power │

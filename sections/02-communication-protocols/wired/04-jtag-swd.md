@@ -3,7 +3,7 @@
 
 # JTAG and SWD Protocols: The Ultimate Backdoors
 
-```
+```ascii
           ┌───────────┐               ┌───────────┐
 CPU/FPGA  │           │◄─────TDI─────┤           │ Host
           │  Target   │               │  Debug    │ Computer
@@ -26,7 +26,7 @@ JTAG began in the 1980s as a solution for testing complex printed circuit boards
 
 The beauty of JTAG lies in its standardization (IEEE 1149.1) combined with its incredible versatility. Think of it as a universal backdoor - one interface to access multiple critical functions:
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │                   JTAG CAPABILITIES             │
 ├─────────────────┬───────────────────────────────┤
@@ -62,7 +62,7 @@ When connected properly, these simple lines create a powerful communications cha
 
 ### The Two-Wire Wonder
 
-```
+```ascii
           ┌───────────┐              ┌───────────┐
 ARM       │           │◄─────►       │           │ Debug
           │  Target   │    SWDIO     │  Debug    │ Computer
@@ -89,7 +89,7 @@ For a hardware security researcher, understanding both protocols provides the fl
 
 ## Hunting for Debug Interfaces: Finding the Hidden Keys
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │                     PCB                          │
 │                                                  │
@@ -167,7 +167,7 @@ These tools systematically test pin combinations, looking for valid JTAG/SWD res
 
 ## Tools of the Trade: Essential JTAG/SWD Hacking Equipment
 
-```
+```ascii
 ┌─────────────────────────────────────────────────┐
 │             JTAG/SWD TOOLKIT                    │
 ├──────────────┬───────────────────────────────┤
@@ -239,7 +239,7 @@ A well-equipped hardware hacker will mix and match these tools depending on the 
 
 ## Breaking In: Essential JTAG/SWD Hacking Techniques
 
-```
+```ascii
 ┌──────────────────┐                 ┌────────────────┐
 │                  │                 │                │
 │  Target Device   │◄───Interface────►  Your Attack   │
@@ -359,7 +359,7 @@ Skilled hardware hackers combine these technical tools with deep knowledge of sy
 
 ## Security Pitfalls: Common Vulnerabilities in Debug Implementations
 
-```
+```ascii
 ┌────────────────────────────────────────────────────┐
 │        COMMON DEBUG SECURITY VULNERABILITIES        │
 ├───────────────┬────────────────────────────────────┤
@@ -441,7 +441,7 @@ Knowing these common weaknesses helps both hardware developers improve their sec
 
 ## Advanced JTAG/SWD Attacks: Beyond the Basics
 
-```
+```ascii
         ┌─────────────────────────────┐
         │   HARDWARE SECURITY ATTACK LEVELS   │
         ├──────────────┬───────────────┤
@@ -549,7 +549,7 @@ These advanced attacks represent a continuous escalation between security resear
 
 ## Hands-On: A Practical JTAG/SWD Hacking Exercise
 
-```
+```ascii
         TARGET DEVICE          YOUR WORKSTATION
       ┌────────────┐      ┌────────────────┐
       │ ┌────────┐ │      │                │
@@ -718,7 +718,7 @@ This practical exercise demonstrates the power of debug interfaces for security 
 
 ## Defense in Depth: Securing Debug Interfaces
 
-```
+```ascii
 ┌────────────────────────────────────────────────────┐
 │        LAYERED DEBUG SECURITY DEFENSES         │
 │                                                │
@@ -800,7 +800,7 @@ As a hardware hacker exploring these protections, remember that each security me
 
 ## Gateway to Silicon: The Power and Promise of Debug Interfaces
 
-```
+```ascii
 ┌────────────────────────────────────────────────────┐
 │                                                │
 │   "Debug interfaces are the ultimate backdoor    │

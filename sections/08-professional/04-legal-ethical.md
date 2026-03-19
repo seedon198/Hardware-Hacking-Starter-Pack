@@ -9,7 +9,7 @@ Hardware hacking exists at the intersection of technical curiosity and multiple 
 
 Hardware security research intersects with multiple legal domains that vary significantly by jurisdiction, creating a complex patchwork of requirements and restrictions:
 
-```
+```ascii
     Legal Domains Impacting Hardware Security
     
     ┌────────────────────┐   ┌───────────────────┐
@@ -167,7 +167,7 @@ Several ethical frameworks offer guidance for hardware security research:
 
 Several principles help navigate ethical complexities in hardware hacking:
 
-```
+```ascii
          Ethical Principles in Hardware Hacking
          
 ┌───────────────────┐  ┌───────────────────┐  ┌───────────────────┐

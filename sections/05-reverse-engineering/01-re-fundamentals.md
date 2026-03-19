@@ -19,7 +19,7 @@ Before touching a screwdriver or multimeter, begin with careful observation and 
 
 Start by creating a complete external inventory of the device. Photograph all sides, noting physical dimensions, external interfaces, model numbers, regulatory markings, and any visible screws or seams. These external clues often reveal valuable information about internal components and design.
 
-```
+```ascii
 External Documentation Checklist:
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
@@ -80,7 +80,7 @@ Electromagnetic emissions, detected with near-field probes, can pinpoint active 
 
 Power consumption analysis offers valuable insights into device operation:
 
-```
+```ascii
 Basic Power Analysis Setup:
                          ┌─────────────┐
                          │             │
@@ -138,7 +138,7 @@ If you encounter resistance, stop and reassess rather than applying force. Many 
 
 Once the device is open, conduct a thorough survey before disturbing any components:
 
-```
+```ascii
 Internal Component Survey:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │

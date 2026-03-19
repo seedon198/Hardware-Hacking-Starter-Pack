@@ -32,7 +32,7 @@ Before diving into specific mechanisms, let's establish core security concepts p
 
 No single security mechanism can provide complete protection. Effective embedded security implements multiple layers of defense, ensuring that a breach of one security mechanism doesn't compromise the entire system.
 
-```
+```ascii
 Defense in Depth Architecture:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
@@ -105,7 +105,7 @@ A surprisingly large number of commercial products ship with active debug ports 
 
 Resource constraints often lead to simplified authentication:
 
-```
+```ascii
 Common Authentication Weaknesses:
 ┌────────────────────────────────────────────────────┐
 │                                                    │
@@ -162,7 +162,7 @@ Several fundamental security mechanisms form building blocks for secure embedded
 
 A root of trust provides the foundation upon which all security functions depend. It typically consists of hardware, firmware, and software components that are inherently trusted and verified:
 
-```
+```ascii
 Root of Trust Chain:
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │ Hardware    │     │ Bootloader  │     │ Operating   │
@@ -200,7 +200,7 @@ Effective secure storage combines cryptographic protection with physical securit
 
 Cryptography provides essential tools for authentication, confidentiality, and integrity—but embedded constraints create implementation challenges:
 
-```
+```ascii
 Cryptography Selection Factors:
 ┌─────────────────────────────────────────────────────┐
 │                                                     │

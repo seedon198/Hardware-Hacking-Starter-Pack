@@ -2,7 +2,7 @@
 
 # Hardware Communication Protocols
 
-```
+```ascii
    ┌─────────────────────────────────────────────┐
    │      HARDWARE COMMUNICATION LANDSCAPE       │
    │                                             │
@@ -146,7 +146,7 @@ Understanding the relative strengths, weaknesses, and characteristics of differe
   </tr>
 </table>
 
-```
+```ascii
 ┌─────────────────────────────────────────────┐
 │        PROTOCOL SELECTION FLOWCHART         │
 ├─────────────────────────────────────────────┤
@@ -193,7 +193,7 @@ Understanding the relative strengths, weaknesses, and characteristics of differe
 │                       Need high speed?      │
 │                              │              │
 │                              Yes            │
-│                              │              |
+│                              │              │
 │                      ┌───────┴────────┐     │
 │                      │ Use SPI (fast) │     │
 │                      └────────────────┘     │
