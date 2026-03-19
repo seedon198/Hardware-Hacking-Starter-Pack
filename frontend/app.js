@@ -697,3 +697,211 @@ function initPathModal() {
     }
   });
 }
+
+/* ═══════════════════════════════════════════════ §9 ARTICLE RENDERER */
+
+function configureMarked() {
+  const renderer = new marked.Renderer();
+
+  renderer.code = function(code, language) {
+    if (language === 'ascii' || language === 'ansi') {
+      return `<pre class="ascii-art">${escHtml(code)}</pre>`;
+    }
+    const lang = escHtml(language || '');
+    return `<pre class="code-block"><code class="language-${lang}">${escHtml(code)}</code></pre>`;
+  };
+
+  renderer.heading = function(text, level) {
+    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return `<h${level} id="${escHtml(id)}">${text}</h${level}>`;
+  };
+
+  marked.setOptions({ renderer, breaks: false, gfm: true });
+}
+
+function extractHeadings(html) {
+  const matches = [...html.matchAll(/<h([23])\s+id="([^"]+)"[^>]*>([^<]+)/g)];
+  return matches.map(m => ({ level: parseInt(m[1]), id: m[2], text: m[3] }));
+}
+
+function sectionRef(entry) {
+  if (!entry) return '';
+  let ref = `§0${entry.section_num}`;
+  if (entry.subsection) ref += `.${entry.subsection}`;
+  return ref;
+}
+
+async function showArticle(path) {
+  document.getElementById('dashboard').hidden = true;
+  document.getElementById('articleView').hidden = true;
+  document.getElementById('errorState').hidden = true;
+  document.getElementById('loadingState').hidden = false;
+
+  try {
+    const md = await fetchArticle(path);
+    const html = marked.parse(md);
+    const entry = getEntry(path);
+    const headings = extractHeadings(html);
+
+    const header = document.getElementById('articleHeader');
+    const diff = entry?.difficulty || 'beginner';
+    const tags = entry?.tags || [];
+    const bookmarked = isBookmarked(path);
+    const done = _completed.has(path);
+
+    header.innerHTML = `
+      <div class="article-meta">
+        <span class="section-ref">${escHtml(sectionRef(entry))}</span>
+        ${entry ? ` — ${escHtml(entry.section)}` : ''}
+        — HARDWARE HACKING STARTER PACK
+      </div>
+      <div class="article-title">${escHtml(entry?.title || path)}</div>
+      <div class="article-tags">
+        ${diff !== 'all' ? `<span class="tag ${diff}">${diff.toUpperCase()}</span>` : ''}
+        ${tags.map(t => `<span class="tag">${escHtml(t.toUpperCase())}</span>`).join('')}
+        <button class="bookmark-btn ${bookmarked ? 'active' : ''}" id="bookmarkBtn" aria-label="Bookmark this article">
+          ${bookmarked ? '★ BOOKMARKED' : '☆ BOOKMARK'}
+        </button>
+        <button class="mark-complete-btn ${done ? 'done' : ''}" id="markCompleteBtn">
+          ${done ? '[ ✓ COMPLETE ]' : '[ MARK COMPLETE ✓ ]'}
+        </button>
+      </div>
+    `;
+
+    document.getElementById('articleBody').innerHTML = html;
+
+    const prev = getPrevArticle(path);
+    const next = getNextArticle(path);
+    document.getElementById('articleNav').innerHTML = `
+      ${prev ? `<button class="article-nav-btn prev" data-path="${escHtml(prev.path)}">[ ← ${escHtml(prev.title)} ]</button>` : ''}
+      ${next ? `<button class="article-nav-btn next" data-path="${escHtml(next.path)}">[ ${escHtml(next.title)} → ]</button>` : ''}
+    `;
+
+    document.querySelectorAll('.article-nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => navigate(btn.dataset.path));
+    });
+
+    document.getElementById('markCompleteBtn').addEventListener('click', () => {
+      if (_completed.has(path)) {
+        _completed.delete(path);
+      } else {
+        _completed.add(path);
+      }
+      saveProgress();
+      updateProgress();
+      renderNavTree();
+      const btn = document.getElementById('markCompleteBtn');
+      const isDone = _completed.has(path);
+      btn.textContent = isDone ? '[ ✓ COMPLETE ]' : '[ MARK COMPLETE ✓ ]';
+      btn.classList.toggle('done', isDone);
+    });
+
+    document.getElementById('bookmarkBtn').addEventListener('click', () => {
+      toggleBookmark(path);
+      const btn = document.getElementById('bookmarkBtn');
+      btn.textContent = isBookmarked(path) ? '★ BOOKMARKED' : '☆ BOOKMARK';
+      btn.classList.toggle('active', isBookmarked(path));
+    });
+
+    renderToc(headings);
+    startTocObserver(headings);
+
+    document.getElementById('loadingState').hidden = true;
+    document.getElementById('articleView').hidden = false;
+    document.getElementById('contentArea').scrollTop = 0;
+
+    renderNavTree();
+    document.querySelector('.nav-item.active')?.scrollIntoView({ block: 'nearest' });
+
+    updatePathPosition();
+
+  } catch (err) {
+    document.getElementById('loadingState').hidden = true;
+    document.getElementById('errorState').hidden = false;
+    document.getElementById('errorState').innerHTML =
+      `<div style="padding:40px;color:var(--accent-red)">ERROR: ${escHtml(err.message)}</div>`;
+  }
+}
+
+function showDashboard() {
+  document.getElementById('articleView').hidden = true;
+  document.getElementById('loadingState').hidden = true;
+  document.getElementById('errorState').hidden = true;
+
+  const db = document.getElementById('dashboard');
+  db.hidden = false;
+
+  const nonIndex = _index.filter(e => !e.is_index);
+  const done = nonIndex.filter(e => _completed.has(e.path));
+  const pct = nonIndex.length ? Math.round((done.length / nonIndex.length) * 100) : 0;
+
+  db.innerHTML = `
+    <div class="dashboard-title">HARDWARE HACKING STARTER PACK</div>
+    <div class="dashboard-subtitle">An interactive learning guide to hardware security.</div>
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <div class="dashboard-card-label">PROGRESS</div>
+        <div class="dashboard-card-value">${pct}%</div>
+        <div class="dashboard-card-sub">${done.length} / ${nonIndex.length} articles</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-card-label">ACTIVE PATH</div>
+        <div class="dashboard-card-value" style="font-size:14px">${_activePath ? LEARNING_PATHS[_activePath].label : '—'}</div>
+        <div class="dashboard-card-sub">${_activePath ? getResolvedPathArticles(_activePath).length + ' articles' : 'Browse freely'}</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-card-label">BOOKMARKS</div>
+        <div class="dashboard-card-value">${_bookmarks.length}</div>
+        <div class="dashboard-card-sub">saved articles</div>
+      </div>
+    </div>
+    <p style="color:var(--text-muted);font-size:11px">Select a topic from the sidebar, or use <kbd style="border:1px solid var(--border);padding:1px 4px">⌘K</kbd> to search.</p>
+  `;
+
+  renderNavTree();
+  updatePathPosition();
+}
+
+/* ═══════════════════════════════════════════════ §10 INIT */
+
+async function init() {
+  try {
+    loadState();
+    initTheme();
+    initSidebarTabs();
+    initDifficultyButtons();
+    initSearch();
+    initSkillTree();
+    initPathModal();
+
+    await loadIndex();
+
+    renderNavTree();
+    renderFilterStrip();
+    renderBookmarks();
+    updateProgress();
+
+    const initialPath = getHashPath();
+    if (initialPath) {
+      _currentPath = initialPath;
+      await showArticle(initialPath);
+    } else {
+      showDashboard();
+      if (!_activePath && !localStorage.getItem(LS_PATH_KEY + '_skipped')) {
+        openPathModal();
+      }
+    }
+
+  } catch (err) {
+    document.getElementById('loadingState').hidden = true;
+    document.getElementById('errorState').hidden = false;
+    document.getElementById('errorState').innerHTML =
+      `<div style="padding:40px;color:var(--accent-red)">FAILED TO LOAD: ${escHtml(err.message)}</div>`;
+    console.error(err);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  configureMarked();
+  init();
+});
